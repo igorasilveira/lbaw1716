@@ -2,31 +2,33 @@
 <html>
 <head>
 	<title>Pc Auctions</title>
+    <meta charset="utf-8">
+	<link rel="stylesheet" href="bootswatch.css">
 </head>
 <body>
 
-	<h1> Sign Up </h1>
+	<h1 id="signUp"> Sign Up </h1>
 
 	<div id = "new_user">
 		<form action="create_account.php" method="POST" enctype="multipart/form-data">
 
 			<fieldset>
 				<legend>Log in Information:</legend>
-				Username: <input type="text"><br>
-				Password: <input type="password"><br>
-			</fieldset>
+				<label>Username:</label> <input type="text"><br>
+				<label>Password:</label> <input type="password"><br>
+			</fieldset><br>
 
 			<fieldset>
 				<legend>Personal Data:</legend>
-				Name: <input type="text"><br>
-				Email: <input type="e-mail"><br>
-				Date of birth: <input type="date"><br>
-				Photo: <input type="file" name="photo"><br>
-			</fieldset>
+				<label>Complete Name:</label> <input type="text"><br>
+				<label>Email:</label><input type="e-mail"><br>
+				<label>Date of birth:</label> <input type="date"><br>
+				<label>Photo:</label> <input type="file" name="photo"><br>
+			</fieldset><br>
 
 			<fieldset>
 				<legend>Location information:</legend>
-				Country: 
+				<label>Country:</label>
 				<select>
 	<option value="AFG">Afghanistan</option>
 	<option value="ALA">Åland Islands</option>
@@ -277,16 +279,16 @@
 	<option value="YEM">Yemen</option>
 	<option value="ZMB">Zambia</option>
 	<option value="ZWE">Zimbabwe</option>
-</select>
-				City: <input type="text"><br>
-				Postal-Code: <input type="text"><br>
-				Adress <input type="text">
-			</fieldset>
+</select><br>
+				<label>City:</label> <input type="text">
+				Postal-Code: <input type="text" pattern="[0-9]{5}"><br>
+				<label>Address:</label> <input type="text">
+			</fieldset><br>
 
 			<input type="submit" value="Sign in"/>
 		</form>
 
-
+</div>
 
 	</body>
 	</html>
