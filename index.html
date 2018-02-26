@@ -1,72 +1,90 @@
 <!DOCTYPE html>
 <html>
 
-	<head>
+	<head lang="en">
 		<title>PcAuctions</title>
 		<meta charset="utf-8">
 		<meta name="viewport"
 		      content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet"
-		      href="assets/bootstrap/css/bootstrap.css"
-		      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-		      crossorigin="anonymous">
+		      href="assets/bootstrap/css/bootstrap.min.css">
+		<!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>-->
+		<script src="assets/bootstrap/js/bootstrap.min.js"></script>
 	</head>
 
 	<body>
-
-		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-		        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-		        crossorigin="anonymous"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-		        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-		        crossorigin="anonymous"></script>
-		<script src="assets/bootstrap/js/bootstrap.min.js"
-		        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-		        crossorigin="anonymous"></script>
 		<header>
-			<h1>PcAuctions</h1>
-			<img src="auction.png"
-			     alt="auction Logo">
+			<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+				<a class="navbar-brand"
+				   href="#">Logo</a>
+				<!-- Links -->
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a class="nav-link"
+						   href="index.html">Pc Auctions</a>
+				</ul>
+			</nav>
 		</header>
 
-		<section id="news">
-			<h2>Auctions</h2>
-			<article>
-				<h3>Ut sed dolor vel odio</h3>
-				<p class="introduction">Donec sit amet bibendum dui. In suscipit accumsan dolor, vitae consequat nulla aliquam in. Sed vulputate, lorem sit amet ullamcorper hendrerit, magna nunc semper neque, in ornare orci nisi ac nibh. Maecenas in lacus odio. Curabitur eget nibh nec libero
-					sodales sodales rutrum at eros. Fusce in lacus vitae nisl lacinia scelerisque. In tellus purus, tempus vulputate lacinia a, vestibulum et lacus. Sed fermentum egestas massa nec malesuada.</p>
-				<!-- <img src="http://lorempixel.com/400/200/sports" alt="Some random photo"> -->
-				<footer><span class="author">John Doe</span> <span class="date">May 5</span></footer>
-			</article>
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<h1>Home</h1>
+		</nav>
 
-			<article>
-				<h3>Mauris ac nulla faucibus turpis</h3>
-				<p class="introduction">Fusce faucibus leo sit amet ante tristique convallis. Praesent odio odio, tincidunt lacinia luctus eget, feugiat vel nibh. Quisque eu dolor dignissim, congue orci a, lacinia erat. Pellentesque ultrices aliquet dui, a pretium lacus condimentum sed.
-					Suspendisse potenti. Sed massa massa, interdum quis iaculis sed, rutrum eget sapien. Fusce metus risus, accumsan vitae sem et, bibendum dictum erat. Suspendisse porta, leo eget sodales mattis, orci magna feugiat velit, eu blandit tellus arcu vel
-					nibh.
-				</p>
-				<!-- <img src="http://lorempixel.com/400/200/business" alt="Some random photo"> -->
-				<footer><span class="author">John Doe</span> <span class="date">May 5</span></footer>
-			</article>
+		<div class="container-fluid">
+			<section id="news">
+				<h2>Auctions</h2>
+				<article>
+					<h3>Ut sed dolor vel odio</h3>
+					<p class="introduction">Donec sit amet bibendum dui. In suscipit accumsan dolor, vitae consequat nulla aliquam in. Sed vulputate, lorem sit amet ullamcorper hendrerit, magna nunc semper neque, in ornare orci nisi ac nibh. Maecenas in lacus odio. Curabitur eget nibh nec
+						libero sodales sodales rutrum at eros. Fusce in lacus vitae nisl lacinia scelerisque. In tellus purus, tempus vulputate lacinia a, vestibulum et lacus. Sed fermentum egestas massa nec malesuada.</p>
+					<!-- <img src="http://lorempixel.com/400/200/sports" alt="Some random photo"> -->
+					<footer><span class="author">John Doe</span> <span class="date">May 5</span></footer>
+				</article>
 
-			<article>
-				<h3>Sed dictum pulvinar tincidunt</h3>
-				<p class="introduction">Duis sit amet varius ligula, eget vestibulum erat. Morbi placerat tincidunt ultrices. Proin sed elit vitae erat pulvinar imperdiet. Vivamus at tristique lorem, non imperdiet arcu. Praesent augue purus, rutrum ut dolor sit amet, dictum molestie libero.
-					Aenean vitae lorem vel tortor tincidunt tincidunt. Praesent at arcu a est venenatis luctus. Nunc velit nisi, interdum id fringilla ac, cursus at urna. Vivamus a erat ante.</p>
-				<!-- <img src="http://lorempixel.com/400/200/food" alt="Some random photo"> -->
-				<footer><span class="author">John Doe</span> <span class="date">May 5</span></footer>
-			</article>
-		</section>
+				<article>
+					<h3>Mauris ac nulla faucibus turpis</h3>
+					<p class="introduction">Fusce faucibus leo sit amet ante tristique convallis. Praesent odio odio, tincidunt lacinia luctus eget, feugiat vel nibh. Quisque eu dolor dignissim, congue orci a, lacinia erat. Pellentesque ultrices aliquet dui, a pretium lacus condimentum sed.
+						Suspendisse potenti. Sed massa massa, interdum quis iaculis sed, rutrum eget sapien. Fusce metus risus, accumsan vitae sem et, bibendum dictum erat. Suspendisse porta, leo eget sodales mattis, orci magna feugiat velit, eu blandit tellus arcu vel
+						nibh.
+					</p>
+					<!-- <img src="http://lorempixel.com/400/200/business" alt="Some random photo"> -->
+					<footer><span class="author">John Doe</span> <span class="date">May 5</span></footer>
+				</article>
 
-		<footer id="footer">
-			<h5>
-			Project realized @ FEUP <?php echo date("Y"); ?>
-			</h5>
-			<h6>
-			Created by Diogo Pereira, Nádia, Pedro e Igor
-			</h6>
+				<article>
+					<h3>Sed dictum pulvinar tincidunt</h3>
+					<p class="introduction">Duis sit amet varius ligula, eget vestibulum erat. Morbi placerat tincidunt ultrices. Proin sed elit vitae erat pulvinar imperdiet. Vivamus at tristique lorem, non imperdiet arcu. Praesent augue purus, rutrum ut dolor sit amet, dictum molestie libero.
+						Aenean vitae lorem vel tortor tincidunt tincidunt. Praesent at arcu a est venenatis luctus. Nunc velit nisi, interdum id fringilla ac, cursus at urna. Vivamus a erat ante.</p>
+					<!-- <img src="http://lorempixel.com/400/200/food" alt="Some random photo"> -->
+					<footer><span class="author">John Doe</span> <span class="date">May 5</span></footer>
+				</article>
+			</section>
+		</div>
 
+		<footer class="page-footer">
+			<div class="container-fluid text-center text-md-left">
+				<div class="row">
+					<div class="col"></div>
+					<div class="col">
+						<a href="about.html"> About </a>
+					</div>
+					<div class="col">
+						<a href="#"> FAQ </a>
+					</div>
+					<div class="col">
+						<a href="#"> Contacts </a>
+					</div>
+					<div class="col"></div>
+				</div>
+			</div>
+			<hr class="my-4">
 		</footer>
 	</body>
 
