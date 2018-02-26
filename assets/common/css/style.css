@@ -8,9 +8,14 @@ p {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-form label.required .col-form-label:after {
+label.required:after {
   content:"*";
   color:red;
+}
+
+label span.badge {
+  border-radius: 50%;
+  cursor: help;
 }
 
 /* create-auction.html */
