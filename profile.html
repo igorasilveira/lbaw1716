@@ -52,13 +52,13 @@
       <div class="row">
         <div class="col"> <a href="#"
              title="Item 1"><img src="images/photos/igor_foto.jpg"
-             class="img-fluid profile-pic" title="Change Profile Picture"></a> </div>
-        <div class="col vcen container-fluid">
-          <section class="clear-bot">
+             class="profile-pic mb-4 box-shadow" title="Change Profile Picture"></a> </div>
+        <div id="info-container" class="col vcen container-fluid ">
+          <section class="pb-2">
             <h5 class="text-muted">#123456789</h5>
             <h3>Username</h3>
           </section>
-          <section class="clear-bot">
+          <section class="pb-2">
             <p>
               John Doe
             </p>
@@ -66,13 +66,14 @@
               test@example.com
             </p>
           </section>
-          <div id="balance">
-            <h4>Balance</h4>
+          <div id="balance" class="text-center w-50 border border-dark">
+            <h4 class="pb-2">Balance</h4>
+            <hr class="py-0"/>
             <div class="row">
-              <div class="col-md-4">
-                <h4>12,48€</h4>
+              <div class="col">
+                <h4 class="align-bottom">12,48€</h4>
               </div>
-              <div class="col-xs-4">
+              <div class="col">
                 <button type="button" class="btn btn-success">Charge</button>
               </div>
             </div>
@@ -80,13 +81,13 @@
         </div>
       </div>
     </div>
-    <hr class="my-4">
+    <hr class="pb-4">
       <div id="statistics" class="container">
-        <h3 class="clear-bot">Auction History</h3>
+        <h3 class="pb-2">Auction History</h3>
         <ul class="nav nav-tabs">
-          <li class="nav-item"><h6><a class="nav-link active" href="#">Sold</a></h6></li>
-          <li class="nav-item"><h6><a class="nav-link" href="#">Bought</a></h6></li>
-          <li class="nav-item"><h6><a class="nav-link" href="#">Pending Action</a></h6></li>
+          <li class="nav-item"><h6><a class="nav-link active" data-toggle="tab" href="#sold">Sold</a></h6></li>
+          <li class="nav-item"><h6><a class="nav-link" data-toggle="tab" href="#bought">Bought</a></h6></li>
+          <li class="nav-item"><h6><a class="nav-link" data-toggle="tab" href="#pending">Pending Action</a></h6></li>
         </ul>
         <div class="tab-content">
           <div class="tab-pane fade show active" id="sold" role="tabpanel" aria-labelledby="sold-tab">
@@ -147,6 +148,7 @@
                   <th scope="col">Auction</th>
                   <th scope="col">Item</th>
                   <th scope="col">Date</th>
+                  <th scope="col">Action Required</th>
                 </tr>
               </thead>
               </tbody>
@@ -156,19 +158,15 @@
       </div>
     <hr class="my-4">
     <footer class="page-footer">
-      <div class="container-fluid text-center text-md-left">
-        <div class="row">
-          <div class="col"></div>
-          <div class="col">
-            <a href="#"> About </a>
-          </div>
-          <div class="col">
-            <a href="#"> FAQ </a>
-          </div>
-          <div class="col">
-            <a href="#"> Contacts </a>
-          </div>
-          <div class="col"></div>
+      <div class="nav justify-content-center">
+        <div class="nav-item">
+          <a href="#"> About </a>
+        </div>
+        <div class="nav-item">
+          <a href="#"> FAQ </a>
+        </div>
+        <div class="nav-item">
+          <a href="#"> Contacts </a>
         </div>
       </div>
       <hr class="my-4">

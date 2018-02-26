@@ -1,4 +1,26 @@
+/* common */
+
+p {
+  font-size: 16px;
+}
+
+.box-shadow {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+label {
+
+}
+
+/* create-auction.html */
+
+
+/* profile.html */
+
 .profile-pic {
+  padding: 0.25rem;
+  background-color: #fff;
+  border: 1px solid #eceeef;
   border-radius: 50%;
   max-height: 250px;
   display: block;
@@ -13,12 +35,20 @@
     vertical-align: top;
 }
 
-p {
-  font-size: 15px;
+#balance {
+  padding: 1em;
+  background: white;
+  border-radius: 2px;
 }
 
-.clear-bot {
-  padding-bottom: 1em;
+@media screen and (max-width: 480px) {
+  #info-container {
+    text-align: center !important;
+  }
+
+  #balance {
+    width: 100% !important;
+  }
 }
 
 /*register.html*/
@@ -48,7 +78,7 @@ p {
 #aboutComputers{
   float: right;
   margin: 50px;
- 
+
 }
 
 #about{
@@ -58,7 +88,7 @@ p {
 
 #about .image_cap{
   margin-top: 10px;
-  margin-left: 150px; 
+  margin-left: 150px;
   float: left;
 }
 
@@ -66,5 +96,5 @@ p {
   position: relative;
   left: 140px;
   top: 5px;
-  border: dashed; 
+  border: dashed;
 }
