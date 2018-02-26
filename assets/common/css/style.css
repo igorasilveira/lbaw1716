@@ -18,3 +18,51 @@
     vertical-align: middle;
     float: none;
 }
+
+/*register.html*/
+
+#new_user label{
+    float: left;
+    clear: left;
+    width: 100px;
+}
+
+#new_user{
+  padding-top: 50px;
+  padding-left: 450px;
+}
+
+#new_user input{
+    margin-top: 4px;
+}
+
+#signUp{
+    position: fixed;
+    padding: 30px;
+}
+
+/*about.html*/
+
+#aboutComputers{
+  float: right;
+  margin: 50px;
+ 
+}
+
+#about{
+  text-indent: 20px;
+  margin-left: 20px;
+}
+
+#about .image_cap{
+  margin-top: 10px;
+  margin-left: 150px; 
+  float: left;
+}
+
+#about .caption{
+  position: relative;
+  left: 140px;
+  top: 5px;
+  border: dashed; 
+}
