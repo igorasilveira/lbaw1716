@@ -111,6 +111,7 @@ label span.badge {
   font-size: 12px;
 }
 
-.jumbotron {
-  padding: 1em;
+.title.jumbotron {
+  padding-top: 1.5em;
+  padding-bottom: 1em;
 }
