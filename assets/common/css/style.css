@@ -110,3 +110,7 @@ label span.badge {
   height: 3em;
   font-size: 12px;
 }
+
+.jumbotron {
+  padding: 1em;
+}
