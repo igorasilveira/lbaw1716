@@ -54,28 +54,28 @@
         	</thead>
         	<tbody>
         		<tr>
-        			<th scope="row"><img src="images/photos/diogo_foto.jpg" width="80" height="80"></th>
+        			<td scope="row"><img src="images/photos/diogo_foto.jpg" width="80" height="80"></td>
         			<td>[Mod]Desespair</td>
         			<td>20</td>
-        			<th><img src="images/remove_logo.png" width="20" height="20" class="removeBtt" title='Remove Moderator' onclick="delModerator(this)"> </th>
+        			<td><img src="images/remove_logo.png" width="20" height="20" class="removeBtt" title='Remove Moderator' onclick="delModerator(this)"> </td>
         		</tr>
         		<tr>
-        			<th scope="row"><img src="images/photos/diogo_foto.jpg" width="80" height="80"></th>
+        			<td scope="row"><img src="images/photos/diogo_foto.jpg" width="80" height="80"></td>
         			<td>[Mod]Des</td>
         			<td>20</td>
-        			<th><img src="images/remove_logo.png" width="20" height="20" class="removeBtt" title='Remove Moderator' onclick="delModerator(this)"> </th>
+        			<td><img src="images/remove_logo.png" width="20" height="20" class="removeBtt" title='Remove Moderator' onclick="delModerator(this)"> </td>
         		</tr>
         		<tr>
-        			<th scope="row"><img src="images/photos/diogo_foto.jpg" width="80" height="80"></th>
+        			<td scope="row"><img src="images/photos/diogo_foto.jpg" width="80" height="80"></td>
         			<td>[Mod]Son</td>
         			<td>20</td>
-        			<th><img src="images/remove_logo.png" width="20" height="20" class="removeBtt" title='Remove Moderator' onclick="delModerator(this)"> </th>
+        			<td><img src="images/remove_logo.png" width="20" height="20" class="removeBtt" title='Remove Moderator' onclick="delModerator(this)"> </td>
         		</tr>
         		<tr>
-        			<th scope="row"><img src="images/photos/diogo_foto.jpg" width="80" height="80"></th>
+        			<td scope="row"><img src="images/photos/diogo_foto.jpg" width="80" height="80"></td>
         			<td>[Mod]Coiso</td>
         			<td>20</td>
-        			<th><img src="images/remove_logo.png" width="20" height="20" class="removeBtt" title='Remove Moderator' onclick="delModerator(this)"> </th>
+        			<td><img src="images/remove_logo.png" width="20" height="20" class="removeBtt" title='Remove Moderator' onclick="delModerator(this)"> </td>
         		</tr>
         	</tbody>
         </table>
@@ -92,25 +92,23 @@
         		var cell2 = row.insertCell();
         		var cell3 = row.insertCell();
         		var cell4 = row.insertCell();
-        		var cell5 = row.insertCell();
         		var photo = document.createElement('img');
         		photo.setAttribute('class', 'photoModerator');
         		photo.setAttribute('src', 'images/profile_pic.png');
         		photo.setAttribute("width", "60");
         		photo.setAttribute("height", "40");
         		var confirm = document.createElement('img');
-        		confirm.setAttribute('class', 'photoModerator');
         		confirm.setAttribute('src', 'images/confirm_edit.png');
         		confirm.setAttribute("width", "20");
         		confirm.setAttribute("height", "20");
         		confirm.setAttribute("title", "Confirm Moderator");
         		confirm.setAttribute("onclick", "confirmModerator()");
         		var cancel = document.createElement('img');
-        		cancel.setAttribute('class', 'photoModerator');
         		cancel.setAttribute('src', 'images/remove_logo.png');
         		cancel.setAttribute("width", "20");
         		cancel.setAttribute("height", "20");
         		cancel.setAttribute("title", "Cancel");
+        		cancel.setAttribute("onclick", "cancelCreatModerator(this)");
         		cancel.style.marginLeft="15px";
         		var name = document.createElement('input');
         		name.setAttribute('type','text');
@@ -131,37 +129,60 @@
         		var nameCell = document.getElementById("moderatorsList").rows[table.rows.length-1].cells[1];
         		nameCell.innerHTML="[Mod]"+nameCell.children[0].value;
         		var bttChildren=document.getElementById("moderatorsList").rows[table.rows.length-1].cells[3];
-        		bttChildren.childNodes[1].style.marginLeft="0px";
-        		bttChildren.removeChild(bttChildren.childNodes[0]);
+        		var remBtt=bttChildren.childNodes[1];
+        		var confBtt=bttChildren.childNodes[0];
+        		remBtt.style.marginLeft="0px";
+        		console.log(remBtt);
+        		remBtt.setAttribute("title", "Remove Moderator");
+        		remBtt.setAttribute("onclick", "delModerator(this)");
+        		bttChildren.removeChild(confBtt);
 
         	}
 
         	function editModerators() {
+        		var createBtt = document.getElementById("createModBtt");
+        		
         		var editBtt = document.getElementById("editModBtt");
         		var removeBtts = document.querySelectorAll('#moderatorsList .removeBtt');
+        		var vis;
 
-        		for (btt in removeBtts) {
-        			var bt = removeBtts[btt];
+        		for (i = 0; i< removeBtts.length; i++) {
+        			var bt = removeBtts[i];
 
 
         			if (bt.style.visibility === 'hidden') {
         				bt.style.visibility = 'visible';
-
+        				vis=true;
         			} else {
         				bt.style.visibility = 'hidden';
+        				vis=false;
         			}
 
+        		}
+        		
+        		if(vis){
+        			createBtt.style.visibility = "visible";
+        			//editBtt.setAttribute("title", "Cancel Changes");
+        		}else{
+        			createBtt.style.visibility = "hidden";
+        			//editBtt.setAttribute("title", "Edit Moderators");
         		}
         	}
 
         	function delModerator(row){
-
         			var confBox = confirm("Do you really want to delete this user?");
         			if (confBox == true) {
         				var i = row.parentNode.parentNode.rowIndex;
     					document.getElementById("moderatorsList").deleteRow(i);
         			}
 
+        		}
+
+        		function cancelCreatModerator(row){
+        			
+        				var i = row.parentNode.parentNode.rowIndex;
+    					document.getElementById("moderatorsList").deleteRow(i);
+        			
         		}
 
 
