@@ -142,3 +142,7 @@ label span.badge {
 #moderatorsList .removeBtt{
   visibility: hidden;
 }
+
+#createModBtt{
+  visibility: hidden;
+}
