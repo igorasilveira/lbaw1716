@@ -10,12 +10,12 @@
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet"
 	href="assets/bootstrap/css/bootstrap.min.css">
-    <!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
             integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
             crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
             integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-            crossorigin="anonymous"></script>-->
+            crossorigin="anonymous"></script>
             <script src="assets/bootstrap/js/bootstrap.min.js"></script>
         </head>
 
@@ -123,11 +123,13 @@
 
         	function confirmModerator() {
 
-        		var createBtt = document.getElementById("createModBtt");
-        		createBtt.disabled = false;
+        	
         		var table = document.getElementById("moderatorsList");
         		var nameCell = document.getElementById("moderatorsList").rows[table.rows.length-1].cells[1];
-        		nameCell.innerHTML="[Mod]"+nameCell.children[0].value;
+        		if(nameCell.children[0].value==null || nameCell.children[0].value==""){
+        			alert("You need to give a name to the moderator");
+        		}else{
+        			nameCell.innerHTML="[Mod]"+nameCell.children[0].value;
         		var bttChildren=document.getElementById("moderatorsList").rows[table.rows.length-1].cells[3];
         		var remBtt=bttChildren.childNodes[1];
         		var confBtt=bttChildren.childNodes[0];
@@ -136,6 +138,10 @@
         		remBtt.setAttribute("title", "Remove Moderator");
         		remBtt.setAttribute("onclick", "delModerator(this)");
         		bttChildren.removeChild(confBtt);
+        		var createBtt = document.getElementById("createModBtt");
+        		createBtt.disabled = false;
+        		}
+        		
 
         	}
 
