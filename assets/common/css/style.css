@@ -120,3 +120,25 @@ label span.badge {
   margin-left: 20em;
   width: 10em;
 }
+
+/*manage_moderators.html*/
+#moderatorsList tbody tr:nth-child(odd){
+  background-color: rgba(0,0,0,.075); 
+}
+
+#moderatorsList tbody tr:nth-child(even){
+  background-color: white; 
+}
+
+#moderatorsList tbody tr:nth-child(even):hover{
+  background-color: #9fcdff;
+
+}
+
+#moderatorsList tbody tr:nth-child(odd):hover{
+  background-color: #9fcdff; 
+}
+
+#moderatorsList .removeBtt{
+  visibility: hidden;
+}
