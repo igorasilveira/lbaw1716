@@ -9,8 +9,8 @@ p {
 }
 
 label.required:after {
-  content:"*";
-  color:red;
+  content: "*";
+  color: red;
 }
 
 label span.badge {
@@ -19,7 +19,6 @@ label span.badge {
 }
 
 /* create-auction.html */
-
 
 /* profile.html */
 
@@ -38,7 +37,7 @@ label span.badge {
 }
 
 .vcen {
-    vertical-align: top;
+  vertical-align: top;
 }
 
 #balance {
@@ -51,7 +50,6 @@ label span.badge {
   #info-container {
     text-align: center !important;
   }
-
   #balance {
     width: 100% !important;
   }
@@ -59,48 +57,56 @@ label span.badge {
 
 /*register.html*/
 
-#new_user label{
-    float: left;
-    clear: left;
-    width: 100px;
+#new_user label {
+  float: left;
+  clear: left;
+  width: 100px;
 }
 
-#new_user{
+#new_user {
   padding-top: 50px;
   padding-left: 450px;
 }
 
-#new_user input{
-    margin-top: 4px;
+#new_user input {
+  margin-top: 4px;
 }
 
-#signUp{
-    position: fixed;
-    padding: 30px;
+#signUp {
+  position: fixed;
+  padding: 30px;
 }
 
 /*about.html*/
 
-#aboutComputers{
+#aboutComputers {
   float: right;
   margin: 50px;
-
 }
 
-#about{
+#about {
   text-indent: 20px;
   margin-left: 20px;
 }
 
-#about .image_cap{
+#about .image_cap {
   margin-top: 10px;
   margin-left: 150px;
   float: left;
 }
 
-#about .caption{
+#about .caption {
   position: relative;
   left: 140px;
   top: 5px;
   border: dashed;
+}
+
+#signin.btn-xs {
+  padding: 1em;
+  padding-bottom: 2em;
+  margin-left: 15em;
+  width: 90px;
+  height: 3em;
+  font-size: 12px;
 }

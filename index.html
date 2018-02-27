@@ -6,7 +6,8 @@
 		<meta charset="utf-8">
 		<meta name="viewport"
 		      content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+		<meta name="google-signin-client_id"
+		      content="975377923169-t9t1r6gcdm7qoc7o829q786mqqg4rept.apps.googleusercontent.com">
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet"
 		      href="assets/bootstrap/css/bootstrap.min.css">
@@ -17,32 +18,128 @@
             integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
             crossorigin="anonymous"></script>-->
 		<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+		<script src="https://apis.google.com/js/platform.js"
+		        async
+		        defer></script>
+		<link rel="stylesheet"
+		      href="assets/common/css/style.css">
 	</head>
 
 	<body>
+
 		<header>
-			<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+			<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
 				<a class="navbar-brand"
-				   href="index.html">
-          <img src="https://i.pinimg.com/736x/96/f8/6c/96f86cc832d55b050c66eabe25f6ac7f--socket-am-pc-components.jpg"
-               alt="Logo"
-               style="width:50px;">
-        </a>
-				<form class="form-inline my-2 my-lg-0">
-					<input class="form-control mr-sm-2"
-					       placeholder="Search"
-					       type="text">
-					<button class="btn btn-secondary my-2 my-sm-0"
-					        type="submit">Search</button>
-				</form>
+				   href="index.html">Logo</a>
+				<button class="navbar-toggler"
+				        type="button"
+				        data-toggle="collapse"
+				        data-target="#navbarColor01"
+				        aria-controls="navbarColor01"
+				        aria-expanded="false"
+				        aria-label="Toggle navigation"
+				        style="">
+			    <span class="navbar-toggler-icon"></span>
+			  </button>
+				<div class="collapse navbar-collapse"
+				     id="navbarColor01">
+					<div class="col-sm-8">
+						<form class="form-inline my-2 my-lg-0">
+							<input class="form-control mr-sm-2 col-sm-8"
+							       placeholder="Search"
+							       type="text">
+							<button class="btn btn-secondary my-2 my-sm-0 col-sm-3"
+							        type="submit">Search</button>
+						</form>
+					</div>
+					<div class="col-sm-4">
+						<form action="create_account.php"
+						      method="POST"
+						      enctype="multipart/form-data"
+						      id="signin"
+						      class="navbar-form">
+							<div class="col-sm-12">
+								<div class="form-inline">
+									<label class="col-sm-3 col-form-label mr-sm-3">
+														Username:
+													</label>
+									<input class="col-sm-8"
+									       type="text">
+								</div>
+								<div class="form-inline">
+									<label class="col-sm-3 col-form-label mr-sm-3">
+														Password:
+													</label>
+									<input class="col-sm-8"
+									       type="password">
+								</div>
+							</div>
+							<div class="btn-group">
+								<div class="btn-group">
+									<input id="signin"
+									       class="btn btn-xs"
+									       type="submit"
+									       value="Sign In" />
+								</div>
+								<div class="g-signin2"
+								     data-onsuccess="onSignIn"
+								     -theme="light"
+								     data-width="38"
+								     data-height="38"
+								     data-longtitle="false"
+								     style="margin:0 12px;">
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
 			</nav>
 		</header>
 
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-			<h1>Home</h1>
-		</nav>
+		<div id="categories"
+		     class="container-fluid btn-group btn-group-justified btn-block">
+			<button type="button"
+			        class="btn btn-secondary"
+			        data-toggle="tooltip"
+			        data-placement="left"
+			        title=""
+			        data-original-title="Tooltip on left"> Towers with all Components and Peripherics </button>
+			<button type="button"
+			        class="btn btn-secondary"
+			        data-toggle="tooltip"
+			        data-placement="top"
+			        title=""
+			        data-original-title="Tooltip on top"> Towers Only </button>
+			<button type="button"
+			        class="btn btn-secondary"
+			        data-toggle="tooltip"
+			        data-placement="bottom"
+			        title=""
+			        data-original-title="Tooltip on bottom"> Laptops </button>
+			<button type="button"
+			        class="btn btn-secondary"
+			        data-toggle="tooltip"
+			        data-placement="right"
+			        title=""
+			        data-original-title="Tooltip on right"> Components </button>
+			<button type="button"
+			        class="btn btn-secondary"
+			        data-toggle="tooltip"
+			        data-placement="right"
+			        title=""
+			        data-original-title="Tooltip on right"> Peripherics </button>
+			<button type="button"
+			        class="btn btn-secondary"
+			        data-toggle="tooltip"
+			        data-placement="right"
+			        title=""
+			        data-original-title="Tooltip on right"> Others </button>
+		</div>
 
+		<div class="jumbotron">
+			<h1 class="display-5"> Home </h1> </div>
 		<div class="container-fluid">
+
 			<section id="news">
 				<h2>Auctions</h2>
 				<article>

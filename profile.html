@@ -54,7 +54,8 @@
         <div class="col"> <a href="#"
              title="Item 1"><img src="images/photos/igor_foto.jpg"
              class="profile-pic mb-4 box-shadow" title="Change Profile Picture"></a> </div>
-        <div id="info-container" class="col vcen container-fluid ">
+        <div id="info-container"
+             class="col vcen container-fluid ">
           <section class="pb-2">
             <h5 class="text-muted">#123456789</h5>
             <h3>Username</h3>
@@ -67,15 +68,17 @@
               test@example.com
             </p>
           </section>
-          <div id="balance" class="text-center w-50 border border-dark">
+          <div id="balance"
+               class="text-center w-50 border border-dark">
             <h4 class="pb-2">Balance</h4>
-            <hr class="py-0"/>
+            <hr class="py-0" />
             <div class="row">
               <div class="col">
                 <h4 class="align-bottom">12,48€</h4>
               </div>
               <div class="col">
-                <button type="button" class="btn btn-success">Charge</button>
+                <button type="button"
+                        class="btn btn-success">Charge</button>
               </div>
             </div>
           </div>
@@ -83,67 +86,83 @@
       </div>
     </div>
     <hr class="pb-4">
-      <div id="statistics" class="container">
-        <h3 class="pb-2">Auction History</h3>
-        <ul class="nav nav-tabs">
-          <li class="nav-item"><a class="nav-link active show" data-toggle="tab" href="#sold">Sold</a></li>
-          <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#bought">Bought</a></li>
-          <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#pending">Pending Action</a></li>
-        </ul>
-        <div class="tab-content">
-          <div class="tab-pane fade active show" id="sold" role="tabpanel" aria-labelledby="sold-tab">
-            <table class="table table-hover">
-              <thead>
-                <tr>
-                  <th scope="col">Auction</th>
-                  <th scope="col">Item</th>
-                  <th scope="col">Date</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="table">
-                  <th scope="row">#12362</th>
-                  <td>MSI B350 PC Mate</td>
-                  <td>20-12-2017</td>
-                </tr>
-                <tr class="table">
-                  <th scope="row">#38621</th>
-                  <td>Ryzen 1500X</td>
-                  <td>19-12-2017</td>
-                </tr>
-                <tr class="table">
-                  <th scope="row">#29072</th>
-                  <td>Corsair 450M</td>
-                  <td>20-11-2017</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="tab-pane fade" id="bought" role="tabpanel" aria-labelledby="bought-tab">
-            <table class="table table-hover">
-              <thead>
-                <tr>
-                  <th scope="col">Auction</th>
-                  <th scope="col">Item</th>
-                  <th scope="col">Date</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="table">
-                  <th scope="row">#37721</th>
-                  <td>Asus 1050Ti Strix</td>
-                  <td>11-12-2017</td>
-                </tr>
-                <tr class="table">
-                  <th scope="row">#99217</th>
-                  <td>Ryzen 1300X</td>
-                  <td>30-12-2017</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="tab-pane fade" id="pending" role="tabpanel" aria-labelledby="pending-tab">
-            <!-- TODO: isto é para quando nao é vazia
+    <div id="statistics"
+         class="container">
+      <h3 class="pb-2">Auction History</h3>
+      <ul class="nav nav-tabs">
+        <li class="nav-item"><a class="nav-link active show"
+             data-toggle="tab"
+             href="#sold">Sold</a></li>
+        <li class="nav-item"><a class="nav-link"
+             data-toggle="tab"
+             href="#bought">Bought</a></li>
+        <li class="nav-item"><a class="nav-link"
+             data-toggle="tab"
+             href="#pending">Pending Action</a></li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade active show"
+             id="sold"
+             role="tabpanel"
+             aria-labelledby="sold-tab">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Auction</th>
+                <th scope="col">Item</th>
+                <th scope="col">Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="table">
+                <th scope="row">#12362</th>
+                <td>MSI B350 PC Mate</td>
+                <td>20-12-2017</td>
+              </tr>
+              <tr class="table">
+                <th scope="row">#38621</th>
+                <td>Ryzen 1500X</td>
+                <td>19-12-2017</td>
+              </tr>
+              <tr class="table">
+                <th scope="row">#29072</th>
+                <td>Corsair 450M</td>
+                <td>20-11-2017</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="tab-pane fade"
+             id="bought"
+             role="tabpanel"
+             aria-labelledby="bought-tab">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Auction</th>
+                <th scope="col">Item</th>
+                <th scope="col">Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="table">
+                <th scope="row">#37721</th>
+                <td>Asus 1050Ti Strix</td>
+                <td>11-12-2017</td>
+              </tr>
+              <tr class="table">
+                <th scope="row">#99217</th>
+                <td>Ryzen 1300X</td>
+                <td>30-12-2017</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="tab-pane fade"
+             id="pending"
+             role="tabpanel"
+             aria-labelledby="pending-tab">
+          <!-- TODO: isto é para quando nao é vazia
             <table class="table table-hover">
               <thead>
                 <tr>
@@ -156,12 +175,12 @@
               <tbody>
               </tbody>
             </table> -->
-            <div class="alert alert-dismissible alert-info my-4">
-              <strong>Awesome!</strong> You have no pending businesses here.
-            </div>
+          <div class="alert alert-dismissible alert-info my-4">
+            <strong>Awesome!</strong> You have no pending businesses here.
           </div>
         </div>
       </div>
+    </div>
     <hr class="my-4">
     <footer class="page-footer">
       <div class="nav justify-content-center">

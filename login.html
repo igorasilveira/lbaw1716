@@ -1,30 +1,41 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Pc Auctions</title>
-    <meta charset="utf-8">
-	<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-	<link rel="stylesheet" href="assets/common/css/style.css">
-	<meta name="google-signin-client_id" content="975377923169-t9t1r6gcdm7qoc7o829q786mqqg4rept.apps.googleusercontent.com">
-	<script src="https://apis.google.com/js/platform.js" async defer></script>
-</head>
-<body>
 
-	<h1 id="signIn"> Sign In </h1>
+	<head>
+		<title>Pc Auctions</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet"
+		      href="assets/bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet"
+		      href="assets/common/css/style.css">
+		<meta name="google-signin-client_id"
+		      content="975377923169-t9t1r6gcdm7qoc7o829q786mqqg4rept.apps.googleusercontent.com">
+		<script src="https://apis.google.com/js/platform.js"
+		        async
+		        defer></script>
+	</head>
 
-	<div id = "new_user">
-		<form action="create_account.php" method="POST" enctype="multipart/form-data">
+	<body>
+
+		<h1 id="signIn"> Sign In </h1>
+
+		<div id="new_user">
+			<form action="create_account.php"
+			      method="POST"
+			      enctype="multipart/form-data">
 
 				<label>Username:</label> <input type="text"><br>
 				<label>Password:</label> <input type="password"><br>
-	
-			<input type="submit" value="Sign in"/><br><br>
-			<div class="g-signin2" data-onsuccess="onSignIn"></div>
-		</form>
-		
 
-</div>
+				<input type="submit"
+				       value="Sign in" /><br><br>
+				<div class="g-signin2"
+				     data-onsuccess="onSignIn"></div>
+			</form>
+
+
+		</div>
 
 	</body>
-	</html>
 
+</html>
