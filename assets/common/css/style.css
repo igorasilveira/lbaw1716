@@ -155,3 +155,13 @@ label span.badge {
 #pagination {
   margin-left: 80%;
 }
+
+#profileNav {
+  margin-left: 12%;
+}
+
+#profileNav li.nav-item {
+  margin-right: 0;
+  padding-right: 0;
+  text-align: right;
+}
