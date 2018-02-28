@@ -1,220 +1,259 @@
 <!DOCTYPE html>
 <html>
 
-<head lang="en">
-	<title>PcAuctions</title>
-	<meta charset="utf-8">
-	<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<link rel="stylesheet" href="assets/common/css/style.css">
-	<!-- Bootstrap CSS -->
-	<link rel="stylesheet"
-	href="assets/bootstrap/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-            crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-            crossorigin="anonymous"></script>
-            <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-        </head>
+	<head lang="en">
+		<title>PcAuctions</title>
+		<meta charset="utf-8">
+		<meta name="viewport"
+		      content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="stylesheet"
+		      href="assets/common/css/style.css">
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet"
+		      href="assets/bootstrap/css/bootstrap.min.css">
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+		        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+		        crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+		        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		        crossorigin="anonymous"></script>
+		<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+	</head>
 
-        <body>
-        	<header>
-        		<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
-        			<a class="navbar-brand"
-        			href="#">
+	<body>
+		<header>
+			<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+				<a class="navbar-brand"
+				   href="index.html">
         			<img src="https://www.dinopc.com/media/catalog/product/cache/75eed2686e01eb22cb4050b2f40ddf97/e/3/e308-1.jpg"
         			alt="Logo"
         			style="width:40px;">
         		</a>
-        		<!-- Links -->
-        		<ul class="navbar-nav">
-        			<li class="nav-item">
-        				<a class="nav-link"
-        				href="index.html">PC Auctions</a>
-        			</li>
-        		</ul>
-        	</nav>
-        </header>
-        <!-- DIVISAO AQUI-->
+				<!-- Links -->
+				<!--<ul class="navbar-nav">
+					<li class="nav-item">
+						<a class="nav-link"
+						   href="index.html">PC Auctions</a>
+					</li>
+				</ul>-->
+			</nav>
+		</header>
+		<!-- DIVISAO AQUI-->
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        	<h1>Moderators</h1>
-        </nav>	
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<h1>Moderators</h1>
+		</nav>
 
-        <table id="moderatorsList" class="table table-hover">
-        	<thead>
-        		<tr class="table-info">
-        			<th scope="col">Photo</th>
-        			<th scope="col">Username</th>
-        			<th scope="col">Moderator's Auctions</th>
-        			<th><img src="images/logo_edit.png" width="20" height="20" class="editModBtt" title='Edit Moderators' onclick="editModerators()"> </th>
-        		</tr>
-        	</thead>
-        	<tbody>
-        		<tr>
-        			<td scope="row"><img src="images/photos/diogo_foto.jpg" width="80" height="80"></td>
-        			<td>[Mod]Desespair</td>
-        			<td>20</td>
-        			<td><img src="images/remove_logo.png" width="20" height="20" class="removeBtt" title='Remove Moderator' onclick="delModerator(this)"> </td>
-        		</tr>
-        		<tr>
-        			<td scope="row"><img src="images/photos/diogo_foto.jpg" width="80" height="80"></td>
-        			<td>[Mod]Des</td>
-        			<td>20</td>
-        			<td><img src="images/remove_logo.png" width="20" height="20" class="removeBtt" title='Remove Moderator' onclick="delModerator(this)"> </td>
-        		</tr>
-        		<tr>
-        			<td scope="row"><img src="images/photos/diogo_foto.jpg" width="80" height="80"></td>
-        			<td>[Mod]Son</td>
-        			<td>20</td>
-        			<td><img src="images/remove_logo.png" width="20" height="20" class="removeBtt" title='Remove Moderator' onclick="delModerator(this)"> </td>
-        		</tr>
-        		<tr>
-        			<td scope="row"><img src="images/photos/diogo_foto.jpg" width="80" height="80"></td>
-        			<td>[Mod]Coiso</td>
-        			<td>20</td>
-        			<td><img src="images/remove_logo.png" width="20" height="20" class="removeBtt" title='Remove Moderator' onclick="delModerator(this)"> </td>
-        		</tr>
-        	</tbody>
-        </table>
+		<table id="moderatorsList"
+		       class="table table-hover">
+			<thead>
+				<tr class="table-info">
+					<th scope="col">Photo</th>
+					<th scope="col">Username</th>
+					<th scope="col">Moderator's Auctions</th>
+					<th><img src="images/logo_edit.png"
+						     width="20"
+						     height="20"
+						     class="editModBtt"
+						     title='Edit Moderators'
+						     onclick="editModerators()"> </th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td scope="row"><img src="images/photos/diogo_foto.jpg"
+						     width="80"
+						     height="80"></td>
+					<td>[Mod]Desespair</td>
+					<td>20</td>
+					<td><img src="images/remove_logo.png"
+						     width="20"
+						     height="20"
+						     class="removeBtt"
+						     title='Remove Moderator'
+						     onclick="delModerator(this)"> </td>
+				</tr>
+				<tr>
+					<td scope="row"><img src="images/photos/diogo_foto.jpg"
+						     width="80"
+						     height="80"></td>
+					<td>[Mod]Des</td>
+					<td>20</td>
+					<td><img src="images/remove_logo.png"
+						     width="20"
+						     height="20"
+						     class="removeBtt"
+						     title='Remove Moderator'
+						     onclick="delModerator(this)"> </td>
+				</tr>
+				<tr>
+					<td scope="row"><img src="images/photos/diogo_foto.jpg"
+						     width="80"
+						     height="80"></td>
+					<td>[Mod]Son</td>
+					<td>20</td>
+					<td><img src="images/remove_logo.png"
+						     width="20"
+						     height="20"
+						     class="removeBtt"
+						     title='Remove Moderator'
+						     onclick="delModerator(this)"> </td>
+				</tr>
+				<tr>
+					<td scope="row"><img src="images/photos/diogo_foto.jpg"
+						     width="80"
+						     height="80"></td>
+					<td>[Mod]Coiso</td>
+					<td>20</td>
+					<td><img src="images/remove_logo.png"
+						     width="20"
+						     height="20"
+						     class="removeBtt"
+						     title='Remove Moderator'
+						     onclick="delModerator(this)"> </td>
+				</tr>
+			</tbody>
+		</table>
 
-        <button class="btn btn-info" id="createModBtt" onclick="addModerator()">Create Moderator</button>
+		<button class="btn btn-info"
+		        id="createModBtt"
+		        onclick="addModerator()">Create Moderator</button>
 
-        <script>
-        	function addModerator() {
-        		var createBtt = document.getElementById("createModBtt");
-        		createBtt.disabled = true;
-        		var table = document.getElementById("moderatorsList");
-        		var row = table.insertRow(table.rows.length);
-        		var cell1 = row.insertCell();
-        		var cell2 = row.insertCell();
-        		var cell3 = row.insertCell();
-        		var cell4 = row.insertCell();
-        		var photo = document.createElement('img');
-        		photo.setAttribute('class', 'photoModerator');
-        		photo.setAttribute('src', 'images/profile_pic.png');
-        		photo.setAttribute("width", "60");
-        		photo.setAttribute("height", "40");
-        		var confirm = document.createElement('img');
-        		confirm.setAttribute('src', 'images/confirm_edit.png');
-        		confirm.setAttribute("width", "20");
-        		confirm.setAttribute("height", "20");
-        		confirm.setAttribute("title", "Confirm Moderator");
-        		confirm.setAttribute("onclick", "confirmModerator()");
-        		var cancel = document.createElement('img');
-        		cancel.setAttribute('src', 'images/remove_logo.png');
-        		cancel.setAttribute("width", "20");
-        		cancel.setAttribute("height", "20");
-        		cancel.setAttribute("title", "Cancel");
-        		cancel.setAttribute("onclick", "cancelCreatModerator(this)");
-        		cancel.style.marginLeft="15px";
-        		var name = document.createElement('input');
-        		name.setAttribute('type','text');
-        		name.setAttribute('required','required');
-        		cell1.appendChild(photo);
-        		cell2.appendChild(name);
-        		cell3.innerHTML = "0";
-        		cell4.appendChild(confirm);
-        		cell4.appendChild(cancel);
-        	}
-
-
-        	function confirmModerator() {
-
-        	
-        		var table = document.getElementById("moderatorsList");
-        		var nameCell = document.getElementById("moderatorsList").rows[table.rows.length-1].cells[1];
-        		if(nameCell.children[0].value==null || nameCell.children[0].value==""){
-        			alert("You need to give a name to the moderator");
-        		}else{
-        			nameCell.innerHTML="[Mod]"+nameCell.children[0].value;
-        		var bttChildren=document.getElementById("moderatorsList").rows[table.rows.length-1].cells[3];
-        		var remBtt=bttChildren.childNodes[1];
-        		var confBtt=bttChildren.childNodes[0];
-        		remBtt.style.marginLeft="0px";
-        		console.log(remBtt);
-        		remBtt.setAttribute("title", "Remove Moderator");
-        		remBtt.setAttribute("onclick", "delModerator(this)");
-        		bttChildren.removeChild(confBtt);
-        		var createBtt = document.getElementById("createModBtt");
-        		createBtt.disabled = false;
-        		}
-        		
-
-        	}
-
-        	function editModerators() {
-        		var createBtt = document.getElementById("createModBtt");
-        		
-        		var editBtt = document.getElementById("editModBtt");
-        		var removeBtts = document.querySelectorAll('#moderatorsList .removeBtt');
-        		var vis;
-
-        		for (i = 0; i< removeBtts.length; i++) {
-        			var bt = removeBtts[i];
-
-
-        			if (bt.style.visibility === 'hidden') {
-        				bt.style.visibility = 'visible';
-        				vis=true;
-        			} else {
-        				bt.style.visibility = 'hidden';
-        				vis=false;
-        			}
-
-        		}
-        		
-        		if(vis){
-        			createBtt.style.visibility = "visible";
-        			//editBtt.setAttribute("title", "Cancel Changes");
-        		}else{
-        			createBtt.style.visibility = "hidden";
-        			//editBtt.setAttribute("title", "Edit Moderators");
-        		}
-        	}
-
-        	function delModerator(row){
-        			var confBox = confirm("Do you really want to delete this user?");
-        			if (confBox == true) {
-        				var i = row.parentNode.parentNode.rowIndex;
-    					document.getElementById("moderatorsList").deleteRow(i);
-        			}
-
-        		}
-
-        		function cancelCreatModerator(row){
-        			
-        				var i = row.parentNode.parentNode.rowIndex;
-    					document.getElementById("moderatorsList").deleteRow(i);
-        			
-        		}
+		<script>
+		function addModerator() {
+			var createBtt = document.getElementById("createModBtt");
+			createBtt.disabled = true;
+			var table = document.getElementById("moderatorsList");
+			var row = table.insertRow(table.rows.length);
+			var cell1 = row.insertCell();
+			var cell2 = row.insertCell();
+			var cell3 = row.insertCell();
+			var cell4 = row.insertCell();
+			var photo = document.createElement('img');
+			photo.setAttribute('class', 'photoModerator');
+			photo.setAttribute('src', 'images/profile_pic.png');
+			photo.setAttribute("width", "60");
+			photo.setAttribute("height", "40");
+			var confirm = document.createElement('img');
+			confirm.setAttribute('src', 'images/confirm_edit.png');
+			confirm.setAttribute("width", "20");
+			confirm.setAttribute("height", "20");
+			confirm.setAttribute("title", "Confirm Moderator");
+			confirm.setAttribute("onclick", "confirmModerator()");
+			var cancel = document.createElement('img');
+			cancel.setAttribute('src', 'images/remove_logo.png');
+			cancel.setAttribute("width", "20");
+			cancel.setAttribute("height", "20");
+			cancel.setAttribute("title", "Cancel");
+			cancel.setAttribute("onclick", "cancelCreatModerator(this)");
+			cancel.style.marginLeft = "15px";
+			var name = document.createElement('input');
+			name.setAttribute('type', 'text');
+			name.setAttribute('required', 'required');
+			cell1.appendChild(photo);
+			cell2.appendChild(name);
+			cell3.innerHTML = "0";
+			cell4.appendChild(confirm);
+			cell4.appendChild(cancel);
+		}
 
 
-        </script> 
+		function confirmModerator() {
+
+
+			var table = document.getElementById("moderatorsList");
+			var nameCell = document.getElementById("moderatorsList").rows[table.rows.length - 1].cells[1];
+			if (nameCell.children[0].value == null || nameCell.children[0].value == "") {
+				alert("You need to give a name to the moderator");
+			}
+			else {
+				nameCell.innerHTML = "[Mod]" + nameCell.children[0].value;
+				var bttChildren = document.getElementById("moderatorsList").rows[table.rows.length - 1].cells[3];
+				var remBtt = bttChildren.childNodes[1];
+				var confBtt = bttChildren.childNodes[0];
+				remBtt.style.marginLeft = "0px";
+				console.log(remBtt);
+				remBtt.setAttribute("title", "Remove Moderator");
+				remBtt.setAttribute("onclick", "delModerator(this)");
+				bttChildren.removeChild(confBtt);
+				var createBtt = document.getElementById("createModBtt");
+				createBtt.disabled = false;
+			}
+
+
+		}
+
+		function editModerators() {
+			var createBtt = document.getElementById("createModBtt");
+
+			var editBtt = document.getElementById("editModBtt");
+			var removeBtts = document.querySelectorAll('#moderatorsList .removeBtt');
+			var vis;
+
+			for (i = 0; i < removeBtts.length; i++) {
+				var bt = removeBtts[i];
+
+
+				if (bt.style.visibility === 'hidden') {
+					bt.style.visibility = 'visible';
+					vis = true;
+				}
+				else {
+					bt.style.visibility = 'hidden';
+					vis = false;
+				}
+
+			}
+
+			if (vis) {
+				createBtt.style.visibility = "visible";
+				//editBtt.setAttribute("title", "Cancel Changes");
+			}
+			else {
+				createBtt.style.visibility = "hidden";
+				//editBtt.setAttribute("title", "Edit Moderators");
+			}
+		}
+
+		function delModerator(row) {
+			var confBox = confirm("Do you really want to delete this user?");
+			if (confBox == true) {
+				var i = row.parentNode.parentNode.rowIndex;
+				document.getElementById("moderatorsList").deleteRow(i);
+			}
+
+		}
+
+		function cancelCreatModerator(row) {
+
+			var i = row.parentNode.parentNode.rowIndex;
+			document.getElementById("moderatorsList").deleteRow(i);
+
+		}
+
+		</script>
 
 
 
-        <hr class="my-4">
-        <footer class="page-footer">
-        	<div class="container-fluid text-center text-md-left">
-        		<div class="row">
-        			<div class="col"></div>
-        			<div class="col">
-        				<a href="about.html"> About </a>
-        			</div>
-        			<div class="col">
-        				<a href="#"> FAQ </a>
-        			</div>
-        			<div class="col">
-        				<a href="#"> Contacts </a>
-        			</div>
-        			<div class="col"></div>
-        		</div>
-        	</div>
-        	<hr class="my-4">
-        </footer>
-    </body>
+		<hr class="my-4">
+		<footer class="page-footer">
+			<div class="container-fluid text-center text-md-left">
+				<div class="row">
+					<div class="col"></div>
+					<div class="col">
+						<a href="about.html"> About </a>
+					</div>
+					<div class="col">
+						<a href="#"> FAQ </a>
+					</div>
+					<div class="col">
+						<a href="#"> Contacts </a>
+					</div>
+					<div class="col"></div>
+				</div>
+			</div>
+			<hr class="my-4">
+		</footer>
+	</body>
 
-    </html>
+</html>
