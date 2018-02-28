@@ -6,9 +6,8 @@
     <meta charset="utf-8">
     <meta name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <link rel="stylesheet"
-          href="assets/common/css/style.css">
+    <meta name="google-signin-client_id"
+          content="975377923169-t9t1r6gcdm7qoc7o829q786mqqg4rept.apps.googleusercontent.com">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet"
           href="assets/bootstrap/css/bootstrap.min.css">
@@ -18,34 +17,107 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
             integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
             crossorigin="anonymous"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://apis.google.com/js/platform.js"
+            async
+            defer></script>
+    <link rel="stylesheet"
+          href="assets/common/css/style.css">
   </head>
 
   <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand"
+           href="index.html">Logo</a>
+        <button class="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarColor01"
+                aria-controls="navbarColor01"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+                style="">
+			    <span class="navbar-toggler-icon"></span>
+			  </button>
+        <div class="collapse navbar-collapse"
+             id="navbarColor01">
+          <div class="col-sm-8">
+            <form class="form-inline my-2 my-lg-0">
+              <input class="form-control mr-sm-2 col-sm-8"
+                     placeholder="Search"
+                     type="text">
+              <button class="btn btn-secondary my-2 my-sm-0 col-sm-3"
+                      type="submit">Search</button>
+            </form>
+          </div>
+          <div id="profileNav"
+               class="col-sm-2 nav-item">
+            <ul class="navbar-nav">
+              <li class="nav-item col-sm-6">
+                <a class="nav-link"
+                   href="profile.html">Igor</a>
+              </li>
+              <li class="col-sm-6">
+                <a href="profile.html">
+                   <img
+                     src="images/photos/igor_foto.jpg"
+                     href="profile.html"
+                     class="img-fluid"
+                     width="40"
+                     height="40">
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
 
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
-      <a class="navbar-brand"
-         href="#">Logo</a>
-      <!-- Links -->
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link"
-             href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link"
-             href="#">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link"
-             href="#">My Auctions</a>
-        </li>
-      </ul>
-    </nav>
+    <div id="categories"
+         class="container-fluid btn-group btn-group-justified btn-block">
+      <button type="button"
+              class="btn btn-secondary"
+              data-toggle="tooltip"
+              data-placement="left"
+              title=""
+              data-original-title="Tooltip on left"> Towers with all Components and Peripherics </button>
+      <button type="button"
+              class="btn btn-secondary"
+              data-toggle="tooltip"
+              data-placement="top"
+              title=""
+              data-original-title="Tooltip on top"> Towers Only </button>
+      <button type="button"
+              class="btn btn-secondary"
+              data-toggle="tooltip"
+              data-placement="bottom"
+              title=""
+              data-original-title="Tooltip on bottom"> Laptops </button>
+      <button type="button"
+              class="btn btn-secondary"
+              data-toggle="tooltip"
+              data-placement="right"
+              title=""
+              data-original-title="Tooltip on right"> Components </button>
+      <button type="button"
+              class="btn btn-secondary"
+              data-toggle="tooltip"
+              data-placement="right"
+              title=""
+              data-original-title="Tooltip on right"> Peripherics </button>
+      <button type="button"
+              class="btn btn-secondary"
+              data-toggle="tooltip"
+              data-placement="right"
+              title=""
+              data-original-title="Tooltip on right"> Others </button>
+    </div>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <h1>New Auction</h1>
-    </nav>
+    <div class="title jumbotron">
+      <h1 class="display-6"> New Auction </h1>
+    </div>
+
     <div class="alert alert-warning alert-dismissible fade show w-50 mx-auto mt-4"
          role="alert">
       <button class="close"
