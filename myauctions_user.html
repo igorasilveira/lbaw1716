@@ -11,12 +11,12 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet"
           href="assets/bootstrap/css/bootstrap.min.css">
-    <!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
             integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
             crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
             integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-            crossorigin="anonymous"></script>-->
+            crossorigin="anonymous"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://apis.google.com/js/platform.js"
             async
@@ -26,7 +26,6 @@
   </head>
 
   <body>
-
     <header>
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <a class="navbar-brand"
@@ -133,15 +132,130 @@
         </div>
       </div>
       <br />
-      <div class="dropdown">
-        <button type="button"
-                class="btn
+      <button type="button"
+              class="btn
                       btn-block
                       btn-secondary
                       dropdown-toggle"
-                data-toggle="dropdown">
-          View More
-          </button>
+              data-toggle="collapse"
+              data-target="#BidsListViewMore">
+                View More
+      </button>
+      <div id="BidsListViewMore"
+           class="container-fluid collapse">
+        <br />
+        <div class="container-fluid">
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2 col-sm-8"
+                   placeholder="Search"
+                   type="text">
+            <button class="btn btn-primary my-2 my-sm-0 col-sm-3"
+                    type="submit">Search</button>
+          </form>
+          <br />
+        </div>
+        <table id="BidsListViewMore"
+               class="table table-hover">
+          <thead>
+            <tr class="table-info">
+              <th scope="col">Photo</th>
+              <th scope="col">Username</th>
+              <th scope="col">Moderator's Auctions</th>
+              <th><img src="images/logo_edit.png"
+                     width="20"
+                     height="20"
+                     class="editModBtt"
+                     title='Edit Moderators'
+                     onclick="editModerators()"> </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td scope="row"><img src="images/photos/diogo_foto.jpg"
+                     width="80"
+                     height="80"></td>
+              <td>[Mod]Desespair</td>
+              <td>20</td>
+              <td><img src="images/remove_logo.png"
+                     width="20"
+                     height="20"
+                     class="removeBtt"
+                     title='Remove Moderator'
+                     onclick="delModerator(this)"> </td>
+            </tr>
+            <tr>
+              <td scope="row"><img src="images/photos/diogo_foto.jpg"
+                     width="80"
+                     height="80"></td>
+              <td>[Mod]Des</td>
+              <td>20</td>
+              <td><img src="images/remove_logo.png"
+                     width="20"
+                     height="20"
+                     class="removeBtt"
+                     title='Remove Moderator'
+                     onclick="delModerator(this)"> </td>
+            </tr>
+            <tr>
+              <td scope="row"><img src="images/photos/diogo_foto.jpg"
+                     width="80"
+                     height="80"></td>
+              <td>[Mod]Son</td>
+              <td>20</td>
+              <td><img src="images/remove_logo.png"
+                     width="20"
+                     height="20"
+                     class="removeBtt"
+                     title='Remove Moderator'
+                     onclick="delModerator(this)"> </td>
+            </tr>
+            <tr>
+              <td scope="row"><img src="images/photos/diogo_foto.jpg"
+                     width="80"
+                     height="80"></td>
+              <td>[Mod]Coiso</td>
+              <td>20</td>
+              <td><img src="images/remove_logo.png"
+                     width="20"
+                     height="20"
+                     class="removeBtt"
+                     title='Remove Moderator'
+                     onclick="delModerator(this)"> </td>
+            </tr>
+          </tbody>
+        </table>
+        <div>
+          <ul class="pagination">
+            <li class="page-item disabled">
+              <a class="page-link"
+                 href="#">&laquo;</a>
+            </li>
+            <li class="page-item active">
+              <a class="page-link"
+                 href="#">1</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link"
+                 href="#">2</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link"
+                 href="#">3</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link"
+                 href="#">4</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link"
+                 href="#">5</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link"
+                 href="#">&raquo;</a>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
     <hr class="my-4">
@@ -175,15 +289,130 @@
         </div>
       </div>
       <br />
-      <div class="dropdown">
-        <button type="button"
-                class="btn
+      <button type="button"
+              class="btn
                       btn-block
                       btn-secondary
                       dropdown-toggle"
-                data-toggle="dropdown">
-          View More
-          </button>
+              data-toggle="collapse"
+              data-target="#SellsListViewMore">
+                View More
+      </button>
+      <div id="SellsListViewMore"
+           class="container-fluid collapse">
+        <br />
+        <div class="container-fluid">
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2 col-sm-8"
+                   placeholder="Search"
+                   type="text">
+            <button class="btn btn-primary my-2 my-sm-0 col-sm-3"
+                    type="submit"> Search </button>
+          </form>
+          <br />
+        </div>
+        <table id="SellsListViewMore"
+               class="table table-hover">
+          <thead>
+            <tr class="table-info">
+              <th scope="col">Photo</th>
+              <th scope="col">Username</th>
+              <th scope="col">Moderator's Auctions</th>
+              <th><img src="images/logo_edit.png"
+                     width="20"
+                     height="20"
+                     class="editModBtt"
+                     title='Edit Moderators'
+                     onclick="editModerators()"> </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td scope="row"><img src="images/photos/diogo_foto.jpg"
+                     width="80"
+                     height="80"></td>
+              <td>[Mod]Desespair</td>
+              <td>20</td>
+              <td><img src="images/remove_logo.png"
+                     width="20"
+                     height="20"
+                     class="removeBtt"
+                     title='Remove Moderator'
+                     onclick="delModerator(this)"> </td>
+            </tr>
+            <tr>
+              <td scope="row"><img src="images/photos/diogo_foto.jpg"
+                     width="80"
+                     height="80"></td>
+              <td>[Mod]Des</td>
+              <td>20</td>
+              <td><img src="images/remove_logo.png"
+                     width="20"
+                     height="20"
+                     class="removeBtt"
+                     title='Remove Moderator'
+                     onclick="delModerator(this)"> </td>
+            </tr>
+            <tr>
+              <td scope="row"><img src="images/photos/diogo_foto.jpg"
+                     width="80"
+                     height="80"></td>
+              <td>[Mod]Son</td>
+              <td>20</td>
+              <td><img src="images/remove_logo.png"
+                     width="20"
+                     height="20"
+                     class="removeBtt"
+                     title='Remove Moderator'
+                     onclick="delModerator(this)"> </td>
+            </tr>
+            <tr>
+              <td scope="row"><img src="images/photos/diogo_foto.jpg"
+                     width="80"
+                     height="80"></td>
+              <td>[Mod]Coiso</td>
+              <td>20</td>
+              <td><img src="images/remove_logo.png"
+                     width="20"
+                     height="20"
+                     class="removeBtt"
+                     title='Remove Moderator'
+                     onclick="delModerator(this)"> </td>
+            </tr>
+          </tbody>
+        </table>
+        <div>
+          <ul class="pagination">
+            <li class="page-item disabled">
+              <a class="page-link"
+                 href="#">&laquo;</a>
+            </li>
+            <li class="page-item active">
+              <a class="page-link"
+                 href="#">1</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link"
+                 href="#">2</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link"
+                 href="#">3</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link"
+                 href="#">4</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link"
+                 href="#">5</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link"
+                 href="#">&raquo;</a>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
     <hr class="my-4">
