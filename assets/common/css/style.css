@@ -151,3 +151,7 @@ label span.badge {
 .img-fluid {
   max-height: 30em;
 }
+
+#pagination {
+  margin-left: 80%;
+}
