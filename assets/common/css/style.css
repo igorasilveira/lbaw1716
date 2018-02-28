@@ -149,7 +149,7 @@ label span.badge {
 }
 
 .img-fluid {
-  max-height: 30em;
+  max-height: 20em;
 }
 
 #pagination {
@@ -164,4 +164,13 @@ label span.badge {
   margin-right: 0;
   padding-right: 0;
   text-align: right;
+}
+
+#bidViewer {
+  z-index: 1;
+}
+
+#signin.nav-item.dropdown a#registerNav {
+  padding-left: 0;
+  margin-left: 1em;
 }
