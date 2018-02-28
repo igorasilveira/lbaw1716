@@ -174,3 +174,7 @@ label span.badge {
   padding-left: 0;
   margin-left: 1em;
 }
+
+#categories button {
+  width: 12em;
+}
