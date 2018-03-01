@@ -25,16 +25,12 @@
 		      href="assets/common/css/style.css">
 	</head>
 
-	<body>
 
+	<body>
 		<header>
 			<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
 				<a class="navbar-brand"
-				   href="index.html" title="Back to Home page"><img 
-					     src="images/pcAuctions_logo.png"
-					     alt="logo"
-					     width="80"
-					     height="80"></a>
+				   href="index.html"><img src="images/pcAuctions_logo.png" width="40" height="40"/></a>
 				<button class="navbar-toggler"
 				        type="button"
 				        data-toggle="collapse"
@@ -43,8 +39,8 @@
 				        aria-expanded="false"
 				        aria-label="Toggle navigation"
 				        style="">
-			    <span class="navbar-toggler-icon"></span>
-			  </button>
+  			    <span class="navbar-toggler-icon"></span>
+  			  </button>
 				<div class="collapse navbar-collapse"
 				     id="navbarColor01">
 					<div class="col-sm-8">
@@ -68,9 +64,9 @@
 						     role="menu"
 						     x-placement="bottom-start"
 						     style="position: absolute;
-								 			 transform: translate3d(0px, 39px, 0px);
-											 top: 0px; left: 0px;
-											 will-change: transform;">
+                        transform: translate3d(0px, 39px, 0px);
+                       top: 0px; left: 0px;
+                       will-change: transform;">
 							<li>
 								<form action="create_account.php"
 								      method="POST"
@@ -80,15 +76,15 @@
 									<div class="col-sm-12">
 										<div class="form-inline">
 											<label class="col-sm-3 col-form-label mr-sm-3">
-										Username:
-									</label>
+                    Username:
+                  </label>
 											<input class="col-sm-8"
 											       type="text">
 										</div>
 										<div class="form-inline">
 											<label class="col-sm-3 col-form-label mr-sm-3">
-										Password:
-									</label>
+                    Password:
+                  </label>
 											<input class="col-sm-8"
 											       type="password">
 										</div>
@@ -113,64 +109,82 @@
 							</li>
 							<br />
 							<a id="registerNav"
-							   href="register.html"> No account yet? Sign Up here! </a>
+							   href="register.html"> No account yet? Sign Up here! </a> -
 						</div>
 					</div>
 				</div>
 			</nav>
 		</header>
 
-		<ul id="categories"
-		    class="container-fluid nav nav-tabs nav-justified">
-			<li class="nav-item">
-				<a type="button"
-				   class="btn btn-secondary nav-link"
-				   data-toggle="tooltip"
-				   data-placement="left"
-				   title=""
-				   data-original-title="Tooltip on left"> Towers with all Components </a>
-			</li>
-			<li class="nav-item">
-				<a type="button"
-				   class="btn btn-secondary nav-link"
-				   data-toggle="tooltip"
-				   data-placement="top"
-				   title=""
-				   data-original-title="Tooltip on top"> Towers Only </a>
-			</li>
-			<li class="nav-item">
-				<a type="button"
-				   class="btn btn-secondary nav-link"
-				   data-toggle="tooltip"
-				   data-placement="bottom"
-				   title=""
-				   data-original-title="Tooltip on bottom"> Laptops </a>
-			</li>
-			<li class="nav-item">
-				<a type="button"
-				   class="btn btn-secondary nav-link"
-				   data-toggle="tooltip"
-				   data-placement="right"
-				   title=""
-				   data-original-title="Tooltip on right"> Components </a>
-			</li>
-			<li class="nav-item">
-				<a type="button"
-				   class="btn btn-secondary nav-link"
-				   data-toggle="tooltip"
-				   data-placement="right"
-				   title=""
-				   data-original-title="Tooltip on right"> Peripherics </a>
-			</li>
-			<li class="nav-item">
-				<a type="button"
-				   class="btn btn-secondary nav-link"
-				   data-toggle="tooltip"
-				   data-placement="right"
-				   title=""
-				   data-original-title="Tooltip on right"> Others </a>
-			</li>
-		</ul>
+		<nav id="categories"
+		     class="navbar navbar-expand-lg nav-justified">
+			<button class="navbar-toggler"
+			        type="button"
+			        data-toggle="collapse"
+			        data-target="#catNav"
+			        aria-controls="catNav"
+			        aria-expanded="false"
+			        aria-label="Toggle navigation"
+			        style="">
+          <img src="images/menu-icon-300px.png" width="20" height="20"/>
+        </button>
+			<div id="catNav"
+			     class="collapse navbar-collapse">
+				<div class="row">
+					<ul id="categories"
+					    class="mr-auto btn-group">
+						<li class="nav-item">
+							<a type="button"
+							   class="btn btn-secondary"
+							   data-toggle="tooltip"
+							   data-placement="left"
+							   title=""
+							   data-original-title="Tooltip on left"> Towers with Components </a>
+						</li>
+						<li class="nav-item">
+							<a type="button"
+							   class="btn btn-secondary"
+							   data-toggle="tooltip"
+							   data-placement="top"
+							   title=""
+							   data-original-title="Tooltip on top"> Towers Only </a>
+						</li>
+						<li class="nav-item">
+							<a type="button"
+							   class="btn btn-secondary"
+							   data-toggle="tooltip"
+							   data-placement="bottom"
+							   title=""
+							   data-original-title="Tooltip on bottom"> Laptops </a>
+						</li>
+						<li class="nav-item">
+							<a type="button"
+							   class="btn btn-secondary"
+							   data-toggle="tooltip"
+							   data-placement="right"
+							   title=""
+							   data-original-title="Tooltip on right"> Components </a>
+						</li>
+						<li class="nav-item">
+							<a type="button"
+							   class="btn btn-secondary"
+							   data-toggle="tooltip"
+							   data-placement="right"
+							   title=""
+							   data-original-title="Tooltip on right"> Peripherics </a>
+						</li>
+						<li class="nav-item">
+							<a type="button"
+							   class="btn btn-secondary"
+							   data-toggle="tooltip"
+							   data-placement="right"
+							   title=""
+							   data-original-title="Tooltip on right"> Others </a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
 
 		<div class="title jumbotron">
 			<h1 class="display-5"> Home </h1> </div>

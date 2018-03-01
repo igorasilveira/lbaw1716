@@ -6,8 +6,8 @@
 		<meta charset="utf-8">
 		<meta name="viewport"
 		      content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<link rel="stylesheet"
-		      href="assets/common/css/style.css">
+		<meta name="google-signin-client_id"
+		      content="975377923169-t9t1r6gcdm7qoc7o829q786mqqg4rept.apps.googleusercontent.com">
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet"
 		      href="assets/bootstrap/css/bootstrap.min.css">
@@ -18,31 +18,139 @@
 		        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
 		        crossorigin="anonymous"></script>
 		<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+		<script src="https://apis.google.com/js/platform.js"
+		        async
+		        defer></script>
+		<link rel="stylesheet"
+		      href="assets/common/css/style.css">
 	</head>
+
 
 	<body>
 		<header>
-			<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+			<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
 				<a class="navbar-brand"
-				   href="index.html">
-        			<img src="https://www.dinopc.com/media/catalog/product/cache/75eed2686e01eb22cb4050b2f40ddf97/e/3/e308-1.jpg"
-        			alt="Logo"
-        			style="width:40px;">
-        		</a>
-				<!-- Links -->
-				<!--<ul class="navbar-nav">
-					<li class="nav-item">
-						<a class="nav-link"
-						   href="index.html">PC Auctions</a>
-					</li>
-				</ul>-->
+				   href="index.html"><img src="images/pcAuctions_logo.png" width="40" height="40"/></a>
+				<button class="navbar-toggler"
+				        type="button"
+				        data-toggle="collapse"
+				        data-target="#navbarColor01"
+				        aria-controls="navbarColor01"
+				        aria-expanded="false"
+				        aria-label="Toggle navigation"
+				        style="">
+  			    <span class="navbar-toggler-icon"></span>
+  			  </button>
+				<div class="collapse navbar-collapse"
+				     id="navbarColor01">
+					<div class="col-sm-8">
+						<form class="form-inline my-2 my-lg-0">
+							<input class="form-control mr-sm-2 col-sm-8"
+							       placeholder="Search"
+							       type="text">
+							<button class="btn btn-secondary my-2 my-sm-0 col-sm-3"
+							        type="submit">Search</button>
+						</form>
+					</div>
+					<div id="profileNav"
+					     class="col-sm-2 nav-item">
+						<ul class="navbar-nav justify-content-center align-items-center">
+							<li id="profileName"
+							    class="nav-item col-sm-5">
+								<a class="nav-link"
+								   href="profile.html">Igor</a>
+							</li>
+							<li id="profilePhoto"
+							    class="col-sm-5 nav-item">
+								<a class="nav-link"
+								   href="profile.html">
+										 <img
+											 src="images/photos/igor_foto.jpg"
+											 href="profile.html"
+											 class="img-fluid"
+											 width="40"
+											 height="40">
+									</a>
+							</li>
+						</ul>
+					</div>
+				</div>
 			</nav>
 		</header>
-		<!-- DIVISAO AQUI-->
 
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-			<h1>Moderators</h1>
+		<nav id="categories"
+		     class="navbar navbar-expand-lg nav-justified">
+			<button class="navbar-toggler"
+			        type="button"
+			        data-toggle="collapse"
+			        data-target="#catNav"
+			        aria-controls="catNav"
+			        aria-expanded="false"
+			        aria-label="Toggle navigation"
+			        style="">
+          <img src="images/menu-icon-300px.png" width="20" height="20"/>
+        </button>
+			<div id="catNav"
+			     class="collapse navbar-collapse">
+				<div class="row">
+					<ul id="categories"
+					    class="mr-auto btn-group">
+						<li class="nav-item">
+							<a type="button"
+							   class="btn btn-secondary"
+							   data-toggle="tooltip"
+							   data-placement="left"
+							   title=""
+							   data-original-title="Tooltip on left"> Towers with Components </a>
+						</li>
+						<li class="nav-item">
+							<a type="button"
+							   class="btn btn-secondary"
+							   data-toggle="tooltip"
+							   data-placement="top"
+							   title=""
+							   data-original-title="Tooltip on top"> Towers Only </a>
+						</li>
+						<li class="nav-item">
+							<a type="button"
+							   class="btn btn-secondary"
+							   data-toggle="tooltip"
+							   data-placement="bottom"
+							   title=""
+							   data-original-title="Tooltip on bottom"> Laptops </a>
+						</li>
+						<li class="nav-item">
+							<a type="button"
+							   class="btn btn-secondary"
+							   data-toggle="tooltip"
+							   data-placement="right"
+							   title=""
+							   data-original-title="Tooltip on right"> Components </a>
+						</li>
+						<li class="nav-item">
+							<a type="button"
+							   class="btn btn-secondary"
+							   data-toggle="tooltip"
+							   data-placement="right"
+							   title=""
+							   data-original-title="Tooltip on right"> Peripherics </a>
+						</li>
+						<li class="nav-item">
+							<a type="button"
+							   class="btn btn-secondary"
+							   data-toggle="tooltip"
+							   data-placement="right"
+							   title=""
+							   data-original-title="Tooltip on right"> Others </a>
+						</li>
+					</ul>
+				</div>
+			</div>
 		</nav>
+
+		<div class="title jumbotron">
+			<h1 class="display-6"> Manage Moderators </h1>
+		</div>
 
 		<table id="moderatorsList"
 		       class="table table-hover">

@@ -25,11 +25,12 @@
           href="assets/common/css/style.css">
   </head>
 
+
   <body>
     <header>
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <a class="navbar-brand"
-           href="index.html">Logo</a>
+           href="index.html"><img src="images/pcAuctions_logo.png" width="40" height="40"/></a>
         <button class="navbar-toggler"
                 type="button"
                 data-toggle="collapse"
@@ -38,8 +39,8 @@
                 aria-expanded="false"
                 aria-label="Toggle navigation"
                 style="">
-			    <span class="navbar-toggler-icon"></span>
-			  </button>
+  			    <span class="navbar-toggler-icon"></span>
+  			  </button>
         <div class="collapse navbar-collapse"
              id="navbarColor01">
           <div class="col-sm-8">
@@ -53,20 +54,23 @@
           </div>
           <div id="profileNav"
                class="col-sm-2 nav-item">
-            <ul class="navbar-nav">
-              <li class="nav-item col-sm-6">
+            <ul class="navbar-nav justify-content-center align-items-center">
+              <li id="profileName"
+                  class="nav-item col-sm-5">
                 <a class="nav-link"
                    href="profile.html">Igor</a>
               </li>
-              <li class="col-sm-6">
-                <a href="profile.html">
-                   <img
-                     src="images/photos/igor_foto.jpg"
-                     href="profile.html"
-                     class="img-fluid"
-                     width="40"
-                     height="40">
-                </a>
+              <li id="profilePhoto"
+                  class="col-sm-5 nav-item">
+                <a class="nav-link"
+                   href="profile.html">
+                     <img
+                       src="images/photos/igor_foto.jpg"
+                       href="profile.html"
+                       class="img-fluid"
+                       width="40"
+                       height="40">
+                  </a>
               </li>
             </ul>
           </div>
@@ -74,57 +78,75 @@
       </nav>
     </header>
 
-    <ul id="categories"
-        class="nav nav-tabs nav-justified">
-      <li class="nav-item">
-        <a type="button"
-           class="btn btn-secondary nav-link"
-           data-toggle="tooltip"
-           data-placement="left"
-           title=""
-           data-original-title="Tooltip on left"> Towers with all Components and Peripherics </a>
-      </li>
-      <li class="nav-item">
-        <a type="button"
-           class="btn btn-secondary nav-link"
-           data-toggle="tooltip"
-           data-placement="top"
-           title=""
-           data-original-title="Tooltip on top"> Towers Only </a>
-      </li>
-      <li class="nav-item">
-        <a type="button"
-           class="btn btn-secondary nav-link"
-           data-toggle="tooltip"
-           data-placement="bottom"
-           title=""
-           data-original-title="Tooltip on bottom"> Laptops </a>
-      </li>
-      <li class="nav-item">
-        <a type="button"
-           class="btn btn-secondary nav-link"
-           data-toggle="tooltip"
-           data-placement="right"
-           title=""
-           data-original-title="Tooltip on right"> Components </a>
-      </li>
-      <li class="nav-item">
-        <a type="button"
-           class="btn btn-secondary nav-link"
-           data-toggle="tooltip"
-           data-placement="right"
-           title=""
-           data-original-title="Tooltip on right"> Peripherics </a>
-      </li>
-      <li class="nav-item">
-        <a type="button"
-           class="btn btn-secondary nav-link"
-           data-toggle="tooltip"
-           data-placement="right"
-           title=""
-           data-original-title="Tooltip on right"> Others </a>
-      </li>
-    </ul>
+    <nav id="categories"
+         class="navbar navbar-expand-lg nav-justified">
+      <button class="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#catNav"
+              aria-controls="catNav"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+              style="">
+          <img src="images/menu-icon-300px.png" width="20" height="20"/>
+        </button>
+      <div id="catNav"
+           class="collapse navbar-collapse">
+        <div class="row">
+          <ul id="categories"
+              class="mr-auto btn-group">
+            <li class="nav-item">
+              <a type="button"
+                 class="btn btn-secondary"
+                 data-toggle="tooltip"
+                 data-placement="left"
+                 title=""
+                 data-original-title="Tooltip on left"> Towers with Components </a>
+            </li>
+            <li class="nav-item">
+              <a type="button"
+                 class="btn btn-secondary"
+                 data-toggle="tooltip"
+                 data-placement="top"
+                 title=""
+                 data-original-title="Tooltip on top"> Towers Only </a>
+            </li>
+            <li class="nav-item">
+              <a type="button"
+                 class="btn btn-secondary"
+                 data-toggle="tooltip"
+                 data-placement="bottom"
+                 title=""
+                 data-original-title="Tooltip on bottom"> Laptops </a>
+            </li>
+            <li class="nav-item">
+              <a type="button"
+                 class="btn btn-secondary"
+                 data-toggle="tooltip"
+                 data-placement="right"
+                 title=""
+                 data-original-title="Tooltip on right"> Components </a>
+            </li>
+            <li class="nav-item">
+              <a type="button"
+                 class="btn btn-secondary"
+                 data-toggle="tooltip"
+                 data-placement="right"
+                 title=""
+                 data-original-title="Tooltip on right"> Peripherics </a>
+            </li>
+            <li class="nav-item">
+              <a type="button"
+                 class="btn btn-secondary"
+                 data-toggle="tooltip"
+                 data-placement="right"
+                 title=""
+                 data-original-title="Tooltip on right"> Others </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
     <div class="title jumbotron">
       <h1 class="display-6"> New Auction </h1>
