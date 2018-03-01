@@ -99,7 +99,7 @@ label span.badge {
   position: relative;
   left: 140px;
   top: 5px;
-  border: dashed;
+  border: double;
 }
 
 #signin.btn-xs {
