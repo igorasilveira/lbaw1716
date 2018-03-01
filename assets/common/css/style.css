@@ -55,27 +55,6 @@ label span.badge {
   }
 }
 
-/*register.html*/
-
-#new_user label {
-  float: left;
-  clear: left;
-  width: 100px;
-}
-
-#new_user {
-  padding-top: 25px;
-  padding-left: 450px;
-}
-
-#new_user input {
-  margin-top: 4px;
-}
-
-#signUp {
-  position: fixed;
-  padding: 30px;
-}
 
 /*about.html*/
 
