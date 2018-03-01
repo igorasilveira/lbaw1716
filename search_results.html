@@ -72,59 +72,74 @@
           </div>
         </div>
       </nav>
-    </header>
 
-    <ul id="categories"
-        class="nav nav-tabs nav-justified">
-      <li class="nav-item">
-        <a type="button"
-           class="btn btn-secondary nav-link"
-           data-toggle="tooltip"
-           data-placement="left"
-           title=""
-           data-original-title="Tooltip on left"> Towers with all Components and Peripherics </a>
-      </li>
-      <li class="nav-item">
-        <a type="button"
-           class="btn btn-secondary nav-link"
-           data-toggle="tooltip"
-           data-placement="top"
-           title=""
-           data-original-title="Tooltip on top"> Towers Only </a>
-      </li>
-      <li class="nav-item">
-        <a type="button"
-           class="btn btn-secondary nav-link"
-           data-toggle="tooltip"
-           data-placement="bottom"
-           title=""
-           data-original-title="Tooltip on bottom"> Laptops </a>
-      </li>
-      <li class="nav-item">
-        <a type="button"
-           class="btn btn-secondary nav-link"
-           data-toggle="tooltip"
-           data-placement="right"
-           title=""
-           data-original-title="Tooltip on right"> Components </a>
-      </li>
-      <li class="nav-item">
-        <a type="button"
-           class="btn btn-secondary nav-link"
-           data-toggle="tooltip"
-           data-placement="right"
-           title=""
-           data-original-title="Tooltip on right"> Peripherics </a>
-      </li>
-      <li class="nav-item">
-        <a type="button"
-           class="btn btn-secondary nav-link"
-           data-toggle="tooltip"
-           data-placement="right"
-           title=""
-           data-original-title="Tooltip on right"> Others </a>
-      </li>
-    </ul>
+      <nav id="categories"
+           class="nav"
+           role="navigation">
+        <button class="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarColor01"
+                aria-controls="navbarColor01"
+                aria-expanded="true"
+                aria-label="Toggle Categories"
+                style="">
+   			    <span class="navbar-toggler-icon"></span>
+   			  </button>
+        <ul id="categories"
+            class="nav nav-tabs nav-justified container-fluid">
+          <li class="nav-item">
+            <a type="button"
+               class="btn btn-secondary nav-link"
+               data-toggle="tooltip"
+               data-placement="left"
+               title=""
+               data-original-title="Tooltip on left"> Towers with Components </a>
+          </li>
+          <li class="nav-item">
+            <a type="button"
+               class="btn btn-secondary nav-link"
+               data-toggle="tooltip"
+               data-placement="top"
+               title=""
+               data-original-title="Tooltip on top"> Towers Only </a>
+          </li>
+          <li class="nav-item">
+            <a type="button"
+               class="btn btn-secondary nav-link"
+               data-toggle="tooltip"
+               data-placement="bottom"
+               title=""
+               data-original-title="Tooltip on bottom"> Laptops </a>
+          </li>
+          <li class="nav-item">
+            <a type="button"
+               class="btn btn-secondary nav-link"
+               data-toggle="tooltip"
+               data-placement="right"
+               title=""
+               data-original-title="Tooltip on right"> Components </a>
+          </li>
+          <li class="nav-item">
+            <a type="button"
+               class="btn btn-secondary nav-link"
+               data-toggle="tooltip"
+               data-placement="right"
+               title=""
+               data-original-title="Tooltip on right"> Peripherics </a>
+          </li>
+          <li class="nav-item">
+            <a type="button"
+               class="btn btn-secondary nav-link"
+               data-toggle="tooltip"
+               data-placement="right"
+               title=""
+               data-original-title="Tooltip on right"> Others </a>
+          </li>
+        </ul>
+      </nav>
+
+    </header>
 
     <div class="title jumbotron">
       <h1 class="display-6"> My Auctions </h1>
@@ -178,6 +193,39 @@
           </tr>
         </tbody>
       </table>
+      <br />
+      <div id="pagination">
+        <ul class="pagination pagination-sm">
+          <li class="page-item disabled">
+            <a class="page-link"
+               href="#">&laquo;</a>
+          </li>
+          <li class="page-item active">
+            <a class="page-link"
+               href="#">1</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link"
+               href="#">2</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link"
+               href="#">3</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link"
+               href="#">4</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link"
+               href="#">5</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link"
+               href="#">&raquo;</a>
+          </li>
+        </ul>
+      </div>
     </div>
 
     <hr class="my-4">

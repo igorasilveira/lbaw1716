@@ -175,6 +175,10 @@ label span.badge {
   margin-left: 1em;
 }
 
-#categories button {
-  width: 12em;
+#categories {
+  margin-left: 1%;
+}
+
+#menuCat {
+  margin-top: .2em;
 }
