@@ -30,8 +30,7 @@
 		<header>
 			<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
 				<a class="navbar-brand"
-				   href="index.html"
-				   title="Back to Home page"><img
+				   href="index.html" title="Back to Home page"><img 
 					     src="images/pcAuctions_logo.png"
 					     alt="logo"
 					     width="80"
@@ -70,27 +69,22 @@
 		<div class="container-fluid">
 			<div id="new_user">
 				<form action="#"
-				      method="POST"
+				      method="POST" class="w-50 mx-auto py-5"
 				      enctype="multipart/form-data">
 					<fieldset>
 						<legend>Log in Information:</legend>
-						<label class="col-form-label required">Username:</label> <input class="form-control"
-						       type="text"><br>
-						<label class="col-form-label required">Password:</label> <input class="form-control"
-						       type="password"><br>
+						<label class="col-form-label required">Username:</label> <input class="form-control" type="text"><br>
+						<label class="col-form-label required">Password:</label> <input class="form-control" type="password"><br>
 					</fieldset><br>
 
 					<fieldset>
 						<legend>Personal Data:</legend>
-						<label class="col-form-label required">Complete Name:</label> <input class="form-control"
-						       type="text"><br>
-						<label class="col-form-label required">Email:</label><input class="form-control"
-						       type="e-mail"><br>
-						<label class="col-form-label required">Date of birth:</label> <input class="form-control"
-						       type="date"><br>
-						<label class="col-form-label required">Photo:</label> <input class="form-control"
-						       type="file"
-						       name="photo"><br>
+						<label class="col-form-label required">Complete Name:</label> <input class="form-control" type="text"><br>
+						<label class="col-form-label required">Email:</label><input class="form-control" type="e-mail"><br>
+						<label class="col-form-label required">Date of birth:</label> <input class="form-control" type="date"><br>
+						<label class="col-form-label required">Photo:</label> <input class="form-control-file" type="file"
+						       name="photo"><small
+                 class="form-text text-muted">This is the image that will be displayed has your profile picture.</small>
 					</fieldset><br>
 
 					<fieldset>
@@ -347,15 +341,11 @@
 	<option value="ZMB">Zambia</option>
 	<option value="ZWE">Zimbabwe</option>
 </select><br>
-						<label class="col-form-label required">City:</label> <input class="form-control"
-						       type="text"> <label class="col-form-label required">Postal-Code:</label></label> <input class="form-control"
-						       type="text"
+						<label class="col-form-label required">City:</label> <input class="form-control" type="text"> <label class="col-form-label required">Postal-Code:</label></label> <input class="form-control" type="text"
 						       pattern="[0-9]{5}"><br>
-						<label class="col-form-label required">Address:</label> <input class="form-control"
-						       type="text">
+						<label class="col-form-label required">Address:</label> <input class="form-control" type="text">
 					</fieldset><br>
-					<input class="btn btn-outline-secondary"
-					       type="submit"
+					<input class="btn btn-outline-secondary" type="submit"
 					       value="Submit Information" />
 				</form>
 			</div>
