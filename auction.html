@@ -25,8 +25,8 @@
           href="assets/common/css/style.css">
   </head>
 
-  <body>
 
+  <body>
     <header>
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <a class="navbar-brand"
@@ -39,8 +39,8 @@
                 aria-expanded="false"
                 aria-label="Toggle navigation"
                 style="">
-			    <span class="navbar-toggler-icon"></span>
-			  </button>
+  			    <span class="navbar-toggler-icon"></span>
+  			  </button>
         <div class="collapse navbar-collapse"
              id="navbarColor01">
           <div class="col-sm-8">
@@ -52,51 +52,98 @@
                       type="submit">Search</button>
             </form>
           </div>
-          <div class="col-sm-4">
+          <div id="profileNav"
+               class="col-sm-2 nav-item">
+            <ul class="navbar-nav">
+              <li class="nav-item col-sm-6">
+                <a class="nav-link"
+                   href="profile.html">Igor</a>
+              </li>
+              <li class="col-sm-6">
+                <a href="profile.html">
+                     <img
+                       src="images/photos/igor_foto.jpg"
+                       href="profile.html"
+                       class="img-fluid profile-pic"
+                       width="40"
+                       height="40">
+                  </a>
+              </li>
+            </ul>
           </div>
         </div>
       </nav>
     </header>
 
-    <div id="categories"
-         class="container-fluid btn-group btn-group-justified btn-block">
-      <button type="button"
-              class="btn btn-secondary"
-              data-toggle="tooltip"
-              data-placement="left"
-              title=""
-              data-original-title="Tooltip on left"> Towers with all Components and Peripherics </button>
-      <button type="button"
-              class="btn btn-secondary"
-              data-toggle="tooltip"
-              data-placement="top"
-              title=""
-              data-original-title="Tooltip on top"> Towers Only </button>
-      <button type="button"
-              class="btn btn-secondary"
-              data-toggle="tooltip"
-              data-placement="bottom"
-              title=""
-              data-original-title="Tooltip on bottom"> Laptops </button>
-      <button type="button"
-              class="btn btn-secondary"
-              data-toggle="tooltip"
-              data-placement="right"
-              title=""
-              data-original-title="Tooltip on right"> Components </button>
-      <button type="button"
-              class="btn btn-secondary"
-              data-toggle="tooltip"
-              data-placement="right"
-              title=""
-              data-original-title="Tooltip on right"> Peripherics </button>
-      <button type="button"
-              class="btn btn-secondary"
-              data-toggle="tooltip"
-              data-placement="right"
-              title=""
-              data-original-title="Tooltip on right"> Others </button>
-    </div>
+    <nav id="categories"
+         class="navbar navbar-expand-lg nav-justified">
+      <button class="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#catNav"
+              aria-controls="catNav"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+              style="">
+          <img src="images/menu-icon-300px.png" width="20" height="20"/>
+        </button>
+      <div id="catNav"
+           class="collapse navbar-collapse">
+        <div class="row">
+          <ul id="categories"
+              class="mr-auto btn-group">
+            <li class="nav-item">
+              <a type="button"
+                 class="btn btn-secondary"
+                 data-toggle="tooltip"
+                 data-placement="left"
+                 title=""
+                 data-original-title="Tooltip on left"> Towers with Components </a>
+            </li>
+            <li class="nav-item">
+              <a type="button"
+                 class="btn btn-secondary"
+                 data-toggle="tooltip"
+                 data-placement="top"
+                 title=""
+                 data-original-title="Tooltip on top"> Towers Only </a>
+            </li>
+            <li class="nav-item">
+              <a type="button"
+                 class="btn btn-secondary"
+                 data-toggle="tooltip"
+                 data-placement="bottom"
+                 title=""
+                 data-original-title="Tooltip on bottom"> Laptops </a>
+            </li>
+            <li class="nav-item">
+              <a type="button"
+                 class="btn btn-secondary"
+                 data-toggle="tooltip"
+                 data-placement="right"
+                 title=""
+                 data-original-title="Tooltip on right"> Components </a>
+            </li>
+            <li class="nav-item">
+              <a type="button"
+                 class="btn btn-secondary"
+                 data-toggle="tooltip"
+                 data-placement="right"
+                 title=""
+                 data-original-title="Tooltip on right"> Peripherics </a>
+            </li>
+            <li class="nav-item">
+              <a type="button"
+                 class="btn btn-secondary"
+                 data-toggle="tooltip"
+                 data-placement="right"
+                 title=""
+                 data-original-title="Tooltip on right"> Others </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
     <div class="title jumbotron">
       <h1 class="display-6"> Auction </h1>
@@ -188,82 +235,80 @@
              id="info"
              role="tabpanel"
              aria-labelledby="info-tab">
-             <div class="info">
-               <section class="my-4">
-                 <h4>Full Specs</h4>
-                 <p>
-                  Processor - dual core 2.4 GHz+ (i5 or i7 series Intel processor or equivalent AMD)<br>
-                  RAM - 16 GB <br>
-                  Hard Drive - 256 GB or larger solid state hard drive <br>
-                  Graphics Card - any with DisplayPort/HDMI or DVI support - desktop only <br>
-                  Wireless (for laptops) - 802.11ac (WPA2 support required) <br>
-                  Monitor - 23" widescreen LCD with DisplayPort/HDMI or DVI support - desktop only <br>
-                  Operating System - Windows 10 Home or Professional editions, or Apple OS X 10.12.3 <br>
-                  Warranty - 3 year warranty - desktop only <br>
-                  Warranty - 4 year warranty with accidental damage protection - laptop only <br>
-                  Backup Device - External hard drive and/or USB Flash Drive <br>
-                 </p>
-               </section>
-               <hr class="my-2">
-               <section class="my-4">
-                 <h4>Selling Reason</h4>
-                 <p>
-                   Offered on Christmas but were to many at once.
-                 </p>
-               </section>
-               <hr class="my-2">
-               <section class="my-4">
-                 <h4>Additional Info</h4>
-                 <p>
-                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sed euismod lacus. Quisque aliquam metus rutrum urna mattis, et efficitur libero dapibus. Integer condimentum vel turpis eget lobortis. Sed pulvinar felis sed metus volutpat imperdiet. Vivamus id turpis et diam varius finibus. In hac habitasse platea dictumst. Nunc iaculis, felis ac rutrum imperdiet, lectus nibh auctor nunc, id auctor ex neque id ligula. Nulla sed accumsan ipsum. Donec congue est velit, ultrices facilisis quam malesuada ut. Nam vestibulum felis sem, in varius elit euismod ac. Ut et nibh quis justo hendrerit feugiat.
-
-                   Pellentesque bibendum, lacus ut ultricies volutpat, orci leo ultricies tellus, eu condimentum dolor est eu sapien. Ut sit amet risus eros. Nullam ac sapien id enim porta ornare at et metus. Integer justo eros, elementum ut ligula eget, dictum tempor lacus. Vivamus feugiat dictum mi. Duis at est nulla. Duis id nisi pretium, finibus sem eu, porta sem. Nulla faucibus mattis libero eu maximus.
-                 </p>
-               </section>
-             </div>
+          <div class="info">
+            <section class="my-4">
+              <h4>Full Specs</h4>
+              <p>
+                Processor - dual core 2.4 GHz+ (i5 or i7 series Intel processor or equivalent AMD)<br> RAM - 16 GB <br> Hard Drive - 256 GB or larger solid state hard drive <br> Graphics Card - any with DisplayPort/HDMI or DVI support - desktop only <br>                Wireless (for laptops) - 802.11ac (WPA2 support required) <br> Monitor - 23" widescreen LCD with DisplayPort/HDMI or DVI support - desktop only <br> Operating System - Windows 10 Home or Professional editions, or Apple OS X 10.12.3 <br>                Warranty - 3 year warranty - desktop only <br> Warranty - 4 year warranty with accidental damage protection - laptop only <br> Backup Device - External hard drive and/or USB Flash Drive <br>
+              </p>
+            </section>
+            <hr class="my-2">
+            <section class="my-4">
+              <h4>Selling Reason</h4>
+              <p>
+                Offered on Christmas but were to many at once.
+              </p>
+            </section>
+            <hr class="my-2">
+            <section class="my-4">
+              <h4>Additional Info</h4>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sed euismod lacus. Quisque aliquam metus rutrum urna mattis, et efficitur libero dapibus. Integer condimentum vel turpis eget lobortis. Sed pulvinar felis sed metus volutpat imperdiet. Vivamus
+                id turpis et diam varius finibus. In hac habitasse platea dictumst. Nunc iaculis, felis ac rutrum imperdiet, lectus nibh auctor nunc, id auctor ex neque id ligula. Nulla sed accumsan ipsum. Donec congue est velit, ultrices facilisis quam
+                malesuada ut. Nam vestibulum felis sem, in varius elit euismod ac. Ut et nibh quis justo hendrerit feugiat. Pellentesque bibendum, lacus ut ultricies volutpat, orci leo ultricies tellus, eu condimentum dolor est eu sapien. Ut sit amet
+                risus eros. Nullam ac sapien id enim porta ornare at et metus. Integer justo eros, elementum ut ligula eget, dictum tempor lacus. Vivamus feugiat dictum mi. Duis at est nulla. Duis id nisi pretium, finibus sem eu, porta sem. Nulla faucibus
+                mattis libero eu maximus.
+              </p>
+            </section>
+          </div>
         </div>
         <div class="tab-pane fade"
              id="comments"
              role="tabpanel"
              aria-labelledby="comments-tab">
-             <div class="alert alert-dismissible alert-warning my-3">
-              <button type="button" class="close" data-dismiss="alert">&times;</button>
-              <h4 class="alert-heading">Warning!</h4>
-              <p class="mb-0">All comments are supervised by the auction's moderator. Keep within the site's for the commenting section. <span class="alert-link">Breaking the rules may result in an account ban.</span>.</p>
-            </div>
-             <blockquote class="blockquote my-4">
-               <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-               <footer class="blockquote-footer"><cite title="Source Title"><a>anotherUser</a></cite></footer>
-             </blockquote>
-             <hr class="my-2">
-             <blockquote class="blockquote my-4">
-               <p class="mb-0">Ut lorem mauris, ultrices ac ante nec, cursus porta ipsum. Morbi felis felis, finibus ut vestibulum at, feugiat vel lorem. Nulla sapien dui, porttitor in nulla non, aliquet ultricies enim. Ut semper ac enim eget porta. Morbi arcu mauris, auctor eget ex sed, condimentum eleifend nibh. Aenean risus dolor, placerat sit amet nisl imperdiet, feugiat aliquam odio. Vestibulum metus ex, molestie eu tempus eu, tristique quis elit. Maecenas nec neque posuere, aliquam quam sed, lobortis velit. Vivamus semper quam id accumsan porta. Morbi in hendrerit orci, sit amet volutpat diam.</p>
-               <footer class="blockquote-footer"><cite title="Source Title"><a>niceUsername</a></cite></footer>
-             </blockquote>
-             <hr class="my-2">
-             <blockquote class="blockquote my-4">
-               <p class="mb-0">In sollicitudin tellus nec ex lacinia rutrum. Suspendisse potenti. Ut cursus efficitur ante, at mollis ligula rhoncus quis. Integer laoreet nibh a massa feugiat, sit amet sagittis risus vulputate. Integer tincidunt metus pellentesque justo rutrum, eget faucibus libero porta.</p>
-               <footer class="blockquote-footer">Someone famous in <cite title="Source Title"><a>Igor</a></cite></footer>
-             </blockquote>
-             <hr class="my-2">
+          <div class="alert alert-dismissible alert-warning my-3">
+            <button type="button"
+                    class="close"
+                    data-dismiss="alert">&times;</button>
+            <h4 class="alert-heading">Warning!</h4>
+            <p class="mb-0">All comments are supervised by the auction's moderator. Keep within the site's for the commenting section. <span class="alert-link">Breaking the rules may result in an account ban.</span>.</p>
+          </div>
+          <blockquote class="blockquote my-4">
+            <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+            <footer class="blockquote-footer"><cite title="Source Title"><a>anotherUser</a></cite></footer>
+          </blockquote>
+          <hr class="my-2">
+          <blockquote class="blockquote my-4">
+            <p class="mb-0">Ut lorem mauris, ultrices ac ante nec, cursus porta ipsum. Morbi felis felis, finibus ut vestibulum at, feugiat vel lorem. Nulla sapien dui, porttitor in nulla non, aliquet ultricies enim. Ut semper ac enim eget porta. Morbi arcu mauris, auctor
+              eget ex sed, condimentum eleifend nibh. Aenean risus dolor, placerat sit amet nisl imperdiet, feugiat aliquam odio. Vestibulum metus ex, molestie eu tempus eu, tristique quis elit. Maecenas nec neque posuere, aliquam quam sed, lobortis velit.
+              Vivamus semper quam id accumsan porta. Morbi in hendrerit orci, sit amet volutpat diam.</p>
+            <footer class="blockquote-footer"><cite title="Source Title"><a>niceUsername</a></cite></footer>
+          </blockquote>
+          <hr class="my-2">
+          <blockquote class="blockquote my-4">
+            <p class="mb-0">In sollicitudin tellus nec ex lacinia rutrum. Suspendisse potenti. Ut cursus efficitur ante, at mollis ligula rhoncus quis. Integer laoreet nibh a massa feugiat, sit amet sagittis risus vulputate. Integer tincidunt metus pellentesque justo
+              rutrum, eget faucibus libero porta.</p>
+            <footer class="blockquote-footer">Someone famous in <cite title="Source Title"><a>Igor</a></cite></footer>
+          </blockquote>
+          <hr class="my-2">
         </div>
         <div class="tab-pane fade"
              id="contacts"
              role="tabpanel"
              aria-labelledby="contacts-tab">
-             <section class="my-4">
-               <h4>Phone Number</h4>
-               <p>
-                 002336159038
-               </p>
-             </section>
-             <hr class="my-2">
-             <section class="my-4">
-               <h4>Email Address</h4>
-               <p>
-                 username@example.com
-               </p>
-             </section>
+          <section class="my-4">
+            <h4>Phone Number</h4>
+            <p>
+              002336159038
+            </p>
+          </section>
+          <hr class="my-2">
+          <section class="my-4">
+            <h4>Email Address</h4>
+            <p>
+              username@example.com
+            </p>
+          </section>
         </div>
       </div>
     </div>

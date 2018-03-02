@@ -138,7 +138,9 @@ label span.badge {
 }
 
 #pagination {
-  margin-left: 80%;
+  display: inline-block;
+  vertical-align: middle;
+  float: right;
 }
 
 #profileNav {
@@ -192,7 +194,21 @@ label span.badge {
   }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 570px) {
+  #profileNav {
+    margin-left: 0;
+  }
+  #profileNav li a.nav-link {
+    margin-right: 1.5em;
+  }
+  #profileNav li a {
+    position: relative;
+    display: inline-block;
+    float: right;
+  }
+}
+
+@media screen and (max-width: 1279px) {
   #catNav ul#categories.mr-auto::before {
     content: '\A';
     clear: right;
@@ -202,14 +218,9 @@ label span.badge {
     width: 100%;
     display: block;
   }
-  #profileNav {
-    margin-left: 0;
-  }
-  #profileNav li {
-    position: relative;
-    display: inline;
-    float: right;
-  }
+}
+
+@media screen and (max-width: 480px) {
   #auctionProfile {
     margin-left: 1em;
     margin-bottom: 1em;
@@ -221,6 +232,22 @@ label span.badge {
   #navbarColor01 {
     max-width: 100%;
     margin: auto;
+  }
+  .bidsListViewMore .form-control, .sellsListViewMore .form-control {
+    width: 100%;
+    display: inline;
+  }
+  .bidsListViewMore form span, .sellsListViewMore span {
+    padding: 0;
+    flex: 0 0 3.0%;
+  }
+  .bidsListViewMore form input, .sellsListViewMore form input {
+    padding-left: 1em;
+    padding-right: 0;
+  }
+  .bidsListViewMore form .btn, .sellsListViewMore form .btn {
+    padding-right: 0.5em;
+    padding-left: 0.5em;
   }
 }
 
@@ -237,10 +264,6 @@ nav.navbar:nth-child(2) {
   padding-left: 1em;
 }
 
-#searchPagination {
-  margin-left: 0;
-}
-
 #auctionName {
   margin-top: 1em;
 }
@@ -248,4 +271,8 @@ nav.navbar:nth-child(2) {
 #timeLeft {
   border-width: medium;
   border-right: 1px solid;
+}
+
+.bidsListViewMore, .sellsListViewMore {
+  text-align: center;
 }
