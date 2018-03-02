@@ -64,7 +64,7 @@
                      <img
                        src="images/photos/igor_foto.jpg"
                        href="profile.html"
-                       class="img-fluid"
+                       class="img-fluid profile-pic"
                        width="40"
                        height="40">
                   </a>
@@ -149,6 +149,8 @@
       <h1 class="display-6"> My Auctions </h1>
     </div>
 
+    <hr class="my-4">
+    <div class="container w-50">
     <div id="bidding"
          class="container-fluid">
       <div id="bidViewer">
@@ -239,16 +241,15 @@
       </button>
       <div id="BidsListViewMore"
            class="container-fluid collapse">
-        <br />
         <div class="container-fluid">
           <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2 col-sm-8"
+            <input class="form-control col-7"
                    placeholder="Search"
                    type="text">
-            <button class="btn btn-primary my-2 my-sm-0 col-sm-3"
+                   <span class="col-1"></span>
+            <button class="btn btn-primary my-2 col-4"
                     type="submit">Search</button>
           </form>
-          <br />
         </div>
         <table id="BidsListViewMore"
                class="table table-hover">
@@ -362,10 +363,10 @@
       </div>
     </div>
     <hr class="my-4">
+    <hr class="my-4">
     <div id="selling"
          class="container-fluid">
       <h2> Selling </h2>
-      <br />
       <ul id="auctionsMosaic"
           class="container-fluid row col-sm-12 row">
         <li class="col-sm-4">
@@ -450,7 +451,6 @@
       </button>
       <div id="SellsListViewMore"
            class="container-fluid collapse">
-        <br />
         <div class="container-fluid">
           <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2 col-sm-8"
@@ -459,7 +459,6 @@
             <button class="btn btn-primary my-2 my-sm-0 col-sm-3"
                     type="submit"> Search </button>
           </form>
-          <br />
         </div>
         <table id="SellsListViewMore"
                class="table table-hover">
@@ -520,21 +519,22 @@
         </div>
       </div>
     </div>
+  </div>
     <hr class="my-4">
     <footer class="page-footer">
-      <div class="container-fluid
-                      text-center
-                      text-md-left
-                      ">
-        <div class="row">
-          <div class="col"></div>
-          <div class="col"> <a href="about.html"> About </a> </div>
-          <div class="col"> <a href="#"> FAQ </a> </div>
-          <div class="col"> <a href="#"> Contacts </a> </div>
-          <div class="col"></div>
+      <div class="nav justify-content-center">
+        <div class="nav-item">
+          <a href="#"> About </a>
+        </div>
+        <div class="nav-item">
+          <a href="#"> FAQ </a>
+        </div>
+        <div class="nav-item">
+          <a href="#"> Contacts </a>
         </div>
       </div>
-      <hr class="my-4"> </footer>
+      <hr class="my-4">
+    </footer>
   </body>
 
 </html>

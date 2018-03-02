@@ -67,31 +67,37 @@
 			<h1 class="display-6"> Sign Up </h1>
 		</div>
 
-		<div class="container-fluid">
-			<div id="new_user">
+		<div class="container-fluid w-50 mx-auto">
+			<div id="new_user my-4">
 				<form action="#"
 				      method="POST"
 				      enctype="multipart/form-data">
 					<fieldset>
 						<legend>Log in Information:</legend>
 						<label class="col-form-label required">Username:</label> <input class="form-control"
-						       type="text"><br>
+						       type="text">
 						<label class="col-form-label required">Password:</label> <input class="form-control"
-						       type="password"><br>
-					</fieldset><br>
+						       type="password">
+					</fieldset>
 
 					<fieldset>
 						<legend>Personal Data:</legend>
 						<label class="col-form-label required">Complete Name:</label> <input class="form-control"
-						       type="text"><br>
+						       type="text">
 						<label class="col-form-label required">Email:</label><input class="form-control"
-						       type="e-mail"><br>
+						       type="e-mail">
 						<label class="col-form-label required">Date of birth:</label> <input class="form-control"
-						       type="date"><br>
-						<label class="col-form-label required">Photo:</label> <input class="form-control"
-						       type="file"
-						       name="photo"><br>
-					</fieldset><br>
+						       type="date">
+						 <label class="col-form-label"
+ 	                 for="image">Auction Image</label>
+ 	          <input type="file"
+ 	                 class="form-control-file"
+ 	                 id="image"
+ 	                 aria-describedby="image">
+ 	          <small id="fileHelp"
+ 	                 class="form-text text-muted">This is the image that will be displayed publicly on your profile.</small>
+
+					</fieldset>
 
 					<fieldset>
 						<legend>Location information:</legend>
@@ -346,38 +352,35 @@
 	<option value="YEM">Yemen</option>
 	<option value="ZMB">Zambia</option>
 	<option value="ZWE">Zimbabwe</option>
-</select><br>
+</select>
 						<label class="col-form-label required">City:</label> <input class="form-control"
 						       type="text"> <label class="col-form-label required">Postal-Code:</label></label> <input class="form-control"
 						       type="text"
-						       pattern="[0-9]{5}"><br>
+						       pattern="[0-9]{5}">
 						<label class="col-form-label required">Address:</label> <input class="form-control"
 						       type="text">
-					</fieldset><br>
-					<input class="btn btn-outline-secondary"
+					</fieldset>
+					<input class="btn btn-primary w-100 my-4"
 					       type="submit"
 					       value="Submit Information" />
 				</form>
 			</div>
-			<br /><br />
-			<footer class="page-footer">
-				<div class="container-fluid text-center text-md-left">
-					<div class="row">
-						<div class="col"></div>
-						<div class="col">
-							<a href="about.html"> About </a>
-						</div>
-						<div class="col">
-							<a href="#"> FAQ </a>
-						</div>
-						<div class="col">
-							<a href="#"> Contacts </a>
-						</div>
-						<div class="col"></div>
-					</div>
-				</div>
-				<hr class="my-4">
-			</footer>
+		</div>
+			<hr class="my-4">
+	    <footer class="page-footer">
+	      <div class="nav justify-content-center">
+	        <div class="nav-item">
+	          <a href="#"> About </a>
+	        </div>
+	        <div class="nav-item">
+	          <a href="#"> FAQ </a>
+	        </div>
+	        <div class="nav-item">
+	          <a href="#"> Contacts </a>
+	        </div>
+	      </div>
+	      <hr class="my-4">
+	    </footer>
 	</body>
 
 </html>
