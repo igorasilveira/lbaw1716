@@ -21,6 +21,7 @@
     <script src="https://apis.google.com/js/platform.js"
             async
             defer></script>
+    <script src="assets/common/javascript/javascript.js" async defer></script>
     <link rel="stylesheet"
           href="assets/common/css/style.css">
   </head>
@@ -489,29 +490,5 @@
     </footer>
   </body>
 
-<script>
-function disapproveAuction(row) {
 
-        var i = row.parentNode.parentNode.rowIndex;
-        document.getElementById("pendingListViewMoreTable").deleteRow(i);
-
-    }
-
-
-    function approveAuction(row) {
-
-        var i = row.parentNode.parentNode.rowIndex;
-        var wantedRow=document.getElementById("pendingListViewMoreTable").rows[i];
-
-        wantedRow.deleteCell(-1);
-        var lastBid = wantedRow.insertCell(wantedRow.cells.length-1);
-        lastBid.innerHTML = "None";
-
-        document.getElementById("pendingListViewMoreTable").deleteRow(i);
-
-       var addedRow= document.getElementById("SellsListViewMoreTable").insertRow(1);
-       addedRow.innerHTML=wantedRow.innerHTML;
-
-    }
-    </script>
 </html>
