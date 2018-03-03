@@ -211,12 +211,12 @@
       <h4 class="alert-heading">Notice!</h4>
       <p class="mb-0">All new auctions are submitted for review to one of our moderators. <span class="alert-link">They will only become public once accepted</span> and you will be notified at the time.</p>
     </div>
-
     <div id="auction-form"
          class="container-fluid">
       <form action="#"
             method="post"
             class="w-50 mx-auto py-5">
+            <hr class="my-2">
         <div class="form-group">
 
           <label class="col-form-label required"
@@ -314,6 +314,22 @@
             </div>
           </div>
         </div>
+        <label class="col-form-label required"
+               for="category">Select Auction Duration</label>
+        <select class="form-control"
+                id="auctionDuration"
+                name="auctionDuration"
+                required>
+          <option value="" selected disabled hidden># Days</option>
+          <option value="1">1 Day</option>
+          <option value="2">2 Days</option>
+          <option value="3">3 Days</option>
+          <option value="4">4 Days</option>
+          <option value="5">5 Days</option>
+          <option value="6">6 Days</option>
+          <option value="7">7 Days</option>
+        </select>
+        <hr class="my-4">
         <div class="row mt-5">
           <button class="btn btn-outline-primary w-100 col"
                   type="button">Preview Auction</button>
