@@ -187,6 +187,9 @@ label span.badge {
     margin: 0;
     &:extend(.btn-group-justified all);
   }
+  #auctionProfile {
+    margin-top: 2em;
+  }
 }
 
 @media screen and (max-width: 350px) {
@@ -244,19 +247,19 @@ label span.badge {
     max-width: 100%;
     margin: auto;
   }
-  .bidsListViewMore .form-control, .sellsListViewMore .form-control {
+  .bidsListViewMore .form-control, .sellsListViewMore .form-control, #pendingListViewMore .form-control, #selling .form-control {
     width: 100%;
     display: inline;
   }
-  .bidsListViewMore form span, .sellsListViewMore span {
+  .bidsListViewMore form span, .sellsListViewMore form span, #pendingListViewMore form span, #selling form span {
     padding: 0;
     flex: 0 0 3.0%;
   }
-  .bidsListViewMore form input, .sellsListViewMore form input {
+  .bidsListViewMore form input, .sellsListViewMore form input, #pendingListViewMore form input, #selling form input {
     padding-left: 1em;
     padding-right: 0;
   }
-  .bidsListViewMore form .btn, .sellsListViewMore form .btn {
+  .bidsListViewMore form .btn, .sellsListViewMore form .btn, #pendingListViewMore form .btn, #selling form .btn {
     padding-right: 0.5em;
     padding-left: 0.5em;
   }
@@ -284,6 +287,6 @@ nav.navbar:nth-child(2) {
   border-right: 1px solid;
 }
 
-.bidsListViewMore, .sellsListViewMore {
+.bidsListViewMore, .sellsListViewMore, #pendingListViewMore {
   text-align: center;
 }
