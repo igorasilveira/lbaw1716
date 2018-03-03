@@ -1,5 +1,10 @@
 /* common */
 
+.max-img-size {
+  height: 200px;
+  width: 200px;
+}
+
 .index-banner {
   height: 500px;
   width: 100%;
