@@ -296,6 +296,10 @@ nav.navbar:nth-child(2) {
   text-align: center;
 }
 
+#auctionProfile .img-fluid {
+  width: 340px;
+  height: 340px;
+}
 /*contact.html*/
 #map {
   height: 400px;
