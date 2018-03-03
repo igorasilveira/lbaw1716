@@ -102,8 +102,12 @@
       <h1 class="display-6"> My Profile </h1>
     </div>
 
+    <div class="alert alert-dismissible alert-danger my-4 w-75 mx-auto box-shadow">
+      <strong class="alert-link">Attention!</strong> You have pending actions required on finished auctions.
+    </div>
     <div id="profile-container"
          class="jumbotron">
+
       <div class="row">
         <div class="col"> <a href="#"
              title="Item 1"><img src="images/photos/igor_foto.jpg"
@@ -225,7 +229,6 @@
              id="pending"
              role="tabpanel"
              aria-labelledby="pending-tab">
-          <!-- TODO: isto é para quando nao é vazia
             <table class="table table-hover">
               <thead>
                 <tr>
@@ -236,11 +239,18 @@
                 </tr>
               </thead>
               <tbody>
+                <tr class="table">
+                  <th scope="row">#99217</th>
+                  <td>Ryzen 1300X</td>
+                  <td>30-12-2017</td>
+                  <td style="cursor: pointer"><a onclick='confirm("TODO")'><img src="images/confirm_edit.png" height="20px" /><span class="px-4 text-success align-bottom">Rate Seller</span></a></td>
+                </tr>
               </tbody>
-            </table> -->
-          <div class="alert alert-dismissible alert-info my-4">
+            </table>
+          <!-- TODO: empty
+           <div class="alert alert-dismissible alert-info my-4">
             <strong>Awesome!</strong> You have no pending businesses here.
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
