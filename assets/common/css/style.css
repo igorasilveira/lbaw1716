@@ -290,3 +290,16 @@ nav.navbar:nth-child(2) {
 .bidsListViewMore, .sellsListViewMore, #pendingListViewMore {
   text-align: center;
 }
+
+/*contact.html*/
+#map {
+  height: 400px;
+  width: 100%;
+  
+}
+
+#contactDetails {
+  position: absolute;
+  top: 300px;
+  right: 20px;
+}
