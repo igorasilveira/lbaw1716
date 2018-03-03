@@ -29,82 +29,99 @@
 	<body>
 		<header>
 			<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-				<a class="navbar-brand"
-				   href="home_AuthenticatedUser.html"><img src="images/pcAuctions_logo.png" width="40" height="40"/></a>
-				<button class="navbar-toggler"
-				        type="button"
-				        data-toggle="collapse"
-				        data-target="#navbarColor01"
-				        aria-controls="navbarColor01"
-				        aria-expanded="false"
-				        aria-label="Toggle navigation"
-				        style="">
-  			    <span class="navbar-toggler-icon"></span>
-  			  </button>
-				<div class="collapse navbar-collapse"
-				     id="navbarColor01">
-					<div class="col-sm-8">
-						<form class="form-inline my-2 my-lg-0">
-							<input class="form-control mr-sm-2 col-sm-8"
-							       placeholder="Search"
-							       type="text">
-							<button class="btn btn-secondary my-2 my-sm-0 col-sm-3"
-							        type="submit">Search</button>
-						</form>
+			  <a class="navbar-brand" href="#">Navbar</a>
+			  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation" style="">
+			    <span class="navbar-toggler-icon"></span>
+			  </button>
+
+			  <div class="collapse navbar-collapse" id="navbarColor01">
+			    <ul class="navbar-nav mr-auto">
+			      <li class="nav-item">
+			        <a class="nav-link" href="#">Towers w/ Components</a>
+			      </li>
+			      <li class="nav-item">
+			        <a class="nav-link" href="#">Towers</a>
+			      </li>
+			      <li class="nav-item">
+			        <a class="nav-link" href="#">Laptops</a>
+			      </li>
+			      <li class="nav-item">
+			        <a class="nav-link" href="#">Components</a>
+			      </li>
+			      <li class="nav-item">
+			        <a class="nav-link" href="#">Peripherals</a>
+			      </li>
+			      <li class="nav-item">
+			        <a class="nav-link" href="#">Others</a>
+			      </li>
+			    </ul>
+			    <form class="form-inline my-2 my-lg-0">
+			      <input class="form-control mr-sm-2" type="text" placeholder="Search">
+			      <button class="btn btn-secondary btn-sm my-2 my-sm-0 rounded-circle" type="submit">Go</button>
+			    </form>
+					<div id="signin"
+					     class="col-sm-2 nav-item dropdown">
+					  <a class="nav-link dropdown-toggle btn-primary"
+					     data-toggle="dropdown"
+					     href="#"
+					     role="button"
+					     aria-haspopup="true"
+					     aria-expanded="false">Sign In</a>
+					  <div class="dropdown-menu"
+					       role="menu"
+					       x-placement="bottom-start"
+					       style="position: absolute;
+					              transform: translate3d(0px, 39px, 0px);
+					             top: 0px; left: 0px;
+					             will-change: transform;">
+					    <li>
+					      <form action="create_account.php"
+					            method="POST"
+					            enctype="multipart/form-data"
+					            id="signin"
+					            class="navbar-form">
+					        <div class="col-sm-12">
+					          <div class="form-inline">
+					            <label class="col-sm-3 col-form-label mr-sm-3">
+					          Username:
+					        </label>
+					            <input class="col-sm-8"
+					                   type="text">
+					          </div>
+					          <div class="form-inline">
+					            <label class="col-sm-3 col-form-label mr-sm-3">
+					          Password:
+					        </label>
+					            <input class="col-sm-8"
+					                   type="password">
+					          </div>
+					        </div>
+					        <div class="btn-group">
+					          <div class="btn-group">
+					            <input id="signin"
+					                   class="btn btn-xs btn-secondary"
+					                   type="submit"
+					                   value="Sign In" />
+					          </div>
+					          <div class="g-signin2"
+					               data-onsuccess="onSignIn"
+					               -theme="light"
+					               data-width="38"
+					               data-height="38"
+					               data-longtitle="false"
+					               style="margin:0 8px;">
+					          </div>
+					        </div>
+					      </form>
+					    </li>
+					    <br />
+					    <a id="registerNav"
+					       href="register.html"> No account yet? Sign Up here! </a> -
+					  </div>
 					</div>
-					<div id="profileNav"
-					     class="col-sm-2 nav-item">
-						<ul class="navbar-nav">
-							<li class="nav-item col-sm-6">
-								<a class="nav-link dropdown-toggle"
-								   data-toggle="dropdown"
-								   role="button"
-								   aria-haspopup="true"
-								   aria-expanded="false"
-								   href="#">Igor</a>
-								<div class="dropdown-menu"
-								     role="menu"
-								     x-placement="bottom-start"
-								     style="position: absolute;
-                               transform: translate3d(0px, 39px, 0px);
-                              top: 0px; left: 0px;
-                              will-change: transform;">
-									<div class="container">
-										<div class="dropdown-header"> Go To</div>
-										<ul>
-											<li><a href="profile.html"> Profile </a></li>
-											<li><a href="myauctions_user.html"> My Auctions </a></li>
-											<li><a href="index.html"> Log Out </a></li>
-										</ul>
-									</div>
-								</div>
-							</li>
-							<li class="col-sm-6">
-								<a href="profile.html">
-                     <img
-                       src="images/photos/igor_foto.jpg"
-                       href="profile.html"
-                       class="img-fluid profile-pic"
-                       width="40"
-                       height="40">
-                  </a>
-							</li>
-						</ul>
-					</div>
-				</div>
+			  </div>
 			</nav>
 		</header>
-
-		<nav id="categories"
-		     class="navbar navbar-expand-lg nav-justified">
-			<button class="navbar-toggler"
-			        type="button"
-			        data-toggle="collapse"
-			        data-target="#catNav"
-			        aria-controls="catNav"
-			        aria-expanded="false"
-			        aria-label="Toggle navigation"
-			        style="">
 <img src="images/menu-icon-300px.png" width="20" height="20"/>
 </button>
 			<div id="catNav"

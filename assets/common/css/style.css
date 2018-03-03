@@ -102,7 +102,7 @@ label span.badge {
 #signin.btn-xs {
   padding: 1em;
   padding-bottom: 2em;
-  margin-left: 14em;
+  margin-left: 2em;
   width: 90px;
   height: 3em;
   font-size: 12px;
@@ -115,7 +115,7 @@ label span.badge {
 }
 
 #signin.nav-item.dropdown a {
-  margin-left: 18em;
+  margin-right: 2em;
   width: 10em;
 }
 
