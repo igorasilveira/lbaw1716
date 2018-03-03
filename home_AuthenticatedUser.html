@@ -30,7 +30,7 @@
 		<header>
 			<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
 				<a class="navbar-brand"
-				   href="index.html"><img src="images/pcAuctions_logo.png" width="40" height="40"/></a>
+				   href="home_AuthenticatedUser.html"><img src="images/pcAuctions_logo.png" width="40" height="40"/></a>
 				<button class="navbar-toggler"
 				        type="button"
 				        data-toggle="collapse"
@@ -43,8 +43,7 @@
   			  </button>
 				<div class="collapse navbar-collapse"
 				     id="navbarColor01">
-					<div id="searchBar"
-					     class="col-sm-8">
+					<div class="col-sm-8">
 						<form class="form-inline my-2 my-lg-0">
 							<input class="form-control mr-sm-2 col-sm-8"
 							       placeholder="Search"
@@ -57,8 +56,28 @@
 					     class="col-sm-2 nav-item">
 						<ul class="navbar-nav">
 							<li class="nav-item col-sm-6">
-								<a class="nav-link"
-								   href="profile.html">Igor</a>
+								<a class="nav-link dropdown-toggle"
+								   data-toggle="dropdown"
+								   role="button"
+								   aria-haspopup="true"
+								   aria-expanded="false"
+								   href="#">Igor</a>
+								<div class="dropdown-menu"
+								     role="menu"
+								     x-placement="bottom-start"
+								     style="position: absolute;
+                               transform: translate3d(0px, 39px, 0px);
+                              top: 0px; left: 0px;
+                              will-change: transform;">
+									<div class="container">
+										<div class="dropdown-header"> Go To</div>
+										<ul>
+											<li><a href="profile.html"> Profile </a></li>
+											<li><a href="myauctions_user.html"> My Auctions </a></li>
+											<li><a href="index.html"> Log Out </a></li>
+										</ul>
+									</div>
+								</div>
 							</li>
 							<li class="col-sm-6">
 								<a href="profile.html">
@@ -99,7 +118,8 @@
 							   data-toggle="tooltip"
 							   data-placement="left"
 							   title=""
-							   data-original-title="Tooltip on Left" href="#"> Towers with Components </a>
+							   data-original-title="Tooltip on Left"
+							   href="#"> Towers with Components </a>
 						</li>
 						<li class="nav-item">
 							<a type="button"
@@ -107,7 +127,8 @@
 							   data-toggle="tooltip"
 							   data-placement="top"
 							   title=""
-							   data-original-title="Tooltip on Top" href="#"> Towers Only </a>
+							   data-original-title="Tooltip on Top"
+							   href="#"> Towers Only </a>
 						</li>
 						<li class="nav-item">
 							<a type="button"
@@ -115,7 +136,8 @@
 							   data-toggle="tooltip"
 							   data-placement="bottom"
 							   title=""
-							   data-original-title="Tooltip on bottom" href="categoryLaptops.html"> Laptops </a>
+							   data-original-title="Tooltip on bottom"
+							   href="categoryLaptops.html"> Laptops </a>
 						</li>
 						<li class="nav-item">
 							<a type="button"
@@ -123,7 +145,8 @@
 							   data-toggle="tooltip"
 							   data-placement="right"
 							   title=""
-							   data-original-title="Tooltip on Right" href="#"> Components </a>
+							   data-original-title="Tooltip on Right"
+							   href="#"> Components </a>
 						</li>
 						<li class="nav-item">
 							<a type="button"
@@ -131,7 +154,8 @@
 							   data-toggle="tooltip"
 							   data-placement="right"
 							   title=""
-							   data-original-title="Tooltip on Right" href="#"> Peripherics </a>
+							   data-original-title="Tooltip on Right"
+							   href="#"> Peripherals </a>
 						</li>
 						<li class="nav-item">
 							<a type="button"
@@ -139,7 +163,8 @@
 							   data-toggle="tooltip"
 							   data-placement="right"
 							   title=""
-							   data-original-title="Tooltip on Right" href="#"> Others </a>
+							   data-original-title="Tooltip on Right"
+							   href="#"> Others </a>
 						</li>
 					</ul>
 				</div>
@@ -166,7 +191,7 @@
 			<hr class="my-3">
 			<div class="container-fluid row my-5">
 				<div id="lateralNavBar"
-				     class="col-sm-3 my-auto bg-white p-4">
+				     class="col-sm-3 bg-white p-4">
 					<navbar>
 						<ul class="list-group box-shadow">
 							<li class="list-group-item d-flex justify-content-between align-items-center">
@@ -199,79 +224,468 @@
 				</div>
 
 				<div class="container-fluid row col-sm-9 my-auto bg-white p-4">
-					<ul id="auctionsMosaic"
-					    class="container-fluid row col-sm-12 row">
-						<li class="col-sm-4">
-							<div id="auctionProfile">
-								<img class="img-fluid"
-								     href="#"
-								     src="https://2.bp.blogspot.com/-d5PF-eydq78/WQtZbOqsYwI/AAAAAAAAIkA/E_jyk_rXk4g60oukZ4yVH5TrBMT7IFXgACK4B/s320/Asus%2BB350%2BPlus.jpg" />
-								<div id="infoAuctionProfile"
-								     class="container-fluid">
-									<div id="auctionName">
-										<a href="#"
-										   class="text-info"> Motherboard - ASUS PRIME B350-PLUS Rs.8,125 </a>
+					<div id="auctionsMosaic"
+					     class="container-fluid row col-sm-12 row">
+						<div>
+							<h5> Towers with Components</h5>
+							<ul id="auctionsMosaic"
+							    class="container-fluid row col-sm-12 row">
+								<li class="col-sm-4">
+									<div id="auctionProfile">
+										<img class="img-fluid"
+										     href="#"
+										     src="https://images-na.ssl-images-amazon.com/images/I/41WtKtFCKoL._AC_SR160,160_.jpg" />
+										<div id="infoAuctionProfile"
+										     class="container-fluid">
+											<div id="auctionName">
+												<a href="#"
+												   class="text-info"> [Ryzen & GTX 1050 Ti Edition] SkyTech ArchAngel Gaming Computer Desktop PC Ryzen 1200 3.1GHz Quad-Core, GTX 1050 Ti 4GB, 8GB DDR4 2400, 1TB HDD, 24X DVD, Wi-Fi USB, Windows 10 Home 64-bit  </a>
+											</div>
+											<div id="time-bids"
+											     class="row">
+												<ul class="row col-sm-12 list-inline">
+													<li id="timeLeft"
+													    class="col-sm-5 mr-sm-1"> 5d 09h </li>
+													<li id="bidsDone"
+													    class="col-sm-5"> 14 Bids </li>
+												</ul>
+											</div>
+										</div>
 									</div>
-									<div id="time-bids"
-									     class="row">
-										<ul class="row col-sm-12 list-inline">
-											<li id="timeLeft"
-											    class="col-sm-5 mr-sm-1"> 5d 09h </li>
-											<li id="bidsDone"
-											    class="col-sm-5"> 14 Bids </li>
-										</ul>
+								</li>
+								<li class="col-sm-4">
+									<div id="auctionProfile">
+										<img class="img-fluid"
+										     href="#"
+										     src="https://images-na.ssl-images-amazon.com/images/I/81Pz14q%2B%2BHL._AC_SR201,266_.jpg"
+										     height="20" />
+										<div id="infoAuctionProfile"
+										     class="container-fluid">
+											<div id="auctionName">
+												<a href="#"
+												   class="text-info"> CYBERPOWERPC Gamer Xtreme GXIVR8020A4 Desktop Gaming PC (Intel i5-7400 3.0GHz, AMD RX 580 4GB, 8GB DDR4 RAM, 1TB 7200RPM HDD, WiFi, Win 10 Home), Black - VR Ready  </a>
+											</div>
+											<div id="time-bids"
+											     class="row">
+												<ul class="row col-sm-12 list-inline">
+													<li id="timeLeft"
+													    class="col-sm-5 mr-sm-1"> 5d 09h </li>
+													<li id="bidsDone"
+													    class="col-sm-5"> 14 Bids </li>
+												</ul>
+											</div>
+										</div>
 									</div>
-								</div>
-							</div>
-						</li>
-						<li class="col-sm-4">
-							<div id="auctionProfile">
-								<img class="img-fluid"
-								     href="#"
-								     src="https://1.bp.blogspot.com/-wrxKaUtdJPI/WRNCILD7jhI/AAAAAAAAIpc/mBn7HHLv80wwqALCxpqxeG7c6RxV63upACK4B/s320/Toshiba%2B2TB%2B7200RPM.jpg"
-								     height="20" />
-								<div id="infoAuctionProfile"
-								     class="container-fluid">
-									<div id="auctionName">
-										<a href="#"
-										   class="text-info"> HDD - Toshiba 2TB 7200RPM Rs.5,400 </a>
+								</li>
+								<li class="col-sm-4">
+									<div id="auctionProfile">
+										<img class="img-fluid"
+										     href="#"
+										     src="https://images-na.ssl-images-amazon.com/images/I/51P963Jq89L._AC_SR201,266_.jpg" />
+										<div id="infoAuctionProfile"
+										     class="container-fluid">
+											<div id="auctionName">
+												<a href="#"
+												   class="text-info"> 2018 Newest Dell Premium Business Flagship Desktop Tower with Keyboard&Mouse Intel Core i5-7400 Processor 12GB DDR4 RAM 1TB 7200RPM HDD Intel 630 Graphics DVD-RW HDMI VGA Bluetooth Windows 10-Black  </a>
+											</div>
+											<div id="time-bids"
+											     class="row">
+												<ul class="row col-sm-12 list-inline">
+													<li id="timeLeft"
+													    class="col-sm-5 mr-sm-1"> 5d 09h </li>
+													<li id="bidsDone"
+													    class="col-sm-5"> 14 Bids </li>
+												</ul>
+											</div>
+										</div>
 									</div>
-									<div id="time-bids"
-									     class="row">
-										<ul class="row col-sm-12 list-inline">
-											<li id="timeLeft"
-											    class="col-sm-5 mr-sm-1"> 5d 09h </li>
-											<li id="bidsDone"
-											    class="col-sm-5"> 14 Bids </li>
-										</ul>
+								</li>
+							</ul>
+						</div>
+						<br/>
+						<div>
+							<h5> Towers Only </h5>
+							<ul id="auctionsMosaic"
+							    class="container-fluid row col-sm-12 row">
+								<li class="col-sm-4">
+									<div id="auctionProfile">
+										<img class="img-fluid"
+										     href="#"
+										     src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcSYkvZPYNcIa0gD6hduh3i3OMiMp6kQRlC3xeDrOj9m9Ta0zioQaPwhEv7XVTUQLNrhVxWtT4g&usqp=CAc" />
+										<div id="infoAuctionProfile"
+										     class="container-fluid">
+											<div id="auctionName">
+												<a href="#"
+												   class="text-info"> NOX Hummer TGX </a>
+											</div>
+											<div id="time-bids"
+											     class="row">
+												<ul class="row col-sm-12 list-inline">
+													<li id="timeLeft"
+													    class="col-sm-5 mr-sm-1"> 5d 09h </li>
+													<li id="bidsDone"
+													    class="col-sm-5"> 14 Bids </li>
+												</ul>
+											</div>
+										</div>
 									</div>
-								</div>
-							</div>
-						</li>
-						<li class="col-sm-4">
-							<div id="auctionProfile">
-								<img class="img-fluid"
-								     href="#"
-								     src="https://3.bp.blogspot.com/-XSGH_w2pt_U/WQtZ3062d4I/AAAAAAAAIkg/utBZvxuF_UUfCliU9Prjwoovkhpq5-xrgCK4B/s320/MSI%2BRX%2B580%2BGAMING%2BX.jpg" />
-								<div id="infoAuctionProfile"
-								     class="container-fluid">
-									<div id="auctionName">
-										<a href="#"
-										   class="text-info"> Graphics Card - MSI RX 580 GAMING X 8GB Rs.23,820 </a>
+								</li>
+								<li class="col-sm-4">
+									<div id="auctionProfile">
+										<img class="img-fluid"
+										     href="#"
+										     src="https://img1.banggood.com/thumb/view/oaupload/banggood/images/2D/28/3c232b3d-34ee-4427-aaa4-2fb61d1ccf78.jpg"
+										     height="20" />
+										<div id="infoAuctionProfile"
+										     class="container-fluid">
+											<div id="auctionName">
+												<a href="#"
+												   class="text-info"> Clear Side Gaming Black Micro ATX ITX PC Case </a>
+											</div>
+											<div id="time-bids"
+											     class="row">
+												<ul class="row col-sm-12 list-inline">
+													<li id="timeLeft"
+													    class="col-sm-5 mr-sm-1"> 5d 09h </li>
+													<li id="bidsDone"
+													    class="col-sm-5"> 14 Bids </li>
+												</ul>
+											</div>
+										</div>
 									</div>
-									<div id="time-bids"
-									     class="row">
-										<ul class="row col-sm-12 list-inline">
-											<li id="timeLeft"
-											    class="col-sm-5 mr-sm-1"> 5d 09h </li>
-											<li id="bidsDone"
-											    class="col-sm-5"> 14 Bids </li>
-										</ul>
+								</li>
+								<li class="col-sm-4">
+									<div id="auctionProfile">
+										<img class="img-fluid"
+										     href="#"
+										     src="https://images10.newegg.com/ProductImageCompressAll300/11-133-327-V20.jpg" />
+										<div id="infoAuctionProfile"
+										     class="container-fluid">
+											<div id="auctionName">
+												<a href="#"
+												   class="text-info"> Thermaltake Tower 900 Snow Edition Tempered Glass Fully Modular E-ATX Vertical Super Tower Chassis CA-1H1-00F6WN-00 </a>
+											</div>
+											<div id="time-bids"
+											     class="row">
+												<ul class="row col-sm-12 list-inline">
+													<li id="timeLeft"
+													    class="col-sm-5 mr-sm-1"> 5d 09h </li>
+													<li id="bidsDone"
+													    class="col-sm-5"> 14 Bids </li>
+												</ul>
+											</div>
+										</div>
 									</div>
-								</div>
-							</div>
-						</li>
-					</ul>
+								</li>
+							</ul>
+						</div>
+						<br/>
+						<div>
+							<h5> Laptops </h5>
+							<ul id="auctionsMosaic"
+							    class="container-fluid row col-sm-12 row">
+								<li class="col-sm-4">
+									<div id="auctionProfile">
+										<img class="img-fluid"
+										     href="#"
+										     src="https://static.fnac-static.com/multimedia/Images/PT/NR/d9/16/12/1185497/1540-1/tsp20170623132310/Apple-MacBook-Pro-13-Retina-i5-3-1GHz-8GB-256GB-Intel-Iris-Plus-650-com-Touch-Bar-e-Touch-ID-Cinzento-Sideral.jpg" />
+										<div id="infoAuctionProfile"
+										     class="container-fluid">
+											<div id="auctionName">
+												<a href="#"
+												   class="text-info"> Apple MacBook Pro 13'' Retina i5-3,1GHz | 8GB | 256GB | Intel Iris Plus 650 com Touch Bar e Touch </a>
+											</div>
+											<div id="time-bids"
+											     class="row">
+												<ul class="row col-sm-12 list-inline">
+													<li id="timeLeft"
+													    class="col-sm-5 mr-sm-1"> 5d 09h </li>
+													<li id="bidsDone"
+													    class="col-sm-5"> 14 Bids </li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li class="col-sm-4">
+									<div id="auctionProfile">
+										<img class="img-fluid"
+										     href="#"
+										     src="https://static.fnac-static.com/multimedia/Images/PT/NR/23/05/13/1246499/1540-1.jpg" />
+										<div id="infoAuctionProfile"
+										     class="container-fluid">
+											<div id="auctionName">
+												<a href="#"
+												   class="text-info"> Laptop Asus Zenbook UX430UA-57CHDCB1  </a>
+											</div>
+											<div id="time-bids"
+											     class="row">
+												<ul class="row col-sm-12 list-inline">
+													<li id="timeLeft"
+													    class="col-sm-5 mr-sm-1"> 5d 09h </li>
+													<li id="bidsDone"
+													    class="col-sm-5"> 14 Bids </li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li class="col-sm-4">
+									<div id="auctionProfile">
+										<img class="img-fluid"
+										     href="#"
+										     src="https://static.fnac-static.com/multimedia/Images/PT/NR/fe/e3/14/1369086/1540-1.jpg" />
+										<div id="infoAuctionProfile"
+										     class="container-fluid">
+											<div id="auctionName">
+												<a href="#"
+												   class="text-info"> Laptop Asus S410UN-78AM5CB1 </a>
+											</div>
+											<div id="time-bids"
+											     class="row">
+												<ul class="row col-sm-12 list-inline">
+													<li id="timeLeft"
+													    class="col-sm-5 mr-sm-1"> 5d 09h </li>
+													<li id="bidsDone"
+													    class="col-sm-5"> 14 Bids </li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+						<br/>
+						<div>
+							<h5> Components</h5>
+							<ul id="auctionsMosaic"
+							    class="container-fluid row col-sm-12 row">
+								<li class="col-sm-4">
+									<div id="auctionProfile">
+										<img class="img-fluid"
+										     href="#"
+										     src="https://2.bp.blogspot.com/-d5PF-eydq78/WQtZbOqsYwI/AAAAAAAAIkA/E_jyk_rXk4g60oukZ4yVH5TrBMT7IFXgACK4B/s320/Asus%2BB350%2BPlus.jpg" />
+										<div id="infoAuctionProfile"
+										     class="container-fluid">
+											<div id="auctionName">
+												<a href="#"
+												   class="text-info"> Motherboard - ASUS PRIME B350-PLUS Rs.8,125 </a>
+											</div>
+											<div id="time-bids"
+											     class="row">
+												<ul class="row col-sm-12 list-inline">
+													<li id="timeLeft"
+													    class="col-sm-5 mr-sm-1"> 5d 09h </li>
+													<li id="bidsDone"
+													    class="col-sm-5"> 14 Bids </li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li class="col-sm-4">
+									<div id="auctionProfile">
+										<img class="img-fluid"
+										     href="#"
+										     src="https://static.lvengine.net/aquario/thumb/&w=555&h=555&src=/Imgs/produtos/product_71153/0-761345-05055-5.jpg" />
+										<div id="infoAuctionProfile"
+										     class="container-fluid">
+											<div id="auctionName">
+												<a href="#"
+												   class="text-info"> Fonte Alim. Antec 0-761345-05055-5 550W ATX Preta </a>
+											</div>
+											<div id="time-bids"
+											     class="row">
+												<ul class="row col-sm-12 list-inline">
+													<li id="timeLeft"
+													    class="col-sm-5 mr-sm-1"> 5d 09h </li>
+													<li id="bidsDone"
+													    class="col-sm-5"> 14 Bids </li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li class="col-sm-4">
+									<div id="auctionProfile">
+										<img class="img-fluid"
+										     href="#"
+										     src="https://static.lvengine.net/aquario/thumb/&w=555&h=555&src=/Imgs/produtos/product_97919/0-761345-10106-6.jpg" />
+										<div id="infoAuctionProfile"
+										     class="container-fluid">
+											<div id="auctionName">
+												<a href="#"
+												   class="text-info"> Antec ISK110 Vesa-U3 </a>
+											</div>
+											<div id="time-bids"
+											     class="row">
+												<ul class="row col-sm-12 list-inline">
+													<li id="timeLeft"
+													    class="col-sm-5 mr-sm-1"> 5d 09h </li>
+													<li id="bidsDone"
+													    class="col-sm-5"> 14 Bids </li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+						<br/>
+						<div>
+							<h5> Towers with Components</h5>
+							<ul id="auctionsMosaic"
+							    class="container-fluid row col-sm-12 row">
+								<li class="col-sm-4">
+									<div id="auctionProfile">
+										<img class="img-fluid"
+										     href="#"
+										     src="https://2.bp.blogspot.com/-d5PF-eydq78/WQtZbOqsYwI/AAAAAAAAIkA/E_jyk_rXk4g60oukZ4yVH5TrBMT7IFXgACK4B/s320/Asus%2BB350%2BPlus.jpg" />
+										<div id="infoAuctionProfile"
+										     class="container-fluid">
+											<div id="auctionName">
+												<a href="#"
+												   class="text-info"> Motherboard - ASUS PRIME B350-PLUS Rs.8,125 </a>
+											</div>
+											<div id="time-bids"
+											     class="row">
+												<ul class="row col-sm-12 list-inline">
+													<li id="timeLeft"
+													    class="col-sm-5 mr-sm-1"> 5d 09h </li>
+													<li id="bidsDone"
+													    class="col-sm-5"> 14 Bids </li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li class="col-sm-4">
+									<div id="auctionProfile">
+										<img class="img-fluid"
+										     href="#"
+										     src="https://1.bp.blogspot.com/-wrxKaUtdJPI/WRNCILD7jhI/AAAAAAAAIpc/mBn7HHLv80wwqALCxpqxeG7c6RxV63upACK4B/s320/Toshiba%2B2TB%2B7200RPM.jpg"
+										     height="20" />
+										<div id="infoAuctionProfile"
+										     class="container-fluid">
+											<div id="auctionName">
+												<a href="#"
+												   class="text-info"> HDD - Toshiba 2TB 7200RPM Rs.5,400 </a>
+											</div>
+											<div id="time-bids"
+											     class="row">
+												<ul class="row col-sm-12 list-inline">
+													<li id="timeLeft"
+													    class="col-sm-5 mr-sm-1"> 5d 09h </li>
+													<li id="bidsDone"
+													    class="col-sm-5"> 14 Bids </li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li class="col-sm-4">
+									<div id="auctionProfile">
+										<img class="img-fluid"
+										     href="#"
+										     src="https://3.bp.blogspot.com/-XSGH_w2pt_U/WQtZ3062d4I/AAAAAAAAIkg/utBZvxuF_UUfCliU9Prjwoovkhpq5-xrgCK4B/s320/MSI%2BRX%2B580%2BGAMING%2BX.jpg" />
+										<div id="infoAuctionProfile"
+										     class="container-fluid">
+											<div id="auctionName">
+												<a href="#"
+												   class="text-info"> Graphics Card - MSI RX 580 GAMING X 8GB Rs.23,820 </a>
+											</div>
+											<div id="time-bids"
+											     class="row">
+												<ul class="row col-sm-12 list-inline">
+													<li id="timeLeft"
+													    class="col-sm-5 mr-sm-1"> 5d 09h </li>
+													<li id="bidsDone"
+													    class="col-sm-5"> 14 Bids </li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+						<br />
+						<div>
+							<h5> Peripherals </h5>
+							<ul id="auctionsMosaic"
+							    class="container-fluid row col-sm-12 row">
+								<li class="col-sm-4">
+									<div id="auctionProfile">
+										<img class="img-fluid"
+										     href="#"
+										     src="https://images10.newegg.com/ProductImageCompressAll300/23-839-039-02.jpg" />
+										<div id="infoAuctionProfile"
+										     class="container-fluid">
+											<div id="auctionName">
+												<a href="#"
+												   class="text-info"> AZIO MK HUE Red USB Backlit Mechanical Keyboard </a>
+											</div>
+											<div id="time-bids"
+											     class="row">
+												<ul class="row col-sm-12 list-inline">
+													<li id="timeLeft"
+													    class="col-sm-5 mr-sm-1"> 5d 09h </li>
+													<li id="bidsDone"
+													    class="col-sm-5"> 14 Bids </li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li class="col-sm-4">
+									<div id="auctionProfile">
+										<img class="img-fluid"
+										     href="#"
+										     src="https://images10.newegg.com/NeweggImage/ProductImageCompressAll300/ABMK_131315093470614500kdOObwcTNO.jpg"
+										     height="20" />
+										<div id="infoAuctionProfile"
+										     class="container-fluid">
+											<div id="auctionName">
+												<a href="#"
+												   class="text-info"> Mini Numeric Keypad 23Keys Digital Keypad 2.4G USB Wireless Keyboard High Quality Numpad For Desktop Notebook Compatible </a>
+											</div>
+											<div id="time-bids"
+											     class="row">
+												<ul class="row col-sm-12 list-inline">
+													<li id="timeLeft"
+													    class="col-sm-5 mr-sm-1"> 5d 09h </li>
+													<li id="bidsDone"
+													    class="col-sm-5"> 14 Bids </li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li class="col-sm-4">
+									<div id="auctionProfile">
+										<img class="img-fluid"
+										     href="#"
+										     src="https://images10.newegg.com/NeweggImage/ProductImageCompressAll300/26-104-914-03.jpg" />
+										<div id="infoAuctionProfile"
+										     class="container-fluid">
+											<div id="auctionName">
+												<a href="#"
+												   class="text-info"> Logitech G602 910-003820 Black 11 Buttons 1 x Wheel USB RF Wireless Optical 2500 dpi Gaming Mouse  </a>
+											</div>
+											<div id="time-bids"
+											     class="row">
+												<ul class="row col-sm-12 list-inline">
+													<li id="timeLeft"
+													    class="col-sm-5 mr-sm-1"> 5d 09h </li>
+													<li id="bidsDone"
+													    class="col-sm-5"> 14 Bids </li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
 				</div>
 			</div>
 			<hr class="my-4">

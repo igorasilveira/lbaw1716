@@ -25,12 +25,12 @@
           href="assets/common/css/style.css">
   </head>
 
-  <body>
 
+  <body>
     <header>
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <a class="navbar-brand"
-           href="index.html"><img src="images/pcAuctions_logo.png" width="40" height="40"/></a>
+           href="home_AuthenticatedUser.html"><img src="images/pcAuctions_logo.png" width="40" height="40"/></a>
         <button class="navbar-toggler"
                 type="button"
                 data-toggle="collapse"
@@ -39,8 +39,8 @@
                 aria-expanded="false"
                 aria-label="Toggle navigation"
                 style="">
-			    <span class="navbar-toggler-icon"></span>
-			  </button>
+  			    <span class="navbar-toggler-icon"></span>
+  			  </button>
         <div class="collapse navbar-collapse"
              id="navbarColor01">
           <div class="col-sm-8">
@@ -52,7 +52,44 @@
                       type="submit">Search</button>
             </form>
           </div>
-          <div class="col-sm-4">
+          <div id="profileNav"
+               class="col-sm-2 nav-item">
+            <ul class="navbar-nav">
+              <li class="nav-item col-sm-6">
+                <a class="nav-link dropdown-toggle"
+                   data-toggle="dropdown"
+                   role="button"
+                   aria-haspopup="true"
+                   aria-expanded="false"
+                   href="#">Igor</a>
+                <div class="dropdown-menu"
+                     role="menu"
+                     x-placement="bottom-start"
+                     style="position: absolute;
+                               transform: translate3d(0px, 39px, 0px);
+                              top: 0px; left: 0px;
+                              will-change: transform;">
+                  <div class="container">
+                    <div class="dropdown-header"> Go To</div>
+                    <ul>
+                      <li><a href="profile.html"> Profile </a></li>
+                      <li><a href="myauctions_user.html"> My Auctions </a></li>
+                      <li><a href="index.html"> Log Out </a></li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+              <li class="col-sm-6">
+                <a href="profile.html">
+                     <img
+                       src="images/photos/igor_foto.jpg"
+                       href="profile.html"
+                       class="img-fluid profile-pic"
+                       width="40"
+                       height="40">
+                  </a>
+              </li>
+            </ul>
           </div>
         </div>
       </nav>
@@ -65,37 +102,43 @@
               data-toggle="tooltip"
               data-placement="left"
               title=""
-              data-original-title="Tooltip on Left" href="#"> Towers with all Components and Peripherics </button>
+              data-original-title="Tooltip on Left"
+              href="#"> Towers with all Components and Peripherals </button>
       <button type="button"
               class="btn btn-secondary"
               data-toggle="tooltip"
               data-placement="top"
               title=""
-              data-original-title="Tooltip on Top" href="#"> Towers Only </button>
+              data-original-title="Tooltip on Top"
+              href="#"> Towers Only </button>
       <button type="button"
               class="btn btn-secondary"
               data-toggle="tooltip"
               data-placement="bottom"
               title=""
-              data-original-title="Tooltip on bottom" href="#"> Laptops </button>
+              data-original-title="Tooltip on bottom"
+              href="#"> Laptops </button>
       <button type="button"
               class="btn btn-secondary"
               data-toggle="tooltip"
               data-placement="right"
               title=""
-              data-original-title="Tooltip on Right" href="#"> Components </button>
+              data-original-title="Tooltip on Right"
+              href="#"> Components </button>
       <button type="button"
               class="btn btn-secondary"
               data-toggle="tooltip"
               data-placement="right"
               title=""
-              data-original-title="Tooltip on Right" href="#"> Peripherics </button>
+              data-original-title="Tooltip on Right"
+              href="#"> Peripherals </button>
       <button type="button"
               class="btn btn-secondary"
               data-toggle="tooltip"
               data-placement="right"
               title=""
-              data-original-title="Tooltip on Right" href="#"> Others </button>
+              data-original-title="Tooltip on Right"
+              href="#"> Others </button>
     </div>
 
     <div class="title jumbotron">
