@@ -21,7 +21,9 @@
     <script src="https://apis.google.com/js/platform.js"
             async
             defer></script>
-    <script src="assets/common/javascript/javascript.js" async defer></script>
+    <script src="assets/common/javascript/javascript.js"
+            async
+            defer></script>
     <link rel="stylesheet"
           href="assets/common/css/style.css">
   </head>
@@ -30,7 +32,8 @@
     <header>
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <a class="navbar-brand"
-           href="index.html" title="Back to Home page"><img
+           href="index.html"
+           title="Back to Home page"><img
                src="images/pcAuctions_logo.png"
                alt="logo"
                width="80"
@@ -134,344 +137,344 @@
       <h1 class="display-6"> Auctions's Control </h1>
     </div>
 
-    <div class="container-fluid w-75">
+    <div class="container-fluid">
 
       <div id="pending"
-      class="container-fluid">
-      <div id="pendingViewer">
-        <h2> Pending </h2>
-        <div class="row">
-          <div class="col-4">
-            <a href="#"
-            title="Item1">
+           class="container-fluid">
+        <div id="pendingViewer">
+          <h2> Pending </h2>
+          <div class="row">
+            <div class="col-4">
+              <a href="#"
+                 title="Item1">
             <img
             src="https://www.dinopc.com/media/catalog/product/cache/75eed2686e01eb22cb4050b2f40ddf97/e/3/e308-1.jpg"
             class="img-fluid"
             ></a>
-          </div>
-          <div class="col-4">
-            <a href="#"
-            title="Item2">
+            </div>
+            <div class="col-4">
+              <a href="#"
+                 title="Item2">
             <img
             src="https://www.laptopsdirect.co.uk/files/images/components-page-graphics-cards.jpg"
             class="img-fluid"
             ></a>
-          </div>
-          <div class="col-4">
-            <a href="#"
-            title="Item3">
+            </div>
+            <div class="col-4">
+              <a href="#"
+                 title="Item3">
             <img
             src="https://i.pinimg.com/736x/96/f8/6c/96f86cc832d55b050c66eabe25f6ac7f--socket-am-pc-components.jpg"
             class="img-fluid"
             ></a>
+            </div>
           </div>
         </div>
-      </div>
-      <button type="button"
-      class="btn
+        <button type="button"
+                class="btn
       btn-block
       btn-secondary
       dropdown-toggle"
-      data-toggle="collapse"
-      data-target="#pendingListViewMore">
+                data-toggle="collapse"
+                data-target="#pendingListViewMore">
       View More
     </button>
-    <div id="pendingListViewMore"
-    class="container-fluid collapse">
-    <div class="container-fluid">
-      <hr class="my-3">
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control col-7"
-        placeholder="Search"
-        type="text">
-        <span class="col-1"></span>
-        <button class="btn btn-primary my-2 col-4"
-        type="submit">Search</button>
-      </form>
-      <hr class="my-3">
-    </div>
-    <table id="pendingListViewMoreTable"
-    class="table table-hover">
-    <thead>
-      <tr class="table-dark">
-        <th scope="col">Photo of Item</th>
-        <th scope="col">Name of Auction</th>
-        <th scope="col">Brief Description</th>
-        <th scope="col">Name of Seller</th>
-        <th scope="col">Minimum Value</th>
-        <th scope="col">Buy Now Price</th>
-        <th scope="col">Lifetime of Auction</th>
-        <th scope="col">Aproval</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td scope="row"><img src="https://cdn.shopify.com/s/files/1/2354/6323/products/hyper212_512x.png?v=1511365040"
-          width="80"
-          height="80"></td>
-          <td> Hyper 212 LED CoolerMaster </td>
-          <td> Auction of a Hyper 212 LED CoolerMaster bought in 2017. Mostly unused. </td>
-          <td> Xpto_Seller </td>
-          <td> 20€ </td>
-          <td> 30€ </td>
-          <td> 1-03-2018 </td>
-          <td><img src="images/confirm_edit.png"
-            width="20"
-            height="20"
-            class="removeBtt"
-            title='Disapprove'
-            onclick="approveAuction(this)">
-            <img src="images/remove_logo.png"
-            width="20"
-            height="20"
-            class="removeBtt"
-            title='Disapprove'
-            onclick="disapproveAuction(this)"> </td>
-          </tr>
-          <tr>
-            <td scope="row"><img src="https://cdn.shopify.com/s/files/1/2354/6323/products/hyper212_512x.png?v=1511365040"
-              width="80"
-              height="80"></td>
-              <td> Hyper 212 LED CoolerMaster </td>
-              <td> Auction of a Hyper 212 LED CoolerMaster bought in 2017. Mostly unused. </td>
-              <td> Xpto_Seller </td>
-              <td> 20€ </td>
-              <td> 30€ </td>
-              <td> 1-03-2018 </td>
-              <td><img src="images/confirm_edit.png"
-                width="20"
-                height="20"
-                class="removeBtt"
-                title='Disapprove'
-                onclick="approveAuction(this)">
-                <img src="images/remove_logo.png"
-                width="20"
-                height="20"
-                class="removeBtt"
-                title='Disapprove'
-                onclick="disapproveAuction(this)"> </td>
+        <div id="pendingListViewMore"
+             class="container-fluid collapse">
+          <div class="container-fluid">
+            <hr class="my-3">
+            <form class="form-inline my-2 my-lg-0">
+              <input class="form-control col-7"
+                     placeholder="Search"
+                     type="text">
+              <span class="col-1"></span>
+              <button class="btn btn-primary my-2 col-4"
+                      type="submit">Search</button>
+            </form>
+            <hr class="my-3">
+          </div>
+          <table id="pendingListViewMoreTable"
+                 class="table table-hover">
+            <thead>
+              <tr class="table-dark">
+                <th scope="col">Photo of Item</th>
+                <th scope="col">Name of Auction</th>
+                <th scope="col">Brief Description</th>
+                <th scope="col">Name of Seller</th>
+                <th scope="col">Minimum Value</th>
+                <th scope="col">Buy Now Price</th>
+                <th scope="col">Lifetime of Auction</th>
+                <th scope="col">Aproval</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td scope="row"><img src="https://cdn.shopify.com/s/files/1/2354/6323/products/hyper212_512x.png?v=1511365040"
+                       width="80"
+                       height="80"></td>
+                <td> Hyper 212 LED CoolerMaster </td>
+                <td> Auction of a Hyper 212 LED CoolerMaster bought in 2017. Mostly unused. </td>
+                <td> Xpto_Seller </td>
+                <td> 20€ </td>
+                <td> 30€ </td>
+                <td> 1-03-2018 </td>
+                <td><img src="images/confirm_edit.png"
+                       width="20"
+                       height="20"
+                       class="removeBtt"
+                       title='Disapprove'
+                       onclick="approveAuction(this)">
+                  <img src="images/remove_logo.png"
+                       width="20"
+                       height="20"
+                       class="removeBtt"
+                       title='Disapprove'
+                       onclick="disapproveAuction(this)"> </td>
               </tr>
               <tr>
                 <td scope="row"><img src="https://cdn.shopify.com/s/files/1/2354/6323/products/hyper212_512x.png?v=1511365040"
-                  width="80"
-                  height="80"></td>
-                  <td> Hyper 212 LED CoolerMaster </td>
-                  <td> Auction of a Hyper 212 LED CoolerMaster bought in 2017. Mostly unused. </td>
-                  <td> Xpto_Seller </td>
-                  <td> 20€ </td>
-                  <td> 30€ </td>
-                  <td> 1-03-2018 </td>
-                  <td><img src="images/confirm_edit.png"
-                    width="20"
-                    height="20"
-                    class="removeBtt"
-                    title='Disapprove'
-                    onclick="approveAuction(this)">
-                    <img src="images/remove_logo.png"
-                    width="20"
-                    height="20"
-                    class="removeBtt"
-                    title='Disapprove'
-                    onclick="disapproveAuction(this)"> </td>
-                  </tr>
-                  <tr>
-                    <td scope="row"><img src="https://cdn.shopify.com/s/files/1/2354/6323/products/hyper212_512x.png?v=1511365040"
-                      width="80"
-                      height="80"></td>
-                      <td> Hyper 212 LED CoolerMaster </td>
-                      <td> Auction of a Hyper 212 LED CoolerMaster bought in 2017. Mostly unused. </td>
-                      <td> Xpto_Seller </td>
-                      <td> 20€ </td>
-                      <td> 30€ </td>
-                      <td> 1-03-2018 </td>
-                      <td><img src="images/confirm_edit.png"
-                        width="20"
-                        height="20"
-                        class="removeBtt"
-                        title='Disapprove'
-                        onclick="approveAuction(this)">
-                        <img src="images/remove_logo.png"
-                        width="20"
-                        height="20"
-                        class="removeBtt"
-                        title='Disapprove'
-                        onclick="disapproveAuction(this)"> </td>
-                      </tr>
-                      <tr>
-                        <td scope="row"><img src="https://cdn.shopify.com/s/files/1/2354/6323/products/hyper212_512x.png?v=1511365040"
-                          width="80"
-                          height="80"></td>
-                          <td> Hyper 212 LED CoolerMaster </td>
-                          <td> Auction of a Hyper 212 LED CoolerMaster bought in 2017. Mostly unused. </td>
-                          <td> Xpto_Seller </td>
-                          <td> 20€ </td>
-                          <td> 30€ </td>
-                          <td> 1-03-2018 </td>
-                          <td><img src="images/confirm_edit.png"
-                            width="20"
-                            height="20"
-                            class="removeBtt"
-                            title='Disapprove'
-                            onclick="approveAuction(this)">
-                            <img src="images/remove_logo.png"
-                            width="20"
-                            height="20"
-                            class="removeBtt"
-                            title='Disapprove'
-                            onclick="disapproveAuction(this)"> </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                      <div id="pagination">
-                        <ul class="pagination pagination-sm">
-                          <li class="page-item disabled">
-                            <a class="page-link"
-                            href="#">&laquo;</a>
-                          </li>
-                          <li class="page-item active">
-                            <a class="page-link"
-                            href="#">1</a>
-                          </li>
-                          <li class="page-item">
-                            <a class="page-link"
-                            href="#">2</a>
-                          </li>
-                          <li class="page-item">
-                            <a class="page-link"
-                            href="#">3</a>
-                          </li>
-                          <li class="page-item">
-                            <a class="page-link"
-                            href="#">4</a>
-                          </li>
-                          <li class="page-item">
-                            <a class="page-link"
-                            href="#">5</a>
-                          </li>
-                          <li class="page-item">
-                            <a class="page-link"
-                            href="#">&raquo;</a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                  <hr class="my-4">
-                  <div id="selling"
-                  class="container-fluid">
-                  <h2> Taking Place </h2>
-                  <div class="row">
-                    <div class="col-4">
-                      <a href="#"
-                      title="Item1">
+                       width="80"
+                       height="80"></td>
+                <td> Hyper 212 LED CoolerMaster </td>
+                <td> Auction of a Hyper 212 LED CoolerMaster bought in 2017. Mostly unused. </td>
+                <td> Xpto_Seller </td>
+                <td> 20€ </td>
+                <td> 30€ </td>
+                <td> 1-03-2018 </td>
+                <td><img src="images/confirm_edit.png"
+                       width="20"
+                       height="20"
+                       class="removeBtt"
+                       title='Disapprove'
+                       onclick="approveAuction(this)">
+                  <img src="images/remove_logo.png"
+                       width="20"
+                       height="20"
+                       class="removeBtt"
+                       title='Disapprove'
+                       onclick="disapproveAuction(this)"> </td>
+              </tr>
+              <tr>
+                <td scope="row"><img src="https://cdn.shopify.com/s/files/1/2354/6323/products/hyper212_512x.png?v=1511365040"
+                       width="80"
+                       height="80"></td>
+                <td> Hyper 212 LED CoolerMaster </td>
+                <td> Auction of a Hyper 212 LED CoolerMaster bought in 2017. Mostly unused. </td>
+                <td> Xpto_Seller </td>
+                <td> 20€ </td>
+                <td> 30€ </td>
+                <td> 1-03-2018 </td>
+                <td><img src="images/confirm_edit.png"
+                       width="20"
+                       height="20"
+                       class="removeBtt"
+                       title='Disapprove'
+                       onclick="approveAuction(this)">
+                  <img src="images/remove_logo.png"
+                       width="20"
+                       height="20"
+                       class="removeBtt"
+                       title='Disapprove'
+                       onclick="disapproveAuction(this)"> </td>
+              </tr>
+              <tr>
+                <td scope="row"><img src="https://cdn.shopify.com/s/files/1/2354/6323/products/hyper212_512x.png?v=1511365040"
+                       width="80"
+                       height="80"></td>
+                <td> Hyper 212 LED CoolerMaster </td>
+                <td> Auction of a Hyper 212 LED CoolerMaster bought in 2017. Mostly unused. </td>
+                <td> Xpto_Seller </td>
+                <td> 20€ </td>
+                <td> 30€ </td>
+                <td> 1-03-2018 </td>
+                <td><img src="images/confirm_edit.png"
+                       width="20"
+                       height="20"
+                       class="removeBtt"
+                       title='Disapprove'
+                       onclick="approveAuction(this)">
+                  <img src="images/remove_logo.png"
+                       width="20"
+                       height="20"
+                       class="removeBtt"
+                       title='Disapprove'
+                       onclick="disapproveAuction(this)"> </td>
+              </tr>
+              <tr>
+                <td scope="row"><img src="https://cdn.shopify.com/s/files/1/2354/6323/products/hyper212_512x.png?v=1511365040"
+                       width="80"
+                       height="80"></td>
+                <td> Hyper 212 LED CoolerMaster </td>
+                <td> Auction of a Hyper 212 LED CoolerMaster bought in 2017. Mostly unused. </td>
+                <td> Xpto_Seller </td>
+                <td> 20€ </td>
+                <td> 30€ </td>
+                <td> 1-03-2018 </td>
+                <td><img src="images/confirm_edit.png"
+                       width="20"
+                       height="20"
+                       class="removeBtt"
+                       title='Disapprove'
+                       onclick="approveAuction(this)">
+                  <img src="images/remove_logo.png"
+                       width="20"
+                       height="20"
+                       class="removeBtt"
+                       title='Disapprove'
+                       onclick="disapproveAuction(this)"> </td>
+              </tr>
+            </tbody>
+          </table>
+          <div id="pagination">
+            <ul class="pagination pagination-sm">
+              <li class="page-item disabled">
+                <a class="page-link"
+                   href="#">&laquo;</a>
+              </li>
+              <li class="page-item active">
+                <a class="page-link"
+                   href="#">1</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link"
+                   href="#">2</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link"
+                   href="#">3</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link"
+                   href="#">4</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link"
+                   href="#">5</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link"
+                   href="#">&raquo;</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <hr class="my-4">
+      <div id="selling"
+           class="container-fluid">
+        <h2> Taking Place </h2>
+        <div class="row">
+          <div class="col-4">
+            <a href="#"
+               title="Item1">
                       <img
                       src="https://www.idgcdn.com.au/products/image/12603/angle/8/614x480/332855/"
                       class="img-fluid"
                       ></a>
-                    </div>
-                    <div class="col-4">
-                      <a href="#"
-                      title="Item2">
+          </div>
+          <div class="col-4">
+            <a href="#"
+               title="Item2">
                       <img
                       src="https://www.worten.pt/i/345848161bbad4c47b5b1a5e50eda97686c23727.jpg"
                       class="img-fluid"
                       ></a>
-                    </div>
-                    <div class="col-4">
-                      <a href="#"
-                      title="Item3">
+          </div>
+          <div class="col-4">
+            <a href="#"
+               title="Item3">
                       <img
                       src="https://img.ibxk.com.br/2014/1/materias/49641513524175741.jpg?w=700&h=393&mode=crop"
                       class="img-fluid"
                       ></a>
-                    </div>
-                  </div>
-                  <button type="button"
-                  class="btn
+          </div>
+        </div>
+        <button type="button"
+                class="btn
                   btn-block
                   btn-secondary
                   dropdown-toggle"
-                  data-toggle="collapse"
-                  data-target="#SellsListViewMore">
+                data-toggle="collapse"
+                data-target="#SellsListViewMore">
                   View More
                 </button>
-                <div id="SellsListViewMore"
-                class="container-fluid collapse">
-                <div class="container-fluid">
-                  <hr class="my-3">
-                  <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control col-7"
-                    placeholder="Search"
-                    type="text">
-                    <span class="col-1"></span>
-                    <button class="btn btn-primary my-2 col-4"
-                    type="submit">Search</button>
-                  </form>
-                  <hr class="my-3">
-                </div>
-                <table id="SellsListViewMoreTable"
-                class="table table-hover">
-                <thead>
-                  <tr class="table-dark">
-                    <th scope="col">Photo of Item</th>
-                    <th scope="col">Name of Auction</th>
-                    <th scope="col">Brief Description</th>
-                    <th scope="col">Name of Seller</th>
-                    <th scope="col">Minimum Value</th>
-                    <th scope="col">Buy Now Price</th>
-                    <th scope="col">Value of last Bid</th>
-                    <th scope="col">Lifetime of Auction</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td scope="row"><img src="https://pic.clubic.com/v1/images/772507/raw"
-                      width="80"
-                      height="80"></td>
-                      <td> PNY GF1060GTX6GEPB GeForce GTX 1060 6GB GDDR5 </td>
-                      <td> Auction of a PNY GF1060GTX6GEPB GeForce GTX 1060 6GB GDDR5 bought in 2017. Not used, so in fantastic condition. </td>
-                      <td> Exem_Seller </td>
-                      <td> 250€ </td>
-                      <td> 500€ </td>
-                      <td> 350€ </td>
-                      <td> 5-03-2018 </td>
-                    </tr>
-                  </tbody>
-                </table>
-                <div id="pagination">
-                  <ul class="pagination pagination-sm">
-                    <li class="page-item disabled">
-                      <a class="page-link"
-                      href="#">&laquo;</a>
-                    </li>
-                    <li class="page-item active">
-                      <a class="page-link"
-                      href="#">1</a>
-                    </li>
-                    <li class="page-item">
-                      <a class="page-link"
-                      href="#">2</a>
-                    </li>
-                    <li class="page-item">
-                      <a class="page-link"
-                      href="#">3</a>
-                    </li>
-                    <li class="page-item">
-                      <a class="page-link"
-                      href="#">4</a>
-                    </li>
-                    <li class="page-item">
-                      <a class="page-link"
-                      href="#">5</a>
-                    </li>
-                    <li class="page-item">
-                      <a class="page-link"
-                      href="#">&raquo;</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
+        <div id="SellsListViewMore"
+             class="container-fluid collapse">
+          <div class="container-fluid">
+            <hr class="my-3">
+            <form class="form-inline my-2 my-lg-0">
+              <input class="form-control col-7"
+                     placeholder="Search"
+                     type="text">
+              <span class="col-1"></span>
+              <button class="btn btn-primary my-2 col-4"
+                      type="submit">Search</button>
+            </form>
+            <hr class="my-3">
+          </div>
+          <table id="SellsListViewMoreTable"
+                 class="table table-hover">
+            <thead>
+              <tr class="table-dark">
+                <th scope="col">Photo of Item</th>
+                <th scope="col">Name of Auction</th>
+                <th scope="col">Brief Description</th>
+                <th scope="col">Name of Seller</th>
+                <th scope="col">Minimum Value</th>
+                <th scope="col">Buy Now Price</th>
+                <th scope="col">Value of last Bid</th>
+                <th scope="col">Lifetime of Auction</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td scope="row"><img src="https://pic.clubic.com/v1/images/772507/raw"
+                       width="80"
+                       height="80"></td>
+                <td> PNY GF1060GTX6GEPB GeForce GTX 1060 6GB GDDR5 </td>
+                <td> Auction of a PNY GF1060GTX6GEPB GeForce GTX 1060 6GB GDDR5 bought in 2017. Not used, so in fantastic condition. </td>
+                <td> Exem_Seller </td>
+                <td> 250€ </td>
+                <td> 500€ </td>
+                <td> 350€ </td>
+                <td> 5-03-2018 </td>
+              </tr>
+            </tbody>
+          </table>
+          <div id="pagination">
+            <ul class="pagination pagination-sm">
+              <li class="page-item disabled">
+                <a class="page-link"
+                   href="#">&laquo;</a>
+              </li>
+              <li class="page-item active">
+                <a class="page-link"
+                   href="#">1</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link"
+                   href="#">2</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link"
+                   href="#">3</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link"
+                   href="#">4</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link"
+                   href="#">5</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link"
+                   href="#">&raquo;</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
     <hr class="my-4">
     <footer class="page-footer">
