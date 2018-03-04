@@ -148,3 +148,17 @@ function initMap() {
           map: map
         });
       }
+
+
+
+function getModal(){
+var modal = document.getElementById('myModal');
+
+var clobtt = document.getElementsByClassName("close")[0];
+
+clobtt.onclick = function() {
+    modal.style.display = "none";
+}
+modal.style.display = "block";
+
+}
