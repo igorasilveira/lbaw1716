@@ -21,6 +21,9 @@
     <script src="https://apis.google.com/js/platform.js"
             async
             defer></script>
+    <script src="assets/common/javascript/javascript.js"
+            async
+            defer></script>        
     <link rel="stylesheet"
           href="assets/common/css/style.css">
   </head>
@@ -156,6 +159,47 @@
          class="col-md-8 col-sm-12 col-xs-12"><button class="btn btn-info w-100 box-shadow">My Live Auctions</button></a>
       <span class="col-md-2 col-sm-0 col-xs-0"></span>
     </div>
+
+
+    <div id="myModal" class="modal">
+
+<span class="close w-25">&times;</span>
+  <!-- Modal content -->
+  <div class="modal-content">
+
+
+<fieldset id="ratingChoice" class="rating w-25">
+
+    <legend>Please rate:</legend>
+
+    <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Rocks!">5 stars</label>
+    <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Pretty good">4 stars</label>
+    <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Meh">3 stars</label>
+    <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Kinda bad">2 stars</label>
+    <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Sucks big time">1 star</label>
+</fieldset>
+
+  <input class="btn btn-primary w-50 my-4"
+                 type="submit"
+                 value="Submit Rating" />
+
+
+<fieldset id="complain" class="rating w-75">
+    <legend>Complaint:</legend>
+       <textarea placeholder="Write your complain here" rows="4" cols="50">
+
+       </textarea>
+</fieldset>
+
+
+</textarea>              
+
+
+
+</div>
+
+</div>
+
     <hr class="my-5">
     <div id="statistics"
          class="container">
@@ -249,10 +293,12 @@
                   <th scope="row">#99217</th>
                   <td>Ryzen 1300X</td>
                   <td>30-12-2017</td>
-                  <td style="cursor: pointer"><a onclick='confirm("TODO")'><img src="images/confirm_edit.png" height="20px" /><span class="px-4 text-success align-bottom">Rate Seller</span></a></td>
+                  <td style="cursor: pointer"><a onclick="getModal()" ><img src="images/confirm_edit.png" height="20px" /><span class="px-4 text-success align-bottom">Rate Seller</span></a></td>
                 </tr>
               </tbody>
             </table>
+
+
           <!-- TODO: empty
            <div class="alert alert-dismissible alert-info my-4">
             <strong>Awesome!</strong> You have no pending businesses here.
