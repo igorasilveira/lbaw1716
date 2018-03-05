@@ -126,8 +126,9 @@
     <div class="title jumbotron">
       <h1 class="display-6"> New Auction </h1>
     </div>
+    <hr class="my-4">
 
-    <div class="alert alert-warning alert-dismissible fade show w-50 mx-auto mt-4"
+    <div class="alert alert-warning alert-dismissible fade show container mx-auto mt-4"
          role="alert">
       <button class="close"
               type="button"
@@ -137,11 +138,10 @@
       <p class="mb-0">All new auctions are submitted for review to one of our moderators. <span class="alert-link">They will only become public once accepted</span> and you will be notified at the time.</p>
     </div>
     <div id="auction-form"
-         class="container-fluid">
+         class="container">
       <form action="#"
             method="post"
-            class="w-50 mx-auto py-5">
-            <hr class="my-2">
+            class="mx-auto py-2">
         <div class="form-group">
 
           <label class="col-form-label required"
@@ -255,10 +255,10 @@
           <option value="7">7 Days</option>
         </select>
         <hr class="my-4">
-        <div class="row mt-5">
-          <button class="btn btn-outline-primary w-100 col"
+        <div class="row mt-5 container-fluid mx-auto">
+          <button class="btn btn-outline-primary col-md-6 col-sm-12"
                   type="button">Preview Auction</button>
-          <button class="btn btn-primary w-100 col"
+          <button class="btn btn-primary  col-md-6 col-sm-12"
                   type="submit">Send for Review</button>
         </div>
       </form>

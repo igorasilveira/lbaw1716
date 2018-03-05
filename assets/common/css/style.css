@@ -1,5 +1,7 @@
 /* common */
 
+@media (min-width:1025px) { .container-fluid { width: 80% !important;} }
+
 .max-img-size {
   height: 200px;
   width: 200px;
@@ -32,6 +34,10 @@ label.required:after {
 label span.badge {
   border-radius: 50%;
   cursor: help;
+}
+
+legend {
+  margin: 1em 0;
 }
 
 /* create-auction.html */
