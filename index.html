@@ -23,122 +23,145 @@
 		        defer></script>
 		<link rel="stylesheet"
 		      href="assets/common/css/style.css">
+		<link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
 	</head>
 
 
 	<body>
 		<header>
-			<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-				<a class="navbar-brand"
-				   href="#">Navbar</a>
-				<button class="navbar-toggler"
-				        type="button"
-				        data-toggle="collapse"
-				        data-target="#navbarColor01"
-				        aria-controls="navbarColor01"
-				        aria-expanded="false"
-				        aria-label="Toggle navigation"
-				        style="">
-			    <span class="navbar-toggler-icon"></span>
-			  </button>
 
-				<div class="collapse navbar-collapse"
-				     id="navbarColor01">
+				<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+					<div class="container-fluid">
+
+						<a class="navbar-brand" href="#">Navbar</a>
+						<div class="container">
+							<div class="row">
+						        <div class="">
+						            <div id="imaginary_container">
+						                <div class="input-group stylish-input-group">
+						                    <input type="text" class="form-control"  placeholder="Search" >
+						                    <span class="input-group-addon">
+						                        <button type="submit" class="bf-default">
+						                            <span class="fa fa-search my-auto" style="font-size: 23px"></span>
+						                        </button>
+						                    </span>
+						                </div>
+						            </div>
+						        </div>
+							</div>
+						</div>
+						<div id="signin"
+						class="col-sm-2 nav-item dropdown navbar-left">
+						<a class="nav-link dropdown-toggle btn-primary"
+						data-toggle="dropdown"
+						href="#"
+						role="button"
+						aria-haspopup="true"
+						aria-expanded="false">Sign In</a>
+						<div class="dropdown-menu"
+						role="menu"
+						x-placement="bottom-start"
+						style="position: absolute;
+						transform: translate3d(0px, 39px, 0px);
+						top: 0px; left: 0px;
+						will-change: transform;">
+						<li>
+							<form action="create_account.php"
+							method="POST"
+							enctype="multipart/form-data"
+							id="signin"
+							class="navbar-form">
+							<div class="col-sm-12">
+								<div class="form-inline">
+									<label class="col-sm-3 col-form-label mr-sm-3">
+										Username:
+									</label>
+									<input class="col-sm-8"
+									type="text">
+								</div>
+								<div class="form-inline">
+									<label class="col-sm-3 col-form-label mr-sm-3">
+										Password:
+									</label>
+									<input class="col-sm-8"
+									type="password">
+								</div>
+							</div>
+							<div class="btn-group">
+								<div class="btn-group">
+									<input id="signin"
+									class="btn btn-xs btn-secondary"
+									type="submit"
+									value="Sign In" />
+								</div>
+								<div class="g-signin2"
+								data-onsuccess="onSignIn"
+								-theme="light"
+								data-width="38"
+								data-height="38"
+								data-longtitle="false"
+								style="margin:0 8px;">
+							</div>
+						</div>
+					</form>
+				</li>
+				<br />
+				<a id="registerNav"
+				href="register.html"> No account yet? Sign Up here! </a> -
+			</div>
+		</div>
+	</div>
+					</div>
+				</nav>
+				<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+					<div class="container-fluid">
+
+						<button class="navbar-toggler"
+						type="button"
+						data-toggle="collapse"
+						data-target="#navbarColor01"
+						aria-controls="navbarColor01"
+						aria-expanded="false"
+						aria-label="Toggle navigation"
+						style="">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+
+					<div class="collapse navbar-collapse"
+					id="navbarColor01">
 					<ul class="navbar-nav mr-auto">
 						<li class="nav-item">
-							<a class="nav-link"
-							   href="#">Towers w/ Components</a>
+							<a class="nav-link text-white"
+							href="#">Towers w/ Components</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link"
-							   href="#">Towers</a>
+							<a class="nav-link text-white"
+							href="#">Towers</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link"
-							   href="categoryLaptops.html">Laptops</a>
+							<a class="nav-link text-white"
+							href="categoryLaptops.html">Laptops</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link"
-							   href="#">Components</a>
+							<a class="nav-link text-white"
+							href="#">Components</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link"
-							   href="#">Peripherals</a>
+							<a class="nav-link text-white"
+							href="#">Peripherals</a>
 						</li>
-						<li class="nav-item">
-							<a class="nav-link"
-							   href="#">Others</a>
+						<li class="nav-item dropdown">
+							<a class="nav-link  text-white dropdown-toggle"id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								Others
+							</a>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+								<a class="dropdown-item" href="#">Category</a>
+								<a class="dropdown-item" href="#">Another Category</a>
+							</div>
 						</li>
 					</ul>
-					<form class="form-inline my-2 my-lg-0">
-						<input class="form-control mr-sm-2"
-						       type="text"
-						       placeholder="Search">
-						<button class="btn btn-secondary btn-sm my-2 my-sm-0 rounded-circle"
-						        type="submit">Go</button>
-					</form>
-					<div id="signin"
-					     class="col-sm-2 nav-item dropdown">
-						<a class="nav-link dropdown-toggle btn-primary"
-						   data-toggle="dropdown"
-						   href="#"
-						   role="button"
-						   aria-haspopup="true"
-						   aria-expanded="false">Sign In</a>
-						<div class="dropdown-menu"
-						     role="menu"
-						     x-placement="bottom-start"
-						     style="position: absolute;
-					              transform: translate3d(0px, 39px, 0px);
-					             top: 0px; left: 0px;
-					             will-change: transform;">
-							<li>
-								<form action="create_account.php"
-								      method="POST"
-								      enctype="multipart/form-data"
-								      id="signin"
-								      class="navbar-form">
-									<div class="col-sm-12">
-										<div class="form-inline">
-											<label class="col-sm-3 col-form-label mr-sm-3">
-					          Username:
-					        </label>
-											<input class="col-sm-8"
-											       type="text">
-										</div>
-										<div class="form-inline">
-											<label class="col-sm-3 col-form-label mr-sm-3">
-					          Password:
-					        </label>
-											<input class="col-sm-8"
-											       type="password">
-										</div>
-									</div>
-									<div class="btn-group">
-										<div class="btn-group">
-											<input id="signin"
-											       class="btn btn-xs btn-secondary"
-											       type="submit"
-											       value="Sign In" />
-										</div>
-										<div class="g-signin2"
-										     data-onsuccess="onSignIn"
-										     -theme="light"
-										     data-width="38"
-										     data-height="38"
-										     data-longtitle="false"
-										     style="margin:0 8px;">
-										</div>
-									</div>
-								</form>
-							</li>
-							<br />
-							<a id="registerNav"
-							   href="register.html"> No account yet? Sign Up here! </a> -
-						</div>
 					</div>
-				</div>
-			</nav>
+					</nav>
 		</header>
 
 		<div class="container-fluid">
