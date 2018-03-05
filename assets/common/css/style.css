@@ -1,7 +1,5 @@
 /* common */
 
-@media (min-width:1025px) { .container-fluid { width: 80% !important;} }
-
 .max-img-size {
   height: 200px;
   width: 200px;
