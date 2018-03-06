@@ -42,8 +42,8 @@
                 aria-expanded="false"
                 aria-label="Toggle navigation"
                 style="">
-			    <span class="navbar-toggler-icon"></span>
-			  </button>
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
         <div class="collapse navbar-collapse"
              id="navbarColor01">
@@ -178,25 +178,22 @@
       <span class="col-md-2 col-sm-0 col-xs-0"></span>
     </div>
 
+      <!-- The Modal -->
+<div id="myModal" class="modal">
 
-    <div id="myModal"
-         class="modal">
-
-      <span class="close w-25">&times;</span>
-      <!-- Modal content -->
-      <div class="modal-content">
-
-
-        <fieldset id="ratingChoice"
-                  class="rating w-25">
-
-          <legend>Please rate:</legend>
-
-          <input type="radio"
+  <!-- Modal content -->
+  <div class="modal-content w-50">
+    <div class="modal-header">
+      <h2>Please rate the Seller:</h2>
+      <span class="close">&times;</span>
+    </div>
+    <div class="modal-body">
+      <div class="rating w-50">
+      <input type="radio"
                  id="star5"
                  name="rating"
                  value="5" /><label for="star5"
-                 title="Rocks!">5 stars</label>
+                 title="Excellent!">5 stars</label>
           <input type="radio"
                  id="star4"
                  name="rating"
@@ -211,37 +208,32 @@
                  id="star2"
                  name="rating"
                  value="2" /><label for="star2"
-                 title="Kinda bad">2 stars</label>
+                 title="Bad">2 stars</label>
           <input type="radio"
                  id="star1"
                  name="rating"
                  value="1" /><label for="star1"
-                 title="Sucks big time">1 star</label>
-        </fieldset>
-
-        <input class="btn btn-primary w-50 my-4"
-               type="submit"
-               value="Submit Rating" />
-
-
-        <fieldset id="complain"
-                  class="rating w-75">
-          <legend>Complaint:</legend>
-          <textarea placeholder="Write your complain here"
-                    rows="4"
-                    cols="50">
-
-       </textarea>
-        </fieldset>
-
-
-        </textarea>
-
-
-
-      </div>
-
+                 title="Really bad">1 star</label>
+    </div>       
+    <button class="btn btn-primary my-4"
+               onclick="checkRating()">
+               Submit Rating
+               </button>      
     </div>
+    
+    <div class="modal-footer" id="complain">
+      <h3>Complain:</h3>
+
+      <textarea class="form-control" rows="3" cols="50"> </textarea>
+      <button class="btn btn-primary my-4"
+               onclick="eliminatePending()">
+               Send Complain
+               </button>
+    </div>
+  </div>
+
+</div>
+
 
     <hr class="my-5">
     <div id="statistics"
