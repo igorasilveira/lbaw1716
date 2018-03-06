@@ -224,7 +224,7 @@
     <div class="modal-footer" id="complain">
       <h3>Complain:</h3>
 
-      <textarea class="form-control" rows="3" cols="50"> </textarea>
+      <textarea class="form-control" id="complainID" rows="3" cols="50"> </textarea>
       <button class="btn btn-primary my-4"
                onclick="eliminatePending()">
                Send Complain
@@ -296,7 +296,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr class="table-responsive">
+              <tr class="table">
                 <th scope="row">#37721</th>
                 <td>Asus 1050Ti Strix</td>
                 <td>11-12-2017</td>
@@ -328,7 +328,7 @@
                 <th scope="row">#99217</th>
                 <td>Ryzen 1300X</td>
                 <td>30-12-2017</td>
-                <td style="cursor: pointer"><a onclick="getModal()"><img src="images/confirm_edit.png" height="20px" /><span class="px-4 text-success align-bottom">Rate Seller</span></a></td>
+                <td style="cursor: pointer"><a onclick="getModal(this)"><img src="images/confirm_edit.png" height="20px" /><span class="px-4 text-success align-bottom">Rate Seller</span></a></td>
               </tr>
             </tbody>
           </table>
