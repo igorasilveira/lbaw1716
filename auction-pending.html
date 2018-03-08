@@ -110,6 +110,10 @@
     </div>
     <hr class="my-md-4 my-sm-2 my-xs-1">
 
+    <div id="warningPendingTop" class=" my-md-5 my-sm-3 my-xs-2 alert alert-dismissible alert-danger my-4 w-75 mx-auto box-shadow">
+      <strong class="alert-link">Attention, action required!</strong> As the moderator of this auction you must decide if it is compliant with all the rules and accept or reject it.
+    </div>
+
     <div class="jumbotron">
 
       <div id="profile-container"
@@ -133,7 +137,7 @@
                   Complete bundle of computers all in perfect condition and ready to use.
                 </p>
               </section>
-              <h3 class="text-info pb-2">14H 23M 09S</h3>
+              <h3 class="text-info pb-2">NOT STARTED</h3>
             </div>
             <div id="buyPanel"
                  class="text-center w-100 border border-dark p-2 d-inline-block">
@@ -156,28 +160,40 @@
               <hr class="my-2">
               <div class="row">
                 <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 my-auto">
-                  <h5 class="align-bottom">Current Bid: </h5>
+                  <h5 class="align-bottom">Minimum Bid: </h5>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 my-auto">
                   <p>
-                    13,48€
+                    20,00€
                   </p>
                 </div>
-                <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
-                  <button type="button"
-                          name="placeBidBtn"
-                          class="btn btn-success w-100"><span class="px-auto">Bid (1,29€)</span></button>
+                <div class="col-lg-4 col-md-0 col-sm-12 col-xs-12 my-auto">
+
                 </div>
               </div>
               <hr class="my-2">
-              <!-- BUY NOW BUTTON AREA -->
-              <div class="w-100">
-                <button type="button"
-                        name="placeBidBtn"
-                        class="btn btn-info mw-75 text-center">Buy Now (399,40€)</button>
+              <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 my-auto">
+                  <h5 class="align-bottom">Buy Now Price: </h5>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 my-auto">
+                  <p>
+                    25,00€
+                  </p>
+                </div>
+                <div class="col-lg-4 col-md-0 col-sm-12 col-xs-12 my-auto">
+
+                </div>
               </div>
             </div>
           </div>
+        </div>
+      </div>
+      <div id="pendingActions"
+      class="container mt-md-5 mt-sm-3 mt-3">
+        <div class="row">
+          <button class="btn btn-danger col-md-6 col-sm-12 col-xs-12 box-shadow my-sm-2 my-xs-1">Reject</button>
+          <button class="btn btn-success col-md-6 col-sm-12 col-xs-12 box-shadow my-sm-2 my-xs-1">Accept</button>
         </div>
       </div>
     </div>
