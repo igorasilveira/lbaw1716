@@ -131,76 +131,44 @@
     </div>
     <hr class="my-md-4 my-sm-2 my-xs-1">
 
-    <div id="warningPendingTop" class="alert alert-dismissible alert-info my-4 w-75 mx-auto box-shadow">
-      <strong class="alert-link">Attention!</strong> Keep in mind the general PC Auctions rules regarding communications and promote mutual respect.
-    </div>
-
-    <hr class="my-5">
     <div id="notifications"
          class="container">
-      <h3 class="pb-2">Your Messages</h3>
-      <ul class="nav nav-tabs">
-        <li class="nav-item"><a class="nav-link active show"
-             data-toggle="tab"
-             href="#received">Received</a></li>
-        <li class="nav-item"><a class="nav-link"
-             data-toggle="tab"
-             href="#sent">Sent</a></li>
-      </ul>
-      <div class="tab-content">
-        <div class="tab-pane fade active show"
-             id="received"
-             role="tabpanel"
-             aria-labelledby="received-tab">
           <table class="table table-hover">
             <thead>
               <tr>
-                <th scope="col">Sender</th>
                 <th scope="col">Subject</th>
-                <th scope="col">View</th>
+                <th scope="col">Action</th>
               </tr>
             </thead>
             <tbody>
               <tr class="table">
-                <th scope="row">[Mod]AshGrey</th>
-                <td>Account Information Required</td>
-                <td style="cursor: pointer"><a href="notification.html"><img src="images/confirm_edit.png" height="20px" /></a></td>
+                <th scope="row">Your auction has been approved.</th>
+                <td><a href="notification.html"><img src="images/confirm_edit.png"
+                       width="20"
+                       height="20"
+                       class="removeBtt"
+                       title='View'></a>
+                  <img src="images/remove_logo.png"
+                       width="20"
+                       height="20"
+                       class="removeBtt"
+                       title='Remove'></td>
               </tr>
-              <tr class="table">
-                <th scope="row">System</th>
-                <td>Your auction has been approved.</td>
-                <td>N/A</td>
-              </tr>
-              <tr class="table">
-                <th scope="row">JohnAlley</th>
-                <td>Question about your product.</td>
-                <td>N/A</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="tab-pane fade"
-             id="sent"
-             role="tabpanel"
-             aria-labelledby="sent-tab">
-          <table class="table table-hover">
-            <thead>
-              <tr>
-                <th scope="col">Receiver</th>
-                <th scope="col">Subject</th>
-                <th scope="col">View</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="table">
-                <th scope="row">JohnAlley</th>
-                <td>RE: Question about your product.</td>
-                <td style="cursor: pointer"><a onclick="getModal(this)"><img src="images/confirm_edit.png" height="20px" /></a></td>
+              <tr class="table-active">
+                <th scope="row">you auction has been rejected</th>
+                <td><img src="images/confirm_edit.png"
+                       width="20"
+                       height="20"
+                       class="removeBtt"
+                       title='View'>
+                  <img src="images/remove_logo.png"
+                       width="20"
+                       height="20"
+                       class="removeBtt"
+                       title='Remove'></td>
               </tr>
             </tbody>
           </table>
-        </div>
-      </div>
     </div>
     <hr class="my-4">
     <footer class="page-footer">

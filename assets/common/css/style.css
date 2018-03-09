@@ -1,5 +1,17 @@
 /* common */
 
+.special-img
+{
+    position: relative;
+    top: -5px;
+    float: left;
+    left: -5px;
+}
+
+td img {
+  cursor: pointer;
+}
+
 .max-img-size {
   height: 200px;
   width: 200px;
