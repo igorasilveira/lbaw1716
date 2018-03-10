@@ -202,6 +202,14 @@ legend {
   visibility: hidden;
 }
 
+#categoriesList .removeBtt {
+  visibility: hidden;
+}
+
+#createCategoryBtt {
+  visibility: hidden;
+}
+
 .editModBtt {
   cursor: pointer;
 }
