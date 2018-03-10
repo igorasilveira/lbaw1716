@@ -519,3 +519,7 @@ nav.navbar:nth-child(2) {
 .modal-body {
   padding: 2px 16px;
 }
+
+#complain {
+  display: none;
+}
