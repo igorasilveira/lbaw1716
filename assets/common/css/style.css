@@ -5,6 +5,10 @@
                  0px -5px 35px rgba(255,255,255,0.3);
 }
 
+#menuLogin .dropdown-menu {
+  margin: auto;
+}
+
 #auctionsMosaic.row {
   display: flex;
   align-items: center;
