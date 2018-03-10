@@ -216,7 +216,80 @@
 			        onclick="addModerator()">Create Moderator</button>
 		</div>
 
+<hr class="my-4">
+<div class="container">
+	<h3 class="py-2">Categories</h3>
+	<div class="table-responsive">
+		<table id="moderatorsList"
+		class="table  table-hover box-shadow">
+		<thead>
+			<tr class="table">
+				<th scope="col">Name</th>
+				<th scope="col">Parent</th>
+				<th scope="col"># Items</th>
+				<th><img src="images/logo_edit.png"
+					width="20"
+					height="20"
+					class="editModBtt"
+					title='Edit Categories'
+					onclick="editCategories()"> </th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td scope="row">Towers W/ Computers</td>
+						<td>N/A</td>
+						<td>6</td>
+						<td><img src="images/remove_logo.png"
+							width="20"
+							height="20"
+							class="removeBtt"
+							title='Remove Category'
+							onclick="delCategory(this)"> </td>
+						</tr>
 
+							<tr>
+								<td scope="row">Towers Only</td>
+									<td>N/A</td>
+									<td>6</td>
+									<td><img src="images/remove_logo.png"
+										width="20"
+										height="20"
+										class="removeBtt"
+										title='Remove Category'
+										onclick="delCategory(this)"> </td>
+									</tr>
+										<tr>
+											<td scope="row">Laptops</td>
+												<td>N/A</td>
+												<td>6</td>
+												<td><img src="images/remove_logo.png"
+													width="20"
+													height="20"
+													class="removeBtt"
+													title='Remove Category'
+													onclick="delCategory(this)"> </td>
+												</tr>
+													<tr>
+														<td scope="row">Hybrid Laptops</td>
+															<td>Laptops</td>
+															<td>6</td>
+															<td><img src="images/remove_logo.png"
+																width="20"
+																height="20"
+																class="removeBtt"
+																title='Remove Category'
+																onclick="delCategory(this)"> </td>
+															</tr>
+											</tbody>
+										</table>
+
+	</div>
+
+	<button class="btn btn-info"
+					id="createCategoryBtt"
+					onclick="addModerator()">Create Category</button>
+</div>
 
 		<hr class="my-4">
 		<footer class="page-footer">
