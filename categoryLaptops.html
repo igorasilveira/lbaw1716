@@ -27,104 +27,104 @@
 
 
   <body>
-    <header>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a class="navbar-brand"
-           href="#">Navbar</a>
-        <button class="navbar-toggler"
-                type="button"
-                data-toggle="collapse"
-                data-target="#navbarColor01"
-                aria-controls="navbarColor01"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-                style="">
-			    <span class="navbar-toggler-icon"></span>
-			  </button>
 
-        <div class="collapse navbar-collapse"
-             id="navbarColor01">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <a class="nav-link"
-                 href="#">Towers w/ Components</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link"
-                 href="#">Towers</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link"
-                 href="categoryLaptops.html">Laptops</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link"
-                 href="#">Components</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link"
-                 href="#">Peripherals</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link"
-                 href="#">Others</a>
-            </li>
-          </ul>
-          <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2"
-                   type="text"
-                   placeholder="Search">
-            <button class="btn btn-secondary btn-sm my-2 my-sm-0 rounded-circle"
-                    type="submit">Go</button>
-          </form>
-          <div id="profileNav"
-               class="col-sm-2 nav-item">
-            <ul class="navbar-nav">
-              <li class="nav-item col-sm-6">
-                <a class="nav-link dropdown-toggle"
-                   data-toggle="dropdown"
-                   role="button"
-                   aria-haspopup="true"
-                   aria-expanded="false"
-                   href="#">Igor</a>
-                <div class="dropdown-menu"
-                     role="menu"
-                     x-placement="bottom-start"
-                     style="position: absolute;
-                               transform: translate3d(0px, 39px, 0px);
-                              top: 0px; left: 0px;
-                              will-change: transform;">
-                  <div class="container">
-                    <div class="dropdown-header"> Go To</div>
-                    <ul>
-                      <li><a href="profile.html"> Profile </a></li>
-                      <li><a href="myauctions_user.html"> My Auctions </a></li>
-                      <li><a href="index.html"> Log Out </a></li>
-                    </ul>
-                  </div>
+      <header>
+          <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="container-fluid">
+
+              <a class="navbar-brand hidden-xs" href="index.html"><img src="images/PcAuctions_logo.png" height="50"/></a>
+              <div class="collapse navbar-collapse row"
+                id="navbar1">
+                <div class="col">
+                  <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                    <button class="btn btn-secondary my-2 my-sm-0 p-xs-0" type="submit">Search</button>
+                  </form>
+                </div>
+              </div>
+              <ul class="nav pull-right">
+                <a href="create-auction.html">
+                <button type="button" name="button" class="btn btn-secondary btn-md mt-1 mr-5">+<span class="hidden-xs"> Create Auction</span></button>
+              </a>
+                <li class="dropdown" id="menuLogin">
+                <a class="dropdown-toggle text-white" href="#" data-toggle="dropdown" id="navLogin" data-devgib="tagged">Go To</a>
+                <a class="" href="profile.html" data-devgib="tagged"><img src="images/photos/igor_foto.jpg" height="50" class="profile-pic" style="display: inline"/></a>
+                <div class="dropdown-menu test" style="padding:17px;">
+                  <a class="dropdown-item" href="profile.html">Profile </a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="myauctions_user.html">My Auctions </a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="index.html">Log Out </a>
+                  </ul>
                 </div>
               </li>
-              <li class="col-sm-6">
-                <a href="profile.html">
-                     <img
-                       src="images/photos/igor_foto.jpg"
-                       href="profile.html"
-                       class="img-fluid profile-pic"
-                       width="40"
-                       height="40">
-                  </a>
+          </ul>
+              <br>
+              <button class="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbar1"
+              aria-controls="navbar1"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+              style="">
+              <img src="images/search-logo.png" height="25" alt="">
+            </button>
+
+              <button class="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbar2"
+              aria-controls="navbar2"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+              style="">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            </div>
+          </nav>
+          <nav class="navbar navbar-expand-lg navbar-dark bg-primary p-md-1">
+            <div class="container-fluid">
+
+            <div class="collapse navbar-collapse"
+            id="navbar2">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <a class="nav-link text-white"
+                href="#">Towers w/ Components</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white"
+                href="#">Towers</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white"
+                href="categoryLaptops.html">Laptops</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white"
+                href="#">Components</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white"
+                href="#">Peripherals</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link  text-white dropdown-toggle"id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Others
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="#">Category</a>
+                  <a class="dropdown-item" href="#">Another Category</a>
+                </div>
               </li>
             </ul>
-          </div>
-        </div>
-      </nav>
-			<hr class="my-4">
-      <button class="btn btn-success btn-lg w-100">+ Create Auction</button>
-    </header>
-
+            </div>
+            </nav>
+      </header>
     <div class="hidden-xs">
       <hr class="my-md-4 my-sm-2 my-xs-1">
-      <div class="title jumbotron my-0">
+      <div class="title jumbotron my-0  p-3">
         <h1 class="display-6">Laptops</h1>
       </div>
       <hr class="my-md-4 my-sm-2 my-xs-1">
@@ -135,78 +135,81 @@
            class="container-fluid">
         <div id="bidViewer">
           <ul id="auctionsMosaic"
-              class="container-fluid row col-sm-12 row">
-            <li class="col-sm-4">
-              <div id="auctionProfile">
-                <img class="img-fluid"
-                     href="#"
-                     src="https://static.fnac-static.com/multimedia/Images/PT/NR/36/b2/13/1290806/1540-1.jpg" />
-                <div id="infoAuctionProfile"
-                     class="container-fluid">
-                  <div id="auctionName">
-                    <a href="#"
-                       class="text-info"> Laptop Lenovo Ideapad 320S-14IKB  </a>
-                  </div>
-                  <div id="time-bids"
-                       class="row">
+              class="container-fluid col-sm-12 row">
+              <div class="row">
+                <li class="col-md-4 col-sm-6 col-xs-6">
+                  <div id="auctionProfile">
+                    <img class="img-fluid"
+                    href="#"
+                    src="https://static.fnac-static.com/multimedia/Images/PT/NR/36/b2/13/1290806/1540-1.jpg" />
+                    <div id="infoAuctionProfile"
+                    class="container-fluid">
+                    <div id="auctionName">
+                      <a href="#"
+                      class="text-info"> Laptop Lenovo Ideapad 320S-14IKB  </a>
+                    </div>
+                    <div id="time-bids"
+                    class="row">
                     <ul class="row col-sm-12 list-inline">
                       <li id="timeLeft"
-                          class="col-sm-5 mr-sm-1"> 5d 09h </li>
+                      class="col-sm-5 mr-sm-1"> 5d 09h </li>
                       <li id="bidsDone"
-                          class="col-sm-5"> 14 Bids </li>
+                      class="col-sm-5"> 14 Bids </li>
                     </ul>
                   </div>
                 </div>
               </div>
             </li>
-            <li class="col-sm-4">
+            <li class="col-md-4 col-sm-6 col-xs-6">
               <div id="auctionProfile">
                 <img class="img-fluid"
-                     href="#"
-                     src="https://static.fnac-static.com/multimedia/Images/PT/NR/3c/d2/14/1364540/1540-1.jpg" />
+                href="#"
+                src="https://static.fnac-static.com/multimedia/Images/PT/NR/3c/d2/14/1364540/1540-1.jpg" />
                 <div id="infoAuctionProfile"
-                     class="container-fluid">
-                  <div id="auctionName">
-                    <a href="#"
-                       class="text-info"> Laptop Acer Spin SP513-51 | i7-7500U </a>
-                  </div>
-                  <div id="time-bids"
-                       class="row">
-                    <ul class="row col-sm-12 list-inline">
-                      <li id="timeLeft"
-                          class="col-sm-5 mr-sm-1"> 5d 09h </li>
-                      <li id="bidsDone"
-                          class="col-sm-5"> 14 Bids </li>
-                    </ul>
-                  </div>
+                class="container-fluid">
+                <div id="auctionName">
+                  <a href="#"
+                  class="text-info"> Laptop Acer Spin SP513-51 | i7-7500U </a>
                 </div>
+                <div id="time-bids"
+                class="row">
+                <ul class="row col-sm-12 list-inline">
+                  <li id="timeLeft"
+                  class="col-sm-5 mr-sm-1"> 5d 09h </li>
+                  <li id="bidsDone"
+                  class="col-sm-5"> 14 Bids </li>
+                </ul>
               </div>
-            </li>
-            <li class="col-sm-4">
-              <div id="auctionProfile">
-                <img class="img-fluid"
-                     href="#"
-                     src="https://static.fnac-static.com/multimedia/Images/PT/NR/05/6c/13/1272837/1540-1.jpg" />
-                <div id="infoAuctionProfile"
-                     class="container-fluid">
-                  <div id="auctionName">
-                    <a href="#"
-                       class="text-info"> Laptop HP Envy 13-ad008np  </a>
-                  </div>
-                  <div id="time-bids"
-                       class="row">
-                    <ul class="row col-sm-12 list-inline">
-                      <li id="timeLeft"
-                          class="col-sm-5 mr-sm-1"> 5d 09h </li>
-                      <li id="bidsDone"
-                          class="col-sm-5"> 14 Bids </li>
-                    </ul>
-                  </div>
-                </div>
+            </div>
+          </div>
+        </li>
+        <li class="col-md-4 col-sm-6 col-xs-6">
+          <div id="auctionProfile">
+            <img class="img-fluid"
+            href="#"
+            src="https://static.fnac-static.com/multimedia/Images/PT/NR/05/6c/13/1272837/1540-1.jpg" />
+            <div id="infoAuctionProfile"
+            class="container-fluid">
+            <div id="auctionName">
+              <a href="#"
+              class="text-info"> Laptop HP Envy 13-ad008np  </a>
+            </div>
+            <div id="time-bids"
+            class="row">
+            <ul class="row col-sm-12 list-inline">
+              <li id="timeLeft"
+              class="col-sm-5 mr-sm-1"> 5d 09h </li>
+              <li id="bidsDone"
+              class="col-sm-5"> 14 Bids </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </li>
+
               </div>
-            </li>
             <hr class="my-5">
-            <li class="col-sm-4">
+            <li class="col-md-4 col-sm-6">
               <div id="auctionProfile">
                 <img class="img-fluid"
                      href="#"
@@ -215,7 +218,7 @@
                      class="container-fluid">
                   <div id="auctionName">
                     <a href="#"
-                       class="text-info"> Apple MacBook Pro 13'' Retina i5-3,1GHz | 8GB | 256GB | Intel Iris Plus 650 com Touch Bar e Touch </a>
+                       class="text-info"> Apple MacBook Pro 13' </a>
                   </div>
                   <div id="time-bids"
                        class="row">
@@ -229,7 +232,7 @@
                 </div>
               </div>
             </li>
-            <li class="col-sm-4">
+            <li class="col-md-4 col-sm-6">
               <div id="auctionProfile">
                 <img class="img-fluid"
                      href="#"
@@ -252,7 +255,7 @@
                 </div>
               </div>
             </li>
-            <li class="col-sm-4">
+            <li class="col-md-4 col-sm-6 col-xs-6">
               <div id="auctionProfile">
                 <img class="img-fluid"
                      href="#"
@@ -303,11 +306,9 @@
             </div>
             <table class="bidsListViewMore table-responsive table-hover">
               <thead>
-                <tr class="table-info">
+                <tr class="table">
                   <th scope="col">Photo of Item</th>
                   <th scope="col">Name of Auction</th>
-                  <th scope="col">Brief Description</th>
-                  <th scope="col">Name of Seller</th>
                   <th scope="col">Value of last Bid</th>
                   <th scope="col">Lifetime of Auction</th>
                 </tr>
@@ -318,8 +319,6 @@
                          width="80"
                          height="80"></td>
                   <td> <a href="#"> Microsoft Surface Book 2 - 13'' - i7-8650U | 8GB | 256GB </a> </td>
-                  <td> Auction of a Microsoft Surface Book 2 - 13'' - i7-8650U | 8GB | 256GB. Mostly unused. </td>
-                  <td> Xpto_Seller </td>
                   <td> 1500€ </td>
                   <td> 1-03-2018 </td>
                 </tr>
@@ -328,8 +327,6 @@
                          width="80"
                          height="80"></td>
                   <td> <a href="#"> Laptop Acer Swift 5 SF514-52T | Core i5-8250U | 256GB </a> </td>
-                  <td> Auction of a laptop Acer Swift 5 SF514-52T with Core i5-8250U and 256GB of RAM, bought in 2017. Mostly unused. </td>
-                  <td> Xpto_Seller </td>
                   <td> 1000€ </td>
                   <td> 10-03-2018 </td>
                 </tr>
@@ -338,8 +335,6 @@
                          width="80"
                          height="80"></td>
                   <td> <a href="#"> Apple MacBook Air 13'' i5-1,8GHz | 8GB | 128GB </a> </td>
-                  <td> Auction of a Apple MacBook Air 13'' bought in 2013. </td>
-                  <td> Xpto_Seller123 </td>
                   <td> 500€ </td>
                   <td> 5-03-2018 </td>
                 </tr>
@@ -348,8 +343,6 @@
                          width="80"
                          height="80"></td>
                   <td> <a href="#"> Laptop Asus Zenbook Flip S UX370UA-78DHDAB1 </a> </td>
-                  <td> Auction of a Asus Zenbook Flip S UX370UA-78DHDAB1 bought in 2017. A bit used but in good condition. </td>
-                  <td> Xpto_Seller </td>
                   <td> 100€ </td>
                   <td> 1-03-2018 </td>
                 </tr>
@@ -358,8 +351,6 @@
                          width="80"
                          height="80"></td>
                   <td> <a href="#"> HP Spectre 13-af002np Laptop </a> </td>
-                  <td> Auction of a HP Spectre 13-af002np bought in 2012. Very used. </td>
-                  <td> Xpto_Seller245 </td>
                   <td> 400€ </td>
                   <td> 1-03-2018 </td>
                 </tr>

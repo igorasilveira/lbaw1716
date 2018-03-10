@@ -29,59 +29,116 @@
 
 	<body>
 		<header>
+				<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+					<div class="container-fluid">
 
-			<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-			    <div class="container">
-			        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-			    <span class="navbar-toggler-icon"></span>
-			</button>
-			        <a class="navbar-brand" href="#">
-			    <img src="http://www.bobmazzo.com/wp-content/uploads/2009/07/bobmazzoCD.jpg" width="30" height="30" >
-			</a>
-			        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-			            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-			                <li class="nav-item active">
-			                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-			                </li>
-			                <li class="nav-item">
-			                    <a class="nav-link" href="#">Patients</a>
-			                </li>
-			                <li class="nav-item">
-			                    <a class="nav-link disabled" href="#">Reports</a>
-			                </li>
+						<a class="navbar-brand hidden-xs" href="index.html"><img src="images/PcAuctions_logo.png" height="50"/></a>
+						<div class="collapse navbar-collapse row"
+							id="navbar1">
+							<div class="col">
+								<form class="form-inline my-2 my-lg-0">
+									<input class="form-control mr-sm-2" type="text" placeholder="Search">
+									<button class="btn btn-secondary my-2 my-sm-0 p-xs-0" type="submit">Search</button>
+								</form>
+							</div>
+						</div>
+						<ul class="nav pull-right">
+							<li class="dropdown" id="menuLogin">
+	            <a class="dropdown-toggle text-white" href="#" data-toggle="dropdown" id="navLogin" data-devgib="tagged">Login</a>
+	            <div class="dropdown-menu test" style="padding:17px;">
+	              <form action="create_account.php"
+								enctype="multipart/form-data" class="form-group navbar-form" id="signin">
+				          <input type="text"
+				                 class="form-control p-2 my-2"
+				                 placeholder="Username"
+				                 id="username"
+				                 name="username"
+				                 required>
+				          <input type="password"
+				                 class="form-control p-2 my-2"
+				                 placeholder="Password"
+				                 id="password"
+				                 name="password"
+				                 required>
+	                <button type="button" id="btnLogin" class="btn btn-success w-100">Sign In</button>
+	              </form>
 
-			            </ul>
+		            <a id="registerNav"
+		               href="register.html"> No account yet? Sign Up here! </a>
+	            </div>
+	          </li>
+	      </ul>
+						<br>
+						<button class="navbar-toggler"
+						type="button"
+						data-toggle="collapse"
+						data-target="#navbar1"
+						aria-controls="navbar1"
+						aria-expanded="false"
+						aria-label="Toggle navigation"
+						style="">
+						<img src="images/search-logo.png" height="25" alt="">
+					</button>
 
-			            <form id="searchForm" class="form-inline my-2 my-lg-0">
-			                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-			                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-			            </form>
+						<button class="navbar-toggler"
+						type="button"
+						data-toggle="collapse"
+						data-target="#navbar2"
+						aria-controls="navbar2"
+						aria-expanded="false"
+						aria-label="Toggle navigation"
+						style="">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					</div>
+				</nav>
+				<nav class="navbar navbar-expand-lg navbar-dark bg-primary p-md-1">
+					<div class="container-fluid">
 
-			            <ul class="navbar-nav ">
-			                <!-- PROFILE DROPDOWN - scrolling off the page to the right -->
-			                <li class="nav-item dropdown">
-			                    <a href="#" class="nav-link dropdown-toggle" id="navDropDownLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			                Profile
-			            </a>
-			                    <div class="dropdown-menu" aria-labelledby="navDropDownLink">
-			                        <a class="dropdown-item" href="#">Preferences</a>
-			                        <div class="dropdown-divider"></div>
-			                        <a class="dropdown-item" href="#">Logout</a>
-			                    </div>
-			                </li>
-			            </ul>
-
-			        </div>
-			    </div>
-
-			</nav>
+					<div class="collapse navbar-collapse"
+					id="navbar2">
+					<ul class="navbar-nav mr-auto">
+						<li class="nav-item">
+							<a class="nav-link text-white"
+							href="#">Towers w/ Components</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link text-white"
+							href="#">Towers</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link text-white"
+							href="categoryLaptops.html">Laptops</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link text-white"
+							href="#">Components</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link text-white"
+							href="#">Peripherals</a>
+						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-link  text-white dropdown-toggle"id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								Others
+							</a>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+								<a class="dropdown-item" href="#">Category</a>
+								<a class="dropdown-item" href="#">Another Category</a>
+							</div>
+						</li>
+					</ul>
+					</div>
+					</nav>
 		</header>
 
 		<div class="container-fluid">
-			<hr class="my-3">
-			<h3 class="py-3 text-center">Quick Start</h3>
-			<hr class="my-3">
-			<div class="container-fluid row my-5">
+			<div class="hidden-xs">
+				<hr class="my-3">
+				<h3 class="py-3 text-center">Quick Start</h3>
+				<hr class="my-3">
+			</div>
+				<div class="container-fluid row my-3">
 				<div id="lateralNavBar"
 				     class="col-sm-3 bg-white p-4">
 					<navbar>
@@ -123,7 +180,7 @@
 							<h5> Towers with Components</h5>
 							<ul id="auctionsMosaic"
 							    class="container-fluid row col-sm-12 row">
-								<li class="col-sm-4">
+								<li class="col-md-4">
 									<div id="auctionProfile">
 										<img class="img-fluid"
 										     href="#"
@@ -132,7 +189,7 @@
 										     class="container-fluid">
 											<div id="auctionName">
 												<a href="#"
-												   class="text-info"> [Ryzen & GTX 1050 Ti Edition] SkyTech ArchAngel Gaming Computer Desktop PC Ryzen 1200 3.1GHz Quad-Core, GTX 1050 Ti 4GB, 8GB DDR4 2400, 1TB HDD, 24X DVD, Wi-Fi USB, Windows 10 Home 64-bit  </a>
+												   class="text-info"> Ryzen & GTX 1050 Ti Edition SkyTech ArchAngel Computer</a>
 											</div>
 											<div id="time-bids"
 											     class="row">
@@ -156,7 +213,7 @@
 										     class="container-fluid">
 											<div id="auctionName">
 												<a href="#"
-												   class="text-info"> CYBERPOWERPC Gamer Xtreme GXIVR8020A4 Desktop Gaming PC (Intel i5-7400 3.0GHz, AMD RX 580 4GB, 8GB DDR4 RAM, 1TB 7200RPM HDD, WiFi, Win 10 Home), Black - VR Ready  </a>
+												   class="text-info"> CYBERPOWERPC Gamer Xtreme GXIVR8020A4 Gaming</a>
 											</div>
 											<div id="time-bids"
 											     class="row">
@@ -179,7 +236,7 @@
 										     class="container-fluid">
 											<div id="auctionName">
 												<a href="#"
-												   class="text-info"> 2018 Newest Dell Premium Business Flagship Desktop Tower with Keyboard&Mouse Intel Core i5-7400 Processor 12GB DDR4 RAM 1TB 7200RPM HDD Intel 630 Graphics DVD-RW HDMI VGA Bluetooth Windows 10-Black  </a>
+												   class="text-info"> Dell Premium Desktop Tower with Keyboard&Mouse</a>
 											</div>
 											<div id="time-bids"
 											     class="row">
@@ -256,7 +313,7 @@
 										     class="container-fluid">
 											<div id="auctionName">
 												<a href="#"
-												   class="text-info"> Thermaltake Tower 900 Snow Edition Tempered Glass Fully Modular E-ATX Vertical Super Tower Chassis CA-1H1-00F6WN-00 </a>
+												   class="text-info"> Thermaltake Tower 900 Snow Edition</a>
 											</div>
 											<div id="time-bids"
 											     class="row">
@@ -286,7 +343,7 @@
 										     class="container-fluid">
 											<div id="auctionName">
 												<a href="#"
-												   class="text-info"> Apple MacBook Pro 13'' Retina i5-3,1GHz | 8GB | 256GB | Intel Iris Plus 650 com Touch Bar e Touch </a>
+												   class="text-info"> Apple MacBook Pro 13'</a>
 											</div>
 											<div id="time-bids"
 											     class="row">
@@ -309,7 +366,7 @@
 										     class="container-fluid">
 											<div id="auctionName">
 												<a href="#"
-												   class="text-info"> Laptop Asus Zenbook UX430UA-57CHDCB1  </a>
+												   class="text-info"> Laptop Asus Zenbook  </a>
 											</div>
 											<div id="time-bids"
 											     class="row">
@@ -362,7 +419,7 @@
 										     class="container-fluid">
 											<div id="auctionName">
 												<a href="#"
-												   class="text-info"> Motherboard - ASUS PRIME B350-PLUS Rs.8,125 </a>
+												   class="text-info"> Motherboard - ASUS PRIME B350-PLUS</a>
 											</div>
 											<div id="time-bids"
 											     class="row">
@@ -385,7 +442,7 @@
 										     class="container-fluid">
 											<div id="auctionName">
 												<a href="#"
-												   class="text-info"> Fonte Alim. Antec 0-761345-05055-5 550W ATX Preta </a>
+												   class="text-info"> Fonte Alim. Antec 550W</a>
 											</div>
 											<div id="time-bids"
 											     class="row">
@@ -438,7 +495,7 @@
 										     class="container-fluid">
 											<div id="auctionName">
 												<a href="#"
-												   class="text-info"> Motherboard - ASUS PRIME B350-PLUS Rs.8,125 </a>
+												   class="text-info"> Motherboard - ASUS PRIME B350-PLUS </a>
 											</div>
 											<div id="time-bids"
 											     class="row">
@@ -462,7 +519,7 @@
 										     class="container-fluid">
 											<div id="auctionName">
 												<a href="#"
-												   class="text-info"> HDD - Toshiba 2TB 7200RPM Rs.5,400 </a>
+												   class="text-info"> HDD - Toshiba 2TB 7200RPM </a>
 											</div>
 											<div id="time-bids"
 											     class="row">
@@ -485,7 +542,7 @@
 										     class="container-fluid">
 											<div id="auctionName">
 												<a href="#"
-												   class="text-info"> Graphics Card - MSI RX 580 GAMING X 8GB Rs.23,820 </a>
+												   class="text-info"> MSI RX 580 </a>
 											</div>
 											<div id="time-bids"
 											     class="row">
@@ -515,7 +572,7 @@
 										     class="container-fluid">
 											<div id="auctionName">
 												<a href="#"
-												   class="text-info"> AZIO MK HUE Red USB Backlit Mechanical Keyboard </a>
+												   class="text-info"> AZIO MK HUE Red USB Backlit Keyboard </a>
 											</div>
 											<div id="time-bids"
 											     class="row">
@@ -539,7 +596,7 @@
 										     class="container-fluid">
 											<div id="auctionName">
 												<a href="#"
-												   class="text-info"> Mini Numeric Keypad 23Keys Digital Keypad 2.4G USB Wireless Keyboard High Quality Numpad For Desktop Notebook Compatible </a>
+												   class="text-info"> Mini Numeric Keypad 23Keys</a>
 											</div>
 											<div id="time-bids"
 											     class="row">
@@ -562,7 +619,7 @@
 										     class="container-fluid">
 											<div id="auctionName">
 												<a href="#"
-												   class="text-info"> Logitech G602 910-003820 Black 11 Buttons 1 x Wheel USB RF Wireless Optical 2500 dpi Gaming Mouse  </a>
+												   class="text-info"> Logitech G602 Black </a>
 											</div>
 											<div id="time-bids"
 											     class="row">

@@ -1,17 +1,19 @@
 /* common */
 
+li {
+  list-style: none;
+}
+
 @media screen and (max-width: 768px) {
   .hidden-xs {
     display: none !important;
   }
 }
 
-.special-img
+.test
 {
-    position: relative;
-    top: -5px;
-    float: left;
-    left: -5px;
+   right: 0;
+   left: auto;
 }
 
 td img {
@@ -321,22 +323,6 @@ legend {
   }
   div.row:nth-child(7) .col-md-8 {
     padding-right: 0;
-  }
-  #map {
-    margin-left: 0;
-  }
-  #map img {
-    width: 200px;
-    height: 200px;
-  }
-  #contactDetails {
-    display: inline-block;
-    margin-top: 62%;
-    padding-left: 15%;
-    max-height: 50%;
-  }
-  #contactDetails>p:nth-child(3), #contactDetails>p:nth-child(4) {
-    margin-bottom: 0.5em;
   }
   div.card div button {
     display: block;

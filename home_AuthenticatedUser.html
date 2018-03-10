@@ -29,86 +29,65 @@
 
 	<body>
 		<header>
-
 				<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
 					<div class="container-fluid">
 
-						<a class="navbar-brand" href="#">Navbar</a>
-						<div class="container">
-							<div class="row">
-						        <div class="">
-						            <div id="imaginary_container">
-						                <div class="input-group stylish-input-group">
-						                    <input type="text" class="form-control"  placeholder="Search" >
-						                    <span class="input-group-addon">
-						                        <button type="submit" class="bf-default">
-						                            <span class="fa fa-search my-auto" style="font-size: 23px"></span>
-						                        </button>
-						                    </span>
-						                </div>
-						            </div>
-						        </div>
+						<a class="navbar-brand hidden-xs" href="index.html"><img src="images/PcAuctions_logo.png" height="50"/></a>
+						<div class="collapse navbar-collapse row"
+							id="navbar1">
+							<div class="col">
+								<form class="form-inline my-2 my-lg-0">
+									<input class="form-control mr-sm-2" type="text" placeholder="Search">
+									<button class="btn btn-secondary my-2 my-sm-0 p-xs-0" type="submit">Search</button>
+								</form>
 							</div>
 						</div>
-						<div id="profileNav"
-					     class="col-sm-2 nav-item">
-						<ul class="navbar-nav">
-							<li class="nav-item col-sm-6">
-								<a class="nav-link dropdown-toggle"
-								   data-toggle="dropdown"
-								   role="button"
-								   aria-haspopup="true"
-								   aria-expanded="false"
-								   href="#">Igor</a>
-								<div class="dropdown-menu"
-								     role="menu"
-								     x-placement="bottom-start"
-								     style="position: absolute;
-                               transform: translate3d(0px, 39px, 0px);
-                              top: 0px; left: 0px;
-                              will-change: transform;">
-									<div class="container">
-										<div class="dropdown-header"> Go To</div>
-										<ul>
-											<li><a href="profile.html"> Profile </a></li>
-											<li><a href="myauctions_user.html"> My Auctions </a></li>
-											<li><a href="index.html"> Log Out </a></li>
-										</ul>
-									</div>
-								</div>
-							</li>
-							<li class="col-sm-6">
-								<a href="profile.html">
-                     <img
-                       src="images/photos/igor_foto.jpg"
-                       href="profile.html"
-                       class="img-fluid profile-pic"
-                       width="40"
-                       height="40">
-                  </a>
-							</li>
-						</ul>
-					</div>
-				</div>
-	</div>
-					</div>
-				</nav>
-				<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-					<div class="container-fluid">
+						<ul class="nav pull-right">
+							<a href="create-auction.html">
+							<button type="button" name="button" class="btn btn-secondary btn-md mt-1 mr-5">+<span class="hidden-xs"> Create Auction</span></button>
+						</a>
+							<li class="dropdown" id="menuLogin">
+							<a class="dropdown-toggle text-white" href="#" data-toggle="dropdown" id="navLogin" data-devgib="tagged">Go To</a>
+							<a class="" href="profile.html" data-devgib="tagged"><img src="images/photos/igor_foto.jpg" height="50" class="profile-pic" style="display: inline"/></a>
+							<div class="dropdown-menu test" style="padding:17px;">
+								<a class="dropdown-item" href="profile.html">Profile </a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="myauctions_user.html">My Auctions </a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="index.html">Log Out </a>
+								</ul>
+							</div>
+						</li>
+				</ul>
+						<br>
+						<button class="navbar-toggler"
+						type="button"
+						data-toggle="collapse"
+						data-target="#navbar1"
+						aria-controls="navbar1"
+						aria-expanded="false"
+						aria-label="Toggle navigation"
+						style="">
+						<span class="fa fa-search p-1"></span>
+					</button>
 
 						<button class="navbar-toggler"
 						type="button"
 						data-toggle="collapse"
-						data-target="#navbarColor01"
-						aria-controls="navbarColor01"
+						data-target="#navbar2"
+						aria-controls="navbar2"
 						aria-expanded="false"
 						aria-label="Toggle navigation"
 						style="">
 						<span class="navbar-toggler-icon"></span>
 					</button>
+					</div>
+				</nav>
+				<nav class="navbar navbar-expand-lg navbar-dark bg-primary p-md-1">
+					<div class="container-fluid">
 
 					<div class="collapse navbar-collapse"
-					id="navbarColor01">
+					id="navbar2">
 					<ul class="navbar-nav mr-auto">
 						<li class="nav-item">
 							<a class="nav-link text-white"
@@ -144,11 +123,14 @@
 					</nav>
 		</header>
 
+
 		<div class="container-fluid">
-			<hr class="my-3">
-			<h3 class="py-3 text-center">Quick Start</h3>
-			<hr class="my-3">
-			<div class="container-fluid row my-5">
+			<div class="hidden-xs">
+				<hr class="my-3">
+				<h3 class="py-3 text-center">Quick Start</h3>
+				<hr class="my-3">
+			</div>
+			<div class="container-fluid row my-3">
 				<div id="lateralNavBar"
 				     class="col-sm-3 bg-white p-4">
 					<navbar>
