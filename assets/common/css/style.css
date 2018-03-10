@@ -1,5 +1,11 @@
 /* common */
 
+@media screen and (max-width: 768px) {
+  .hidden-xs {
+    display: none !important;
+  }
+}
+
 .special-img
 {
     position: relative;
@@ -53,6 +59,12 @@ legend {
 /* create-auction.html */
 
 /* profile.html */
+
+@media screen and (max-width: 680px) {
+  #report {
+    width: 100% !important;
+  }
+}
 
 .profile-pic {
   border-radius: 50%;
