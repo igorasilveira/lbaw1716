@@ -1,4 +1,9 @@
+/* Global Field */
 
+this.pendingRow;
+
+
+/*              */
 
 function addModerator() {
 	var createBtt = document.getElementById("createModBtt");
@@ -115,50 +120,91 @@ function cancelCreatModerator(row) {
 
 function disapproveAuction(row) {
 
-        var i = row.parentNode.parentNode.rowIndex;
-        document.getElementById("pendingListViewMoreTable").deleteRow(i);
+	var i = row.parentNode.parentNode.rowIndex;
+	document.getElementById("pendingListViewMoreTable").deleteRow(i);
 
-    }
+}
 
 
-    function approveAuction(row) {
+function approveAuction(row) {
 
-        var i = row.parentNode.parentNode.rowIndex;
-        var wantedRow=document.getElementById("pendingListViewMoreTable").rows[i];
+	var i = row.parentNode.parentNode.rowIndex;
+	var wantedRow=document.getElementById("pendingListViewMoreTable").rows[i];
 
-        wantedRow.deleteCell(-1);
-        var lastBid = wantedRow.insertCell(wantedRow.cells.length-1);
-        lastBid.innerHTML = "None";
+	wantedRow.deleteCell(-1);
+	var lastBid = wantedRow.insertCell(wantedRow.cells.length-1);
+	lastBid.innerHTML = "None";
 
-        document.getElementById("pendingListViewMoreTable").deleteRow(i);
+	document.getElementById("pendingListViewMoreTable").deleteRow(i);
 
-       var addedRow= document.getElementById("SellsListViewMoreTable").insertRow(1);
-       addedRow.innerHTML=wantedRow.innerHTML;
+	var addedRow= document.getElementById("SellsListViewMoreTable").insertRow(1);
+	addedRow.innerHTML=wantedRow.innerHTML;
 
-    }
+}
 
 function initMap() {
-        var uluru = {lat: 41.178126, lng: -8.597441};
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 17,
-          center: uluru
-        });
-        var marker = new google.maps.Marker({
-          position: uluru,
-          map: map
-        });
-      }
-
-
-
-function getModal(){
-var modal = document.getElementById('myModal');
-
-var clobtt = document.getElementsByClassName("close")[0];
-
-clobtt.onclick = function() {
-    modal.style.display = "none";
+	var uluru = {lat: 41.178126, lng: -8.597441};
+	var map = new google.maps.Map(document.getElementById('map'), {
+		zoom: 17,
+		center: uluru
+	});
+	var marker = new google.maps.Marker({
+		position: uluru,
+		map: map
+	});
 }
-modal.style.display = "block";
 
+
+
+function getModal(row){
+
+	var modal = document.getElementById('myModal');
+
+	var clobtt = document.getElementsByClassName("close")[0];
+
+	this.pendingRow=row;
+	clobtt.onclick = function() {
+		modal.style.display = "none";
+	}
+	modal.style.display = "block";
+
+}
+
+
+function checkRating(){
+
+	var rating;
+	if (document.getElementById('star1').checked) {
+		document.getElementById('complain').style.display="block";
+	}else
+	if (document.getElementById('star2').checked) {
+		document.getElementById('complain').style.display="block";
+	}else{
+		document.getElementById('complain').style.display="none";
+		eliminatePending();
+	}
+
+}
+
+function eliminatePending(){
+
+	if(document.getElementById('complainID').value!=null || document.getElementById('complainID').value!=" ")
+	document.getElementById('complainID').value; //next, we shall do something with this complain
+
+	var pendTable=document.querySelector('#pending table');
+	
+	var i = (this.pendingRow).parentNode.parentNode.rowIndex;
+	var wantedRow=pendTable.rows[i];
+
+	wantedRow.deleteCell(-1);
+
+	pendTable.deleteRow(i);
+
+	var addedRow= document.querySelector('#bought table').insertRow(1);
+	addedRow.innerHTML=wantedRow.innerHTML;
+	addedRow.setAttribute("class","table");
+
+	document.getElementById('warningPendingTop').style.display="none";
+	var modal = document.getElementById('myModal');
+	modal.style.display = "none";
 }
