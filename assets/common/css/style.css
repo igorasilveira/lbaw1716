@@ -553,7 +553,6 @@ nav.navbar:nth-child(2) {
     margin-right: 0 !important;
   }
   #menuLogin {
-    max-width: 80%;
     margin-left: 14%;
   }
   ul.nav {
