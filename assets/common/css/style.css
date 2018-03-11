@@ -1,8 +1,7 @@
 /* common */
 
 .text-shadow {
-  text-shadow: 2px 8px 6px rgba(0,0,0,0.2),
-                 0px -5px 35px rgba(255,255,255,0.3);
+  text-shadow: 2px 8px 6px rgba(0, 0, 0, 0.2), 0px -5px 35px rgba(255, 255, 255, 0.3);
 }
 
 #menuLogin .dropdown-menu {
@@ -24,10 +23,9 @@ li {
   }
 }
 
-.test
-{
-   right: 0;
-   left: auto;
+.test {
+  right: 0;
+  left: auto;
 }
 
 td img {
@@ -167,17 +165,19 @@ legend {
   width: 10em;
 }
 
-.stylish-input-group .input-group-addon{
-    background: white !important;
+.stylish-input-group .input-group-addon {
+  background: white !important;
 }
-.stylish-input-group .form-control{
-	border-right:0;
-	box-shadow:0 0 0;
-	border-color:#ccc;
+
+.stylish-input-group .form-control {
+  border-right: 0;
+  box-shadow: 0 0 0;
+  border-color: #ccc;
 }
-.stylish-input-group button{
-    border:0;
-    background:transparent;
+
+.stylish-input-group button {
+  border: 0;
+  background: transparent;
 }
 
 /*manage_moderators.html*/
@@ -534,4 +534,29 @@ nav.navbar:nth-child(2) {
 
 #complain {
   display: none;
+}
+
+@media screen and (max-width: 992px) {
+  nav.navbar:nth-child(1)>div:nth-child(1) {
+    margin-bottom: 1em;
+  }
+}
+
+@media screen and (max-width: 366px) {
+  .navbar-brand {
+    margin-right: 1.5em;
+  }
+  ul.nav>a:nth-child(1) {
+    max-width: 30%;
+  }
+  ul a button.mt-1.btn-md.mr-5.btn:nth-child(1) {
+    margin-right: 0 !important;
+  }
+  #menuLogin {
+    max-width: 80%;
+    margin-left: 14%;
+  }
+  ul.nav {
+    max-width: 68%;
+  }
 }
