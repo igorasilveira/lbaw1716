@@ -1,0 +1,7 @@
+tabela de carregamentos
+categoria: par para ela propria
+enum para active, pending e refused, 
+messages com mts restriçoes
+won com mais coisas, ter /rating. 
+por dinheiro no normal user
+ter report

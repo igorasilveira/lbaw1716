@@ -1,0 +1,2354 @@
+
+---------- DDL ----------
+Package
+{
+  name="DDL"
+  namespaceroot="true"
+  Table
+  {
+    XRef{namespace="DDL" name="Table" source="{9B82B86C-B08A-46ff-A0C7-FD91B3FD0249}"}
+    notes=""
+    scope="Public"
+    multiplicity=""
+    version="1.0"
+    author="nadiacarvalho"
+    alias=""
+    name="Active"
+    complexity="1"
+    concurrency=""
+    persistence=""
+    arguments=""
+    phase="1.0"
+    status="Proposed"
+    visibility=""
+    cardinality=""
+    language="PostgreSQL"
+    Column
+    {
+      notes=""
+      scope="Public"
+      container=""
+      alias=""
+      lowerbound="1"
+      name="dateOfStart"
+      default=""
+      upperbound="1"
+      type="Date"
+    }
+    Column
+    {
+      notes=""
+      scope="Public"
+      container=""
+      alias=""
+      lowerbound="1"
+      name="numberOfBids"
+      default=""
+      upperbound="1"
+      type="Int"
+    }
+    Column
+    {
+      notes=""
+      scope="Public"
+      container=""
+      alias=""
+      lowerbound="1"
+      name="lastBid"
+      default=""
+      upperbound="1"
+      type="Bid"
+    }
+    PrimaryKey
+    {
+      Column
+      {
+        name="activeID"
+        type="integer"
+      }
+    }
+  }
+  ForeignKey
+  {
+    XRef{namespace="DDL" name="General" source="{CC430FA7-E0EB-47d5-8A84-B983A357103E}"}
+    Source
+    {
+      XRef{namespace="DDL" name="Table" source="{9B82B86C-B08A-46ff-A0C7-FD91B3FD0249}"}
+      name=""
+      multiplicity="0..1"
+      Column
+      {
+        name="activeID"
+        type="integer"
+      }
+    }
+    Target
+    {
+      XRef{namespace="DDL" name="Table" source="{D7C422D7-A0BA-485b-9C19-0EBA8862359B}"}
+      multiplicity="1"
+      Column
+      {
+        name="auctionID"
+        type="integer"
+      }
+    }
+  }
+  ForeignKey
+  {
+    XRef{namespace="DDL" name="FK1" source="{964DFFEE-FD78-462a-BEA9-30630828B96B}"}
+    Source
+    {
+      XRef{namespace="DDL" name="Table" source="{9B82B86C-B08A-46ff-A0C7-FD91B3FD0249}"}
+      name="wins"
+      multiplicity="*"
+      Column
+      {
+        name="bidderID"
+        type="integer"
+      }
+    }
+    Target
+    {
+      XRef{namespace="DDL" name="Table" source="{760218D2-AEE2-4cdf-B6C3-73D231DB9B28}"}
+      multiplicity="1"
+      Column
+      {
+        name="bidderID"
+        type="integer"
+      }
+    }
+  }
+  Table
+  {
+    XRef{namespace="DDL" name="LinkTable" source="{D8C25C41-198C-45f4-BF6A-F3D812665440}"}
+    name="places a bid on"
+    language="PostgreSQL"
+  }
+  ForeignKey
+  {
+    XRef{namespace="DDL" name="FK1" source="{D8C25C41-198C-45f4-BF6A-F3D812665440}"}
+    Source
+    {
+      XRef{namespace="DDL" name="LinkTable" source="{D8C25C41-198C-45f4-BF6A-F3D812665440}"}
+      name="Active"
+      multiplicity="*"
+      Column
+      {
+        name="activeID"
+        type="integer"
+      }
+    }
+    Target
+    {
+      XRef{namespace="DDL" name="Table" source="{9B82B86C-B08A-46ff-A0C7-FD91B3FD0249}"}
+      Column
+      {
+        name="activeID"
+        type="integer"
+      }
+    }
+  }
+  ForeignKey
+  {
+    XRef{namespace="DDL" name="FK2" source="{D8C25C41-198C-45f4-BF6A-F3D812665440}"}
+    Source
+    {
+      XRef{namespace="DDL" name="LinkTable" source="{D8C25C41-198C-45f4-BF6A-F3D812665440}"}
+      name="Bidder"
+      multiplicity="*"
+      Column
+      {
+        name="bidderID"
+        type="integer"
+      }
+    }
+    Target
+    {
+      XRef{namespace="DDL" name="Table" source="{760218D2-AEE2-4cdf-B6C3-73D231DB9B28}"}
+      Column
+      {
+        name="bidderID"
+        type="integer"
+      }
+    }
+  }
+  ForeignKey
+  {
+    XRef{namespace="DDL" name="FK1" source="{E775101A-3F2A-4858-B806-74D42B3C4770}"}
+    Source
+    {
+      XRef{namespace="DDL" name="Table" source="{32DBE6AE-6A50-4bec-A364-EDD3F9FF8E77}"}
+      name="Active"
+      Column
+      {
+        name="activeID"
+        type="integer"
+      }
+    }
+    Target
+    {
+      XRef{namespace="DDL" name="Table" source="{9B82B86C-B08A-46ff-A0C7-FD91B3FD0249}"}
+      multiplicity="*"
+      Column
+      {
+        name="activeID"
+        type="integer"
+      }
+    }
+  }
+
+  Table
+  {
+    XRef{namespace="DDL" name="Table" source="{FF31DF28-B45C-4f53-9D01-F78B65E56F9A}"}
+    notes=""
+    scope="Public"
+    multiplicity=""
+    version="1.0"
+    author="nadiacarvalho"
+    alias=""
+    name="Administrador"
+    complexity="1"
+    concurrency=""
+    persistence=""
+    arguments=""
+    phase="1.0"
+    status="Proposed"
+    visibility=""
+    cardinality=""
+    language="PostgreSQL"
+    PrimaryKey
+    {
+      Column
+      {
+        name="administradorID"
+        type="integer"
+      }
+    }
+  }
+  ForeignKey
+  {
+    XRef{namespace="DDL" name="General" source="{6881A89E-7265-4150-8FEF-07E0B332447C}"}
+    Source
+    {
+      XRef{namespace="DDL" name="Table" source="{FF31DF28-B45C-4f53-9D01-F78B65E56F9A}"}
+      name=""
+      multiplicity="0..1"
+      Column
+      {
+        name="administradorID"
+        type="integer"
+      }
+    }
+    Target
+    {
+      XRef{namespace="DDL" name="Table" source="{39756CE6-B331-4831-9F0B-52FEC37255A6}"}
+      multiplicity="1"
+      Column
+      {
+        name="moderatorID"
+        type="integer"
+      }
+    }
+  }
+  ForeignKey
+  {
+    XRef{namespace="DDL" name="FK1" source="{6CDC20AB-7255-4db2-AA09-E258AA7D8BE5}"}
+    Source
+    {
+      XRef{namespace="DDL" name="Table" source="{39756CE6-B331-4831-9F0B-52FEC37255A6}"}
+      name="adds       "
+      multiplicity="*"
+      Column
+      {
+        name="administradorID"
+        type="integer"
+      }
+    }
+    Target
+    {
+      XRef{namespace="DDL" name="Table" source="{FF31DF28-B45C-4f53-9D01-F78B65E56F9A}"}
+      multiplicity="1"
+      Column
+      {
+        name="administradorID"
+        type="integer"
+      }
+    }
+  }
+  ForeignKey
+  {
+    XRef{namespace="DDL" name="FK1" source="{89ACEA7A-B6AA-4d3e-9D5B-ED10B6CDD70F}"}
+    Source
+    {
+      XRef{namespace="DDL" name="Table" source="{39756CE6-B331-4831-9F0B-52FEC37255A6}"}
+      name="removes"
+      multiplicity="*"
+      Column
+      {
+        name="administradorID"
+        type="integer"
+      }
+    }
+    Target
+    {
+      XRef{namespace="DDL" name="Table" source="{FF31DF28-B45C-4f53-9D01-F78B65E56F9A}"}
+      multiplicity="1"
+      Column
+      {
+        name="administradorID"
+        type="integer"
+      }
+    }
+  }
+  ForeignKey
+  {
+    XRef{namespace="DDL" name="FK1" source="{12D1D1C0-B5D4-4af3-9044-D58276ABA051}"}
+    Source
+    {
+      XRef{namespace="DDL" name="Table" source="{75CA745A-7973-4fae-A906-2777DDF601C5}"}
+      name="edits"
+      multiplicity="*"
+      Column
+      {
+        name="administradorID"
+        type="integer"
+      }
+    }
+    Target
+    {
+      XRef{namespace="DDL" name="Table" source="{FF31DF28-B45C-4f53-9D01-F78B65E56F9A}"}
+      multiplicity="1"
+      Column
+      {
+        name="administradorID"
+        type="integer"
+      }
+    }
+  }
+
+  Table
+  {
+    XRef{namespace="DDL" name="Table" source="{D7C422D7-A0BA-485b-9C19-0EBA8862359B}"}
+    notes=""
+    scope="Public"
+    multiplicity=""
+    version="1.0"
+    author="nadiacarvalho"
+    alias=""
+    abstract="1"
+    name="Auction"
+    complexity="1"
+    concurrency=""
+    persistence=""
+    arguments=""
+    phase="1.0"
+    status="Proposed"
+    visibility=""
+    cardinality=""
+    language="PostgreSQL"
+    Column
+    {
+      notes=""
+      scope="Public"
+      container=""
+      alias=""
+      lowerbound="1"
+      name="title"
+      default=""
+      upperbound="1"
+      type="varchar"
+    }
+    Column
+    {
+      notes=""
+      scope="Public"
+      container=""
+      alias=""
+      lowerbound="1"
+      name="description"
+      default=""
+      upperbound="1"
+      type="varchar"
+    }
+    Column
+    {
+      notes=""
+      scope="Public"
+      container=""
+      alias=""
+      lowerbound="1"
+      name="sellingReason"
+      default=""
+      upperbound="1"
+      type="varchar"
+    }
+    Column
+    {
+      notes=""
+      scope="Public"
+      container=""
+      alias=""
+      lowerbound="1"
+      name="pathToPhoto"
+      default=""
+      upperbound="1"
+      type="varchar"
+    }
+    Column
+    {
+      notes=""
+      scope="Public"
+      container=""
+      alias=""
+      lowerbound="1"
+      name="startingPrice"
+      default=""
+      upperbound="1"
+      type="Int"
+    }
+    Column
+    {
+      notes=""
+      scope="Public"
+      container=""
+      alias=""
+      lowerbound="1"
+      name="minimumSellingPrice"
+      default=""
+      upperbound="1"
+      type="Int"
+    }
+    Column
+    {
+      notes=""
+      scope="Public"
+      container=""
+      alias=""
+      lowerbound="1"
+      name="buyNow"
+      default=""
+      upperbound="1"
+      type="Int"
+    }
+    Column
+    {
+      notes=""
+      scope="Public"
+      container=""
+      alias=""
+      lowerbound="1"
+      name="maxLifeTime"
+      default=""
+      upperbound="1"
+      type="Int"
+    }
+    PrimaryKey
+    {
+      Column
+      {
+        name="auctionID"
+        type="integer"
+      }
+    }
+  }
+  ForeignKey
+  {
+    XRef{namespace="DDL" name="General" source="{63563E0D-5D30-45a9-B064-EC65D85546F7}"}
+    Source
+    {
+      XRef{namespace="DDL" name="Table" source="{9BB325BD-C2DA-4a3f-B056-B426270DA172}"}
+      name=""
+      multiplicity="0..1"
+      Column
+      {
+        name="refusedID"
+        type="integer"
+      }
+    }
+    Target
+    {
+      XRef{namespace="DDL" name="Table" source="{D7C422D7-A0BA-485b-9C19-0EBA8862359B}"}
+      multiplicity="1"
+      Column
+      {
+        name="auctionID"
+        type="integer"
+      }
+    }
+  }
+  ForeignKey
+  {
+    XRef{namespace="DDL" name="General" source="{966993D0-19ED-4c0f-B614-89D75F0EDDBC}"}
+    Source
+    {
+      XRef{namespace="DDL" name="Table" source="{6BF77F29-25AD-4e98-AD31-14BB294765DC}"}
+      name=""
+      multiplicity="0..1"
+      Column
+      {
+        name="pendingID"
+        type="integer"
+      }
+    }
+    Target
+    {
+      XRef{namespace="DDL" name="Table" source="{D7C422D7-A0BA-485b-9C19-0EBA8862359B}"}
+      multiplicity="1"
+      Column
+      {
+        name="auctionID"
+        type="integer"
+      }
+    }
+  }
+  ForeignKey
+  {
+    XRef{namespace="DDL" name="General" source="{CC430FA7-E0EB-47d5-8A84-B983A357103E}"}
+    Source
+    {
+      XRef{namespace="DDL" name="Table" source="{9B82B86C-B08A-46ff-A0C7-FD91B3FD0249}"}
+      name=""
+      multiplicity="0..1"
+      Column
+      {
+        name="activeID"
+        type="integer"
+      }
+    }
+    Target
+    {
+      XRef{namespace="DDL" name="Table" source="{D7C422D7-A0BA-485b-9C19-0EBA8862359B}"}
+      multiplicity="1"
+      Column
+      {
+        name="auctionID"
+        type="integer"
+      }
+    }
+  }
+  Table
+  {
+    XRef{namespace="DDL" name="LinkTable" source="{30B1E424-AC7A-43e8-9D92-9914AF7E050D}"}
+    name="pertains to"
+    language="PostgreSQL"
+  }
+  ForeignKey
+  {
+    XRef{namespace="DDL" name="FK1" source="{30B1E424-AC7A-43e8-9D92-9914AF7E050D}"}
+    Source
+    {
+      XRef{namespace="DDL" name="LinkTable" source="{30B1E424-AC7A-43e8-9D92-9914AF7E050D}"}
+      name="Category"
+      multiplicity="*"
+      Column
+      {
+        name="categoryID"
+        type="integer"
+      }
+    }
+    Target
+    {
+      XRef{namespace="DDL" name="Table" source="{75CA745A-7973-4fae-A906-2777DDF601C5}"}
+      Column
+      {
+        name="categoryID"
+        type="integer"
+      }
+    }
+  }
+  ForeignKey
+  {
+    XRef{namespace="DDL" name="FK2" source="{30B1E424-AC7A-43e8-9D92-9914AF7E050D}"}
+    Source
+    {
+      XRef{namespace="DDL" name="LinkTable" source="{30B1E424-AC7A-43e8-9D92-9914AF7E050D}"}
+      name="Auction"
+      multiplicity="1..*"
+      Column
+      {
+        name="auctionID"
+        type="integer"
+      }
+    }
+    Target
+    {
+      XRef{namespace="DDL" name="Table" source="{D7C422D7-A0BA-485b-9C19-0EBA8862359B}"}
+      Column
+      {
+        name="auctionID"
+        type="integer"
+      }
+    }
+  }
+
+  Table
+  {
+    XRef{namespace="DDL" name="Table" source="{9CAAB8AB-7331-4c57-B233-DEE9B6AB6D25}"}
+    notes=""
+    scope="Private"
+    multiplicity=""
+    version="1.0"
+    author="nadiacarvalho"
+    alias=""
+    abstract="1"
+    name="Authenticated User"
+    complexity="1"
+    concurrency=""
+    persistence=""
+    arguments=""
+    phase="1.0"
+    status="Proposed"
+    visibility="Public"
+    cardinality=""
+    language="PostgreSQL"
+    Column
+    {
+      notes=""
+      scope="Public"
+      container=""
+      alias=""
+      lowerbound="1"
+      name="username"
+      default=""
+      upperbound="1"
+      type="varchar"
+    }
+    Column
+    {
+      notes=""
+      scope="Public"
+      container=""
+      alias=""
+      lowerbound="1"
+      name="password"
+      default=""
+      upperbound="1"
+      type="varchar"
+    }
+    Column
+    {
+      notes=""
+      scope="Public"
+      container=""
+      alias=""
+      lowerbound="1"
+      name="pathToPhoto"
+      default=""
+      upperbound="1"
+      type="varchar"
+    }
+    PrimaryKey
+    {
+      Column
+      {
+        name="authenticated UserID"
+        type="integer"
+      }
+    }
+  }
+  ForeignKey
+  {
+    XRef{namespace="DDL" name="General" source="{529AAC55-0361-4503-8CB0-1EE4ED6E1A2D}"}
+    Source
+    {
+      XRef{namespace="DDL" name="Table" source="{59553FAA-DE58-49c6-9487-FCF98DBCF4AE}"}
+      name=""
+      multiplicity="0..1"
+      Column
+      {
+        name="normal UserID"
+        type="integer"
+      }
+    }
+    Target
+    {
+      XRef{namespace="DDL" name="Table" source="{9CAAB8AB-7331-4c57-B233-DEE9B6AB6D25}"}
+      multiplicity="1"
+      Column
+      {
+        name="authenticated UserID"
+        type="integer"
+      }
+    }
+  }
+  ForeignKey
+  {
+    XRef{namespace="DDL" name="General" source="{6B72B77C-A6DB-40d2-8046-CB269A1892BD}"}
+    Source
+    {
+      XRef{namespace="DDL" name="Table" source="{39756CE6-B331-4831-9F0B-52FEC37255A6}"}
+      name=""
+      multiplicity="0..1"
+      Column
+      {
+        name="moderatorID"
+        type="integer"
+      }
+    }
+    Target
+    {
+      XRef{namespace="DDL" name="Table" source="{9CAAB8AB-7331-4c57-B233-DEE9B6AB6D25}"}
+      multiplicity="1"
+      Column
+      {
+        name="authenticated UserID"
+        type="integer"
+      }
+    }
+  }
+  ForeignKey
+  {
+    XRef{namespace="DDL" name="FK1" source="{59BA471A-0C89-4c3e-B628-920CE4AA2B7D}"}
+    Source
+    {
+      XRef{namespace="DDL" name="Table" source="{221A505D-6C0B-42ff-9775-50F275078C68}"}
+      name="receives "
+      multiplicity="*"
+      Column
+      {
+        name="authenticated UserID"
+        type="integer"
+      }
+    }
+    Target
+    {
+      XRef{namespace="DDL" name="Table" source="{9CAAB8AB-7331-4c57-B233-DEE9B6AB6D25}"}
+      multiplicity="1"
+      Column
+      {
+        name="authenticated UserID"
+        type="integer"
+      }
+    }
+  }
+
+  Table
+  {
+    XRef{namespace="DDL" name="Table" source="{100D8EE2-45D8-4985-9C66-278F16C235BA}"}
+    notes=""
+    scope="Public"
+    multiplicity=""
+    version="1.0"
+    author="nadiacarvalho"
+    alias=""
+    name="Bid"
+    complexity="1"
+    concurrency=""
+    persistence=""
+    arguments=""
+    phase="1.0"
+    status="Proposed"
+    visibility=""
+    cardinality=""
+    language="PostgreSQL"
+    Column
+    {
+      notes=""
+      scope="Public"
+      container=""
+      alias=""
+      lowerbound="1"
+      name="dateOfBid"
+      default=""
+      upperbound="1"
+      type="Date"
+    }
+    Column
+    {
+      notes=""
+      scope="Public"
+      container=""
+      alias=""
+      lowerbound="1"
+      name="value"
+      default=""
+      upperbound="1"
+      type="Int"
+    }
+    PrimaryKey
+    {
+      Column
+      {
+        name="bidID"
+        type="integer"
+      }
+    }
+  }
+
+  Table
+  {
+    XRef{namespace="DDL" name="Table" source="{760218D2-AEE2-4cdf-B6C3-73D231DB9B28}"}
+    notes=""
+    scope="Public"
+    multiplicity=""
+    version="1.0"
+    author="nadiacarvalho"
+    alias=""
+    name="Bidder"
+    complexity="1"
+    concurrency=""
+    persistence=""
+    arguments=""
+    phase="1.0"
+    status="Proposed"
+    visibility=""
+    cardinality=""
+    language="PostgreSQL"
+    PrimaryKey
+    {
+      Column
+      {
+        name="bidderID"
+        type="integer"
+      }
+    }
+  }
+  ForeignKey
+  {
+    XRef{namespace="DDL" name="General" source="{D7049D0C-412A-4ed6-A3D7-CEEEE20B12F9}"}
+    Source
+    {
+      XRef{namespace="DDL" name="Table" source="{760218D2-AEE2-4cdf-B6C3-73D231DB9B28}"}
+      name=""
+      multiplicity="0..1"
+      Column
+      {
+        name="bidderID"
+        type="integer"
+      }
+    }
+    Target
+    {
+      XRef{namespace="DDL" name="Table" source="{59553FAA-DE58-49c6-9487-FCF98DBCF4AE}"}
+      multiplicity="1"
+      Column
+      {
+        name="normal UserID"
+        type="integer"
+      }
+    }
+  }
+  ForeignKey
+  {
+    XRef{namespace="DDL" name="FK1" source="{964DFFEE-FD78-462a-BEA9-30630828B96B}"}
+    Source
+    {
+      XRef{namespace="DDL" name="Table" source="{9B82B86C-B08A-46ff-A0C7-FD91B3FD0249}"}
+      name="wins"
+      multiplicity="*"
+      Column
+      {
+        name="bidderID"
+        type="integer"
+      }
+    }
+    Target
+    {
+      XRef{namespace="DDL" name="Table" source="{760218D2-AEE2-4cdf-B6C3-73D231DB9B28}"}
+      multiplicity="1"
+      Column
+      {
+        name="bidderID"
+        type="integer"
+      }
+    }
+  }
+  Table
+  {
+    XRef{namespace="DDL" name="LinkTable" source="{D8C25C41-198C-45f4-BF6A-F3D812665440}"}
+    name="places a bid on"
+    language="PostgreSQL"
+  }
+  ForeignKey
+  {
+    XRef{namespace="DDL" name="FK1" source="{D8C25C41-198C-45f4-BF6A-F3D812665440}"}
+    Source
+    {
+      XRef{namespace="DDL" name="LinkTable" source="{D8C25C41-198C-45f4-BF6A-F3D812665440}"}
+      name="Active"
+      multiplicity="*"
+      Column
+      {
+        name="activeID"
+        type="integer"
+      }
+    }
+    Target
+    {
+      XRef{namespace="DDL" name="Table" source="{9B82B86C-B08A-46ff-A0C7-FD91B3FD0249}"}
+      Column
+      {
+        name="activeID"
+        type="integer"
+      }
+    }
+  }
+  ForeignKey
+  {
+    XRef{namespace="DDL" name="FK2" source="{D8C25C41-198C-45f4-BF6A-F3D812665440}"}
+    Source
+    {
+      XRef{namespace="DDL" name="LinkTable" source="{D8C25C41-198C-45f4-BF6A-F3D812665440}"}
+      name="Bidder"
+      multiplicity="*"
+      Column
+      {
+        name="bidderID"
+        type="integer"
+      }
+    }
+    Target
+    {
+      XRef{namespace="DDL" name="Table" source="{760218D2-AEE2-4cdf-B6C3-73D231DB9B28}"}
+      Column
+      {
+        name="bidderID"
+        type="integer"
+      }
+    }
+  }
+
+  Table
+  {
+    XRef{namespace="DDL" name="Table" source="{75CA745A-7973-4fae-A906-2777DDF601C5}"}
+    notes=""
+    scope="Public"
+    multiplicity=""
+    version="1.0"
+    author="nadiacarvalho"
+    alias=""
+    name="Category"
+    complexity="1"
+    concurrency=""
+    persistence=""
+    arguments=""
+    phase="1.0"
+    status="Proposed"
+    visibility=""
+    cardinality=""
+    language="PostgreSQL"
+    Column
+    {
+      notes=""
+      scope="Public"
+      container=""
+      alias=""
+      lowerbound="1"
+      name="name"
+      default=""
+      upperbound="1"
+      type="varchar"
+    }
+    Column
+    {
+      notes=""
+      scope="Public"
+      container=""
+      alias=""
+      lowerbound="1"
+      name="subcategories"
+      default=""
+      upperbound="1"
+      type="List"
+    }
+    PrimaryKey
+    {
+      Column
+      {
+        name="categoryID"
+        type="integer"
+      }
+    }
+  }
+  Table
+  {
+    XRef{namespace="DDL" name="LinkTable" source="{30B1E424-AC7A-43e8-9D92-9914AF7E050D}"}
+    name="pertains to"
+    language="PostgreSQL"
+  }
+  ForeignKey
+  {
+    XRef{namespace="DDL" name="FK1" source="{30B1E424-AC7A-43e8-9D92-9914AF7E050D}"}
+    Source
+    {
+      XRef{namespace="DDL" name="LinkTable" source="{30B1E424-AC7A-43e8-9D92-9914AF7E050D}"}
+      name="Category"
+      multiplicity="*"
+      Column
+      {
+        name="categoryID"
+        type="integer"
+      }
+    }
+    Target
+    {
+      XRef{namespace="DDL" name="Table" source="{75CA745A-7973-4fae-A906-2777DDF601C5}"}
+      Column
+      {
+        name="categoryID"
+        type="integer"
+      }
+    }
+  }
+  ForeignKey
+  {
+    XRef{namespace="DDL" name="FK2" source="{30B1E424-AC7A-43e8-9D92-9914AF7E050D}"}
+    Source
+    {
+      XRef{namespace="DDL" name="LinkTable" source="{30B1E424-AC7A-43e8-9D92-9914AF7E050D}"}
+      name="Auction"
+      multiplicity="1..*"
+      Column
+      {
+        name="auctionID"
+        type="integer"
+      }
+    }
+    Target
+    {
+      XRef{namespace="DDL" name="Table" source="{D7C422D7-A0BA-485b-9C19-0EBA8862359B}"}
+      Column
+      {
+        name="auctionID"
+        type="integer"
+      }
+    }
+  }
+  ForeignKey
+  {
+    XRef{namespace="DDL" name="FK1" source="{12D1D1C0-B5D4-4af3-9044-D58276ABA051}"}
+    Source
+    {
+      XRef{namespace="DDL" name="Table" source="{75CA745A-7973-4fae-A906-2777DDF601C5}"}
+      name="edits"
+      multiplicity="*"
+      Column
+      {
+        name="administradorID"
+        type="integer"
+      }
+    }
+    Target
+    {
+      XRef{namespace="DDL" name="Table" source="{FF31DF28-B45C-4f53-9D01-F78B65E56F9A}"}
+      multiplicity="1"
+      Column
+      {
+        name="administradorID"
+        type="integer"
+      }
+    }
+  }
+
+  Table
+  {
+    XRef{namespace="DDL" name="Table" source="{5A2F7E34-8100-4fa5-A210-D95429FFAAE4}"}
+    notes=""
+    scope="Public"
+    multiplicity=""
+    version="1.0"
+    author="nadiacarvalho"
+    alias=""
+    name="City"
+    complexity="1"
+    concurrency=""
+    persistence=""
+    arguments=""
+    phase="1.0"
+    status="Proposed"
+    visibility=""
+    cardinality=""
+    language="PostgreSQL"
+    Column
+    {
+      notes=""
+      scope="Public"
+      container=""
+      alias=""
+      lowerbound="1"
+      name="name"
+      default=""
+      upperbound="1"
+      type="varchar"
+    }
+    PrimaryKey
+    {
+      Column
+      {
+        name="cityID"
+        type="integer"
+      }
+    }
+  }
+  ForeignKey
+  {
+    XRef{namespace="DDL" name="FK1" source="{207BB0FF-5580-483f-96A2-0AB925783C2B}"}
+    Source
+    {
+      XRef{namespace="DDL" name="Table" source="{5A2F7E34-8100-4fa5-A210-D95429FFAAE4}"}
+      multiplicity="*"
+      Column
+      {
+        name="countryID"
+        type="integer"
+      }
+    }
+    Target
+    {
+      XRef{namespace="DDL" name="Table" source="{7303AF4A-D84A-4975-96A6-CA6503C9D688}"}
+      multiplicity="1"
+      Column
+      {
+        name="countryID"
+        type="integer"
+      }
+    }
+  }
+  ForeignKey
+  {
+    XRef{namespace="DDL" name="FK1" source="{7312D645-53B5-4f92-999F-282CD8B90563}"}
+    Source
+    {
+      XRef{namespace="DDL" name="Table" source="{BFCE9D7B-E98A-4a48-B52F-610CCEDBCB09}"}
+      multiplicity="*"
+      Column
+      {
+        name="cityID"
+        type="integer"
+      }
+    }
+    Target
+    {
+      XRef{namespace="DDL" name="Table" source="{5A2F7E34-8100-4fa5-A210-D95429FFAAE4}"}
+      multiplicity="1"
+      Column
+      {
+        name="cityID"
+        type="integer"
+      }
+    }
+  }
+
+  Table
+  {
+    XRef{namespace="DDL" name="Table" source="{2F6545F6-68D3-4730-BAF5-936B192E0FF2}"}
+    notes=""
+    scope="Public"
+    multiplicity=""
+    version="1.0"
+    author="nadiacarvalho"
+    alias=""
+    name="Comment"
+    complexity="1"
+    concurrency=""
+    persistence=""
+    arguments=""
+    phase="1.0"
+    status="Proposed"
+    visibility=""
+    cardinality=""
+    language="PostgreSQL"
+    Column
+    {
+      notes=""
+      scope="Public"
+      container=""
+      alias=""
+      lowerbound="1"
+      name="date"
+      default=""
+      upperbound="1"
+      type="Date"
+    }
+    Column
+    {
+      notes=""
+      scope="Public"
+      container=""
+      alias=""
+      lowerbound="1"
+      name="description"
+      default=""
+      upperbound="1"
+      type="varchar"
+    }
+    PrimaryKey
+    {
+      Column
+      {
+        name="commentID"
+        type="integer"
+      }
+    }
+  }
+
+  Table
+  {
+    XRef{namespace="DDL" name="Table" source="{47741700-361D-46f7-8CC5-B15DD1E0B5E8}"}
+    notes=""
+    scope="Public"
+    multiplicity=""
+    version="1.0"
+    author="nadiacarvalho"
+    alias=""
+    name="Comment"
+    complexity="1"
+    concurrency=""
+    persistence=""
+    arguments=""
+    phase="1.0"
+    status="Proposed"
+    visibility=""
+    cardinality=""
+    language="PostgreSQL"
+    PrimaryKey
+    {
+      Column
+      {
+        name="commentID"
+        type="integer"
+      }
+    }
+  }
+
+  Table
+  {
+    XRef{namespace="DDL" name="Table" source="{32DBE6AE-6A50-4bec-A364-EDD3F9FF8E77}"}
+    notes=""
+    scope="Public"
+    multiplicity=""
+    version="1.0"
+    author="nadiacarvalho"
+    alias=""
+    name="Comment"
+    complexity="1"
+    concurrency=""
+    persistence=""
+    arguments=""
+    phase="1.0"
+    status="Proposed"
+    visibility=""
+    cardinality=""
+    language="PostgreSQL"
+  }
+  ForeignKey
+  {
+    XRef{namespace="DDL" name="FK1" source="{E6304BD9-5371-442b-AC35-32FB298D5729}"}
+    Source
+    {
+      XRef{namespace="DDL" name="Table" source="{32DBE6AE-6A50-4bec-A364-EDD3F9FF8E77}"}
+      name="Normal User"
+      Column
+      {
+        name="normal UserID"
+        type="integer"
+      }
+    }
+    Target
+    {
+      XRef{namespace="DDL" name="Table" source="{59553FAA-DE58-49c6-9487-FCF98DBCF4AE}"}
+      multiplicity="*"
+      Column
+      {
+        name="normal UserID"
+        type="integer"
+      }
+    }
+  }
+  ForeignKey
+  {
+    XRef{namespace="DDL" name="FK1" source="{7404BB97-DDBA-4605-9378-7EADD969B826}"}
+    Source
+    {
+      XRef{namespace="DDL" name="Table" source="{32DBE6AE-6A50-4bec-A364-EDD3F9FF8E77}"}
+      name="Moderator"
+      Column
+      {
+        name="moderatorID"
+        type="integer"
+      }
+    }
+    Target
+    {
+      XRef{namespace="DDL" name="Table" source="{39756CE6-B331-4831-9F0B-52FEC37255A6}"}
+      multiplicity="0..1"
+      Column
+      {
+        name="moderatorID"
+        type="integer"
+      }
+    }
+  }
+  ForeignKey
+  {
+    XRef{namespace="DDL" name="FK1" source="{E775101A-3F2A-4858-B806-74D42B3C4770}"}
+    Source
+    {
+      XRef{namespace="DDL" name="Table" source="{32DBE6AE-6A50-4bec-A364-EDD3F9FF8E77}"}
+      name="Active"
+      Column
+      {
+        name="activeID"
+        type="integer"
+      }
+    }
+    Target
+    {
+      XRef{namespace="DDL" name="Table" source="{9B82B86C-B08A-46ff-A0C7-FD91B3FD0249}"}
+      multiplicity="*"
+      Column
+      {
+        name="activeID"
+        type="integer"
+      }
+    }
+  }
+
+  Table
+  {
+    XRef{namespace="DDL" name="Table" source="{7303AF4A-D84A-4975-96A6-CA6503C9D688}"}
+    notes=""
+    scope="Public"
+    multiplicity=""
+    version="1.0"
+    author="nadiacarvalho"
+    alias=""
+    name="Country"
+    complexity="1"
+    concurrency=""
+    persistence=""
+    arguments=""
+    phase="1.0"
+    status="Proposed"
+    visibility=""
+    cardinality=""
+    language="PostgreSQL"
+    Column
+    {
+      notes=""
+      scope="Public"
+      container=""
+      alias=""
+      lowerbound="1"
+      name="name"
+      default=""
+      upperbound="1"
+      type="varchar"
+    }
+    PrimaryKey
+    {
+      Column
+      {
+        name="countryID"
+        type="integer"
+      }
+    }
+  }
+  ForeignKey
+  {
+    XRef{namespace="DDL" name="FK1" source="{207BB0FF-5580-483f-96A2-0AB925783C2B}"}
+    Source
+    {
+      XRef{namespace="DDL" name="Table" source="{5A2F7E34-8100-4fa5-A210-D95429FFAAE4}"}
+      multiplicity="*"
+      Column
+      {
+        name="countryID"
+        type="integer"
+      }
+    }
+    Target
+    {
+      XRef{namespace="DDL" name="Table" source="{7303AF4A-D84A-4975-96A6-CA6503C9D688}"}
+      multiplicity="1"
+      Column
+      {
+        name="countryID"
+        type="integer"
+      }
+    }
+  }
+
+  Table
+  {
+    XRef{namespace="DDL" name="Table" source="{BFCE9D7B-E98A-4a48-B52F-610CCEDBCB09}"}
+    notes=""
+    scope="Public"
+    multiplicity=""
+    version="1.0"
+    author="nadiacarvalho"
+    alias=""
+    name="Location"
+    complexity="1"
+    concurrency=""
+    persistence=""
+    arguments=""
+    phase="1.0"
+    status="Proposed"
+    visibility=""
+    cardinality=""
+    language="PostgreSQL"
+    Column
+    {
+      notes=""
+      scope="Public"
+      container=""
+      alias=""
+      lowerbound="1"
+      name="address"
+      default=""
+      upperbound="1"
+      type="varchar"
+    }
+    Column
+    {
+      notes=""
+      scope="Public"
+      container=""
+      alias=""
+      lowerbound="1"
+      name="postalCode"
+      default=""
+      upperbound="1"
+      type="varchar"
+    }
+    PrimaryKey
+    {
+      Column
+      {
+        name="locationID"
+        type="integer"
+      }
+    }
+  }
+  ForeignKey
+  {
+    XRef{namespace="DDL" name="FK1" source="{0AECBC53-CDC5-4aca-8FD8-A72DF4D840DB}"}
+    Source
+    {
+      XRef{namespace="DDL" name="Table" source="{59553FAA-DE58-49c6-9487-FCF98DBCF4AE}"}
+      multiplicity="*"
+      Column
+      {
+        name="locationID"
+        type="integer"
+      }
+    }
+    Target
+    {
+      XRef{namespace="DDL" name="Table" source="{BFCE9D7B-E98A-4a48-B52F-610CCEDBCB09}"}
+      multiplicity="1"
+      Column
+      {
+        name="locationID"
+        type="integer"
+      }
+    }
+  }
+  ForeignKey
+  {
+    XRef{namespace="DDL" name="FK1" source="{7312D645-53B5-4f92-999F-282CD8B90563}"}
+    Source
+    {
+      XRef{namespace="DDL" name="Table" source="{BFCE9D7B-E98A-4a48-B52F-610CCEDBCB09}"}
+      multiplicity="*"
+      Column
+      {
+        name="cityID"
+        type="integer"
+      }
+    }
+    Target
+    {
+      XRef{namespace="DDL" name="Table" source="{5A2F7E34-8100-4fa5-A210-D95429FFAAE4}"}
+      multiplicity="1"
+      Column
+      {
+        name="cityID"
+        type="integer"
+      }
+    }
+  }
+
+  Table
+  {
+    XRef{namespace="DDL" name="Table" source="{39756CE6-B331-4831-9F0B-52FEC37255A6}"}
+    notes=""
+    scope="Public"
+    multiplicity=""
+    version="1.0"
+    author="nadiacarvalho"
+    alias=""
+    name="Moderator"
+    complexity="1"
+    concurrency=""
+    persistence=""
+    arguments=""
+    phase="1.0"
+    status="Proposed"
+    visibility=""
+    cardinality=""
+    language="PostgreSQL"
+    Column
+    {
+      notes=""
+      scope="Public"
+      container=""
+      alias=""
+      lowerbound="1"
+      name="numberOfManagingAuctions"
+      default=""
+      upperbound="1"
+      type="Int"
+    }
+    PrimaryKey
+    {
+      Column
+      {
+        name="moderatorID"
+        type="integer"
+      }
+    }
+  }
+  ForeignKey
+  {
+    XRef{namespace="DDL" name="General" source="{6B72B77C-A6DB-40d2-8046-CB269A1892BD}"}
+    Source
+    {
+      XRef{namespace="DDL" name="Table" source="{39756CE6-B331-4831-9F0B-52FEC37255A6}"}
+      name=""
+      multiplicity="0..1"
+      Column
+      {
+        name="moderatorID"
+        type="integer"
+      }
+    }
+    Target
+    {
+      XRef{namespace="DDL" name="Table" source="{9CAAB8AB-7331-4c57-B233-DEE9B6AB6D25}"}
+      multiplicity="1"
+      Column
+      {
+        name="authenticated UserID"
+        type="integer"
+      }
+    }
+  }
+  ForeignKey
+  {
+    XRef{namespace="DDL" name="General" source="{6881A89E-7265-4150-8FEF-07E0B332447C}"}
+    Source
+    {
+      XRef{namespace="DDL" name="Table" source="{FF31DF28-B45C-4f53-9D01-F78B65E56F9A}"}
+      name=""
+      multiplicity="0..1"
+      Column
+      {
+        name="administradorID"
+        type="integer"
+      }
+    }
+    Target
+    {
+      XRef{namespace="DDL" name="Table" source="{39756CE6-B331-4831-9F0B-52FEC37255A6}"}
+      multiplicity="1"
+      Column
+      {
+        name="moderatorID"
+        type="integer"
+      }
+    }
+  }
+  ForeignKey
+  {
+    XRef{namespace="DDL" name="FK1" source="{7404BB97-DDBA-4605-9378-7EADD969B826}"}
+    Source
+    {
+      XRef{namespace="DDL" name="Table" source="{32DBE6AE-6A50-4bec-A364-EDD3F9FF8E77}"}
+      name="Moderator"
+      Column
+      {
+        name="moderatorID"
+        type="integer"
+      }
+    }
+    Target
+    {
+      XRef{namespace="DDL" name="Table" source="{39756CE6-B331-4831-9F0B-52FEC37255A6}"}
+      multiplicity="0..1"
+      Column
+      {
+        name="moderatorID"
+        type="integer"
+      }
+    }
+  }
+  ForeignKey
+  {
+    XRef{namespace="DDL" name="FK1" source="{13702E16-7970-446c-8340-EF6F006580CF}"}
+    Source
+    {
+      XRef{namespace="DDL" name="Table" source="{6BF77F29-25AD-4e98-AD31-14BB294765DC}"}
+      name="accepts"
+      multiplicity="*"
+      Column
+      {
+        name="moderatorID"
+        type="integer"
+      }
+    }
+    Target
+    {
+      XRef{namespace="DDL" name="Table" source="{39756CE6-B331-4831-9F0B-52FEC37255A6}"}
+      multiplicity="1"
+      Column
+      {
+        name="moderatorID"
+        type="integer"
+      }
+    }
+  }
+  ForeignKey
+  {
+    XRef{namespace="DDL" name="FK1" source="{6CDC20AB-7255-4db2-AA09-E258AA7D8BE5}"}
+    Source
+    {
+      XRef{namespace="DDL" name="Table" source="{39756CE6-B331-4831-9F0B-52FEC37255A6}"}
+      name="adds       "
+      multiplicity="*"
+      Column
+      {
+        name="administradorID"
+        type="integer"
+      }
+    }
+    Target
+    {
+      XRef{namespace="DDL" name="Table" source="{FF31DF28-B45C-4f53-9D01-F78B65E56F9A}"}
+      multiplicity="1"
+      Column
+      {
+        name="administradorID"
+        type="integer"
+      }
+    }
+  }
+  ForeignKey
+  {
+    XRef{namespace="DDL" name="FK1" source="{89ACEA7A-B6AA-4d3e-9D5B-ED10B6CDD70F}"}
+    Source
+    {
+      XRef{namespace="DDL" name="Table" source="{39756CE6-B331-4831-9F0B-52FEC37255A6}"}
+      name="removes"
+      multiplicity="*"
+      Column
+      {
+        name="administradorID"
+        type="integer"
+      }
+    }
+    Target
+    {
+      XRef{namespace="DDL" name="Table" source="{FF31DF28-B45C-4f53-9D01-F78B65E56F9A}"}
+      multiplicity="1"
+      Column
+      {
+        name="administradorID"
+        type="integer"
+      }
+    }
+  }
+  ForeignKey
+  {
+    XRef{namespace="DDL" name="FK1" source="{1EC08D7D-AC8B-4eee-BA64-0085FAF8C559}"}
+    Source
+    {
+      XRef{namespace="DDL" name="Table" source="{59553FAA-DE58-49c6-9487-FCF98DBCF4AE}"}
+      name="blocks"
+      multiplicity="*"
+      Column
+      {
+        name="moderatorID"
+        type="integer"
+      }
+    }
+    Target
+    {
+      XRef{namespace="DDL" name="Table" source="{39756CE6-B331-4831-9F0B-52FEC37255A6}"}
+      multiplicity="0..1"
+      Column
+      {
+        name="moderatorID"
+        type="integer"
+      }
+    }
+  }
+  ForeignKey
+  {
+    XRef{namespace="DDL" name="FK1" source="{EE4F17FF-1844-49c2-9AE7-C03BA2A44FB5}"}
+    Source
+    {
+      XRef{namespace="DDL" name="Table" source="{6BF77F29-25AD-4e98-AD31-14BB294765DC}"}
+      name="refuses"
+      multiplicity="*"
+      Column
+      {
+        name="moderatorID"
+        type="integer"
+      }
+    }
+    Target
+    {
+      XRef{namespace="DDL" name="Table" source="{39756CE6-B331-4831-9F0B-52FEC37255A6}"}
+      multiplicity="1"
+      Column
+      {
+        name="moderatorID"
+        type="integer"
+      }
+    }
+  }
+
+  Table
+  {
+    XRef{namespace="DDL" name="Table" source="{59553FAA-DE58-49c6-9487-FCF98DBCF4AE}"}
+    notes=""
+    scope="Public"
+    multiplicity=""
+    version="1.0"
+    author="nadiacarvalho"
+    alias=""
+    name="Normal User"
+    complexity="1"
+    concurrency=""
+    persistence=""
+    arguments=""
+    phase="1.0"
+    status="Proposed"
+    visibility=""
+    cardinality=""
+    language="PostgreSQL"
+    Column
+    {
+      notes=""
+      scope="Public"
+      container=""
+      alias=""
+      lowerbound="1"
+      name="completeName"
+      default=""
+      upperbound="1"
+      type="varchar"
+    }
+    Column
+    {
+      notes=""
+      scope="Public"
+      container=""
+      alias=""
+      lowerbound="1"
+      name="email"
+      default=""
+      upperbound="1"
+      type="Email"
+    }
+    Column
+    {
+      notes=""
+      scope="Public"
+      container=""
+      alias=""
+      lowerbound="1"
+      name="birthDate"
+      default=""
+      upperbound="1"
+      type="Date"
+    }
+    PrimaryKey
+    {
+      Column
+      {
+        name="normal UserID"
+        type="integer"
+      }
+    }
+  }
+  ForeignKey
+  {
+    XRef{namespace="DDL" name="General" source="{529AAC55-0361-4503-8CB0-1EE4ED6E1A2D}"}
+    Source
+    {
+      XRef{namespace="DDL" name="Table" source="{59553FAA-DE58-49c6-9487-FCF98DBCF4AE}"}
+      name=""
+      multiplicity="0..1"
+      Column
+      {
+        name="normal UserID"
+        type="integer"
+      }
+    }
+    Target
+    {
+      XRef{namespace="DDL" name="Table" source="{9CAAB8AB-7331-4c57-B233-DEE9B6AB6D25}"}
+      multiplicity="1"
+      Column
+      {
+        name="authenticated UserID"
+        type="integer"
+      }
+    }
+  }
+  ForeignKey
+  {
+    XRef{namespace="DDL" name="General" source="{5C156160-BB2B-4be5-9736-8AFE70EA635B}"}
+    Source
+    {
+      XRef{namespace="DDL" name="Table" source="{BD9AE3A2-2244-4d1d-B293-20663160503A}"}
+      name=""
+      multiplicity="0..1"
+      Column
+      {
+        name="sellerID"
+        type="integer"
+      }
+    }
+    Target
+    {
+      XRef{namespace="DDL" name="Table" source="{59553FAA-DE58-49c6-9487-FCF98DBCF4AE}"}
+      multiplicity="1"
+      Column
+      {
+        name="normal UserID"
+        type="integer"
+      }
+    }
+  }
+  ForeignKey
+  {
+    XRef{namespace="DDL" name="General" source="{D7049D0C-412A-4ed6-A3D7-CEEEE20B12F9}"}
+    Source
+    {
+      XRef{namespace="DDL" name="Table" source="{760218D2-AEE2-4cdf-B6C3-73D231DB9B28}"}
+      name=""
+      multiplicity="0..1"
+      Column
+      {
+        name="bidderID"
+        type="integer"
+      }
+    }
+    Target
+    {
+      XRef{namespace="DDL" name="Table" source="{59553FAA-DE58-49c6-9487-FCF98DBCF4AE}"}
+      multiplicity="1"
+      Column
+      {
+        name="normal UserID"
+        type="integer"
+      }
+    }
+  }
+  ForeignKey
+  {
+    XRef{namespace="DDL" name="FK1" source="{E6304BD9-5371-442b-AC35-32FB298D5729}"}
+    Source
+    {
+      XRef{namespace="DDL" name="Table" source="{32DBE6AE-6A50-4bec-A364-EDD3F9FF8E77}"}
+      name="Normal User"
+      Column
+      {
+        name="normal UserID"
+        type="integer"
+      }
+    }
+    Target
+    {
+      XRef{namespace="DDL" name="Table" source="{59553FAA-DE58-49c6-9487-FCF98DBCF4AE}"}
+      multiplicity="*"
+      Column
+      {
+        name="normal UserID"
+        type="integer"
+      }
+    }
+  }
+  ForeignKey
+  {
+    XRef{namespace="DDL" name="FK1" source="{0AECBC53-CDC5-4aca-8FD8-A72DF4D840DB}"}
+    Source
+    {
+      XRef{namespace="DDL" name="Table" source="{59553FAA-DE58-49c6-9487-FCF98DBCF4AE}"}
+      multiplicity="*"
+      Column
+      {
+        name="locationID"
+        type="integer"
+      }
+    }
+    Target
+    {
+      XRef{namespace="DDL" name="Table" source="{BFCE9D7B-E98A-4a48-B52F-610CCEDBCB09}"}
+      multiplicity="1"
+      Column
+      {
+        name="locationID"
+        type="integer"
+      }
+    }
+  }
+  ForeignKey
+  {
+    XRef{namespace="DDL" name="FK1" source="{1EC08D7D-AC8B-4eee-BA64-0085FAF8C559}"}
+    Source
+    {
+      XRef{namespace="DDL" name="Table" source="{59553FAA-DE58-49c6-9487-FCF98DBCF4AE}"}
+      name="blocks"
+      multiplicity="*"
+      Column
+      {
+        name="moderatorID"
+        type="integer"
+      }
+    }
+    Target
+    {
+      XRef{namespace="DDL" name="Table" source="{39756CE6-B331-4831-9F0B-52FEC37255A6}"}
+      multiplicity="0..1"
+      Column
+      {
+        name="moderatorID"
+        type="integer"
+      }
+    }
+  }
+
+  Table
+  {
+    XRef{namespace="DDL" name="Table" source="{6BF77F29-25AD-4e98-AD31-14BB294765DC}"}
+    notes=""
+    scope="Public"
+    multiplicity=""
+    version="1.0"
+    author="nadiacarvalho"
+    alias=""
+    name="Pending"
+    complexity="1"
+    concurrency=""
+    persistence=""
+    arguments=""
+    phase="1.0"
+    status="Proposed"
+    visibility=""
+    cardinality=""
+    language="PostgreSQL"
+    PrimaryKey
+    {
+      Column
+      {
+        name="pendingID"
+        type="integer"
+      }
+    }
+  }
+  ForeignKey
+  {
+    XRef{namespace="DDL" name="General" source="{966993D0-19ED-4c0f-B614-89D75F0EDDBC}"}
+    Source
+    {
+      XRef{namespace="DDL" name="Table" source="{6BF77F29-25AD-4e98-AD31-14BB294765DC}"}
+      name=""
+      multiplicity="0..1"
+      Column
+      {
+        name="pendingID"
+        type="integer"
+      }
+    }
+    Target
+    {
+      XRef{namespace="DDL" name="Table" source="{D7C422D7-A0BA-485b-9C19-0EBA8862359B}"}
+      multiplicity="1"
+      Column
+      {
+        name="auctionID"
+        type="integer"
+      }
+    }
+  }
+  ForeignKey
+  {
+    XRef{namespace="DDL" name="FK1" source="{7AC7B7FE-CEAB-4e68-BFCF-9F3AD828930E}"}
+    Source
+    {
+      XRef{namespace="DDL" name="Table" source="{6BF77F29-25AD-4e98-AD31-14BB294765DC}"}
+      name="creates "
+      multiplicity="*"
+      Column
+      {
+        name="sellerID"
+        type="integer"
+      }
+    }
+    Target
+    {
+      XRef{namespace="DDL" name="Table" source="{BD9AE3A2-2244-4d1d-B293-20663160503A}"}
+      multiplicity="1"
+      Column
+      {
+        name="sellerID"
+        type="integer"
+      }
+    }
+  }
+  ForeignKey
+  {
+    XRef{namespace="DDL" name="FK1" source="{13702E16-7970-446c-8340-EF6F006580CF}"}
+    Source
+    {
+      XRef{namespace="DDL" name="Table" source="{6BF77F29-25AD-4e98-AD31-14BB294765DC}"}
+      name="accepts"
+      multiplicity="*"
+      Column
+      {
+        name="moderatorID"
+        type="integer"
+      }
+    }
+    Target
+    {
+      XRef{namespace="DDL" name="Table" source="{39756CE6-B331-4831-9F0B-52FEC37255A6}"}
+      multiplicity="1"
+      Column
+      {
+        name="moderatorID"
+        type="integer"
+      }
+    }
+  }
+  ForeignKey
+  {
+    XRef{namespace="DDL" name="FK1" source="{EE4F17FF-1844-49c2-9AE7-C03BA2A44FB5}"}
+    Source
+    {
+      XRef{namespace="DDL" name="Table" source="{6BF77F29-25AD-4e98-AD31-14BB294765DC}"}
+      name="refuses"
+      multiplicity="*"
+      Column
+      {
+        name="moderatorID"
+        type="integer"
+      }
+    }
+    Target
+    {
+      XRef{namespace="DDL" name="Table" source="{39756CE6-B331-4831-9F0B-52FEC37255A6}"}
+      multiplicity="1"
+      Column
+      {
+        name="moderatorID"
+        type="integer"
+      }
+    }
+  }
+
+  Table
+  {
+    XRef{namespace="DDL" name="Table" source="{9BB325BD-C2DA-4a3f-B056-B426270DA172}"}
+    notes=""
+    scope="Public"
+    multiplicity=""
+    version="1.0"
+    author="nadiacarvalho"
+    alias=""
+    name="Refused"
+    complexity="1"
+    concurrency=""
+    persistence=""
+    arguments=""
+    phase="1.0"
+    status="Proposed"
+    visibility=""
+    cardinality=""
+    language="PostgreSQL"
+    Column
+    {
+      notes=""
+      scope="Public"
+      container=""
+      alias=""
+      lowerbound="1"
+      name="dateOfRefusal"
+      default=""
+      upperbound="1"
+      type="Date"
+    }
+    Column
+    {
+      notes=""
+      scope="Public"
+      container=""
+      alias=""
+      lowerbound="1"
+      name="reason"
+      default=""
+      upperbound="1"
+      type="varchar"
+    }
+    PrimaryKey
+    {
+      Column
+      {
+        name="refusedID"
+        type="integer"
+      }
+    }
+  }
+  ForeignKey
+  {
+    XRef{namespace="DDL" name="General" source="{63563E0D-5D30-45a9-B064-EC65D85546F7}"}
+    Source
+    {
+      XRef{namespace="DDL" name="Table" source="{9BB325BD-C2DA-4a3f-B056-B426270DA172}"}
+      name=""
+      multiplicity="0..1"
+      Column
+      {
+        name="refusedID"
+        type="integer"
+      }
+    }
+    Target
+    {
+      XRef{namespace="DDL" name="Table" source="{D7C422D7-A0BA-485b-9C19-0EBA8862359B}"}
+      multiplicity="1"
+      Column
+      {
+        name="auctionID"
+        type="integer"
+      }
+    }
+  }
+
+  Table
+  {
+    XRef{namespace="DDL" name="Table" source="{BD9AE3A2-2244-4d1d-B293-20663160503A}"}
+    notes=""
+    scope="Public"
+    multiplicity=""
+    version="1.0"
+    author="nadiacarvalho"
+    alias=""
+    name="Seller"
+    complexity="1"
+    concurrency=""
+    persistence=""
+    arguments=""
+    phase="1.0"
+    status="Proposed"
+    visibility=""
+    cardinality=""
+    language="PostgreSQL"
+    Column
+    {
+      notes=""
+      scope="Public"
+      container=""
+      alias=""
+      lowerbound="1"
+      name="rating"
+      default=""
+      upperbound="1"
+      type="Int"
+    }
+    PrimaryKey
+    {
+      Column
+      {
+        name="sellerID"
+        type="integer"
+      }
+    }
+  }
+  ForeignKey
+  {
+    XRef{namespace="DDL" name="General" source="{5C156160-BB2B-4be5-9736-8AFE70EA635B}"}
+    Source
+    {
+      XRef{namespace="DDL" name="Table" source="{BD9AE3A2-2244-4d1d-B293-20663160503A}"}
+      name=""
+      multiplicity="0..1"
+      Column
+      {
+        name="sellerID"
+        type="integer"
+      }
+    }
+    Target
+    {
+      XRef{namespace="DDL" name="Table" source="{59553FAA-DE58-49c6-9487-FCF98DBCF4AE}"}
+      multiplicity="1"
+      Column
+      {
+        name="normal UserID"
+        type="integer"
+      }
+    }
+  }
+  ForeignKey
+  {
+    XRef{namespace="DDL" name="FK1" source="{7AC7B7FE-CEAB-4e68-BFCF-9F3AD828930E}"}
+    Source
+    {
+      XRef{namespace="DDL" name="Table" source="{6BF77F29-25AD-4e98-AD31-14BB294765DC}"}
+      name="creates "
+      multiplicity="*"
+      Column
+      {
+        name="sellerID"
+        type="integer"
+      }
+    }
+    Target
+    {
+      XRef{namespace="DDL" name="Table" source="{BD9AE3A2-2244-4d1d-B293-20663160503A}"}
+      multiplicity="1"
+      Column
+      {
+        name="sellerID"
+        type="integer"
+      }
+    }
+  }
+
+  Table
+  {
+    XRef{namespace="DDL" name="Table" source="{221A505D-6C0B-42ff-9775-50F275078C68}"}
+    notes=""
+    scope="Public"
+    multiplicity=""
+    version="1.0"
+    author="nadiacarvalho"
+    alias=""
+    name="System Message"
+    complexity="1"
+    concurrency=""
+    persistence=""
+    arguments=""
+    phase="1.0"
+    status="Proposed"
+    visibility=""
+    cardinality=""
+    language="PostgreSQL"
+    Column
+    {
+      notes=""
+      scope="Public"
+      container=""
+      alias=""
+      lowerbound="1"
+      name="date"
+      default=""
+      upperbound="1"
+      type="Date"
+    }
+    Column
+    {
+      notes=""
+      scope="Public"
+      container=""
+      alias=""
+      lowerbound="1"
+      name="description"
+      default=""
+      upperbound="1"
+      type="varchar"
+    }
+    PrimaryKey
+    {
+      Column
+      {
+        name="system MessageID"
+        type="integer"
+      }
+    }
+  }
+  ForeignKey
+  {
+    XRef{namespace="DDL" name="FK1" source="{59BA471A-0C89-4c3e-B628-920CE4AA2B7D}"}
+    Source
+    {
+      XRef{namespace="DDL" name="Table" source="{221A505D-6C0B-42ff-9775-50F275078C68}"}
+      name="receives "
+      multiplicity="*"
+      Column
+      {
+        name="authenticated UserID"
+        type="integer"
+      }
+    }
+    Target
+    {
+      XRef{namespace="DDL" name="Table" source="{9CAAB8AB-7331-4c57-B233-DEE9B6AB6D25}"}
+      multiplicity="1"
+      Column
+      {
+        name="authenticated UserID"
+        type="integer"
+      }
+    }
+  }
+
+  Table
+  {
+    XRef{namespace="DDL" name="Table" source="{415AD47F-9C8A-4bf3-81BB-4618E4FF8CA6}"}
+    notes=""
+    scope="Public"
+    multiplicity=""
+    version="1.0"
+    author="nadiacarvalho"
+    alias=""
+    name="Won"
+    complexity="1"
+    concurrency=""
+    persistence=""
+    arguments=""
+    phase="1.0"
+    status="Proposed"
+    visibility=""
+    cardinality=""
+    language="PostgreSQL"
+    Column
+    {
+      notes=""
+      scope="Public"
+      container=""
+      alias=""
+      lowerbound="1"
+      name="date"
+      default=""
+      upperbound="1"
+      type="Date"
+    }
+    Column
+    {
+      notes=""
+      scope="Public"
+      container=""
+      alias=""
+      lowerbound="1"
+      name="finalPrice"
+      default=""
+      upperbound="1"
+      type="Int"
+    }
+    PrimaryKey
+    {
+      Column
+      {
+        name="wonID"
+        type="integer"
+      }
+    }
+  }
+}
