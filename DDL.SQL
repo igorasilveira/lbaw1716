@@ -1,118 +1,52 @@
-ALTER TABLE Active DROP CONSTRAINT FK_Active_Auction
-;
-ALTER TABLE Active DROP CONSTRAINT wins
-;
-ALTER TABLE Administrador DROP CONSTRAINT FK_Administrador_Moderator
-;
-ALTER TABLE Bidder DROP CONSTRAINT FK_Bidder_Normal User
-;
-ALTER TABLE Category DROP CONSTRAINT edits
-;
-ALTER TABLE City DROP CONSTRAINT FK_City_Country
-;
-ALTER TABLE Comment DROP CONSTRAINT Active
-;
-ALTER TABLE Comment DROP CONSTRAINT Normal User
-;
-ALTER TABLE Comment DROP CONSTRAINT Moderator
-;
-ALTER TABLE Location DROP CONSTRAINT FK_Location_City
-;
-ALTER TABLE Moderator DROP CONSTRAINT adds       
-;
-ALTER TABLE Moderator DROP CONSTRAINT removes
-;
-ALTER TABLE Moderator DROP CONSTRAINT FK_Moderator_Authenticated User
-;
-ALTER TABLE Normal User DROP CONSTRAINT FK_Normal User_Authenticated User
-;
-ALTER TABLE Normal User DROP CONSTRAINT FK_Normal User_Location
-;
-ALTER TABLE Normal User DROP CONSTRAINT blocks
-;
-ALTER TABLE Pending DROP CONSTRAINT FK_Pending_Auction
-;
-ALTER TABLE Pending DROP CONSTRAINT accepts
-;
-ALTER TABLE Pending DROP CONSTRAINT refuses
-;
-ALTER TABLE Pending DROP CONSTRAINT creates 
-;
-ALTER TABLE pertains to DROP CONSTRAINT Category
-;
-ALTER TABLE pertains to DROP CONSTRAINT Auction
-;
-ALTER TABLE places a bid on DROP CONSTRAINT Active
-;
-ALTER TABLE places a bid on DROP CONSTRAINT Bidder
-;
-ALTER TABLE Refused DROP CONSTRAINT FK_Refused_Auction
-;
-ALTER TABLE Seller DROP CONSTRAINT FK_Seller_Normal User
-;
-ALTER TABLE System Message DROP CONSTRAINT receives 
-;
+ALTER TABLE Add_Credits DROP CONSTRAINT add credits;
+ALTER TABLE Auction DROP CONSTRAINT win;
+ALTER TABLE Auction DROP CONSTRAINT create;
+ALTER TABLE Auction DROP CONSTRAINT accepts;
+ALTER TABLE Auction DROP CONSTRAINT rejects;
+ALTER TABLE Autheticated_User DROP CONSTRAINT add;
+ALTER TABLE Autheticated_User DROP CONSTRAINT remove;
+ALTER TABLE bid DROP CONSTRAINT Auction;
+ALTER TABLE bid DROP CONSTRAINT Normal_User;
+ALTER TABLE Category DROP CONSTRAINT has;
+ALTER TABLE City DROP CONSTRAINT FK_City_Country;
+ALTER TABLE Comment DROP CONSTRAINT to;
+ALTER TABLE Comment DROP CONSTRAINT removes;
+ALTER TABLE Comment DROP CONSTRAINT adds;
+ALTER TABLE Normal_User DROP CONSTRAINT FK_Normal_User_Autheticated_User;
+ALTER TABLE Normal_User DROP CONSTRAINT blocks;
+ALTER TABLE Normal_User DROP CONSTRAINT FK_Normal_User_City;
+ALTER TABLE Notification DROP CONSTRAINT pertains to;
+ALTER TABLE Notification DROP CONSTRAINT receives;
+ALTER TABLE pertains to DROP CONSTRAINT Category;
+ALTER TABLE pertains to DROP CONSTRAINT Auction;
+ALTER TABLE report DROP CONSTRAINT Auction;
+ALTER TABLE report DROP CONSTRAINT Normal_User;
 
-DROP TABLE IF EXISTS Active
-;
-DROP TABLE IF EXISTS Administrador
-;
-DROP TABLE IF EXISTS Auction
-;
-DROP TABLE IF EXISTS Authenticated User
-;
-DROP TABLE IF EXISTS Bid
-;
-DROP TABLE IF EXISTS Bidder
-;
-DROP TABLE IF EXISTS Category
-;
-DROP TABLE IF EXISTS City
-;
-DROP TABLE IF EXISTS Comment
-;
-DROP TABLE IF EXISTS Comment
-;
-DROP TABLE IF EXISTS Comment
-;
-DROP TABLE IF EXISTS Country
-;
-DROP TABLE IF EXISTS Location
-;
-DROP TABLE IF EXISTS Moderator
-;
-DROP TABLE IF EXISTS Normal User
-;
-DROP TABLE IF EXISTS Pending
-;
-DROP TABLE IF EXISTS pertains to
-;
-DROP TABLE IF EXISTS places a bid on
-;
-DROP TABLE IF EXISTS Refused
-;
-DROP TABLE IF EXISTS Seller
-;
-DROP TABLE IF EXISTS System Message
-;
-DROP TABLE IF EXISTS Won
-;
+DROP TABLE IF EXISTS Add_Credits;
+DROP TABLE IF EXISTS Auction;
+DROP TABLE IF EXISTS Autheticated_User;
+DROP TABLE IF EXISTS bid;
+DROP TABLE IF EXISTS Bid;
+DROP TABLE IF EXISTS Category;
+DROP TABLE IF EXISTS City;
+DROP TABLE IF EXISTS Comment;
+DROP TABLE IF EXISTS Country;
+DROP TABLE IF EXISTS Normal_User;
+DROP TABLE IF EXISTS Notification;
+DROP TABLE IF EXISTS pertains to;
+DROP TABLE IF EXISTS report;
+DROP TABLE IF EXISTS Report;
+DROP TABLE IF EXISTS Win;
 
-CREATE TABLE Active ( 
-	dateOfStart Date NULL,
-	numberOfBids Int NULL,
-	lastBid Bid NULL,
-	activeID integer NOT NULL,
-	bidderID integer NOT NULL
-)
-;
+CREATE TABLE Add_Credits (
+	valued Int NULL,
+	date Date NULL,
+	add_CreditsID integer NOT NULL,
+	normal_UserID integer NOT NULL
+);
 
-CREATE TABLE Administrador ( 
-	administradorID integer NOT NULL
-)
-;
-
-CREATE TABLE Auction ( 
+CREATE TABLE Auction (
+	state Enum NULL,
 	title varchar(50) NULL,
 	description varchar(50) NULL,
 	sellingReason varchar(50) NULL,
@@ -120,345 +54,223 @@ CREATE TABLE Auction (
 	startingPrice Int NULL,
 	minimumSellingPrice Int NULL,
 	buyNow Int NULL,
-	maxLifeTime Int NULL,
-	auctionID integer NOT NULL
-)
-;
+	startDate Date NULL,
+	limitDate Date NULL,
+	refusalDate Date NULL,
+	/numberOfBids Int NULL,
+	reasonOfRefusal varchar(50) NULL,
+	auctionID integer NOT NULL,
+	normal_UserID integer NOT NULL,
+	autheticated_UserID integer NOT NULL
+);
 
-CREATE TABLE Authenticated User ( 
+CREATE TABLE Autheticated_User (
+	typeOfUser Enum NULL,
 	username varchar(50) NULL,
 	password varchar(50) NULL,
 	pathToPhoto varchar(50) NULL,
-	authenticated UserID integer NOT NULL
-)
-;
+	autheticated_UserID integer NOT NULL
+);
 
-CREATE TABLE Bid ( 
-	dateOfBid Date NULL,
+CREATE TABLE bid (
+	auctionID integer NULL,
+	normal_UserID integer NULL
+);
+
+CREATE TABLE Bid (
+	date Date NULL,
 	value Int NULL,
 	bidID integer NOT NULL
-)
-;
+);
 
-CREATE TABLE Bidder ( 
-	bidderID integer NOT NULL
-)
-;
-
-CREATE TABLE Category ( 
+CREATE TABLE Category (
 	name varchar(50) NULL,
-	subcategories List NULL,
-	categoryID integer NOT NULL,
-	administradorID integer NOT NULL
-)
-;
+	subcategories Array<id_Category> NULL,
+	categoryID integer NOT NULL
+);
 
-CREATE TABLE City ( 
+CREATE TABLE City (
 	name varchar(50) NULL,
 	cityID integer NOT NULL,
 	countryID integer NOT NULL
-)
-;
+);
 
-CREATE TABLE Comment ( 
-	activeID integer NULL,
-	normal UserID integer NULL,
-	moderatorID integer NULL
-)
-;
-
-CREATE TABLE Comment ( 
+CREATE TABLE Comment (
 	date Date NULL,
 	description varchar(50) NULL,
-	commentID integer NOT NULL
-)
-;
+	commentID integer NOT NULL,
+	auctionID integer NOT NULL,
+	autheticated_UserID integer NULL,
+	normal_UserID integer NOT NULL
+);
 
-CREATE TABLE Comment ( 
-	commentID integer NOT NULL
-)
-;
-
-CREATE TABLE Country ( 
+CREATE TABLE Country (
 	name varchar(50) NULL,
 	countryID integer NOT NULL
-)
-;
+);
 
-CREATE TABLE Location ( 
-	address varchar(50) NULL,
-	postalCode varchar(50) NULL,
-	locationID integer NOT NULL,
-	cityID integer NOT NULL
-)
-;
-
-CREATE TABLE Moderator ( 
-	numberOfManagingAuctions Int NULL,
-	moderatorID integer NOT NULL,
-	administradorID integer NOT NULL
-)
-;
-
-CREATE TABLE Normal User ( 
+CREATE TABLE Normal_User (
+	state Enum NULL,
 	completeName varchar(50) NULL,
 	email Email NULL,
 	birthDate Date NULL,
-	normal UserID integer NOT NULL,
-	locationID integer NOT NULL,
-	moderatorID integer NULL
-)
-;
+	/rating Int NULL,
+	address varchar(50) NULL,
+	postalCode varchar(50) NULL,
+	balance Int NULL,
+	normal_UserID integer NOT NULL,
+	autheticated_UserID integer NULL,
+	cityID integer NOT NULL
+);
 
-CREATE TABLE Pending ( 
-	pendingID integer NOT NULL,
-	moderatorID integer NOT NULL,
-	sellerID integer NOT NULL
-)
-;
-
-CREATE TABLE pertains to ( 
-	categoryID integer NULL,
-	auctionID integer NULL
-)
-;
-
-CREATE TABLE places a bid on ( 
-	activeID integer NULL,
-	bidderID integer NULL
-)
-;
-
-CREATE TABLE Refused ( 
-	dateOfRefusal Date NULL,
-	reason varchar(50) NULL,
-	refusedID integer NOT NULL
-)
-;
-
-CREATE TABLE Seller ( 
-	rating Int NULL,
-	sellerID integer NOT NULL
-)
-;
-
-CREATE TABLE System Message ( 
+CREATE TABLE Notification (
 	date Date NULL,
 	description varchar(50) NULL,
-	system MessageID integer NOT NULL,
-	authenticated UserID integer NOT NULL
-)
-;
+	type varchar(50) NULL,
+	notificationID integer NOT NULL,
+	auctionID integer NULL,
+	autheticated_UserID integer NOT NULL
+);
 
-CREATE TABLE Won ( 
+CREATE TABLE pertains to (
+	categoryID integer NULL,
+	auctionID integer NULL
+);
+
+CREATE TABLE report (
+	auctionID integer NULL,
+	normal_UserID integer NULL
+);
+
+CREATE TABLE Report (
+	date Date NULL,
+	reason varchar(50) NULL,
+	reportID integer NOT NULL
+);
+
+CREATE TABLE Win (
 	date Date NULL,
 	finalPrice Int NULL,
-	wonID integer NOT NULL
-)
-;
+	rate Int NULL,
+	winID integer NOT NULL
+);
 
 
-ALTER TABLE Active ADD CONSTRAINT PK_Active 
-	PRIMARY KEY (activeID)
-;
+ALTER TABLE Add_Credits ADD CONSTRAINT PK_Add_Credits
+	PRIMARY KEY (add_CreditsID);
 
 
-ALTER TABLE Administrador ADD CONSTRAINT PK_Administrador 
-	PRIMARY KEY (administradorID)
-;
+ALTER TABLE Auction ADD CONSTRAINT PK_Auction
+	PRIMARY KEY (auctionID);
 
 
-ALTER TABLE Auction ADD CONSTRAINT PK_Auction 
-	PRIMARY KEY (auctionID)
-;
+ALTER TABLE Autheticated_User ADD CONSTRAINT PK_Autheticated_User
+	PRIMARY KEY (autheticated_UserID);
 
 
-ALTER TABLE Authenticated User ADD CONSTRAINT PK_Authenticated User 
-	PRIMARY KEY (authenticated UserID)
-;
+ALTER TABLE Bid ADD CONSTRAINT PK_Bid
+	PRIMARY KEY (bidID);
 
 
-ALTER TABLE Bid ADD CONSTRAINT PK_Bid 
-	PRIMARY KEY (bidID)
-;
+ALTER TABLE Category ADD CONSTRAINT PK_Category
+	PRIMARY KEY (categoryID);
 
 
-ALTER TABLE Bidder ADD CONSTRAINT PK_Bidder 
-	PRIMARY KEY (bidderID)
-;
+ALTER TABLE City ADD CONSTRAINT PK_City
+	PRIMARY KEY (cityID);
 
 
-ALTER TABLE Category ADD CONSTRAINT PK_Category 
-	PRIMARY KEY (categoryID)
-;
+ALTER TABLE Comment ADD CONSTRAINT PK_Comment
+	PRIMARY KEY (commentID);
 
 
-ALTER TABLE City ADD CONSTRAINT PK_City 
-	PRIMARY KEY (cityID)
-;
+ALTER TABLE Country ADD CONSTRAINT PK_Country
+	PRIMARY KEY (countryID);
 
 
-ALTER TABLE Comment ADD CONSTRAINT PK_Comment 
-	PRIMARY KEY (commentID)
-;
+ALTER TABLE Normal_User ADD CONSTRAINT PK_Normal_User
+	PRIMARY KEY (normal_UserID);
 
 
-ALTER TABLE Comment ADD CONSTRAINT PK_Comment 
-	PRIMARY KEY (commentID)
-;
+ALTER TABLE Notification ADD CONSTRAINT PK_Notification
+	PRIMARY KEY (notificationID);
 
 
-ALTER TABLE Country ADD CONSTRAINT PK_Country 
-	PRIMARY KEY (countryID)
-;
+ALTER TABLE Report ADD CONSTRAINT PK_Report
+	PRIMARY KEY (reportID);
 
 
-ALTER TABLE Location ADD CONSTRAINT PK_Location 
-	PRIMARY KEY (locationID)
-;
+ALTER TABLE Win ADD CONSTRAINT PK_Win
+	PRIMARY KEY (winID);
 
 
-ALTER TABLE Moderator ADD CONSTRAINT PK_Moderator 
-	PRIMARY KEY (moderatorID)
-;
 
 
-ALTER TABLE Normal User ADD CONSTRAINT PK_Normal User 
-	PRIMARY KEY (normal UserID)
-;
+ALTER TABLE Add_Credits ADD CONSTRAINT add credits
+	FOREIGN KEY (normal_UserID) REFERENCES Normal_User (normal_UserID);
 
+ALTER TABLE Auction ADD CONSTRAINT win
+	FOREIGN KEY (normal_UserID) REFERENCES Normal_User (normal_UserID);
 
-ALTER TABLE Pending ADD CONSTRAINT PK_Pending 
-	PRIMARY KEY (pendingID)
-;
+ALTER TABLE Auction ADD CONSTRAINT create
+	FOREIGN KEY (normal_UserID) REFERENCES Normal_User (normal_UserID);
 
+ALTER TABLE Auction ADD CONSTRAINT accepts
+	FOREIGN KEY (autheticated_UserID) REFERENCES Autheticated_User (autheticated_UserID);
 
-ALTER TABLE Refused ADD CONSTRAINT PK_Refused 
-	PRIMARY KEY (refusedID)
-;
+ALTER TABLE Auction ADD CONSTRAINT rejects
+	FOREIGN KEY (autheticated_UserID) REFERENCES Autheticated_User (autheticated_UserID);
 
+ALTER TABLE Autheticated_User ADD CONSTRAINT add
+	FOREIGN KEY (autheticated_UserID) REFERENCES Autheticated_User (autheticated_UserID);
 
-ALTER TABLE Seller ADD CONSTRAINT PK_Seller 
-	PRIMARY KEY (sellerID)
-;
+ALTER TABLE Autheticated_User ADD CONSTRAINT remove
+	FOREIGN KEY (autheticated_UserID) REFERENCES Autheticated_User (autheticated_UserID);
 
+ALTER TABLE bid ADD CONSTRAINT Auction
+	FOREIGN KEY (auctionID) REFERENCES Auction (auctionID);
 
-ALTER TABLE System Message ADD CONSTRAINT PK_System Message 
-	PRIMARY KEY (system MessageID)
-;
+ALTER TABLE bid ADD CONSTRAINT Normal_User
+	FOREIGN KEY (normal_UserID) REFERENCES Normal_User (normal_UserID);
 
+ALTER TABLE Category ADD CONSTRAINT has
+	FOREIGN KEY (categoryID) REFERENCES Category (categoryID);
 
-ALTER TABLE Won ADD CONSTRAINT PK_Won 
-	PRIMARY KEY (wonID)
-;
+ALTER TABLE City ADD CONSTRAINT FK_City_Country
+	FOREIGN KEY (countryID) REFERENCES Country (countryID);
 
+ALTER TABLE Comment ADD CONSTRAINT to
+	FOREIGN KEY (auctionID) REFERENCES Auction (auctionID);
 
+ALTER TABLE Comment ADD CONSTRAINT removes
+	FOREIGN KEY (autheticated_UserID) REFERENCES Autheticated_User (autheticated_UserID);
 
+ALTER TABLE Comment ADD CONSTRAINT adds
+	FOREIGN KEY (normal_UserID) REFERENCES Normal_User (normal_UserID);
 
-ALTER TABLE Active ADD CONSTRAINT FK_Active_Auction 
-	FOREIGN KEY (activeID) REFERENCES Auction (auctionID)
-;
+ALTER TABLE Normal_User ADD CONSTRAINT FK_Normal_User_Autheticated_User
+	FOREIGN KEY (normal_UserID) REFERENCES Autheticated_User (autheticated_UserID);
 
-ALTER TABLE Active ADD CONSTRAINT wins 
-	FOREIGN KEY (bidderID) REFERENCES Bidder (bidderID)
-;
+ALTER TABLE Normal_User ADD CONSTRAINT blocks
+	FOREIGN KEY (autheticated_UserID) REFERENCES Autheticated_User (autheticated_UserID);
 
-ALTER TABLE Administrador ADD CONSTRAINT FK_Administrador_Moderator 
-	FOREIGN KEY (administradorID) REFERENCES Moderator (moderatorID)
-;
+ALTER TABLE Normal_User ADD CONSTRAINT FK_Normal_User_City
+	FOREIGN KEY (cityID) REFERENCES City (cityID);
 
-ALTER TABLE Bidder ADD CONSTRAINT FK_Bidder_Normal User 
-	FOREIGN KEY (bidderID) REFERENCES Normal User (normal UserID)
-;
+ALTER TABLE Notification ADD CONSTRAINT pertains to
+	FOREIGN KEY (auctionID) REFERENCES Auction (auctionID);
 
-ALTER TABLE Category ADD CONSTRAINT edits 
-	FOREIGN KEY (administradorID) REFERENCES Administrador (administradorID)
-;
+ALTER TABLE Notification ADD CONSTRAINT receives
+	FOREIGN KEY (autheticated_UserID) REFERENCES Autheticated_User (autheticated_UserID);
 
-ALTER TABLE City ADD CONSTRAINT FK_City_Country 
-	FOREIGN KEY (countryID) REFERENCES Country (countryID)
-;
+ALTER TABLE pertains to ADD CONSTRAINT Category
+	FOREIGN KEY (categoryID) REFERENCES Category (categoryID);
 
-ALTER TABLE Comment ADD CONSTRAINT Active 
-	FOREIGN KEY (activeID) REFERENCES Active (activeID)
-;
+ALTER TABLE pertains to ADD CONSTRAINT Auction
+	FOREIGN KEY (auctionID) REFERENCES Auction (auctionID);
 
-ALTER TABLE Comment ADD CONSTRAINT Normal User 
-	FOREIGN KEY (normal UserID) REFERENCES Normal User (normal UserID)
-;
+ALTER TABLE report ADD CONSTRAINT Auction
+	FOREIGN KEY (auctionID) REFERENCES Auction (auctionID);
 
-ALTER TABLE Comment ADD CONSTRAINT Moderator 
-	FOREIGN KEY (moderatorID) REFERENCES Moderator (moderatorID)
-;
-
-ALTER TABLE Location ADD CONSTRAINT FK_Location_City 
-	FOREIGN KEY (cityID) REFERENCES City (cityID)
-;
-
-ALTER TABLE Moderator ADD CONSTRAINT adds        
-	FOREIGN KEY (administradorID) REFERENCES Administrador (administradorID)
-;
-
-ALTER TABLE Moderator ADD CONSTRAINT removes 
-	FOREIGN KEY (administradorID) REFERENCES Administrador (administradorID)
-;
-
-ALTER TABLE Moderator ADD CONSTRAINT FK_Moderator_Authenticated User 
-	FOREIGN KEY (moderatorID) REFERENCES Authenticated User (authenticated UserID)
-;
-
-ALTER TABLE Normal User ADD CONSTRAINT FK_Normal User_Authenticated User 
-	FOREIGN KEY (normal UserID) REFERENCES Authenticated User (authenticated UserID)
-;
-
-ALTER TABLE Normal User ADD CONSTRAINT FK_Normal User_Location 
-	FOREIGN KEY (locationID) REFERENCES Location (locationID)
-;
-
-ALTER TABLE Normal User ADD CONSTRAINT blocks 
-	FOREIGN KEY (moderatorID) REFERENCES Moderator (moderatorID)
-;
-
-ALTER TABLE Pending ADD CONSTRAINT FK_Pending_Auction 
-	FOREIGN KEY (pendingID) REFERENCES Auction (auctionID)
-;
-
-ALTER TABLE Pending ADD CONSTRAINT accepts 
-	FOREIGN KEY (moderatorID) REFERENCES Moderator (moderatorID)
-;
-
-ALTER TABLE Pending ADD CONSTRAINT refuses 
-	FOREIGN KEY (moderatorID) REFERENCES Moderator (moderatorID)
-;
-
-ALTER TABLE Pending ADD CONSTRAINT creates  
-	FOREIGN KEY (sellerID) REFERENCES Seller (sellerID)
-;
-
-ALTER TABLE pertains to ADD CONSTRAINT Category 
-	FOREIGN KEY (categoryID) REFERENCES Category (categoryID)
-;
-
-ALTER TABLE pertains to ADD CONSTRAINT Auction 
-	FOREIGN KEY (auctionID) REFERENCES Auction (auctionID)
-;
-
-ALTER TABLE places a bid on ADD CONSTRAINT Active 
-	FOREIGN KEY (activeID) REFERENCES Active (activeID)
-;
-
-ALTER TABLE places a bid on ADD CONSTRAINT Bidder 
-	FOREIGN KEY (bidderID) REFERENCES Bidder (bidderID)
-;
-
-ALTER TABLE Refused ADD CONSTRAINT FK_Refused_Auction 
-	FOREIGN KEY (refusedID) REFERENCES Auction (auctionID)
-;
-
-ALTER TABLE Seller ADD CONSTRAINT FK_Seller_Normal User 
-	FOREIGN KEY (sellerID) REFERENCES Normal User (normal UserID)
-;
-
-ALTER TABLE System Message ADD CONSTRAINT receives  
-	FOREIGN KEY (authenticated UserID) REFERENCES Authenticated User (authenticated UserID)
-;
+ALTER TABLE report ADD CONSTRAINT Normal_User
+	FOREIGN KEY (normal_UserID) REFERENCES Normal_User (normal_UserID);
