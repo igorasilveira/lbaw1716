@@ -1,4 +1,4 @@
-ALTER TABLE Add_Credits DROP CONSTRAINT add credits;
+ALTER TABLE Add_Credits DROP CONSTRAINT add_credits;
 ALTER TABLE Auction DROP CONSTRAINT win;
 ALTER TABLE Auction DROP CONSTRAINT create;
 ALTER TABLE Auction DROP CONSTRAINT accepts;
@@ -15,10 +15,10 @@ ALTER TABLE Comment DROP CONSTRAINT adds;
 ALTER TABLE Normal_User DROP CONSTRAINT FK_Normal_User_Autheticated_User;
 ALTER TABLE Normal_User DROP CONSTRAINT blocks;
 ALTER TABLE Normal_User DROP CONSTRAINT FK_Normal_User_City;
-ALTER TABLE Notification DROP CONSTRAINT pertains to;
+ALTER TABLE Notification DROP CONSTRAINT pertains_to;
 ALTER TABLE Notification DROP CONSTRAINT receives;
-ALTER TABLE pertains to DROP CONSTRAINT Category;
-ALTER TABLE pertains to DROP CONSTRAINT Auction;
+ALTER TABLE pertains_to DROP CONSTRAINT Category;
+ALTER TABLE pertains_to DROP CONSTRAINT Auction;
 ALTER TABLE report DROP CONSTRAINT Auction;
 ALTER TABLE report DROP CONSTRAINT Normal_User;
 
@@ -33,7 +33,7 @@ DROP TABLE IF EXISTS Comment;
 DROP TABLE IF EXISTS Country;
 DROP TABLE IF EXISTS Normal_User;
 DROP TABLE IF EXISTS Notification;
-DROP TABLE IF EXISTS pertains to;
+DROP TABLE IF EXISTS pertains_to;
 DROP TABLE IF EXISTS report;
 DROP TABLE IF EXISTS Report;
 DROP TABLE IF EXISTS Win;
@@ -132,7 +132,7 @@ CREATE TABLE Notification (
 	autheticated_UserID integer NOT NULL
 );
 
-CREATE TABLE pertains to (
+CREATE TABLE pertains_to (
 	categoryID integer NULL,
 	auctionID integer NULL
 );
@@ -206,7 +206,7 @@ ALTER TABLE Win ADD CONSTRAINT PK_Win
 
 
 
-ALTER TABLE Add_Credits ADD CONSTRAINT add credits
+ALTER TABLE Add_Credits ADD CONSTRAINT add_credits
 	FOREIGN KEY (normal_UserID) REFERENCES Normal_User (normal_UserID);
 
 ALTER TABLE Auction ADD CONSTRAINT win
@@ -257,16 +257,16 @@ ALTER TABLE Normal_User ADD CONSTRAINT blocks
 ALTER TABLE Normal_User ADD CONSTRAINT FK_Normal_User_City
 	FOREIGN KEY (cityID) REFERENCES City (cityID);
 
-ALTER TABLE Notification ADD CONSTRAINT pertains to
+ALTER TABLE Notification ADD CONSTRAINT pertains_to
 	FOREIGN KEY (auctionID) REFERENCES Auction (auctionID);
 
 ALTER TABLE Notification ADD CONSTRAINT receives
 	FOREIGN KEY (autheticated_UserID) REFERENCES Autheticated_User (autheticated_UserID);
 
-ALTER TABLE pertains to ADD CONSTRAINT Category
+ALTER TABLE pertains_to ADD CONSTRAINT Category
 	FOREIGN KEY (categoryID) REFERENCES Category (categoryID);
 
-ALTER TABLE pertains to ADD CONSTRAINT Auction
+ALTER TABLE pertains_to ADD CONSTRAINT Auction
 	FOREIGN KEY (auctionID) REFERENCES Auction (auctionID);
 
 ALTER TABLE report ADD CONSTRAINT Auction
