@@ -34,6 +34,6 @@
 
 * reports_an(<u>auctionID</u> -> Auction, <u>normal_UserID</u> -> Normal_User)
 
-* pertains_to ( <u>categoryID</u> -> Category, <u>auctionID</u> -> Auction)
+* pertains_to (<u>categoryID</u> -> Category, <u>auctionID</u> -> Auction)
 
 * bid (<u>auctionID</u> -> Auction, <u>normal_UserID</u> -> Normal_User)
