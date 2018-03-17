@@ -19,8 +19,8 @@ ALTER TABLE Notification DROP CONSTRAINT pertains_to;
 ALTER TABLE Notification DROP CONSTRAINT receives;
 ALTER TABLE pertains_to DROP CONSTRAINT Category;
 ALTER TABLE pertains_to DROP CONSTRAINT Auction;
-ALTER TABLE report DROP CONSTRAINT Auction;
-ALTER TABLE report DROP CONSTRAINT Normal_User;
+ALTER TABLE Reports_an DROP CONSTRAINT Auction;
+ALTER TABLE Reports_an DROP CONSTRAINT Normal_User;
 
 DROP TABLE IF EXISTS Add_Credits;
 DROP TABLE IF EXISTS Auction;
@@ -39,15 +39,15 @@ DROP TABLE IF EXISTS Report;
 DROP TABLE IF EXISTS Win;
 
 CREATE TABLE Add_Credits (
-	valued Int NULL,
+	value Int NULL,
 	date Date NULL,
-	add_CreditsID integer NOT NULL,
+	add_CreditsID i"nteger NOT NULL,
 	normal_UserID integer NOT NULL
 );
 
 CREATE TABLE Auction (
-	state Enum NULL,
-	title varchar(50) NULL,
+	state Enum NOT NULL,
+	title varchar(50) NOT NULL,
 	description varchar(50) NULL,
 	sellingReason varchar(50) NULL,
 	pathToPhoto varchar(50) NULL,
@@ -137,7 +137,7 @@ CREATE TABLE pertains_to (
 	auctionID integer NULL
 );
 
-CREATE TABLE report (
+CREATE TABLE Reports_an (
 	auctionID integer NULL,
 	normal_UserID integer NULL
 );
@@ -269,8 +269,8 @@ ALTER TABLE pertains_to ADD CONSTRAINT Category
 ALTER TABLE pertains_to ADD CONSTRAINT Auction
 	FOREIGN KEY (auctionID) REFERENCES Auction (auctionID);
 
-ALTER TABLE report ADD CONSTRAINT Auction
+ALTER TABLE Reports_an ADD CONSTRAINT Auction
 	FOREIGN KEY (auctionID) REFERENCES Auction (auctionID);
 
-ALTER TABLE report ADD CONSTRAINT Normal_User
+ALTER TABLE Reports_an ADD CONSTRAINT Normal_User
 	FOREIGN KEY (normal_UserID) REFERENCES Normal_User (normal_UserID);
