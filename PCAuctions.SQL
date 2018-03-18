@@ -3,8 +3,8 @@ ALTER TABLE Auction DROP CONSTRAINT win;
 ALTER TABLE Auction DROP CONSTRAINT create;
 ALTER TABLE Auction DROP CONSTRAINT accepts;
 ALTER TABLE Auction DROP CONSTRAINT rejects;
-ALTER TABLE Autheticated_User DROP CONSTRAINT add;
-ALTER TABLE Autheticated_User DROP CONSTRAINT remove;
+ALTER TABLE Authenticated_User DROP CONSTRAINT add;
+ALTER TABLE Authenticated_User DROP CONSTRAINT remove;
 ALTER TABLE Bid DROP CONSTRAINT Auction;
 ALTER TABLE Bid DROP CONSTRAINT Normal_User;
 ALTER TABLE Category DROP CONSTRAINT has;
@@ -25,7 +25,7 @@ ALTER TABLE Report DROP CONSTRAINT Normal_User;
 
 DROP TABLE IF EXISTS Add_Credits;
 DROP TABLE IF EXISTS Auction;
-DROP TABLE IF EXISTS Autheticated_User;
+DROP TABLE IF EXISTS Authenticated_User;
 DROP TABLE IF EXISTS Bid;
 DROP TABLE IF EXISTS Category;
 DROP TABLE IF EXISTS City;
@@ -67,7 +67,7 @@ DROP TABLE IF EXISTS Create_Moderator;
 	     authenticatedUserID integer NOT NULL
     );
 
-    CREATE TABLE Autheticated_User (
+    CREATE TABLE Authenticated_User (
 	    typeOfUser Enum NOT NULL,
 	    username varchar(50) NOT NULL,
 	    password varchar(50) NOT NULL,
@@ -176,7 +176,7 @@ ALTER TABLE Auction ADD CONSTRAINT PK_Auction
 	PRIMARY KEY (auctionID);
 
 
-ALTER TABLE Autheticated_User ADD CONSTRAINT PK_Autheticated_User
+ALTER TABLE Authenticated_User ADD CONSTRAINT PK_Autheticated_User
 	PRIMARY KEY (authenticatedUserID);
 
 
@@ -231,10 +231,10 @@ ALTER TABLE Auction ADD CONSTRAINT accepts
 ALTER TABLE Auction ADD CONSTRAINT rejects
 	FOREIGN KEY (authenticatedUserID) REFERENCES Autheticated_User (authenticatedUserID);
 
-ALTER TABLE Autheticated_User ADD CONSTRAINT add
+ALTER TABLE Authenticated_User ADD CONSTRAINT add
 	FOREIGN KEY (authenticatedUserID) REFERENCES Autheticated_User (authenticatedUserID);
 
-ALTER TABLE Autheticated_User ADD CONSTRAINT remove
+ALTER TABLE Authenticated_User ADD CONSTRAINT remove
 	FOREIGN KEY (authenticatedUserID) REFERENCES Autheticated_User (authenticatedUserID);
 
 ALTER TABLE Bid ADD CONSTRAINT Auction
