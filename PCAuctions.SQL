@@ -22,10 +22,10 @@ ALTER TABLE pertains_to DROP CONSTRAINT Auction;
 ALTER TABLE Report DROP CONSTRAINT Auction;
 ALTER TABLE Report DROP CONSTRAINT Normal_User;
 
+
 DROP TABLE IF EXISTS Add_Credits;
 DROP TABLE IF EXISTS Auction;
 DROP TABLE IF EXISTS Autheticated_User;
-DROP TABLE IF EXISTS bid;
 DROP TABLE IF EXISTS Bid;
 DROP TABLE IF EXISTS Category;
 DROP TABLE IF EXISTS City;
@@ -34,15 +34,18 @@ DROP TABLE IF EXISTS Country;
 DROP TABLE IF EXISTS Normal_User;
 DROP TABLE IF EXISTS Notification;
 DROP TABLE IF EXISTS pertains_to;
-DROP TABLE IF EXISTS report;
 DROP TABLE IF EXISTS Report;
 DROP TABLE IF EXISTS Win;
+DROP TABLE IF EXISTS Block;
+DROP TABLE IF EXISTS Remove_Moderator;
+DROP TABLE IF EXISTS Create_Moderator;
+
 
     CREATE TABLE Add_Credits (
 	     value Int NOT NULL,
 	     date Date NOT NULL,
 	     add_CreditsID integer NOT NULL,
-	     normal_UserID integer NOT NULL
+	     normalUserID integer NOT NULL
     );
 
     CREATE TABLE Auction (
@@ -60,8 +63,8 @@ DROP TABLE IF EXISTS Win;
 	     /numberOfBids Int NULL,
 	     reasonOfRefusal varchar(50) NULL,
 	     auctionID integer NOT NULL,
-	     normal_UserID integer NOT NULL,
-	     autheticated_UserID integer NOT NULL
+	     normalUserID integer NOT NULL,
+	     authenticatedUserID integer NOT NULL
     );
 
     CREATE TABLE Autheticated_User (
@@ -69,7 +72,7 @@ DROP TABLE IF EXISTS Win;
 	    username varchar(50) NOT NULL,
 	    password varchar(50) NOT NULL,
 	    pathToPhoto varchar(50) NULL,
-	    autheticated_UserID integer NOT NULL
+	    authenticatedUserID integer NOT NULL
     );
 
     CREATE TABLE Bid (
@@ -77,7 +80,7 @@ DROP TABLE IF EXISTS Win;
 	     value Int NOT NULL,
 	     bidID integer NOT NULL,
        auctionID integer NULL,
-       normal_UserID integer NULL
+       normalUserID integer NULL
     );
 
     CREATE TABLE Category (
@@ -97,8 +100,8 @@ DROP TABLE IF EXISTS Win;
 	     description varchar(50) NOT NULL,
 	     commentID integer NOT NULL,
 	     auctionID integer NOT NULL,
-	     autheticated_UserID integer NULL,
-	     normal_UserID integer NOT NULL
+	     authenticatedUserID integer NULL,
+	     normalUserID integer NOT NULL
     );
 
     CREATE TABLE Country (
@@ -115,8 +118,8 @@ DROP TABLE IF EXISTS Win;
 	     address varchar(50) NOT NULL,
 	     postalCode varchar(50) NOT NULL,
 	     balance Int NULL,
-	     normal_UserID integer NOT NULL,
-	     autheticated_UserID integer NULL,
+	     normalUserID integer NOT NULL,
+	     authenticatedUserID integer NULL,
 	     cityID integer NOT NULL
     );
 
@@ -126,7 +129,7 @@ DROP TABLE IF EXISTS Win;
 	     type varchar(50) NOT NULL,
 	     notificationID integer NOT NULL,
 	     auctionID integer NULL,
-	     autheticated_UserID integer NOT NULL
+	     authenticatedUserID integer NOT NULL
     );
 
     CREATE TABLE pertains_to (
@@ -138,8 +141,8 @@ DROP TABLE IF EXISTS Win;
 	     date Date NOT NULL,
 	     reason varchar(50) NOT NULL,
 	     reportID integer NOT NULL,
-       auctionID integer NULL,
-       NormalUserID integer NULL
+       	 auctionID integer NULL,
+         NormalUserID integer NULL
     );
 
     CREATE TABLE Win (
@@ -147,6 +150,21 @@ DROP TABLE IF EXISTS Win;
 	     finalPrice Int NOT NULL,
 	     rate Int NULL,
 	     winID integer NOT NULL
+    );
+
+	CREATE TABLE Blocks (
+		normalUserID integer NULL,
+		authenticatedUserID integer NULL
+    );
+
+	CREATE TABLE Remove_Moderator (
+	     authenticatedUserID integer NULL,
+		 removeMod integer NULL
+    );
+
+	CREATE TABLE Create_Moderator (
+		authenticatedUserID integer,
+		addedMod integer NULL
     );
 
 
@@ -159,7 +177,7 @@ ALTER TABLE Auction ADD CONSTRAINT PK_Auction
 
 
 ALTER TABLE Autheticated_User ADD CONSTRAINT PK_Autheticated_User
-	PRIMARY KEY (autheticated_UserID);
+	PRIMARY KEY (authenticatedUserID);
 
 
 ALTER TABLE Bid ADD CONSTRAINT PK_Bid
@@ -183,7 +201,7 @@ ALTER TABLE Country ADD CONSTRAINT PK_Country
 
 
 ALTER TABLE Normal_User ADD CONSTRAINT PK_Normal_User
-	PRIMARY KEY (normal_UserID);
+	PRIMARY KEY (normalUserID);
 
 
 ALTER TABLE Notification ADD CONSTRAINT PK_Notification
@@ -199,31 +217,31 @@ ALTER TABLE Win ADD CONSTRAINT PK_Win
 
 
 ALTER TABLE Add_Credits ADD CONSTRAINT add_credits
-	FOREIGN KEY (normal_UserID) REFERENCES Normal_User (normal_UserID);
+	FOREIGN KEY (normalUserID) REFERENCES Normal_User (normalUserID);
 
 ALTER TABLE Auction ADD CONSTRAINT win
-	FOREIGN KEY (normal_UserID) REFERENCES Normal_User (normal_UserID);
+	FOREIGN KEY (normalUserID) REFERENCES Normal_User (normalUserID);
 
 ALTER TABLE Auction ADD CONSTRAINT create
-	FOREIGN KEY (normal_UserID) REFERENCES Normal_User (normal_UserID);
+	FOREIGN KEY (normalUserID) REFERENCES Normal_User (normalUserID);
 
 ALTER TABLE Auction ADD CONSTRAINT accepts
-	FOREIGN KEY (autheticated_UserID) REFERENCES Autheticated_User (autheticated_UserID);
+	FOREIGN KEY (authenticatedUserID) REFERENCES Autheticated_User (authenticatedUserID);
 
 ALTER TABLE Auction ADD CONSTRAINT rejects
-	FOREIGN KEY (autheticated_UserID) REFERENCES Autheticated_User (autheticated_UserID);
+	FOREIGN KEY (authenticatedUserID) REFERENCES Autheticated_User (authenticatedUserID);
 
 ALTER TABLE Autheticated_User ADD CONSTRAINT add
-	FOREIGN KEY (autheticated_UserID) REFERENCES Autheticated_User (autheticated_UserID);
+	FOREIGN KEY (authenticatedUserID) REFERENCES Autheticated_User (authenticatedUserID);
 
 ALTER TABLE Autheticated_User ADD CONSTRAINT remove
-	FOREIGN KEY (autheticated_UserID) REFERENCES Autheticated_User (autheticated_UserID);
+	FOREIGN KEY (authenticatedUserID) REFERENCES Autheticated_User (authenticatedUserID);
 
 ALTER TABLE Bid ADD CONSTRAINT Auction
 	FOREIGN KEY (auctionID) REFERENCES Auction (auctionID);
 
 ALTER TABLE Bid ADD CONSTRAINT Normal_User
-	FOREIGN KEY (normal_UserID) REFERENCES Normal_User (normal_UserID);
+	FOREIGN KEY (normalUserID) REFERENCES Normal_User (normalUserID);
 
 ALTER TABLE Category ADD CONSTRAINT has
 	FOREIGN KEY (categoryID) REFERENCES Category (categoryID);
@@ -235,16 +253,16 @@ ALTER TABLE Comment ADD CONSTRAINT to
 	FOREIGN KEY (auctionID) REFERENCES Auction (auctionID);
 
 ALTER TABLE Comment ADD CONSTRAINT removes
-	FOREIGN KEY (autheticated_UserID) REFERENCES Autheticated_User (autheticated_UserID);
+	FOREIGN KEY (authenticatedUserID) REFERENCES Autheticated_User (authenticatedUserID);
 
 ALTER TABLE Comment ADD CONSTRAINT adds
-	FOREIGN KEY (normal_UserID) REFERENCES Normal_User (normal_UserID);
+	FOREIGN KEY (normalUserID) REFERENCES Normal_User (normalUserID);
 
 ALTER TABLE Normal_User ADD CONSTRAINT FK_Normal_User_Autheticated_User
-	FOREIGN KEY (normal_UserID) REFERENCES Autheticated_User (autheticated_UserID);
+	FOREIGN KEY (normalUserID) REFERENCES Autheticated_User (authenticatedUserID);
 
 ALTER TABLE Normal_User ADD CONSTRAINT blocks
-	FOREIGN KEY (autheticated_UserID) REFERENCES Autheticated_User (autheticated_UserID);
+	FOREIGN KEY (authenticatedUserID) REFERENCES Autheticated_User (authenticatedUserID);
 
 ALTER TABLE Normal_User ADD CONSTRAINT FK_Normal_User_City
 	FOREIGN KEY (cityID) REFERENCES City (cityID);
@@ -253,7 +271,7 @@ ALTER TABLE Notification ADD CONSTRAINT pertains_to
 	FOREIGN KEY (auctionID) REFERENCES Auction (auctionID);
 
 ALTER TABLE Notification ADD CONSTRAINT receives
-	FOREIGN KEY (autheticated_UserID) REFERENCES Autheticated_User (autheticated_UserID);
+	FOREIGN KEY (authenticatedUserID) REFERENCES Autheticated_User (authenticatedUserID);
 
 ALTER TABLE pertains_to ADD CONSTRAINT Category
 	FOREIGN KEY (categoryID) REFERENCES Category (categoryID);
@@ -265,4 +283,7 @@ ALTER TABLE Report ADD CONSTRAINT Auction
 	FOREIGN KEY (auctionID) REFERENCES Auction (auctionID);
 
 ALTER TABLE Report ADD CONSTRAINT Normal_User
-	FOREIGN KEY (normal_UserID) REFERENCES Normal_User (normal_UserID);
+	FOREIGN KEY (normalUserID) REFERENCES Normal_User (normalUserID);
+
+ALTER TABLE Report ADD CONSTRAINT Normal_User
+	FOREIGN KEY (normalUserID) REFERENCES Normal_User (normalUserID);
