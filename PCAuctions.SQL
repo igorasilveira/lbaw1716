@@ -53,7 +53,7 @@ CREATE TABLE Add_Credits
 	ID integer NOT NULL,
 	value integer NOT NULL,
 	date TIMESTAMP WITH TIME zone NOT NULL,
-	paypalID integer NULL,
+	paypalID integer NOT NULL,
 	user INT NOT NULL
 );
 
@@ -281,7 +281,6 @@ ALTER TABLE Blocks ADD CONSTRAINT Authenticated_User
 
 ALTER TABLE Blocks ADD CONSTRAINT Authenticated_User
 	FOREIGN KEY (blocker) REFERENCES Authenticated_User (ID);
-
 
 ALTER TABLE Edit_Categories ADD CONSTRAINT Category
 	FOREIGN KEY (category) REFERENCES Category (categoryID);
