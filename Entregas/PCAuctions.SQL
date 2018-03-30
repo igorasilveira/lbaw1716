@@ -1,3 +1,4 @@
+Authentica/*
 ALTER TABLE Add_Credits DROP CONSTRAINT add_credits;
 ALTER TABLE Auction DROP CONSTRAINT win;
 ALTER TABLE Auction DROP CONSTRAINT "create";
@@ -5,7 +6,7 @@ ALTER TABLE Auction DROP CONSTRAINT accepts;
 ALTER TABLE Auction DROP CONSTRAINT rejects;
 ALTER TABLE Authenticated_User DROP CONSTRAINT "add";
 ALTER TABLE Authenticated_User DROP CONSTRAINT remove;
-ALTER TABLE Authenticated_User DROP CONSTRAINT FK_Authenticated_User_Autheticated_User;
+ALTER TABLE Authenticated_User DROP CONSTRAINT FK_Authenticated_User_Authenticated_User;
 ALTER TABLE Authenticated_User DROP CONSTRAINT blocks;
 ALTER TABLE Authenticated_User DROP CONSTRAINT FK_Authenticated_User_City;
 ALTER TABLE Bid DROP CONSTRAINT Auction;
@@ -27,22 +28,26 @@ ALTER TABLE Edit_Moderator DROP CONSTRAINT Authenticated_User;
 ALTER TABLE Edit_Moderator DROP CONSTRAINT Authenticated_User;
 ALTER TABLE Edit_Categories DROP CONSTRAINT Category;
 ALTER TABLE Edit_Categories DROP CONSTRAINT Authenticated_User;
+*/
+DROP TABLE IF EXISTS Add_Credits CASCADE;
+DROP TABLE IF EXISTS Auction CASCADE;
+DROP TABLE IF EXISTS Authenticated_User CASCADE;
+DROP TABLE IF EXISTS Bid CASCADE;
+DROP TABLE IF EXISTS Category CASCADE;
+DROP TABLE IF EXISTS City CASCADE;
+DROP TABLE IF EXISTS Comment CASCADE;
+DROP TABLE IF EXISTS Country CASCADE;
+DROP TABLE IF EXISTS Authenticated_User CASCADE;
+DROP TABLE IF EXISTS Notification CASCADE;
+DROP TABLE IF EXISTS CategoryOfAuction CASCADE;
+DROP TABLE IF EXISTS Report CASCADE;
+DROP TABLE IF EXISTS Blocks CASCADE;
+DROP TABLE IF EXISTS Edit_Moderator CASCADE;
+DROP TABLE IF EXISTS Edit_Categories CASCADE;
 
-DROP TABLE IF EXISTS Add_Credits;
-DROP TABLE IF EXISTS Auction;
-DROP TABLE IF EXISTS Authenticated_User;
-DROP TABLE IF EXISTS Bid;
-DROP TABLE IF EXISTS Category;
-DROP TABLE IF EXISTS City;
-DROP TABLE IF EXISTS Comment;
-DROP TABLE IF EXISTS Country;
-DROP TABLE IF EXISTS Authenticated_User;
-DROP TABLE IF EXISTS Notification;
-DROP TABLE IF EXISTS CategoryOfAuction;
-DROP TABLE IF EXISTS Report;
-DROP TABLE IF EXISTS Blocks;
-DROP TABLE IF EXISTS Edit_Moderator;
-DROP TABLE IF EXISTS Edit_Categories;
+DROP TYPE IF EXISTS AuctionSate;
+DROP TYPE IF EXISTS BlockingState;
+DROP TYPE IF EXISTS TypeOfUser;
 
 CREATE TYPE AuctionSate AS ENUM ('Active', 'Rejected', 'Pending');
 
@@ -52,16 +57,16 @@ CREATE TYPE TypeOfUser	AS ENUM ('Moderator', 'Administrator', 'Normal');
 
 CREATE TABLE Add_Credits
 (
-	id integer NOT NULL,
+	id integer NOT NULL PRIMARY KEY,
 	"value" integer NOT NULL,
 	"date" TIMESTAMP WITH TIME zone NOT NULL,
 	paypalID integer NOT NULL,
-	"user" INT NOT NULL
+	"user" INT NOT NULL REFERENCES Authenticated_User (id)
 );
 
 CREATE TABLE Auction
 (
-	id integer NOT NULL,
+	id integer NOT NULL PRIMARY KEY,
 	state AuctionSate NOT NULL,
 	title varchar(50) NOT NULL,
 	description varchar(50) NULL,
@@ -73,23 +78,23 @@ CREATE TABLE Auction
 	startDate TIMESTAMP WITH TIME zone NOT NULL,
 	limitDate TIMESTAMP WITH TIME zone NOT NULL,
 	refusalDate TIMESTAMP WITH TIME zone NULL,
-	/numberOfBids integer NULL,
+	"/numberOfBids" integer NULL,
 	reasonOfRefusal varchar(50) NULL,
-  finalDate TIMESTAMP WITH TIME zone NULL,
-  finalPrice integer NULL,
+  	finalDate TIMESTAMP WITH TIME zone NULL,
+  	finalPrice integer NULL,
 	rate integer NULL CHECK (rate >= 0 AND rate <=5),
-	auctionCreator integer NOT NULL,
-  auctionWinner integer NULL,
-	responsibleModerator integer NULL,
-	CHECK ((minimumSellingPrice > startingPrice OR minimumSellingPrice == NULL)
+	auctionCreator integer NOT NULL REFERENCES Authenticated_User (id),
+  	auctionWinner integer NULL REFERENCES Authenticated_User (id),
+	responsibleModerator integer NULL REFERENCES Authenticated_User (id),
+	CHECK ((minimumSellingPrice > startingPrice OR minimumSellingPrice = NULL)
 				 AND
-				 (buyNow > startingPrice OR buyNow == NULL)
-				)
+				 (buyNow > startingPrice OR buyNow = NULL)
+	)
 );
 
 CREATE TABLE Authenticated_User
 (
-	id integer NOT NULL,
+	id integer NOT NULL PRIMARY KEY,
 	typeOfUser TypeOfUser NOT NULL,
 	username varchar(50) NOT NULL UNIQUE,
 	"password" varchar(50) NOT NULL,
@@ -97,73 +102,74 @@ CREATE TABLE Authenticated_User
 	completeName varchar(50) NOT NULL,
 	email varchar(50) NULL UNIQUE,
 	birthDate TIMESTAMP WITH TIME zone NULL,
-	/rating integer NULL CHECK (/rating >= 0 AND /rating<=5),
+	"/rating" integer NULL CHECK ("/rating" >= 0 AND "/rating" <=5),
 	address varchar(50) NULL,
 	postalCode varchar(50) NULL,
 	balance integer NULL CHECK (balance >= 0),
-	city integer NULL
+	city integer NULL REFERENCES City (id)
 );
 
 CREATE TABLE Bid
 (
 	"date" TIMESTAMP WITH TIME zone NOT NULL,
 	"value" integer NOT NULL,
-  auctionBidded integer NOT NULL,
-  bidder integer NOT NULL
+	auctionBidded integer NOT NULL REFERENCES Auction (id),
+  	bidder integer NOT NULL REFERENCES Authenticated_User (id),
+	PRIMARY KEY (auctionBidded,bidder)
 );
 
 CREATE TABLE Category
 (
-	categoryID integer NOT NULL,
+	categoryID integer NOT NULL PRIMARY KEY,
 	"name" varchar(50) NOT NULL UNIQUE,
-	parent integer NULL
+	parent integer NULL REFERENCES Category (categoryID)
 );
 
 CREATE TABLE City
 (
-	id integer NOT NULL,
+	id integer NOT NULL PRIMARY KEY,
 	"name" varchar(50) NOT NULL UNIQUE,
-	country integer NOT NULL
+	country integer NOT NULL REFERENCES Country (id)
 );
 
 CREATE TABLE Comment
 (
-	id integer NOT NULL,
+	id integer NOT NULL PRIMARY KEY,
 	"date" TIMESTAMP WITH TIME zone NOT NULL,
 	description varchar (50) NOT NULL,
-	auctionCommented integer NOT NULL,
-	moderatorThatErased integer NULL,
-	userCommenter integer NOT NULL
+	auctionCommented integer NOT NULL REFERENCES Auction (id),
+	moderatorThatErased integer NULL REFERENCES Authenticated_User (id),
+	userCommenter integer NOT NULL REFERENCES Authenticated_User (id)
 );
 
 CREATE TABLE Country
 (
-	id integer NOT NULL,
+	id integer NOT NULL PRIMARY KEY,
 	"name" varchar(50) NOT NULL UNIQUE
 );
 
 CREATE TABLE Notification
 (
-	id integer NOT NULL,
+	id integer NOT NULL PRIMARY KEY,
 	"date" TIMESTAMP WITH TIME zone NOT NULL,
 	description varchar(50) NOT NULL,
-  "type" varchar(50) NOT NULL,
-	auctionAssociated integer NULL,
-	authenticated_UserID integer NOT NULL
+  	"type" varchar(50) NOT NULL,
+	auctionAssociated integer NULL REFERENCES Auction (id),
+	authenticated_UserID integer NOT NULL REFERENCES Authenticated_User (id)
 );
 
 CREATE TABLE Report
 (
 	"date" TIMESTAMP WITH TIME zone NOT NULL,
 	reason varchar(50) NOT NULL,
-  auctionID integer NOT NULL,
-  normalUserID integer NOT NULL
+  	auctionID integer NOT NULL REFERENCES Auction (id),
+  	normalUserID integer NOT NULL REFERENCES Authenticated_User (id)
 );
 
 CREATE TABLE CategoryOfAuction
 (
-	category integer NOT NULL,
-	auction integer NOT NULL
+	category integer NOT NULL  REFERENCES Category (categoryID),
+	auction integer NOT NULL REFERENCES Auction (id)
 );
 
 CREATE TABLE Blocks
@@ -171,121 +177,18 @@ CREATE TABLE Blocks
 	state BlockingState NOT NULL,
 	description varchar(50) NULL,
 	"date" TIMESTAMP WITH TIME zone NOT NULL,
-	blocked integer NULL,
-	blocker integer NULL
+	blocked integer NULL  REFERENCES Authenticated_User (id),
+	blocker integer NULL  REFERENCES Authenticated_User (id)
 );
 
 CREATE TABLE Edit_Moderator
 (
-	removedMod integer NULL,
-	removerAdmin integer NULL
+	removedMod integer NULL REFERENCES Authenticated_User (id),
+	removerAdmin integer NULL REFERENCES Authenticated_User (id)
 );
 
 CREATE TABLE Edit_Categories
 (
-	category integer NOT NULL,
-	"admin" integer NOT NULL
+	category integer NOT NULL REFERENCES Category (categoryID),
+	"admin" integer NOT NULL REFERENCES Authenticated_User (id)
 );
-
-
-ALTER TABLE Add_Credits ADD CONSTRAINT PK_Add_Credits
-	PRIMARY KEY (add_CreditsID);
-
-ALTER TABLE Auction ADD CONSTRAINT PK_Auction
-	PRIMARY KEY (id);
-
-ALTER TABLE Authenticated_User ADD CONSTRAINT PK_Autheticated_User
-	PRIMARY KEY (id);
-
-ALTER TABLE Category ADD CONSTRAINT PK_Category
-	PRIMARY KEY (categoryID);
-
-ALTER TABLE City ADD CONSTRAINT PK_City
-	PRIMARY KEY (id);
-
-ALTER TABLE Comment ADD CONSTRAINT PK_Comment
-	PRIMARY KEY (id);
-
-ALTER TABLE Country ADD CONSTRAINT PK_Country
-	PRIMARY KEY (countryID);
-
-ALTER TABLE Notification ADD CONSTRAINT PK_Notification
-	PRIMARY KEY (id);
-
-ALTER TABLE Add_Credits ADD CONSTRAINT add_credits
-	FOREIGN KEY ("user") REFERENCES Authenticated_User (id);
-
-ALTER TABLE Auction ADD CONSTRAINT win
-	FOREIGN KEY (auctionWinner) REFERENCES Authenticated_User (id);
-
-ALTER TABLE Auction ADD CONSTRAINT "create"
-	FOREIGN KEY (auctionCreator) REFERENCES Authenticated_User (id);
-
-ALTER TABLE Auction ADD CONSTRAINT accepts
-	FOREIGN KEY (responsibleModerator) REFERENCES Autheticated_User (authenticatedUserID);
-
-ALTER TABLE Auction ADD CONSTRAINT rejects
-	FOREIGN KEY (responsibleModerator) REFERENCES Autheticated_User (authenticatedUserID);
-
-ALTER TABLE Authenticated_User ADD CONSTRAINT blocks
-	FOREIGN KEY (authenticatedUserID) REFERENCES Autheticated_User (authenticatedUserID);
-
-ALTER TABLE Authenticated_User ADD CONSTRAINT FK_Authenticated_User_City
-	FOREIGN KEY (cityID) REFERENCES City (cityID);
-
-ALTER TABLE Bid ADD CONSTRAINT Auction
-	FOREIGN KEY (auctionBidded) REFERENCES Auction (auctionID);
-
-ALTER TABLE Bid ADD CONSTRAINT Authenticated_User
-	FOREIGN KEY (bidder) REFERENCES Authenticated_User (id);
-
-ALTER TABLE Category ADD CONSTRAINT has
-	FOREIGN KEY (categoryID) REFERENCES Category (categoryID);
-
-ALTER TABLE City ADD CONSTRAINT FK_City_Country
-	FOREIGN KEY (country) REFERENCES Country (countryID);
-
-ALTER TABLE Comment ADD CONSTRAINT "to"
-	FOREIGN KEY (auctionCommented) REFERENCES Auction (auctionID);
-
-ALTER TABLE Comment ADD CONSTRAINT removes
-	FOREIGN KEY (moderatorThatErased) REFERENCES Autheticated_User (authenticatedUserID);
-
-ALTER TABLE Comment ADD CONSTRAINT adds
-	FOREIGN KEY (userCommenter) REFERENCES Authenticated_User (id);
-
-ALTER TABLE Notification ADD CONSTRAINT pertains_to
-	FOREIGN KEY (auctionAssociated) REFERENCES Auction (auctionID);
-
-ALTER TABLE Notification ADD CONSTRAINT receives
-	FOREIGN KEY (authenticatedUserID) REFERENCES Autheticated_User (authenticatedUserID);
-
-ALTER TABLE CategoryOfAuction ADD CONSTRAINT Category
-	FOREIGN KEY (category) REFERENCES Category (categoryID);
-
-ALTER TABLE CategoryOfAuction ADD CONSTRAINT Auction
-	FOREIGN KEY (auction) REFERENCES Auction (auctionID);
-
-ALTER TABLE Report ADD CONSTRAINT Auction
-	FOREIGN KEY (auctionID) REFERENCES Auction (auctionID);
-
-ALTER TABLE Report ADD CONSTRAINT Authenticated_User
-	FOREIGN KEY (normalUserID) REFERENCES Authenticated_User (id);
-
-ALTER TABLE Edit_Moderator ADD CONSTRAINT Authenticated_User
-	FOREIGN KEY (removedMod) REFERENCES Authenticated_User (id);
-
-ALTER TABLE Edit_Moderator ADD CONSTRAINT Authenticated_User
-	FOREIGN KEY (removerAdmin) REFERENCES Authenticated_User (id);
-
-ALTER TABLE Blocks ADD CONSTRAINT Authenticated_User
-	FOREIGN KEY (blocked) REFERENCES Authenticated_User (id);
-
-ALTER TABLE Blocks ADD CONSTRAINT Authenticated_User
-	FOREIGN KEY (blocker) REFERENCES Authenticated_User (id);
-
-ALTER TABLE Edit_Categories ADD CONSTRAINT Category
-	FOREIGN KEY (category) REFERENCES Category (categoryID);
-
-ALTER TABLE Edit_Categories ADD CONSTRAINT Authenticated_User
-  FOREIGN KEY ("admin") REFERENCES Authenticated_User (id);
