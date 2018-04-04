@@ -1,34 +1,3 @@
-Authentica/*
-ALTER TABLE Add_Credits DROP CONSTRAINT add_credits;
-ALTER TABLE Auction DROP CONSTRAINT win;
-ALTER TABLE Auction DROP CONSTRAINT "create";
-ALTER TABLE Auction DROP CONSTRAINT accepts;
-ALTER TABLE Auction DROP CONSTRAINT rejects;
-ALTER TABLE Authenticated_User DROP CONSTRAINT "add";
-ALTER TABLE Authenticated_User DROP CONSTRAINT remove;
-ALTER TABLE Authenticated_User DROP CONSTRAINT FK_Authenticated_User_Authenticated_User;
-ALTER TABLE Authenticated_User DROP CONSTRAINT blocks;
-ALTER TABLE Authenticated_User DROP CONSTRAINT FK_Authenticated_User_City;
-ALTER TABLE Bid DROP CONSTRAINT Auction;
-ALTER TABLE Bid DROP CONSTRAINT Authenticated_User;
-ALTER TABLE Category DROP CONSTRAINT has;
-ALTER TABLE City DROP CONSTRAINT FK_City_Country;
-ALTER TABLE Comment DROP CONSTRAINT "to";
-ALTER TABLE Comment DROP CONSTRAINT removes;
-ALTER TABLE Comment DROP CONSTRAINT adds;
-ALTER TABLE Notification DROP CONSTRAINT pertains_to;
-ALTER TABLE Notification DROP CONSTRAINT receives;
-ALTER TABLE CategoryOfAuction DROP CONSTRAINT Category;
-ALTER TABLE CategoryOfAuction DROP CONSTRAINT Auction;
-ALTER TABLE Report DROP CONSTRAINT Auction;
-ALTER TABLE Report DROP CONSTRAINT Authenticated_User;
-ALTER TABLE Blocks DROP CONSTRAINT Authenticated_User;
-ALTER TABLE Blocks DROP CONSTRAINT Authenticated_User;
-ALTER TABLE Edit_Moderator DROP CONSTRAINT Authenticated_User;
-ALTER TABLE Edit_Moderator DROP CONSTRAINT Authenticated_User;
-ALTER TABLE Edit_Categories DROP CONSTRAINT Category;
-ALTER TABLE Edit_Categories DROP CONSTRAINT Authenticated_User;
-*/
 DROP TABLE IF EXISTS Add_Credits CASCADE;
 DROP TABLE IF EXISTS Auction CASCADE;
 DROP TABLE IF EXISTS Authenticated_User CASCADE;
@@ -55,18 +24,39 @@ CREATE TYPE BlockingState AS ENUM ('Blocked', 'Allowed');
 
 CREATE TYPE TypeOfUser	AS ENUM ('Moderator', 'Administrator', 'Normal');
 
-CREATE TABLE Add_Credits
+CREATE TABLE Country
 (
-	id integer NOT NULL PRIMARY KEY,
-	"value" integer NOT NULL,
-	"date" TIMESTAMP WITH TIME zone NOT NULL,
-	paypalID integer NOT NULL,
-	"user" INT NOT NULL REFERENCES Authenticated_User (id)
+	id integer SERIAL NOT NULL PRIMARY KEY,
+	"name" varchar(50) NOT NULL UNIQUE
+);
+
+CREATE TABLE City
+(
+	id integer SERIAL NOT NULL PRIMARY KEY,
+	"name" varchar(50) NOT NULL UNIQUE,
+	country integer NOT NULL REFERENCES Country (id)
+);
+
+CREATE TABLE Authenticated_User
+(
+	id integer SERIAL NOT NULL PRIMARY KEY,
+	typeOfUser TypeOfUser NOT NULL,
+	username varchar(50) NOT NULL UNIQUE,
+	"password" varchar(50) NOT NULL,
+	pathToPhoto varchar(50) NULL,
+	completeName varchar(50) NOT NULL,
+	email varchar(50) NULL UNIQUE,
+	birthDate TIMESTAMP WITH TIME zone NULL,
+	"/rating" integer NULL CHECK ("/rating" >= 0 AND "/rating" <=5),
+	address varchar(50) NULL,
+	postalCode varchar(50) NULL,
+	balance integer NULL CHECK (balance >= 0),
+	city integer NULL REFERENCES City (id)
 );
 
 CREATE TABLE Auction
 (
-	id integer NOT NULL PRIMARY KEY,
+	id integer SERIAL NOT NULL PRIMARY KEY,
 	state AuctionSate NOT NULL,
 	title varchar(50) NOT NULL,
 	description varchar(50) NULL,
@@ -92,21 +82,13 @@ CREATE TABLE Auction
 	)
 );
 
-CREATE TABLE Authenticated_User
+CREATE TABLE Add_Credits
 (
-	id integer NOT NULL PRIMARY KEY,
-	typeOfUser TypeOfUser NOT NULL,
-	username varchar(50) NOT NULL UNIQUE,
-	"password" varchar(50) NOT NULL,
-	pathToPhoto varchar(50) NULL,
-	completeName varchar(50) NOT NULL,
-	email varchar(50) NULL UNIQUE,
-	birthDate TIMESTAMP WITH TIME zone NULL,
-	"/rating" integer NULL CHECK ("/rating" >= 0 AND "/rating" <=5),
-	address varchar(50) NULL,
-	postalCode varchar(50) NULL,
-	balance integer NULL CHECK (balance >= 0),
-	city integer NULL REFERENCES City (id)
+	id integer SERIAL NOT NULL PRIMARY KEY,
+	"value" integer NOT NULL,
+	"date" TIMESTAMP WITH TIME zone NOT NULL,
+	paypalID integer NOT NULL,
+	"user" INT NOT NULL REFERENCES Authenticated_User (id)
 );
 
 CREATE TABLE Bid
@@ -120,21 +102,14 @@ CREATE TABLE Bid
 
 CREATE TABLE Category
 (
-	categoryID integer NOT NULL PRIMARY KEY,
+	categoryID SERIAL integer NOT NULL PRIMARY KEY,
 	"name" varchar(50) NOT NULL UNIQUE,
 	parent integer NULL REFERENCES Category (categoryID)
 );
 
-CREATE TABLE City
-(
-	id integer NOT NULL PRIMARY KEY,
-	"name" varchar(50) NOT NULL UNIQUE,
-	country integer NOT NULL REFERENCES Country (id)
-);
-
 CREATE TABLE Comment
 (
-	id integer NOT NULL PRIMARY KEY,
+	id integer SERIAL NOT NULL PRIMARY KEY,
 	"date" TIMESTAMP WITH TIME zone NOT NULL,
 	description varchar (50) NOT NULL,
 	auctionCommented integer NOT NULL REFERENCES Auction (id),
@@ -142,15 +117,9 @@ CREATE TABLE Comment
 	userCommenter integer NOT NULL REFERENCES Authenticated_User (id)
 );
 
-CREATE TABLE Country
-(
-	id integer NOT NULL PRIMARY KEY,
-	"name" varchar(50) NOT NULL UNIQUE
-);
-
 CREATE TABLE Notification
 (
-	id integer NOT NULL PRIMARY KEY,
+	id integer SERIAL NOT NULL PRIMARY KEY,
 	"date" TIMESTAMP WITH TIME zone NOT NULL,
 	description varchar(50) NOT NULL,
   	"type" varchar(50) NOT NULL,
@@ -192,3 +161,35 @@ CREATE TABLE Edit_Categories
 	category integer NOT NULL REFERENCES Category (categoryID),
 	"admin" integer NOT NULL REFERENCES Authenticated_User (id)
 );
+
+CREATE FUNCTION check_Block_Users(blocked integer,blocker integer)
+RETURNS BOOLEAN AS $$
+DECLARE passed BOOLEAN;
+DECLARE blokedUser TypeOfUser;
+DECLARE blokerUser TypeOfUser;
+BEGIN
+		SELECT typeOfUser INTO blokedUser FROM Authenticated_User where id = blocked ;
+		SELECT typeOfUser INTO blokerUser FROM Authenticated_User where id = blocker ;
+		IF blokedUser = 'Normal'::TypeOfUser AND (blokerUser = 'Administrator'::TypeOfUser OR blokerUser = 'Moderator'::TypeOfUser)
+		THEN passed := true;
+		ELSE passed := false;
+		END IF;
+		RETURN passed;
+END; $$
+LANGUAGE plpgsql;
+
+CREATE FUNCTION check_Edit_Moderators(removedMod integer,removerAdmin integer)
+RETURNS BOOLEAN AS $$
+DECLARE passed BOOLEAN;
+DECLARE removerModUser TypeOfUser;
+DECLARE removerAdminUser TypeOfUser;
+BEGIN
+		SELECT typeOfUser INTO removerModUser FROM Authenticated_User where id = removedMod ;
+		SELECT typeOfUser INTO removerAdminUser FROM Authenticated_User where id = removerAdmin ;
+		IF removerModUser = 'Moderator'::TypeOfUser AND removerAdminUser = 'Administrator'::TypeOfUser
+		THEN passed := true;
+		ELSE passed := false;
+		END IF;
+		RETURN passed;
+END; $$
+LANGUAGE plpgsql;
