@@ -1,5 +1,5 @@
 --
--- PostgreSQL database
+-- PostgreSQL database dump
 --
 
 SET statement_timeout = 0;
@@ -29,11 +29,12 @@ ALTER TABLE ONLY public.blocks DROP CONSTRAINT blocks_blocker_fkey;
 ALTER TABLE ONLY public.blocks DROP CONSTRAINT blocks_blocked_fkey;
 ALTER TABLE ONLY public.bid DROP CONSTRAINT bid_bidder_fkey;
 ALTER TABLE ONLY public.bid DROP CONSTRAINT bid_auctionbidded_fkey;
-ALTER TABLE ONLY public.authenticated_user DROP CONSTRAINT authenticated_user_city_fkey;
+ALTER TABLE ONLY public."user" DROP CONSTRAINT authenticated_user_city_fkey;
 ALTER TABLE ONLY public.auction DROP CONSTRAINT auction_responsiblemoderator_fkey;
 ALTER TABLE ONLY public.auction DROP CONSTRAINT auction_auctionwinner_fkey;
 ALTER TABLE ONLY public.auction DROP CONSTRAINT auction_auctioncreator_fkey;
 ALTER TABLE ONLY public.add_credits DROP CONSTRAINT add_credits_user_fkey;
+DROP TRIGGER winner_rate_auction ON public.auction;
 DROP TRIGGER win_auction ON public.bid;
 DROP TRIGGER update_rating ON public.auction;
 DROP TRIGGER check_bid_value ON public.bid;
@@ -55,14 +56,14 @@ ALTER TABLE ONLY public.category DROP CONSTRAINT category_pkey;
 ALTER TABLE ONLY public.category DROP CONSTRAINT category_name_key;
 ALTER TABLE ONLY public.blocks DROP CONSTRAINT blocks_pkey;
 ALTER TABLE ONLY public.bid DROP CONSTRAINT bid_pkey;
-ALTER TABLE ONLY public.authenticated_user DROP CONSTRAINT authenticated_user_username_key;
-ALTER TABLE ONLY public.authenticated_user DROP CONSTRAINT authenticated_user_pkey;
-ALTER TABLE ONLY public.authenticated_user DROP CONSTRAINT authenticated_user_email_key;
+ALTER TABLE ONLY public."user" DROP CONSTRAINT authenticated_user_username_key;
+ALTER TABLE ONLY public."user" DROP CONSTRAINT authenticated_user_pkey;
+ALTER TABLE ONLY public."user" DROP CONSTRAINT authenticated_user_email_key;
 ALTER TABLE ONLY public.auction DROP CONSTRAINT auction_pkey;
 ALTER TABLE ONLY public.add_credits DROP CONSTRAINT add_credits_pkey;
+DROP TABLE public."user";
 DROP TABLE public.report;
 DROP TABLE public.notification;
-DROP TABLE public.lastbidder;
 DROP TABLE public.edit_moderator;
 DROP TABLE public.edit_categories;
 DROP TABLE public.country;
@@ -72,18 +73,19 @@ DROP TABLE public.categoryofauction;
 DROP TABLE public.category;
 DROP TABLE public.blocks;
 DROP TABLE public.bid;
+DROP SEQUENCE public.auto_increment_user;
 DROP SEQUENCE public.auto_increment_notification;
 DROP SEQUENCE public.auto_increment_comment;
 DROP SEQUENCE public.auto_increment_city;
 DROP SEQUENCE public.auto_increment_category;
-DROP TABLE public.authenticated_user;
-DROP SEQUENCE public.auto_increment_user;
 DROP TABLE public.auction;
 DROP SEQUENCE public.auto_increment_auction;
 DROP TABLE public.add_credits;
 DROP SEQUENCE public.auto_increment_credits;
+DROP FUNCTION public.winner_rate_auction();
 DROP FUNCTION public.win_auction();
 DROP FUNCTION public.update_ratings();
+DROP FUNCTION public.get_current_user();
 DROP FUNCTION public.check_rejected_auction(state auctionstate, dateofrefusal timestamp with time zone, reasonofrefusal character varying);
 DROP FUNCTION public.check_edit_moderators(removedmod integer, removeradmin integer);
 DROP FUNCTION public.check_block_users(blocked integer, blocker integer);
@@ -157,9 +159,6 @@ CREATE TYPE typeofuser AS ENUM (
 ALTER TYPE typeofuser OWNER TO lbaw1716;
 
 --
--- USER FUNCTIONS AND TRIGGERS
---
---
 -- Name: auction_creator(); Type: FUNCTION; Schema: public; Owner: lbaw1716
 --
 
@@ -167,13 +166,12 @@ CREATE FUNCTION auction_creator() RETURNS trigger
     LANGUAGE plpgsql
     AS $$BEGIN
   IF EXISTS (SELECT * FROM auction
-    INNER JOIN Authenticated_User ON Authenticated_User.id = auction.auctioncreator
-    WHERE NEW.auctionbidded = auction.id AND NEW.bidder = Authenticated_User.id) THEN
-    RAISE EXCEPTION 'An auction cannot be bade on by its creator.';
+    INNER JOIN "user" ON "user".id = auction.auctioncreator
+    WHERE NEW.auctionbidded = auction.id AND NEW.bidder = "user".id) THEN
+    RAISE EXCEPTION 'The creator of an auction cannot make a bid on it!';
   END IF;
   RETURN NEW;
-END;
-$$;
+END;$$;
 
 
 ALTER FUNCTION public.auction_creator() OWNER TO lbaw1716;
@@ -188,7 +186,7 @@ CREATE FUNCTION bid_greater_than_last() RETURNS trigger
 	IF EXISTS (SELECT * FROM bid WHERE NEW.auctionbidded = auctionbidded AND NEW.value <= value) THEN
 		RAISE EXCEPTION 'A bid on this auction has to have a greater value than a previous one on this auction.';
         ELSE
-         UPDATE Authenticated_User SET balance = ((SELECT value FROM "bid" WHERE "bid".auctionBidded=NEW.auctionbidded ORDER BY value DESC LIMIT 1) + (SELECT balance FROM Authenticated_User WHERE id = (SELECT bidder FROM "bid" WHERE auctionbidded = NEW.auctionbidded ORDER BY value DESC LIMIT 1))) WHERE id = (SELECT bidder FROM "bid" WHERE auctionbidded = NEW.auctionbidded ORDER BY value DESC LIMIT 1);
+         UPDATE "user" SET balance = ((SELECT value FROM "bid" WHERE "bid".auctionBidded=NEW.auctionbidded ORDER BY value DESC LIMIT 1) + (SELECT balance FROM "user" WHERE id = (SELECT bidder FROM "bid" WHERE auctionbidded = NEW.auctionbidded ORDER BY value DESC LIMIT 1))) WHERE id = (SELECT bidder FROM "bid" WHERE auctionbidded = NEW.auctionbidded ORDER BY value DESC LIMIT 1);
         INSERT INTO Notification (id, date, description, type, auctionassociated, authenticated_userid) VALUES (DEFAULT, transaction_timestamp(), 'Your bid on this auction was surpassed. Try again!', 'Bid Exceeded', NEW.auctionbidded, (SELECT bidder FROM "bid" WHERE auctionbidded = NEW.auctionbidded ORDER BY value DESC LIMIT 1));
         END IF;
 	RETURN NEW;
@@ -211,11 +209,11 @@ COMMENT ON FUNCTION bid_greater_than_last() IS '       ';
 CREATE FUNCTION bidder_has_money() RETURNS trigger
     LANGUAGE plpgsql
     AS $$BEGIN
-	IF EXISTS (SELECT * FROM Authenticated_User WHERE NEW.bidder = id AND NEW.value > balance)          THEN
+	IF EXISTS (SELECT * FROM "user" WHERE NEW.bidder = id AND NEW.value > balance)          THEN
 		RAISE EXCEPTION 'To make a bid on this auction the bidder must have a balance greater than bid value';
-ELSE IF EXISTS (SELECT * FROM Authenticated_User WHERE NEW.bidder = id AND NEW.value <= balance)
+ELSE IF EXISTS (SELECT * FROM "user" WHERE NEW.bidder = id AND NEW.value <= balance)
 THEN
-      UPDATE Authenticated_User SET balance = (SELECT balance FROM Authenticated_User WHERE NEW.bidder = id) - NEW.value WHERE id = NEW.bidder;
+      UPDATE "user" SET balance = (SELECT balance FROM "user" WHERE NEW.bidder = id) - NEW.value WHERE id = NEW.bidder;
 END IF;
 	END IF;
 	RETURN NEW;
@@ -231,7 +229,7 @@ ALTER FUNCTION public.bidder_has_money() OWNER TO lbaw1716;
 CREATE FUNCTION buy_now() RETURNS trigger
     LANGUAGE plpgsql
     AS $$BEGIN
-IF EXISTS (SELECT * FROM auction WHERE NEW.auctionbidded = id AND NEW.value = buyNow AND NEW."isBuyNow" = true)
+IF EXISTS (SELECT * FROM "auction" WHERE NEW.auctionbidded = id AND NEW.value = buyNow AND NEW."isBuyNow" = true)
 THEN
 UPDATE auction SET state = 'Over'::auctionstate, finaldate = NEW.date, finalprice = NEW.value, auctionwinner = NEW.bidder WHERE id = NEW.auctionbidded;
 END IF;
@@ -250,7 +248,7 @@ CREATE FUNCTION check_admin_modify_category(admin integer) RETURNS boolean
     AS $$DECLARE passed BOOLEAN;
 DECLARE adminUser TypeOfUser;
 BEGIN
-SELECT typeOfUser INTO adminUser FROM Authenticated_User where id = admin ;
+SELECT typeOfUser INTO adminUser FROM "User" where id = admin ;
 IF
 adminUser = 'Administrator'::TypeOfUser THEN passed := true; ELSE passed := false;
 END IF;
@@ -272,14 +270,14 @@ DECLARE createrUser TypeOfUser;
 DECLARE winnerUser TypeOfUser;
 DECLARE responsibleUser TypeOfUser;
 BEGIN
-	SELECT typeOfUser INTO createrUser FROM Authenticated_User where id = auctioncreator ;
+	SELECT typeOfUser INTO createrUser FROM "user" where id = auctioncreator ;
         IF(auctionwinner IS NULL)
 	   THEN winnerUser := NULL ;
-           ELSE SELECT typeOfUser INTO winnerUser FROM Authenticated_User where id = auctionwinner ;
+           ELSE SELECT typeOfUser INTO winnerUser FROM "user" where id = auctionwinner ;
         END IF;
         IF(responsiblemoderator IS NULL)
            THEN responsibleUser := NULL ;
-           ELSE SELECT typeOfUser INTO responsibleUser FROM Authenticated_User where id = responsiblemoderator ;
+           ELSE SELECT typeOfUser INTO responsibleUser FROM "user" where id = responsiblemoderator ;
         END IF;
 	IF createrUser = 'Normal'::TypeOfUser AND (winnerUser = 'Normal'::TypeOfUser OR winnerUser IS NULL) AND (
 responsibleUser = 'Moderator'::TypeOfUser OR responsibleUser = 'Administrator'::TypeOfUser OR responsibleUser IS NULL
@@ -321,7 +319,7 @@ ALTER FUNCTION public.check_auction_win(state auctionstate, finaldate timestamp 
 CREATE FUNCTION check_bid_value() RETURNS trigger
     LANGUAGE plpgsql
     AS $$BEGIN
-IF EXISTS (SELECT * FROM auction WHERE NEW.auctionbidded = id AND NEW.value < startingprice)
+IF EXISTS (SELECT * FROM "auction" WHERE NEW.auctionbidded = id AND NEW.value < startingprice)
 THEN
 RAISE EXCEPTION 'A Bid has to have a greater value than starting price of auction.';
 END IF;
@@ -341,8 +339,8 @@ CREATE FUNCTION check_block_users(blocked integer, blocker integer) RETURNS bool
 DECLARE blokedUser TypeOfUser;
 DECLARE blokerUser TypeOfUser;
 BEGIN
-		SELECT typeOfUser INTO blokedUser FROM Authenticated_User where id = blocked ;
-		SELECT typeOfUser INTO blokerUser FROM Authenticated_User where id = blocker ;
+		SELECT typeOfUser INTO blokedUser FROM "User" where id = blocked ;
+		SELECT typeOfUser INTO blokerUser FROM "User" where id = blocker ;
 		IF blokedUser = 'Normal'::TypeOfUser AND (blokerUser = 'Administrator'::TypeOfUser OR blokerUser = 'Moderator'::TypeOfUser)
 		THEN passed := true;
 		ELSE passed := false;
@@ -363,8 +361,8 @@ CREATE FUNCTION check_edit_moderators(removedmod integer, removeradmin integer) 
 DECLARE removerModUser TypeOfUser;
 DECLARE removerAdminUser TypeOfUser;
 BEGIN
-	SELECT typeOfUser INTO removerModUser FROM Authenticated_User where id = removedMod ;
-	SELECT typeOfUser INTO removerAdminUser FROM Authenticated_User where id = removerAdmin ;
+	SELECT typeOfUser INTO removerModUser FROM "User" where id = removedMod ;
+	SELECT typeOfUser INTO removerAdminUser FROM "User" where id = removerAdmin ;
 	IF removerModUser = 'Moderator'::TypeOfUser AND removerAdminUser = 'Administrator'::TypeOfUser
 	THEN passed := true;
 	ELSE passed := false;
@@ -397,6 +395,27 @@ END;$$;
 ALTER FUNCTION public.check_rejected_auction(state auctionstate, dateofrefusal timestamp with time zone, reasonofrefusal character varying) OWNER TO lbaw1716;
 
 --
+-- Name: get_current_user(); Type: FUNCTION; Schema: public; Owner: lbaw1716
+--
+
+CREATE FUNCTION get_current_user() RETURNS text
+    LANGUAGE plpgsql
+    AS $$DECLARE
+    cur_user varchar;
+BEGIN
+    BEGIN
+        cur_user := (SELECT "username" FROM curr_user);
+    EXCEPTION WHEN undefined_table THEN
+        cur_user := 'unknown_user';
+    END;
+    RETURN cur_user;
+END;
+$$;
+
+
+ALTER FUNCTION public.get_current_user() OWNER TO lbaw1716;
+
+--
 -- Name: update_ratings(); Type: FUNCTION; Schema: public; Owner: lbaw1716
 --
 
@@ -407,11 +426,11 @@ DECLARE countOfExistRates integer;
 BEGIN
      IF NEW.rate IS NOT NULL
      THEN
-       sumOfExistRates := (SELECT SUM(rate) FROM auction where auctioncreator = NEW.auctioncreator AND rate IS NOT NULL) ;
-       countOfExistRates := (SELECT COUNT(rate) FROM auction where auctioncreator = NEW.auctioncreator AND rate IS NOT NULL) ;
+       sumOfExistRates := (SELECT SUM(rate) FROM "auction" where auctioncreator = NEW.auctioncreator AND rate IS NOT NULL) ;
+       countOfExistRates := (SELECT COUNT(rate) FROM "auction" where auctioncreator = NEW.auctioncreator AND rate IS NOT NULL) ;
         IF countOfExistRates IS NOT NULL
-        THEN UPDATE Authenticated_User SET "/rating" = ((sumOfExistRates + NEW.rate) / (countOfExistRates + 1)) WHERE NEW.auctioncreator = id;
-        ELSE UPDATE Authenticated_User SET "/rating" = NEW.rate;
+        THEN UPDATE "user" SET "/rating" = ((sumOfExistRates + NEW.rate) / (countOfExistRates + 1)) WHERE NEW.auctioncreator = id;
+        ELSE UPDATE "user" SET "/rating" = NEW.rate;
         END IF;
      END IF;
    RETURN NEW;
@@ -429,7 +448,7 @@ CREATE FUNCTION win_auction() RETURNS trigger
     AS $$BEGIN
 IF (transaction_timestamp() >= NEW.limitdate AND NEW.state = 'Active'::auctionstate)
 THEN
-UPDATE auction SET state = 'Over'::auctionstate, finaldate = (  SELECT date
+UPDATE "auction" SET state = 'Over'::auctionstate, finaldate = (  SELECT date
   FROM "bid"
   WHERE "bid".auctionBidded= NEW.id
   ORDER BY value DESC  ), finalprice = (  SELECT value
@@ -445,6 +464,24 @@ END;$$;
 
 
 ALTER FUNCTION public.win_auction() OWNER TO lbaw1716;
+
+--
+-- Name: winner_rate_auction(); Type: FUNCTION; Schema: public; Owner: lbaw1716
+--
+
+CREATE FUNCTION winner_rate_auction() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$DECLARE curr_user text;
+BEGIN
+curr_user := get_current_user();
+IF (NEW.auctionwinner != (SELECT id FROM "user" WHERE "user".username = curr_user))
+THEN RAISE EXCEPTION 'A rate can only be attributed to the auction by its winner.';
+END IF;
+RETURN NEW;
+END;$$;
+
+
+ALTER FUNCTION public.winner_rate_auction() OWNER TO lbaw1716;
 
 --
 -- Name: auto_increment_credits; Type: SEQUENCE; Schema: public; Owner: lbaw1716
@@ -533,45 +570,6 @@ CREATE TABLE auction (
 ALTER TABLE auction OWNER TO lbaw1716;
 
 --
--- Name: auto_increment_user; Type: SEQUENCE; Schema: public; Owner: lbaw1716
---
-
-CREATE SEQUENCE auto_increment_user
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE auto_increment_user OWNER TO lbaw1716;
-
---
--- Name: authenticated_user; Type: TABLE; Schema: public; Owner: lbaw1716; Tablespace:
---
-
-CREATE TABLE authenticated_user (
-    id integer DEFAULT nextval('auto_increment_user'::regclass) NOT NULL,
-    typeofuser typeofuser NOT NULL,
-    username character varying(50) NOT NULL,
-    password character varying NOT NULL,
-    pathtophoto character varying,
-    completename character varying,
-    email character varying,
-    birthdate date,
-    "/rating" integer,
-    address character varying,
-    postalcode character varying(50),
-    balance integer,
-    city integer,
-    CONSTRAINT "authenticated_user_/rating_check" CHECK ((("/rating" >= 0) AND ("/rating" <= 5))),
-    CONSTRAINT authenticated_user_balance_check CHECK ((balance >= 0))
-);
-
-
-ALTER TABLE authenticated_user OWNER TO lbaw1716;
-
---
 -- Name: auto_increment_category; Type: SEQUENCE; Schema: public; Owner: lbaw1716
 --
 
@@ -626,6 +624,20 @@ CREATE SEQUENCE auto_increment_notification
 
 
 ALTER TABLE auto_increment_notification OWNER TO lbaw1716;
+
+--
+-- Name: auto_increment_user; Type: SEQUENCE; Schema: public; Owner: lbaw1716
+--
+
+CREATE SEQUENCE auto_increment_user
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE auto_increment_user OWNER TO lbaw1716;
 
 --
 -- Name: bid; Type: TABLE; Schema: public; Owner: lbaw1716; Tablespace:
@@ -751,17 +763,6 @@ CREATE TABLE edit_moderator (
 ALTER TABLE edit_moderator OWNER TO lbaw1716;
 
 --
--- Name: lastbidder; Type: TABLE; Schema: public; Owner: lbaw1716; Tablespace:
---
-
-CREATE TABLE lastbidder (
-    bidder integer
-);
-
-
-ALTER TABLE lastbidder OWNER TO lbaw1716;
-
---
 -- Name: notification; Type: TABLE; Schema: public; Owner: lbaw1716; Tablespace:
 --
 
@@ -792,6 +793,31 @@ CREATE TABLE report (
 ALTER TABLE report OWNER TO lbaw1716;
 
 --
+-- Name: user; Type: TABLE; Schema: public; Owner: lbaw1716; Tablespace:
+--
+
+CREATE TABLE "user" (
+    id integer DEFAULT nextval('auto_increment_user'::regclass) NOT NULL,
+    typeofuser typeofuser NOT NULL,
+    username character varying(50) NOT NULL,
+    password character varying NOT NULL,
+    pathtophoto character varying,
+    completename character varying,
+    email character varying,
+    birthdate date,
+    "/rating" integer,
+    address character varying,
+    postalcode character varying(50),
+    balance integer,
+    city integer,
+    CONSTRAINT "authenticated_user_/rating_check" CHECK ((("/rating" >= 0) AND ("/rating" <= 5))),
+    CONSTRAINT authenticated_user_balance_check CHECK ((balance >= 0))
+);
+
+
+ALTER TABLE "user" OWNER TO lbaw1716;
+
+--
 -- Name: add_credits_pkey; Type: CONSTRAINT; Schema: public; Owner: lbaw1716; Tablespace:
 --
 
@@ -811,7 +837,7 @@ ALTER TABLE ONLY auction
 -- Name: authenticated_user_email_key; Type: CONSTRAINT; Schema: public; Owner: lbaw1716; Tablespace:
 --
 
-ALTER TABLE ONLY authenticated_user
+ALTER TABLE ONLY "user"
     ADD CONSTRAINT authenticated_user_email_key UNIQUE (email);
 
 
@@ -819,7 +845,7 @@ ALTER TABLE ONLY authenticated_user
 -- Name: authenticated_user_pkey; Type: CONSTRAINT; Schema: public; Owner: lbaw1716; Tablespace:
 --
 
-ALTER TABLE ONLY authenticated_user
+ALTER TABLE ONLY "user"
     ADD CONSTRAINT authenticated_user_pkey PRIMARY KEY (id);
 
 
@@ -827,7 +853,7 @@ ALTER TABLE ONLY authenticated_user
 -- Name: authenticated_user_username_key; Type: CONSTRAINT; Schema: public; Owner: lbaw1716; Tablespace:
 --
 
-ALTER TABLE ONLY authenticated_user
+ALTER TABLE ONLY "user"
     ADD CONSTRAINT authenticated_user_username_key UNIQUE (username);
 
 
@@ -942,6 +968,9 @@ ALTER TABLE ONLY notification
 ALTER TABLE ONLY report
     ADD CONSTRAINT report_pkey PRIMARY KEY (auctionid, normaluserid);
 
+--
+-- INSTALLATION OF TRIGGERS
+--
 
 --
 -- Name: auction_creator; Type: TRIGGER; Schema: public; Owner: lbaw1716
@@ -993,11 +1022,18 @@ CREATE TRIGGER win_auction BEFORE UPDATE ON bid FOR EACH ROW EXECUTE PROCEDURE w
 
 
 --
+-- Name: winner_rate_auction; Type: TRIGGER; Schema: public; Owner: lbaw1716
+--
+
+CREATE TRIGGER winner_rate_auction BEFORE UPDATE OF rate ON auction FOR EACH ROW EXECUTE PROCEDURE winner_rate_auction();
+
+
+--
 -- Name: add_credits_user_fkey; Type: FK CONSTRAINT; Schema: public; Owner: lbaw1716
 --
 
 ALTER TABLE ONLY add_credits
-    ADD CONSTRAINT add_credits_user_fkey FOREIGN KEY ("user") REFERENCES authenticated_user(id);
+    ADD CONSTRAINT add_credits_user_fkey FOREIGN KEY ("user") REFERENCES "user"(id);
 
 
 --
@@ -1005,7 +1041,7 @@ ALTER TABLE ONLY add_credits
 --
 
 ALTER TABLE ONLY auction
-    ADD CONSTRAINT auction_auctioncreator_fkey FOREIGN KEY (auctioncreator) REFERENCES authenticated_user(id);
+    ADD CONSTRAINT auction_auctioncreator_fkey FOREIGN KEY (auctioncreator) REFERENCES "user"(id);
 
 
 --
@@ -1013,7 +1049,7 @@ ALTER TABLE ONLY auction
 --
 
 ALTER TABLE ONLY auction
-    ADD CONSTRAINT auction_auctionwinner_fkey FOREIGN KEY (auctionwinner) REFERENCES authenticated_user(id);
+    ADD CONSTRAINT auction_auctionwinner_fkey FOREIGN KEY (auctionwinner) REFERENCES "user"(id);
 
 
 --
@@ -1021,14 +1057,14 @@ ALTER TABLE ONLY auction
 --
 
 ALTER TABLE ONLY auction
-    ADD CONSTRAINT auction_responsiblemoderator_fkey FOREIGN KEY (responsiblemoderator) REFERENCES authenticated_user(id);
+    ADD CONSTRAINT auction_responsiblemoderator_fkey FOREIGN KEY (responsiblemoderator) REFERENCES "user"(id);
 
 
 --
 -- Name: authenticated_user_city_fkey; Type: FK CONSTRAINT; Schema: public; Owner: lbaw1716
 --
 
-ALTER TABLE ONLY authenticated_user
+ALTER TABLE ONLY "user"
     ADD CONSTRAINT authenticated_user_city_fkey FOREIGN KEY (city) REFERENCES city(id);
 
 
@@ -1045,7 +1081,7 @@ ALTER TABLE ONLY bid
 --
 
 ALTER TABLE ONLY bid
-    ADD CONSTRAINT bid_bidder_fkey FOREIGN KEY (bidder) REFERENCES authenticated_user(id);
+    ADD CONSTRAINT bid_bidder_fkey FOREIGN KEY (bidder) REFERENCES "user"(id);
 
 
 --
@@ -1053,7 +1089,7 @@ ALTER TABLE ONLY bid
 --
 
 ALTER TABLE ONLY blocks
-    ADD CONSTRAINT blocks_blocked_fkey FOREIGN KEY (blocked) REFERENCES authenticated_user(id);
+    ADD CONSTRAINT blocks_blocked_fkey FOREIGN KEY (blocked) REFERENCES "user"(id);
 
 
 --
@@ -1061,7 +1097,7 @@ ALTER TABLE ONLY blocks
 --
 
 ALTER TABLE ONLY blocks
-    ADD CONSTRAINT blocks_blocker_fkey FOREIGN KEY (blocker) REFERENCES authenticated_user(id);
+    ADD CONSTRAINT blocks_blocker_fkey FOREIGN KEY (blocker) REFERENCES "user"(id);
 
 
 --
@@ -1109,7 +1145,7 @@ ALTER TABLE ONLY comment
 --
 
 ALTER TABLE ONLY comment
-    ADD CONSTRAINT comment_usercommenter_fkey FOREIGN KEY (usercommenter) REFERENCES authenticated_user(id);
+    ADD CONSTRAINT comment_usercommenter_fkey FOREIGN KEY (usercommenter) REFERENCES "user"(id);
 
 
 --
@@ -1117,7 +1153,7 @@ ALTER TABLE ONLY comment
 --
 
 ALTER TABLE ONLY edit_categories
-    ADD CONSTRAINT edit_categories_admin_fkey FOREIGN KEY (admin) REFERENCES authenticated_user(id);
+    ADD CONSTRAINT edit_categories_admin_fkey FOREIGN KEY (admin) REFERENCES "user"(id);
 
 
 --
@@ -1133,7 +1169,7 @@ ALTER TABLE ONLY edit_categories
 --
 
 ALTER TABLE ONLY edit_moderator
-    ADD CONSTRAINT edit_moderator_removedmod_fkey FOREIGN KEY (removedmod) REFERENCES authenticated_user(id);
+    ADD CONSTRAINT edit_moderator_removedmod_fkey FOREIGN KEY (removedmod) REFERENCES "user"(id);
 
 
 --
@@ -1141,7 +1177,7 @@ ALTER TABLE ONLY edit_moderator
 --
 
 ALTER TABLE ONLY edit_moderator
-    ADD CONSTRAINT edit_moderator_removeradmin_fkey FOREIGN KEY (removeradmin) REFERENCES authenticated_user(id);
+    ADD CONSTRAINT edit_moderator_removeradmin_fkey FOREIGN KEY (removeradmin) REFERENCES "user"(id);
 
 
 --
@@ -1157,7 +1193,7 @@ ALTER TABLE ONLY notification
 --
 
 ALTER TABLE ONLY notification
-    ADD CONSTRAINT notification_authenticated_userid_fkey FOREIGN KEY (authenticated_userid) REFERENCES authenticated_user(id);
+    ADD CONSTRAINT notification_authenticated_userid_fkey FOREIGN KEY (authenticated_userid) REFERENCES "user"(id);
 
 
 --
@@ -1173,7 +1209,7 @@ ALTER TABLE ONLY report
 --
 
 ALTER TABLE ONLY report
-    ADD CONSTRAINT report_normaluserid_fkey FOREIGN KEY (normaluserid) REFERENCES authenticated_user(id);
+    ADD CONSTRAINT report_normaluserid_fkey FOREIGN KEY (normaluserid) REFERENCES "user"(id);
 
 
 --
@@ -1183,3 +1219,8 @@ ALTER TABLE ONLY report
 REVOKE ALL ON SCHEMA public FROM PUBLIC;
 REVOKE ALL ON SCHEMA public FROM lbaw1716;
 GRANT ALL ON SCHEMA public TO lbaw1716;
+
+
+--
+-- PostgreSQL database dump complete
+--

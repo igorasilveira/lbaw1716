@@ -664,8 +664,3 @@ INSERT INTO report VALUES ('2018-03-31 20:10:10+01', '"It may continue to grow i
 ', 1, 25);
 INSERT INTO report VALUES ('2018-03-31 20:20:10+01', '"To believe that Apple can somehow succeed where all others have failed is to ignore some fundamental realities of tablet computing."
 ', 7, 8);
-
-
---
--- PostgreSQL database dump complete
---
