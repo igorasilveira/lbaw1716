@@ -1,5 +1,5 @@
 --
--- PostgreSQL data (inserts)
+-- PostgreSQL inserts database
 --
 
 SET statement_timeout = 0;
@@ -417,49 +417,50 @@ INSERT INTO city VALUES (150, 'Lubango', 6);
 
 
 --
--- Data for Name: authenticated_user; Type: TABLE DATA; Schema: public; Owner: lbaw1716
+-- Data for Name: user; Type: TABLE DATA; Schema: public; Owner: lbaw1716
 --
 
-INSERT INTO authenticated_user VALUES (5, 'Normal', 'erika_wilk1978', '$2y$12$QKkHP76S.Z38LSMDzbUHF.c5s2.hvancdh2vJMx4Vozmm9RdX5C.G', NULL, 'Mia S Burke', 'purus.Maecenas@ipsumdolorsit.net', '1996-11-03', NULL, '73 York Road', 'OX1 4PP', 9140, 89);
-INSERT INTO authenticated_user VALUES (1, 'Administrator', 'NadiaCarvalho', '$2y$12$QKkHP76S.Z38LSMDzbUHF.c5s2.hvancdh2vJMx4Vozmm9RdX5C.G', NULL, 'Nádia Carvalho', NULL, NULL, NULL, NULL, NULL, 9800, NULL);
-INSERT INTO authenticated_user VALUES (3, 'Normal', 'DavisonNaomi', '$2y$12$QKkHP76S.Z38LSMDzbUHF.c5s2.hvancdh2vJMx4Vozmm9RdX5C.G', NULL, 'Naomi L Davison', 'non.lobortis@ultricesposuere.org', '1975-05-17', NULL, '90 Cunnery Rd', 'M2 1HE', 9800, 88);
-INSERT INTO authenticated_user VALUES (4, 'Normal', 'langeles', '$2y$12$QKkHP76S.Z38LSMDzbUHF.c5s2.hvancdh2vJMx4Vozmm9RdX5C.G', NULL, 'Adam M Shah', 'quis.accumsan.convallis@pellentesquetellus.org', '1976-03-16', NULL, '62 Cunnery Rd', 'M60 9DW', 9800, 88);
-INSERT INTO authenticated_user VALUES (7, 'Normal', 'fearfultruck', '$2y$12$QKkHP76S.Z38LSMDzbUHF.c5s2.hvancdh2vJMx4Vozmm9RdX5C.G', NULL, 'Naomi L Davison', '0manan.bhalla.mbz@myfaceb00k.ml', '1975-05-17', NULL, '90 Cunnery Rd', 'M2 1HE', 9800, 88);
-INSERT INTO authenticated_user VALUES (25, 'Normal', 'frillymammoth', '$2y$12$QKkHP76S.Z38LSMDzbUHF.c5s2.hvancdh2vJMx4Vozmm9RdX5C.G', NULL, 'Mia S Burke', 'dictum@ridiculusmus.co.uk', '1996-11-03', NULL, '73 York Road', 'OX1 4PP', 9800, 89);
-INSERT INTO authenticated_user VALUES (6, 'Normal', 'assetsopengl', '$2y$12$QKkHP76S.Z38LSMDzbUHF.c5s2.hvancdh2vJMx4Vozmm9RdX5C.G', 'http://4.bp.blogspot.com/-SoLmj_KD-oE/VCbiHfUzMjI/AAAAAAAAD-A/mlZ-3j-TAvk/s1600/Ian%2BH%2B(7).jpg', 'Max H Harding', 'Enswearry45@dayrep.com', '1981-05-28', NULL, '82 Guild Street', 'NW6 3LF', 9800, 19);
-INSERT INTO authenticated_user VALUES (9, 'Normal', 'switchsparkling', '$2y$12$QKkHP76S.Z38LSMDzbUHF.c5s2.hvancdh2vJMx4Vozmm9RdX5C.G', NULL, 'Mia S Burke', 'a.tortor@estNunc.co.uk', '1996-11-03', NULL, '73 York Road', 'OX1 4PP', 9800, 89);
-INSERT INTO authenticated_user VALUES (12, 'Normal', 'nippykrypton', '$2y$12$QKkHP76S.Z38LSMDzbUHF.c5s2.hvancdh2vJMx4Vozmm9RdX5C.G', NULL, 'Adam M Shah', 'Integer.aliquam.adipiscing@non.org', '1976-03-16', NULL, '62 Cunnery Rd', 'M60 9DW', 9800, 88);
-INSERT INTO authenticated_user VALUES (13, 'Normal', 'informdunghill', '$2y$12$QKkHP76S.Z38LSMDzbUHF.c5s2.hvancdh2vJMx4Vozmm9RdX5C.G', NULL, 'Mia S Burke', 'lorem.sit@Namnulla.org', '1996-11-03', NULL, '73 York Road', 'OX1 4PP', 9800, 89);
-INSERT INTO authenticated_user VALUES (14, 'Normal', 'grossboars', '$2y$12$QKkHP76S.Z38LSMDzbUHF.c5s2.hvancdh2vJMx4Vozmm9RdX5C.G', NULL, 'Naomi L Davison', 'sociis.natoque@iaculisaliquetdiam.co.uk', '1975-05-17', NULL, '90 Cunnery Rd', 'M2 1HE', 9800, 88);
-INSERT INTO authenticated_user VALUES (15, 'Normal', 'rubberspinner', '$2y$12$QKkHP76S.Z38LSMDzbUHF.c5s2.hvancdh2vJMx4Vozmm9RdX5C.G', NULL, 'Adam M Shah', 'velit@orci.co.uk', '1976-03-16', NULL, '62 Cunnery Rd', 'M60 9DW', 9800, 88);
-INSERT INTO authenticated_user VALUES (16, 'Normal', 'branchgreat', '$2y$12$QKkHP76S.Z38LSMDzbUHF.c5s2.hvancdh2vJMx4Vozmm9RdX5C.G', NULL, 'Mia S Burke', 'leo.in.lobortis@litoratorquentper.net', '1996-11-03', NULL, '73 York Road', 'OX1 4PP', 9800, 89);
-INSERT INTO authenticated_user VALUES (17, 'Normal', 'evilpublic', '$2y$12$QKkHP76S.Z38LSMDzbUHF.c5s2.hvancdh2vJMx4Vozmm9RdX5C.G', NULL, 'Naomi L Davison', 'nisl.arcu@velnislQuisque.ca', '1975-05-17', NULL, '90 Cunnery Rd', 'M2 1HE', 9800, 88);
-INSERT INTO authenticated_user VALUES (18, 'Normal', 'mizunaspider', '$2y$12$QKkHP76S.Z38LSMDzbUHF.c5s2.hvancdh2vJMx4Vozmm9RdX5C.G', NULL, 'Adam M Shah', 'Nulla@aliquetdiam.com', '1976-03-16', NULL, '62 Cunnery Rd', 'M60 9DW', 9800, 88);
-INSERT INTO authenticated_user VALUES (20, 'Normal', 'dilationwaals', '$2y$12$QKkHP76S.Z38LSMDzbUHF.c5s2.hvancdh2vJMx4Vozmm9RdX5C.G', NULL, 'Naomi L Davison', 'ultrices@malesuadavelvenenatis.co.uk', '1975-05-17', NULL, '90 Cunnery Rd', 'M2 1HE', 9800, 88);
-INSERT INTO authenticated_user VALUES (21, 'Normal', 'watchinggemini', '$2y$12$QKkHP76S.Z38LSMDzbUHF.c5s2.hvancdh2vJMx4Vozmm9RdX5C.G', NULL, 'Adam M Shah', 'et.eros.Proin@vitaemaurissit.edu', '1976-03-16', NULL, '62 Cunnery Rd', 'M60 9DW', 9800, 88);
-INSERT INTO authenticated_user VALUES (22, 'Normal', 'cambrianend', '$2y$12$QKkHP76S.Z38LSMDzbUHF.c5s2.hvancdh2vJMx4Vozmm9RdX5C.G', NULL, 'Mia S Burke', 'volutpat.ornare@Suspendisse.edu', '1996-11-03', NULL, '73 York Road', 'OX1 4PP', 9800, 89);
-INSERT INTO authenticated_user VALUES (23, 'Normal', 'pastiedash', '$2y$12$QKkHP76S.Z38LSMDzbUHF.c5s2.hvancdh2vJMx4Vozmm9RdX5C.G', NULL, 'Naomi L Davison', 'nec.urna@ascelerisquesed.com', '1975-05-17', NULL, '90 Cunnery Rd', 'M2 1HE', 9800, 88);
-INSERT INTO authenticated_user VALUES (24, 'Normal', 'jockeypruning', '$2y$12$QKkHP76S.Z38LSMDzbUHF.c5s2.hvancdh2vJMx4Vozmm9RdX5C.G', NULL, 'Adam M Shah', 'ut.ipsum.ac@quismassaMauris.net', '1976-03-16', NULL, '62 Cunnery Rd', 'M60 9DW', 9800, 88);
-INSERT INTO authenticated_user VALUES (26, 'Moderator', 'starkshell', '$2y$12$QKkHP76S.Z38LSMDzbUHF.c5s2.hvancdh2vJMx4Vozmm9RdX5C.G', NULL, 'Nádia Carvalho', NULL, NULL, NULL, NULL, NULL, 9800, NULL);
-INSERT INTO authenticated_user VALUES (27, 'Moderator', 'bolidesorrowful', '$2y$12$QKkHP76S.Z38LSMDzbUHF.c5s2.hvancdh2vJMx4Vozmm9RdX5C.G', NULL, 'Nádia Carvalho', NULL, NULL, NULL, NULL, NULL, 9800, NULL);
-INSERT INTO authenticated_user VALUES (28, 'Moderator', 'valuemonitoring', '$2y$12$QKkHP76S.Z38LSMDzbUHF.c5s2.hvancdh2vJMx4Vozmm9RdX5C.G', NULL, 'Nádia Carvalho', NULL, NULL, NULL, NULL, NULL, 9800, NULL);
-INSERT INTO authenticated_user VALUES (29, 'Moderator', 'abovedoubtful', '$2y$12$QKkHP76S.Z38LSMDzbUHF.c5s2.hvancdh2vJMx4Vozmm9RdX5C.G', NULL, 'Nádia Carvalho', NULL, NULL, NULL, NULL, NULL, 9800, NULL);
-INSERT INTO authenticated_user VALUES (30, 'Moderator', 'expectantridge', '$2y$12$QKkHP76S.Z38LSMDzbUHF.c5s2.hvancdh2vJMx4Vozmm9RdX5C.G', NULL, 'Nádia Carvalho', NULL, NULL, NULL, NULL, NULL, 9800, NULL);
-INSERT INTO authenticated_user VALUES (2, 'Normal', 'Ritmock', '$2y$12$QKkHP76S.Z38LSMDzbUHF.c5s2.hvancdh2vJMx4Vozmm9RdX5C.G', 'http://4.bp.blogspot.com/-SoLmj_KD-oE/VCbiHfUzMjI/AAAAAAAAD-A/mlZ-3j-TAvk/s1600/Ian%2BH%2B(7).jpg', 'Max H Harding', 'lectus.sit@ligula.co.uk', '1981-05-28', NULL, '82 Guild Street', 'NW6 3LF', 9800, 19);
-INSERT INTO authenticated_user VALUES (10, 'Normal', 'rabbitsfootortolan', '$2y$12$QKkHP76S.Z38LSMDzbUHF.c5s2.hvancdh2vJMx4Vozmm9RdX5C.G', 'http://4.bp.blogspot.com/-SoLmj_KD-oE/VCbiHfUzMjI/AAAAAAAAD-A/mlZ-3j-TAvk/s1600/Ian%2BH%2B(7).jpg', 'Max H Harding', 'Curabitur.sed.tortor@quisdiamPellentesque.net', '1981-05-28', 4, '82 Guild Street', 'NW6 3LF', 9800, 19);
-INSERT INTO authenticated_user VALUES (19, 'Normal', 'unbecominglabour', '$2y$12$QKkHP76S.Z38LSMDzbUHF.c5s2.hvancdh2vJMx4Vozmm9RdX5C.G', NULL, 'Mia S Burke', 'Nullam@ullamcorpervelit.net', '1996-11-03', NULL, '73 York Road', 'OX1 4PP', 500, 89);
-INSERT INTO authenticated_user VALUES (8, 'Normal', 'helicopteruk', '$2y$12$QKkHP76S.Z38LSMDzbUHF.c5s2.hvancdh2vJMx4Vozmm9RdX5C.G', NULL, 'Adam M Shah', 'panama@smellypotato.tk', '1976-03-16', 1, '62 Cunnery Rd', 'M60 9DW', 9800, 88);
-INSERT INTO authenticated_user VALUES (11, 'Normal', 'laggedcolony', '$2y$12$QKkHP76S.Z38LSMDzbUHF.c5s2.hvancdh2vJMx4Vozmm9RdX5C.G', NULL, 'Naomi L Davison', 'Vivamus@Etiam.ca', '1975-05-17', NULL, '90 Cunnery Rd', 'M2 1HE', 8995, 88);
+INSERT INTO "user" VALUES (5, 'Normal', 'erika_wilk1978', '$2y$12$QKkHP76S.Z38LSMDzbUHF.c5s2.hvancdh2vJMx4Vozmm9RdX5C.G', NULL, 'Mia S Burke', 'purus.Maecenas@ipsumdolorsit.net', '1996-11-03', NULL, '73 York Road', 'OX1 4PP', 9440, 89, NULL, false);
+INSERT INTO "user" VALUES (1, 'Administrator', 'NadiaCarvalho', '$2y$12$QKkHP76S.Z38LSMDzbUHF.c5s2.hvancdh2vJMx4Vozmm9RdX5C.G', NULL, 'Nádia Carvalho', NULL, NULL, NULL, NULL, NULL, 9800, NULL, NULL, false);
+INSERT INTO "user" VALUES (3, 'Normal', 'DavisonNaomi', '$2y$12$QKkHP76S.Z38LSMDzbUHF.c5s2.hvancdh2vJMx4Vozmm9RdX5C.G', NULL, 'Naomi L Davison', 'non.lobortis@ultricesposuere.org', '1975-05-17', NULL, '90 Cunnery Rd', 'M2 1HE', 9800, 88, NULL, false);
+INSERT INTO "user" VALUES (4, 'Normal', 'langeles', '$2y$12$QKkHP76S.Z38LSMDzbUHF.c5s2.hvancdh2vJMx4Vozmm9RdX5C.G', NULL, 'Adam M Shah', 'quis.accumsan.convallis@pellentesquetellus.org', '1976-03-16', NULL, '62 Cunnery Rd', 'M60 9DW', 9800, 88, NULL, false);
+INSERT INTO "user" VALUES (7, 'Normal', 'fearfultruck', '$2y$12$QKkHP76S.Z38LSMDzbUHF.c5s2.hvancdh2vJMx4Vozmm9RdX5C.G', NULL, 'Naomi L Davison', '0manan.bhalla.mbz@myfaceb00k.ml', '1975-05-17', NULL, '90 Cunnery Rd', 'M2 1HE', 9800, 88, NULL, false);
+INSERT INTO "user" VALUES (25, 'Normal', 'frillymammoth', '$2y$12$QKkHP76S.Z38LSMDzbUHF.c5s2.hvancdh2vJMx4Vozmm9RdX5C.G', NULL, 'Mia S Burke', 'dictum@ridiculusmus.co.uk', '1996-11-03', NULL, '73 York Road', 'OX1 4PP', 9800, 89, NULL, false);
+INSERT INTO "user" VALUES (6, 'Normal', 'assetsopengl', '$2y$12$QKkHP76S.Z38LSMDzbUHF.c5s2.hvancdh2vJMx4Vozmm9RdX5C.G', 'http://4.bp.blogspot.com/-SoLmj_KD-oE/VCbiHfUzMjI/AAAAAAAAD-A/mlZ-3j-TAvk/s1600/Ian%2BH%2B(7).jpg', 'Max H Harding', 'Enswearry45@dayrep.com', '1981-05-28', NULL, '82 Guild Street', 'NW6 3LF', 9800, 19, NULL, false);
+INSERT INTO "user" VALUES (9, 'Normal', 'switchsparkling', '$2y$12$QKkHP76S.Z38LSMDzbUHF.c5s2.hvancdh2vJMx4Vozmm9RdX5C.G', NULL, 'Mia S Burke', 'a.tortor@estNunc.co.uk', '1996-11-03', NULL, '73 York Road', 'OX1 4PP', 9800, 89, NULL, false);
+INSERT INTO "user" VALUES (12, 'Normal', 'nippykrypton', '$2y$12$QKkHP76S.Z38LSMDzbUHF.c5s2.hvancdh2vJMx4Vozmm9RdX5C.G', NULL, 'Adam M Shah', 'Integer.aliquam.adipiscing@non.org', '1976-03-16', NULL, '62 Cunnery Rd', 'M60 9DW', 9800, 88, NULL, false);
+INSERT INTO "user" VALUES (13, 'Normal', 'informdunghill', '$2y$12$QKkHP76S.Z38LSMDzbUHF.c5s2.hvancdh2vJMx4Vozmm9RdX5C.G', NULL, 'Mia S Burke', 'lorem.sit@Namnulla.org', '1996-11-03', NULL, '73 York Road', 'OX1 4PP', 9800, 89, NULL, false);
+INSERT INTO "user" VALUES (14, 'Normal', 'grossboars', '$2y$12$QKkHP76S.Z38LSMDzbUHF.c5s2.hvancdh2vJMx4Vozmm9RdX5C.G', NULL, 'Naomi L Davison', 'sociis.natoque@iaculisaliquetdiam.co.uk', '1975-05-17', NULL, '90 Cunnery Rd', 'M2 1HE', 9800, 88, NULL, false);
+INSERT INTO "user" VALUES (15, 'Normal', 'rubberspinner', '$2y$12$QKkHP76S.Z38LSMDzbUHF.c5s2.hvancdh2vJMx4Vozmm9RdX5C.G', NULL, 'Adam M Shah', 'velit@orci.co.uk', '1976-03-16', NULL, '62 Cunnery Rd', 'M60 9DW', 9800, 88, NULL, false);
+INSERT INTO "user" VALUES (16, 'Normal', 'branchgreat', '$2y$12$QKkHP76S.Z38LSMDzbUHF.c5s2.hvancdh2vJMx4Vozmm9RdX5C.G', NULL, 'Mia S Burke', 'leo.in.lobortis@litoratorquentper.net', '1996-11-03', NULL, '73 York Road', 'OX1 4PP', 9800, 89, NULL, false);
+INSERT INTO "user" VALUES (17, 'Normal', 'evilpublic', '$2y$12$QKkHP76S.Z38LSMDzbUHF.c5s2.hvancdh2vJMx4Vozmm9RdX5C.G', NULL, 'Naomi L Davison', 'nisl.arcu@velnislQuisque.ca', '1975-05-17', NULL, '90 Cunnery Rd', 'M2 1HE', 9800, 88, NULL, false);
+INSERT INTO "user" VALUES (18, 'Normal', 'mizunaspider', '$2y$12$QKkHP76S.Z38LSMDzbUHF.c5s2.hvancdh2vJMx4Vozmm9RdX5C.G', NULL, 'Adam M Shah', 'Nulla@aliquetdiam.com', '1976-03-16', NULL, '62 Cunnery Rd', 'M60 9DW', 9800, 88, NULL, false);
+INSERT INTO "user" VALUES (20, 'Normal', 'dilationwaals', '$2y$12$QKkHP76S.Z38LSMDzbUHF.c5s2.hvancdh2vJMx4Vozmm9RdX5C.G', NULL, 'Naomi L Davison', 'ultrices@malesuadavelvenenatis.co.uk', '1975-05-17', NULL, '90 Cunnery Rd', 'M2 1HE', 9800, 88, NULL, false);
+INSERT INTO "user" VALUES (21, 'Normal', 'watchinggemini', '$2y$12$QKkHP76S.Z38LSMDzbUHF.c5s2.hvancdh2vJMx4Vozmm9RdX5C.G', NULL, 'Adam M Shah', 'et.eros.Proin@vitaemaurissit.edu', '1976-03-16', NULL, '62 Cunnery Rd', 'M60 9DW', 9800, 88, NULL, false);
+INSERT INTO "user" VALUES (22, 'Normal', 'cambrianend', '$2y$12$QKkHP76S.Z38LSMDzbUHF.c5s2.hvancdh2vJMx4Vozmm9RdX5C.G', NULL, 'Mia S Burke', 'volutpat.ornare@Suspendisse.edu', '1996-11-03', NULL, '73 York Road', 'OX1 4PP', 9800, 89, NULL, false);
+INSERT INTO "user" VALUES (23, 'Normal', 'pastiedash', '$2y$12$QKkHP76S.Z38LSMDzbUHF.c5s2.hvancdh2vJMx4Vozmm9RdX5C.G', NULL, 'Naomi L Davison', 'nec.urna@ascelerisquesed.com', '1975-05-17', NULL, '90 Cunnery Rd', 'M2 1HE', 9800, 88, NULL, false);
+INSERT INTO "user" VALUES (24, 'Normal', 'jockeypruning', '$2y$12$QKkHP76S.Z38LSMDzbUHF.c5s2.hvancdh2vJMx4Vozmm9RdX5C.G', NULL, 'Adam M Shah', 'ut.ipsum.ac@quismassaMauris.net', '1976-03-16', NULL, '62 Cunnery Rd', 'M60 9DW', 9800, 88, NULL, false);
+INSERT INTO "user" VALUES (26, 'Moderator', 'starkshell', '$2y$12$QKkHP76S.Z38LSMDzbUHF.c5s2.hvancdh2vJMx4Vozmm9RdX5C.G', NULL, 'Nádia Carvalho', NULL, NULL, NULL, NULL, NULL, 9800, NULL, NULL, false);
+INSERT INTO "user" VALUES (27, 'Moderator', 'bolidesorrowful', '$2y$12$QKkHP76S.Z38LSMDzbUHF.c5s2.hvancdh2vJMx4Vozmm9RdX5C.G', NULL, 'Nádia Carvalho', NULL, NULL, NULL, NULL, NULL, 9800, NULL, NULL, false);
+INSERT INTO "user" VALUES (28, 'Moderator', 'valuemonitoring', '$2y$12$QKkHP76S.Z38LSMDzbUHF.c5s2.hvancdh2vJMx4Vozmm9RdX5C.G', NULL, 'Nádia Carvalho', NULL, NULL, NULL, NULL, NULL, 9800, NULL, NULL, false);
+INSERT INTO "user" VALUES (29, 'Moderator', 'abovedoubtful', '$2y$12$QKkHP76S.Z38LSMDzbUHF.c5s2.hvancdh2vJMx4Vozmm9RdX5C.G', NULL, 'Nádia Carvalho', NULL, NULL, NULL, NULL, NULL, 9800, NULL, NULL, false);
+INSERT INTO "user" VALUES (30, 'Moderator', 'expectantridge', '$2y$12$QKkHP76S.Z38LSMDzbUHF.c5s2.hvancdh2vJMx4Vozmm9RdX5C.G', NULL, 'Nádia Carvalho', NULL, NULL, NULL, NULL, NULL, 9800, NULL, NULL, false);
+INSERT INTO "user" VALUES (2, 'Normal', 'Ritmock', '$2y$12$QKkHP76S.Z38LSMDzbUHF.c5s2.hvancdh2vJMx4Vozmm9RdX5C.G', 'http://4.bp.blogspot.com/-SoLmj_KD-oE/VCbiHfUzMjI/AAAAAAAAD-A/mlZ-3j-TAvk/s1600/Ian%2BH%2B(7).jpg', 'Max H Harding', 'lectus.sit@ligula.co.uk', '1981-05-28', NULL, '82 Guild Street', 'NW6 3LF', 9800, 19, NULL, false);
+INSERT INTO "user" VALUES (19, 'Normal', 'unbecominglabour', '$2y$12$QKkHP76S.Z38LSMDzbUHF.c5s2.hvancdh2vJMx4Vozmm9RdX5C.G', NULL, 'Mia S Burke', 'Nullam@ullamcorpervelit.net', '1996-11-03', NULL, '73 York Road', 'OX1 4PP', 500, 89, NULL, false);
+INSERT INTO "user" VALUES (8, 'Normal', 'helicopteruk', '$2y$12$QKkHP76S.Z38LSMDzbUHF.c5s2.hvancdh2vJMx4Vozmm9RdX5C.G', NULL, 'Adam M Shah', 'panama@smellypotato.tk', '1976-03-16', 1, '62 Cunnery Rd', 'M60 9DW', 9800, 88, NULL, false);
+INSERT INTO "user" VALUES (11, 'Normal', 'laggedcolony', '$2y$12$QKkHP76S.Z38LSMDzbUHF.c5s2.hvancdh2vJMx4Vozmm9RdX5C.G', NULL, 'Naomi L Davison', 'Vivamus@Etiam.ca', '1975-05-17', NULL, '90 Cunnery Rd', 'M2 1HE', 8995, 88, NULL, false);
+INSERT INTO "user" VALUES (10, 'Normal', 'rabbitsfootortolan', '$2y$12$QKkHP76S.Z38LSMDzbUHF.c5s2.hvancdh2vJMx4Vozmm9RdX5C.G', 'http://4.bp.blogspot.com/-SoLmj_KD-oE/VCbiHfUzMjI/AAAAAAAAD-A/mlZ-3j-TAvk/s1600/Ian%2BH%2B(7).jpg', 'Max H Harding', 'Curabitur.sed.tortor@quisdiamPellentesque.net', '1981-05-28', 3, '82 Guild Street', 'NW6 3LF', 9800, 19, NULL, false);
 
 
 --
 -- Data for Name: add_credits; Type: TABLE DATA; Schema: public; Owner: lbaw1716
 --
 
-INSERT INTO add_credits VALUES (1, 150, '2018-03-26 16:10:10+01', 'lectus.sit@ligula.co.uk', 2);
-INSERT INTO add_credits VALUES (3, 20, '2018-03-26 16:10:10+01', 'quis.accumsan.convallis@pellentesquetellus.org', 7);
-INSERT INTO add_credits VALUES (4, 300, '2018-03-27 16:10:10+01', 'lectus.sit@ligula.co.uk', 2);
-INSERT INTO add_credits VALUES (2, 130, '2018-03-26 16:10:10+01', 'non.lobortis@ultricesposuere.org', 3);
+INSERT INTO add_credits VALUES (3, 20, '2018-03-26 16:10:10+01', 'quis.accumsan.convallis@pellentesquetellus.org', 7, '8BL15100CF123456E');
+INSERT INTO add_credits VALUES (4, 300, '2018-03-27 16:10:10+01', 'lectus.sit@ligula.co.uk', 2, '8BL15100CF123456E');
+INSERT INTO add_credits VALUES (2, 130, '2018-03-26 16:10:10+01', 'non.lobortis@ultricesposuere.org', 3, '8BL15100CF123453D');
+INSERT INTO add_credits VALUES (1, 150, '2018-03-26 16:10:10+01', 'lectus.sit@ligula.co.uk', 2, '8BL15100CF123356D');
+INSERT INTO add_credits VALUES (6, 300, '2018-04-07 23:23:27.956682+01', 'purus.Maecenas@ipsumdolorsit.net', 5, '8BL15100CF023356D');
 
 
 --
@@ -491,14 +492,39 @@ INSERT INTO auction VALUES (24, 'Rejected', 'HDD - Toshiba 2TB 7200RPM ', 'HDD -
 INSERT INTO auction VALUES (26, 'Active', 'Dell Premium Desktop Tower with Keyboard&Mouse', 'Dell Premium Desktop Tower with Keyboard&Mouse', 'not used at the moment', 'https://images-na.ssl-images-amazon.com/images/I/51P963Jq89L._AC_SR201,266_.jpg', 150, 350, 400, '2018-04-03 14:07:14.311868+01', '2018-04-10 10:40:28.876944+01', NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, 1);
 INSERT INTO auction VALUES (2, 'Pending', 'Apple MacBook Pro 13'' ', 'Apple MacBook Pro 13'' ', 'New!!!!', 'https://static.fnac-static.com/multimedia/Images/PT/NR/d9/16/12/1185497/1540-1/tsp20170623132310/Apple-MacBook-Pro-13-Retina-i5-3-1GHz-8GB-256GB-Intel-Iris-Plus-650-com-Touch-Bar-e-Touch-ID-Cinzento-Sideral.jpg', 800, 1200, 1500, '2018-03-26 16:10:10+01', '2018-03-31 16:10:10+01', NULL, NULL, NULL, NULL, NULL, NULL, 9, NULL, NULL);
 INSERT INTO auction VALUES (25, 'Over', 'Dell Premium Desktop Tower with Keyboard&Mouse', 'Dell Premium Desktop Tower with Keyboard&Mouse', 'not used at the moment', 'https://images-na.ssl-images-amazon.com/images/I/51P963Jq89L._AC_SR201,266_.jpg', 150, 500, 600, '2018-03-31 16:10:10+01', '2016-04-07 16:10:10+01', NULL, NULL, NULL, '2016-04-07 16:10:10+01', 570, 3, 10, 2, 30);
-INSERT INTO auction VALUES (7, 'Over', 'Apple MacBook Pro 13'' ', 'Apple MacBook Pro 13'' ', 'not used at the moment', 'https://static.fnac-static.com/multimedia/Images/PT/NR/d9/16/12/1185497/1540-1/tsp20170623132310/Apple-MacBook-Pro-13-Retina-i5-3-1GHz-8GB-256GB-Intel-Iris-Plus-650-com-Touch-Bar-e-Touch-ID-Cinzento-Sideral.jpg', 150, 500, 600, '2018-03-31 16:10:10+01', '2016-04-07 16:10:10+01', NULL, NULL, NULL, '2018-04-04 09:45:40.80046+01', 600, NULL, 10, 11, 30);
+INSERT INTO auction VALUES (7, 'Over', 'Apple MacBook Pro 13'' ', 'Apple MacBook Pro 13'' ', 'not used at the moment', 'https://static.fnac-static.com/multimedia/Images/PT/NR/d9/16/12/1185497/1540-1/tsp20170623132310/Apple-MacBook-Pro-13-Retina-i5-3-1GHz-8GB-256GB-Intel-Iris-Plus-650-com-Touch-Bar-e-Touch-ID-Cinzento-Sideral.jpg', 150, 500, 600, '2018-03-31 16:10:10+01', '2016-04-07 16:10:10+01', NULL, NULL, NULL, '2018-04-04 09:45:40.80046+01', 600, 2, 10, 11, 30);
+INSERT INTO auction VALUES (30, 'Active', 'Apple 11.6" MacBook Air', 'Apple 11.6" MacBook Air
+
+Get a great deal with this online auction for a laptop presented by Property Room on behalf of a law enforcement or public agency client.
+
+    Model: A1465
+    Serial: C02JM5QNDXXX
+    Processor: Intel Core i5 3317U CPU
+    CPU Speed: 1.7 GHz
+    Hard Drive: 64GB
+    HDD Caddy: Included
+    RAM: 4GB
+    Drives: N/A
+    Battery: Included
+    Screen Size: 11.6"
+    Power Adapter: None Included
+    Accessories: None Included
+    Cosmetic Condition: Marks, Scratches, Scuffs, and Dents On Casing; Screen is Scratched
+    Testing Results: Tested and Powered On; Hard Drive Has Been Wiped; Requires Operating System Installation; Start-Up Disk Manager and OS Utilities were Both Accessible
+
+
+
+Condition: Fair
+
+
+Due to licensing restrictions, this item will be shipped without any software, including operating system software.', 'Get a great deal with this online auction for a laptop presented by Property Room on behalf of a law enforcement or public agency client.', 'http://content.propertyroom.com/listings/sellers/seller1/images/origimgs/apple-116-macbook-air-1_29320182052231193305.jpg', 200, 500, 800, '2018-04-07 22:43:23.582097+01', '2018-04-13 22:43:23.582097+01', NULL, NULL, NULL, NULL, NULL, NULL, 5, NULL, NULL);
 
 
 --
 -- Name: auto_increment_auction; Type: SEQUENCE SET; Schema: public; Owner: lbaw1716
 --
 
-SELECT pg_catalog.setval('auto_increment_auction', 28, true);
+SELECT pg_catalog.setval('auto_increment_auction', 30, true);
 
 
 --
@@ -526,14 +552,14 @@ SELECT pg_catalog.setval('auto_increment_comment', 6, true);
 -- Name: auto_increment_credits; Type: SEQUENCE SET; Schema: public; Owner: lbaw1716
 --
 
-SELECT pg_catalog.setval('auto_increment_credits', 4, true);
+SELECT pg_catalog.setval('auto_increment_credits', 6, true);
 
 
 --
 -- Name: auto_increment_notification; Type: SEQUENCE SET; Schema: public; Owner: lbaw1716
 --
 
-SELECT pg_catalog.setval('auto_increment_notification', 1, true);
+SELECT pg_catalog.setval('auto_increment_notification', 7, true);
 
 
 --
@@ -609,7 +635,6 @@ INSERT INTO comment VALUES (2, '2018-03-31 16:12:10+01', 'Overly slick m8!', 10,
 INSERT INTO comment VALUES (4, '2018-03-31 16:17:10+01', 'It''s nice not just beastly!', 7, 10);
 INSERT INTO comment VALUES (3, '2018-03-31 16:15:10+01', 'Just magnificent, friend.', 7, 8);
 INSERT INTO comment VALUES (5, '2018-03-31 16:20:10+01', 'Bold. So neat.', 10, 11);
-INSERT INTO comment VALUES (6, '2018-03-31 16:20:10+01', 'Incredibly excellent shapes!!', 13, 10);
 
 
 --
@@ -640,20 +665,13 @@ INSERT INTO edit_moderator VALUES (30, 1);
 
 
 --
--- Data for Name: lastbidder; Type: TABLE DATA; Schema: public; Owner: lbaw1716
---
-
-INSERT INTO lastbidder VALUES (19);
-INSERT INTO lastbidder VALUES (6);
-INSERT INTO lastbidder VALUES (3);
-INSERT INTO lastbidder VALUES (5);
-
-
---
 -- Data for Name: notification; Type: TABLE DATA; Schema: public; Owner: lbaw1716
 --
 
-INSERT INTO notification VALUES (1, '2018-04-04 10:29:30.442617+01', 'Your bid on this auction was surpassed. Try again!', 'Bid Exceeded', 1, 11);
+INSERT INTO notification VALUES (1, '2018-04-04 10:29:30.442617+01', 'Your bid on this auction was surpassed. Try again!', 'Bid Exceeded', 1, 11, false);
+INSERT INTO notification VALUES (3, '2018-04-07 22:43:23.582097+01', 'Your Auction was created!', 'Auction Created', 30, 5, false);
+INSERT INTO notification VALUES (4, '2018-04-07 22:54:17.267749+01', 'Your Auction was accepted!', 'Auction Accepted', 30, 5, false);
+INSERT INTO notification VALUES (7, '2018-04-07 23:01:48.670744+01', 'Your Comment on this auction was removed!', 'Comment Removed', 13, 10, false);
 
 
 --
@@ -664,3 +682,8 @@ INSERT INTO report VALUES ('2018-03-31 20:10:10+01', '"It may continue to grow i
 ', 1, 25);
 INSERT INTO report VALUES ('2018-03-31 20:20:10+01', '"To believe that Apple can somehow succeed where all others have failed is to ignore some fundamental realities of tablet computing."
 ', 7, 8);
+
+
+--
+-- PostgreSQL database
+--

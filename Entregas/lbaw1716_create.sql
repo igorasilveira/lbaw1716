@@ -1,5 +1,5 @@
 --
--- PostgreSQL
+-- PostgreSQL database
 --
 
 SET statement_timeout = 0;
@@ -41,6 +41,7 @@ DROP TRIGGER notification_auction ON public.auction;
 DROP TRIGGER delete_comment ON public.comment;
 DROP TRIGGER check_bid_value ON public.bid;
 DROP TRIGGER buy_now ON public.bid;
+DROP TRIGGER block_user ON public.blocks;
 DROP TRIGGER bidder_has_money ON public.bid;
 DROP TRIGGER bid_greater_than_last ON public.bid;
 DROP TRIGGER auction_reported ON public.report;
@@ -100,6 +101,7 @@ DROP FUNCTION public.check_auction_win(state auctionstate, finaldate timestamp w
 DROP FUNCTION public.check_auction_users(auctioncreator integer, auctionwinner integer, responsiblemoderator integer);
 DROP FUNCTION public.check_admin_modify_category(admin integer);
 DROP FUNCTION public.buy_now();
+DROP FUNCTION public.block_user();
 DROP FUNCTION public.bidder_has_money();
 DROP FUNCTION public.bid_greater_than_last();
 DROP FUNCTION public.auction_reported();
@@ -257,6 +259,24 @@ END$$;
 
 
 ALTER FUNCTION public.bidder_has_money() OWNER TO lbaw1716;
+
+--
+-- Name: block_user(); Type: FUNCTION; Schema: public; Owner: lbaw1716
+--
+
+CREATE FUNCTION block_user() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$BEGIN
+IF NEW.state = 'Allowed'::blockingstate
+THEN UPDATE "user" SET "blocked" = true;
+ELSE IF NEW.state = 'Blocked'::blockingstate
+THEN UPDATE "user" SET "blocked" = false;
+END IF;
+END IF;
+END;$$;
+
+
+ALTER FUNCTION public.block_user() OWNER TO lbaw1716;
 
 --
 -- Name: buy_now(); Type: FUNCTION; Schema: public; Owner: lbaw1716
@@ -894,6 +914,7 @@ CREATE TABLE "user" (
     balance integer,
     city integer,
     phonenumber numeric,
+    blocked boolean DEFAULT false NOT NULL,
     CONSTRAINT "authenticated_user_/rating_check" CHECK ((("/rating" >= 0) AND ("/rating" <= 5))),
     CONSTRAINT authenticated_user_balance_check CHECK ((balance >= 0))
 );
@@ -1086,6 +1107,13 @@ CREATE TRIGGER bid_greater_than_last BEFORE INSERT ON bid FOR EACH ROW EXECUTE P
 --
 
 CREATE TRIGGER bidder_has_money BEFORE INSERT ON bid FOR EACH ROW EXECUTE PROCEDURE bidder_has_money();
+
+
+--
+-- Name: block_user; Type: TRIGGER; Schema: public; Owner: lbaw1716
+--
+
+CREATE TRIGGER block_user BEFORE INSERT OR UPDATE ON blocks FOR EACH ROW EXECUTE PROCEDURE block_user();
 
 
 --
