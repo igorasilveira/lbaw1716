@@ -1,5 +1,5 @@
 --
--- PostgreSQL database dump
+-- PostgreSQL
 --
 
 SET statement_timeout = 0;
@@ -35,13 +35,17 @@ ALTER TABLE ONLY public.auction DROP CONSTRAINT auction_auctionwinner_fkey;
 ALTER TABLE ONLY public.auction DROP CONSTRAINT auction_auctioncreator_fkey;
 ALTER TABLE ONLY public.add_credits DROP CONSTRAINT add_credits_user_fkey;
 DROP TRIGGER winner_rate_auction ON public.auction;
-DROP TRIGGER win_auction ON public.bid;
+DROP TRIGGER win_auction ON public.auction;
 DROP TRIGGER update_rating ON public.auction;
+DROP TRIGGER notification_auction ON public.auction;
+DROP TRIGGER delete_comment ON public.comment;
 DROP TRIGGER check_bid_value ON public.bid;
 DROP TRIGGER buy_now ON public.bid;
 DROP TRIGGER bidder_has_money ON public.bid;
 DROP TRIGGER bid_greater_than_last ON public.bid;
+DROP TRIGGER auction_reported ON public.report;
 DROP TRIGGER auction_creator ON public.bid;
+DROP TRIGGER add_credits_trigger ON public.add_credits;
 ALTER TABLE ONLY public.report DROP CONSTRAINT report_pkey;
 ALTER TABLE ONLY public.notification DROP CONSTRAINT notification_pkey;
 ALTER TABLE ONLY public.edit_moderator DROP CONSTRAINT edit_moderator_pkey;
@@ -85,7 +89,9 @@ DROP SEQUENCE public.auto_increment_credits;
 DROP FUNCTION public.winner_rate_auction();
 DROP FUNCTION public.win_auction();
 DROP FUNCTION public.update_ratings();
+DROP FUNCTION public.notification_auction();
 DROP FUNCTION public.get_current_user();
+DROP FUNCTION public.delete_comment();
 DROP FUNCTION public.check_rejected_auction(state auctionstate, dateofrefusal timestamp with time zone, reasonofrefusal character varying);
 DROP FUNCTION public.check_edit_moderators(removedmod integer, removeradmin integer);
 DROP FUNCTION public.check_block_users(blocked integer, blocker integer);
@@ -96,7 +102,9 @@ DROP FUNCTION public.check_admin_modify_category(admin integer);
 DROP FUNCTION public.buy_now();
 DROP FUNCTION public.bidder_has_money();
 DROP FUNCTION public.bid_greater_than_last();
+DROP FUNCTION public.auction_reported();
 DROP FUNCTION public.auction_creator();
+DROP FUNCTION public.add_credits_trigger();
 DROP TYPE public.typeofuser;
 DROP TYPE public.blockingstate;
 DROP TYPE public.auctionstate;
@@ -159,6 +167,20 @@ CREATE TYPE typeofuser AS ENUM (
 ALTER TYPE typeofuser OWNER TO lbaw1716;
 
 --
+-- Name: add_credits_trigger(); Type: FUNCTION; Schema: public; Owner: lbaw1716
+--
+
+CREATE FUNCTION add_credits_trigger() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$BEGIN
+UPDATE "user" SET balance = ((SELECT balance FROM "user" WHERE id = NEW.user) +  NEW.value) WHERE id = NEW.user;
+RETURN NEW;
+END;$$;
+
+
+ALTER FUNCTION public.add_credits_trigger() OWNER TO lbaw1716;
+
+--
 -- Name: auction_creator(); Type: FUNCTION; Schema: public; Owner: lbaw1716
 --
 
@@ -175,6 +197,20 @@ END;$$;
 
 
 ALTER FUNCTION public.auction_creator() OWNER TO lbaw1716;
+
+--
+-- Name: auction_reported(); Type: FUNCTION; Schema: public; Owner: lbaw1716
+--
+
+CREATE FUNCTION auction_reported() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$BEGIN
+INSERT INTO Notification (id, date, description, type, auctionassociated, authenticated_userid) VALUES (DEFAULT, transaction_timestamp(), 'Your auction was reported!', 'Auction Reported', NEW.auctionid, (SELECT "auctioncreator" FROM "auction" WHERE id = NEW.auctionid));
+RETURN NEW;
+END;$$;
+
+
+ALTER FUNCTION public.auction_reported() OWNER TO lbaw1716;
 
 --
 -- Name: bid_greater_than_last(); Type: FUNCTION; Schema: public; Owner: lbaw1716
@@ -232,6 +268,7 @@ CREATE FUNCTION buy_now() RETURNS trigger
 IF EXISTS (SELECT * FROM "auction" WHERE NEW.auctionbidded = id AND NEW.value = buyNow AND NEW."isBuyNow" = true)
 THEN
 UPDATE auction SET state = 'Over'::auctionstate, finaldate = NEW.date, finalprice = NEW.value, auctionwinner = NEW.bidder WHERE id = NEW.auctionbidded;
+INSERT INTO Notification (id, date, description, type, auctionassociated, authenticated_userid) VALUES (DEFAULT, transaction_timestamp(), 'You win this auction!', 'Won Auction', NEW.auctionbidded, (SELECT bidder FROM "bid" WHERE auctionbidded = NEW.auctionbidded ORDER BY value DESC LIMIT 1));
 END IF;
 RETURN NEW;
 END;$$;
@@ -395,6 +432,20 @@ END;$$;
 ALTER FUNCTION public.check_rejected_auction(state auctionstate, dateofrefusal timestamp with time zone, reasonofrefusal character varying) OWNER TO lbaw1716;
 
 --
+-- Name: delete_comment(); Type: FUNCTION; Schema: public; Owner: lbaw1716
+--
+
+CREATE FUNCTION delete_comment() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$BEGIN
+INSERT INTO Notification (id, date, description, type, auctionassociated, authenticated_userid) VALUES (DEFAULT, transaction_timestamp(), 'Your Comment on this auction was removed!', 'Comment Removed', OLD.auctioncommented, OLD.usercommenter);
+RETURN OLD;
+END;$$;
+
+
+ALTER FUNCTION public.delete_comment() OWNER TO lbaw1716;
+
+--
 -- Name: get_current_user(); Type: FUNCTION; Schema: public; Owner: lbaw1716
 --
 
@@ -414,6 +465,35 @@ $$;
 
 
 ALTER FUNCTION public.get_current_user() OWNER TO lbaw1716;
+
+--
+-- Name: notification_auction(); Type: FUNCTION; Schema: public; Owner: lbaw1716
+--
+
+CREATE FUNCTION notification_auction() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$BEGIN
+IF NEW.state = 'Pending'::auctionstate
+THEN
+INSERT INTO Notification (id, date, description, type, auctionassociated, authenticated_userid) VALUES (DEFAULT, transaction_timestamp(), 'Your Auction was created!', 'Auction Created', NEW.id, NEW.auctioncreator);
+ELSE IF NEW.state = 'Active'::auctionstate
+THEN
+INSERT INTO Notification (id, date, description, type, auctionassociated, authenticated_userid) VALUES (DEFAULT, transaction_timestamp(), 'Your Auction was accepted!', 'Auction Accepted', NEW.id, NEW.auctioncreator);
+ELSE IF NEW.state = 'Rejected'::auctionstate
+THEN
+INSERT INTO Notification (id, date, description, type, auctionassociated, authenticated_userid) VALUES (DEFAULT, transaction_timestamp(), 'Your Auction was rejected!', 'Auction Rejected', NEW.id, NEW.auctioncreator);
+ELSE IF NEW.state = 'Over'::auctionstate
+THEN
+INSERT INTO Notification (id, date, description, type, auctionassociated, authenticated_userid) VALUES (DEFAULT, transaction_timestamp(), 'Your Auction terminated!', 'Auction Over', NEW.id, NEW.auctioncreator);
+END IF;
+END IF;
+END IF;
+END IF;
+RETURN NEW;
+END;$$;
+
+
+ALTER FUNCTION public.notification_auction() OWNER TO lbaw1716;
 
 --
 -- Name: update_ratings(); Type: FUNCTION; Schema: public; Owner: lbaw1716
@@ -457,7 +537,8 @@ UPDATE "auction" SET state = 'Over'::auctionstate, finaldate = (  SELECT date
   ORDER BY value DESC  ), auctionwinner = (  SELECT bidder
   FROM "bid"
   WHERE "bid".auctionBidded=NEW.id
-  ORDER BY value DESC  ) WHERE id = NEW.id;
+  ORDER BY value DESC LIMIT 1) WHERE id = NEW.id;
+INSERT INTO Notification (id, date, description, type, auctionassociated, authenticated_userid) VALUES (DEFAULT, transaction_timestamp(), 'You win this auction!', 'Won Auction', NEW.auctionbidded, (SELECT bidder FROM "bid" WHERE auctionbidded = NEW.auctionbidded ORDER BY value DESC LIMIT 1));
 END IF;
 RETURN NEW;
 END;$$;
@@ -510,7 +591,8 @@ CREATE TABLE add_credits (
     value integer NOT NULL,
     date timestamp with time zone DEFAULT transaction_timestamp() NOT NULL,
     paypalid character varying NOT NULL,
-    "user" integer NOT NULL
+    "user" integer NOT NULL,
+    "trasactionID" character varying NOT NULL
 );
 
 
@@ -772,7 +854,8 @@ CREATE TABLE notification (
     description character varying(50) NOT NULL,
     type character varying(50) NOT NULL,
     auctionassociated integer,
-    authenticated_userid integer NOT NULL
+    authenticated_userid integer NOT NULL,
+    read boolean DEFAULT false
 );
 
 
@@ -810,6 +893,7 @@ CREATE TABLE "user" (
     postalcode character varying(50),
     balance integer,
     city integer,
+    phonenumber numeric,
     CONSTRAINT "authenticated_user_/rating_check" CHECK ((("/rating" >= 0) AND ("/rating" <= 5))),
     CONSTRAINT authenticated_user_balance_check CHECK ((balance >= 0))
 );
@@ -968,15 +1052,26 @@ ALTER TABLE ONLY notification
 ALTER TABLE ONLY report
     ADD CONSTRAINT report_pkey PRIMARY KEY (auctionid, normaluserid);
 
+
 --
--- INSTALLATION OF TRIGGERS
+-- Name: add_credits_trigger; Type: TRIGGER; Schema: public; Owner: lbaw1716
 --
+
+CREATE TRIGGER add_credits_trigger BEFORE INSERT ON add_credits FOR EACH ROW EXECUTE PROCEDURE add_credits_trigger();
+
 
 --
 -- Name: auction_creator; Type: TRIGGER; Schema: public; Owner: lbaw1716
 --
 
 CREATE TRIGGER auction_creator BEFORE INSERT ON bid FOR EACH ROW EXECUTE PROCEDURE auction_creator();
+
+
+--
+-- Name: auction_reported; Type: TRIGGER; Schema: public; Owner: lbaw1716
+--
+
+CREATE TRIGGER auction_reported BEFORE INSERT ON report FOR EACH ROW EXECUTE PROCEDURE auction_reported();
 
 
 --
@@ -1008,6 +1103,20 @@ CREATE TRIGGER check_bid_value BEFORE INSERT ON bid FOR EACH ROW EXECUTE PROCEDU
 
 
 --
+-- Name: delete_comment; Type: TRIGGER; Schema: public; Owner: lbaw1716
+--
+
+CREATE TRIGGER delete_comment BEFORE DELETE ON comment FOR EACH ROW EXECUTE PROCEDURE delete_comment();
+
+
+--
+-- Name: notification_auction; Type: TRIGGER; Schema: public; Owner: lbaw1716
+--
+
+CREATE TRIGGER notification_auction BEFORE INSERT OR UPDATE OF state ON auction FOR EACH ROW EXECUTE PROCEDURE notification_auction();
+
+
+--
 -- Name: update_rating; Type: TRIGGER; Schema: public; Owner: lbaw1716
 --
 
@@ -1018,7 +1127,7 @@ CREATE TRIGGER update_rating BEFORE INSERT OR UPDATE ON auction FOR EACH ROW EXE
 -- Name: win_auction; Type: TRIGGER; Schema: public; Owner: lbaw1716
 --
 
-CREATE TRIGGER win_auction BEFORE UPDATE ON bid FOR EACH ROW EXECUTE PROCEDURE win_auction();
+CREATE TRIGGER win_auction BEFORE UPDATE ON auction FOR EACH ROW EXECUTE PROCEDURE win_auction();
 
 
 --
@@ -1219,8 +1328,3 @@ ALTER TABLE ONLY report
 REVOKE ALL ON SCHEMA public FROM PUBLIC;
 REVOKE ALL ON SCHEMA public FROM lbaw1716;
 GRANT ALL ON SCHEMA public TO lbaw1716;
-
-
---
--- PostgreSQL database dump complete
---
