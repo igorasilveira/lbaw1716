@@ -3,8 +3,8 @@
 # Stop execution if a step fails
 set -e
 
-DOCKER_USERNAME=nadiacarvalho # Replace by your docker hub username
-IMAGE_NAME=lbaw1716
+DOCKER_USERNAME=tiagoboldt # Replace by your docker hub username
+IMAGE_NAME=lbaw-demo
 
 # Ensure that dependencies are available
 composer install
