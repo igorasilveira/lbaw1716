@@ -11,106 +11,106 @@ SET client_min_messages = warning;
 
 SET search_path = public, pg_catalog;
 
-ALTER TABLE ONLY public.report DROP CONSTRAINT report_normaluserid_fkey;
-ALTER TABLE ONLY public.report DROP CONSTRAINT report_auctionid_fkey;
-ALTER TABLE ONLY public.notification DROP CONSTRAINT notification_authenticated_userid_fkey;
-ALTER TABLE ONLY public.notification DROP CONSTRAINT notification_auctionassociated_fkey;
-ALTER TABLE ONLY public.edit_moderator DROP CONSTRAINT edit_moderator_removeradmin_fkey;
-ALTER TABLE ONLY public.edit_moderator DROP CONSTRAINT edit_moderator_removedmod_fkey;
-ALTER TABLE ONLY public.edit_categories DROP CONSTRAINT edit_categories_category_fkey;
-ALTER TABLE ONLY public.edit_categories DROP CONSTRAINT edit_categories_admin_fkey;
-ALTER TABLE ONLY public.comment DROP CONSTRAINT comment_usercommenter_fkey;
-ALTER TABLE ONLY public.comment DROP CONSTRAINT comment_auctioncommented_fkey;
-ALTER TABLE ONLY public.city DROP CONSTRAINT city_country_fkey;
-ALTER TABLE ONLY public.categoryofauction DROP CONSTRAINT categoryofauction_category_fkey;
-ALTER TABLE ONLY public.categoryofauction DROP CONSTRAINT categoryofauction_auction_fkey;
-ALTER TABLE ONLY public.category DROP CONSTRAINT category_parent_fkey;
-ALTER TABLE ONLY public.blocks DROP CONSTRAINT blocks_blocker_fkey;
-ALTER TABLE ONLY public.blocks DROP CONSTRAINT blocks_blocked_fkey;
-ALTER TABLE ONLY public.bid DROP CONSTRAINT bid_bidder_fkey;
-ALTER TABLE ONLY public.bid DROP CONSTRAINT bid_auctionbidded_fkey;
-ALTER TABLE ONLY public."user" DROP CONSTRAINT authenticated_user_city_fkey;
-ALTER TABLE ONLY public.auction DROP CONSTRAINT auction_responsiblemoderator_fkey;
-ALTER TABLE ONLY public.auction DROP CONSTRAINT auction_auctionwinner_fkey;
-ALTER TABLE ONLY public.auction DROP CONSTRAINT auction_auctioncreator_fkey;
-ALTER TABLE ONLY public.add_credits DROP CONSTRAINT add_credits_user_fkey;
-DROP TRIGGER winner_rate_auction ON public.auction;
-DROP TRIGGER win_auction ON public.auction;
-DROP TRIGGER update_rating ON public.auction;
-DROP TRIGGER notification_auction ON public.auction;
-DROP TRIGGER delete_comment ON public.comment;
-DROP TRIGGER check_bid_value ON public.bid;
-DROP TRIGGER buy_now ON public.bid;
-DROP TRIGGER block_user ON public.blocks;
-DROP TRIGGER bidder_has_money ON public.bid;
-DROP TRIGGER bid_greater_than_last ON public.bid;
-DROP TRIGGER auction_reported ON public.report;
-DROP TRIGGER auction_creator ON public.bid;
-DROP TRIGGER add_credits_trigger ON public.add_credits;
-ALTER TABLE ONLY public.report DROP CONSTRAINT report_pkey;
-ALTER TABLE ONLY public.notification DROP CONSTRAINT notification_pkey;
-ALTER TABLE ONLY public.edit_moderator DROP CONSTRAINT edit_moderator_pkey;
-ALTER TABLE ONLY public.edit_categories DROP CONSTRAINT edit_categories_pkey;
-ALTER TABLE ONLY public.country DROP CONSTRAINT country_pkey;
-ALTER TABLE ONLY public.country DROP CONSTRAINT country_name_key;
-ALTER TABLE ONLY public.comment DROP CONSTRAINT comment_pkey;
-ALTER TABLE ONLY public.city DROP CONSTRAINT city_pkey;
-ALTER TABLE ONLY public.city DROP CONSTRAINT city_name_key;
-ALTER TABLE ONLY public.categoryofauction DROP CONSTRAINT categoryofauction_pkey;
-ALTER TABLE ONLY public.category DROP CONSTRAINT category_pkey;
-ALTER TABLE ONLY public.category DROP CONSTRAINT category_name_key;
-ALTER TABLE ONLY public.blocks DROP CONSTRAINT blocks_pkey;
-ALTER TABLE ONLY public.bid DROP CONSTRAINT bid_pkey;
-ALTER TABLE ONLY public."user" DROP CONSTRAINT authenticated_user_username_key;
-ALTER TABLE ONLY public."user" DROP CONSTRAINT authenticated_user_pkey;
-ALTER TABLE ONLY public."user" DROP CONSTRAINT authenticated_user_email_key;
-ALTER TABLE ONLY public.auction DROP CONSTRAINT auction_pkey;
-ALTER TABLE ONLY public.add_credits DROP CONSTRAINT add_credits_pkey;
-DROP TABLE public."user";
-DROP TABLE public.report;
-DROP TABLE public.notification;
-DROP TABLE public.edit_moderator;
-DROP TABLE public.edit_categories;
-DROP TABLE public.country;
-DROP TABLE public.comment;
-DROP TABLE public.city;
-DROP TABLE public.categoryofauction;
-DROP TABLE public.category;
-DROP TABLE public.blocks;
-DROP TABLE public.bid;
-DROP SEQUENCE public.auto_increment_user;
-DROP SEQUENCE public.auto_increment_notification;
-DROP SEQUENCE public.auto_increment_comment;
-DROP SEQUENCE public.auto_increment_city;
-DROP SEQUENCE public.auto_increment_category;
-DROP TABLE public.auction;
-DROP SEQUENCE public.auto_increment_auction;
-DROP TABLE public.add_credits;
-DROP SEQUENCE public.auto_increment_credits;
-DROP FUNCTION public.winner_rate_auction();
-DROP FUNCTION public.win_auction();
-DROP FUNCTION public.update_ratings();
-DROP FUNCTION public.notification_auction();
-DROP FUNCTION public.get_current_user();
-DROP FUNCTION public.delete_comment();
-DROP FUNCTION public.check_rejected_auction(state auctionstate, dateofrefusal timestamp with time zone, reasonofrefusal character varying);
-DROP FUNCTION public.check_edit_moderators(removedmod integer, removeradmin integer);
-DROP FUNCTION public.check_block_users(blocked integer, blocker integer);
-DROP FUNCTION public.check_bid_value();
-DROP FUNCTION public.check_auction_win(state auctionstate, finaldate timestamp with time zone, finalprice integer, auctionwinner integer);
-DROP FUNCTION public.check_auction_users(auctioncreator integer, auctionwinner integer, responsiblemoderator integer);
-DROP FUNCTION public.check_admin_modify_category(admin integer);
-DROP FUNCTION public.buy_now();
-DROP FUNCTION public.block_user();
-DROP FUNCTION public.bidder_has_money();
-DROP FUNCTION public.bid_greater_than_last();
-DROP FUNCTION public.auction_reported();
-DROP FUNCTION public.auction_creator();
-DROP FUNCTION public.add_credits_trigger();
-DROP TYPE public.typeofuser;
-DROP TYPE public.blockingstate;
-DROP TYPE public.auctionstate;
-DROP SCHEMA public;
+ALTER TABLE IF EXISTS ONLY public.report DROP CONSTRAINT report_normaluserid_fkey;
+ALTER TABLE IF EXISTS ONLY public.report DROP CONSTRAINT report_auctionid_fkey;
+ALTER TABLE IF EXISTS ONLY public.notification DROP CONSTRAINT notification_authenticated_userid_fkey;
+ALTER TABLE IF EXISTS ONLY public.notification DROP CONSTRAINT notification_auctionassociated_fkey;
+ALTER TABLE IF EXISTS ONLY public.edit_moderator DROP CONSTRAINT edit_moderator_removeradmin_fkey;
+ALTER TABLE IF EXISTS ONLY public.edit_moderator DROP CONSTRAINT edit_moderator_removedmod_fkey;
+ALTER TABLE IF EXISTS ONLY public.edit_categories DROP CONSTRAINT edit_categories_category_fkey;
+ALTER TABLE IF EXISTS ONLY public.edit_categories DROP CONSTRAINT edit_categories_admin_fkey;
+ALTER TABLE IF EXISTS ONLY public.comment DROP CONSTRAINT comment_usercommenter_fkey;
+ALTER TABLE IF EXISTS ONLY public.comment DROP CONSTRAINT comment_auctioncommented_fkey;
+ALTER TABLE IF EXISTS ONLY public.city DROP CONSTRAINT city_country_fkey;
+ALTER TABLE IF EXISTS ONLY public.categoryofauction DROP CONSTRAINT categoryofauction_category_fkey;
+ALTER TABLE IF EXISTS ONLY public.categoryofauction DROP CONSTRAINT categoryofauction_auction_fkey;
+ALTER TABLE IF EXISTS ONLY public.category DROP CONSTRAINT category_parent_fkey;
+ALTER TABLE IF EXISTS ONLY public.blocks DROP CONSTRAINT blocks_blocker_fkey;
+ALTER TABLE IF EXISTS ONLY public.blocks DROP CONSTRAINT blocks_blocked_fkey;
+ALTER TABLE IF EXISTS ONLY public.bid DROP CONSTRAINT bid_bidder_fkey;
+ALTER TABLE IF EXISTS ONLY public.bid DROP CONSTRAINT bid_auctionbidded_fkey;
+ALTER TABLE IF EXISTS ONLY public."user" DROP CONSTRAINT authenticated_user_city_fkey;
+ALTER TABLE IF EXISTS ONLY public.auction DROP CONSTRAINT auction_responsiblemoderator_fkey;
+ALTER TABLE IF EXISTS ONLY public.auction DROP CONSTRAINT auction_auctionwinner_fkey;
+ALTER TABLE IF EXISTS ONLY public.auction DROP CONSTRAINT auction_auctioncreator_fkey;
+ALTER TABLE IF EXISTS ONLY public.add_credits DROP CONSTRAINT add_credits_user_fkey;
+DROP TRIGGER IF EXISTS IF EXISTS winner_rate_auction ON public.auction;
+DROP TRIGGER IF EXISTS win_auction ON public.auction;
+DROP TRIGGER IF EXISTS update_rating ON public.auction;
+DROP TRIGGER IF EXISTS notification_auction ON public.auction;
+DROP TRIGGER IF EXISTS delete_comment ON public.comment;
+DROP TRIGGER IF EXISTS check_bid_value ON public.bid;
+DROP TRIGGER IF EXISTS buy_now ON public.bid;
+DROP TRIGGER IF EXISTS block_user ON public.blocks;
+DROP TRIGGER IF EXISTS bidder_has_money ON public.bid;
+DROP TRIGGER IF EXISTS bid_greater_than_last ON public.bid;
+DROP TRIGGER IF EXISTS auction_reported ON public.report;
+DROP TRIGGER IF EXISTS auction_creator ON public.bid;
+DROP TRIGGER IF EXISTS add_credits_trigger ON public.add_credits;
+ALTER TABLE IF EXISTS ONLY public.report DROP CONSTRAINT report_pkey;
+ALTER TABLE IF EXISTS ONLY public.notification DROP CONSTRAINT notification_pkey;
+ALTER TABLE IF EXISTS ONLY public.edit_moderator DROP CONSTRAINT edit_moderator_pkey;
+ALTER TABLE IF EXISTS ONLY public.edit_categories DROP CONSTRAINT edit_categories_pkey;
+ALTER TABLE IF EXISTS ONLY public.country DROP CONSTRAINT country_pkey;
+ALTER TABLE IF EXISTS ONLY public.country DROP CONSTRAINT country_name_key;
+ALTER TABLE IF EXISTS ONLY public.comment DROP CONSTRAINT comment_pkey;
+ALTER TABLE IF EXISTS ONLY public.city DROP CONSTRAINT city_pkey;
+ALTER TABLE IF EXISTS ONLY public.city DROP CONSTRAINT city_name_key;
+ALTER TABLE IF EXISTS ONLY public.categoryofauction DROP CONSTRAINT categoryofauction_pkey;
+ALTER TABLE IF EXISTS ONLY public.category DROP CONSTRAINT category_pkey;
+ALTER TABLE IF EXISTS ONLY public.category DROP CONSTRAINT category_name_key;
+ALTER TABLE IF EXISTS ONLY public.blocks DROP CONSTRAINT blocks_pkey;
+ALTER TABLE IF EXISTS ONLY public.bid DROP CONSTRAINT bid_pkey;
+ALTER TABLE IF EXISTS ONLY public."user" DROP CONSTRAINT authenticated_user_username_key;
+ALTER TABLE IF EXISTS ONLY public."user" DROP CONSTRAINT authenticated_user_pkey;
+ALTER TABLE IF EXISTS ONLY public."user" DROP CONSTRAINT authenticated_user_email_key;
+ALTER TABLE IF EXISTS ONLY public.auction DROP CONSTRAINT auction_pkey;
+ALTER TABLE IF EXISTS ONLY public.add_credits DROP CONSTRAINT add_credits_pkey;
+DROP TABLE IF EXISTS public."user";
+DROP TABLE IF EXISTS public.report;
+DROP TABLE IF EXISTS public.notification;
+DROP TABLE IF EXISTS public.edit_moderator;
+DROP TABLE IF EXISTS public.edit_categories;
+DROP TABLE IF EXISTS public.country;
+DROP TABLE IF EXISTS public.comment;
+DROP TABLE IF EXISTS public.city;
+DROP TABLE IF EXISTS public.categoryofauction;
+DROP TABLE IF EXISTS public.category;
+DROP TABLE IF EXISTS public.blocks;
+DROP TABLE IF EXISTS public.bid;
+DROP SEQUENCE IF EXISTS public.auto_increment_user;
+DROP SEQUENCE IF EXISTS public.auto_increment_notification;
+DROP SEQUENCE IF EXISTS public.auto_increment_comment;
+DROP SEQUENCE IF EXISTS public.auto_increment_city;
+DROP SEQUENCE IF EXISTS public.auto_increment_category;
+DROP TABLE IF EXISTS public.auction;
+DROP SEQUENCE IF EXISTS public.auto_increment_auction;
+DROP TABLE IF EXISTS public.add_credits;
+DROP SEQUENCE IF EXISTS public.auto_increment_credits;
+DROP FUNCTION IF EXISTS public.winner_rate_auction();
+DROP FUNCTION IF EXISTS public.win_auction();
+DROP FUNCTION IF EXISTS public.update_ratings();
+DROP FUNCTION IF EXISTS public.notification_auction();
+DROP FUNCTION IF EXISTS public.get_current_user();
+DROP FUNCTION IF EXISTS public.delete_comment();
+DROP FUNCTION IF EXISTS public.check_rejected_auction(state auctionstate, dateofrefusal timestamp with time zone, reasonofrefusal character varying);
+DROP FUNCTION IF EXISTS public.check_edit_moderators(removedmod integer, removeradmin integer);
+DROP FUNCTION IF EXISTS public.check_block_users(blocked integer, blocker integer);
+DROP FUNCTION IF EXISTS public.check_bid_value();
+DROP FUNCTION IF EXISTS public.check_auction_win(state auctionstate, finaldate timestamp with time zone, finalprice integer, auctionwinner integer);
+DROP FUNCTION IF EXISTS public.check_auction_users(auctioncreator integer, auctionwinner integer, responsiblemoderator integer);
+DROP FUNCTION IF EXISTS public.check_admin_modify_category(admin integer);
+DROP FUNCTION IF EXISTS public.buy_now();
+DROP FUNCTION IF EXISTS public.block_user();
+DROP FUNCTION IF EXISTS public.bidder_has_money();
+DROP FUNCTION IF EXISTS public.bid_greater_than_last();
+DROP FUNCTION IF EXISTS public.auction_reported();
+DROP FUNCTION IF EXISTS public.auction_creator();
+DROP FUNCTION IF EXISTS public.add_credits_trigger();
+DROP TYPE IF EXISTS public.typeofuser;
+DROP TYPE IF EXISTS public.blockingstate;
+DROP TYPE IF EXISTS public.auctionstate;
+DROP SCHEMA IF EXISTS public;
 --
 -- Name: public; Type: SCHEMA; Schema: -; Owner: lbaw1716
 --
@@ -926,7 +926,7 @@ ALTER TABLE "user" OWNER TO lbaw1716;
 -- Name: add_credits_pkey; Type: CONSTRAINT; Schema: public; Owner: lbaw1716; Tablespace:
 --
 
-ALTER TABLE ONLY add_credits
+ALTER TABLE IF EXISTS ONLY add_credits
     ADD CONSTRAINT add_credits_pkey PRIMARY KEY (id);
 
 
@@ -934,7 +934,7 @@ ALTER TABLE ONLY add_credits
 -- Name: auction_pkey; Type: CONSTRAINT; Schema: public; Owner: lbaw1716; Tablespace:
 --
 
-ALTER TABLE ONLY auction
+ALTER TABLE IF EXISTS ONLY auction
     ADD CONSTRAINT auction_pkey PRIMARY KEY (id);
 
 
@@ -942,7 +942,7 @@ ALTER TABLE ONLY auction
 -- Name: authenticated_user_email_key; Type: CONSTRAINT; Schema: public; Owner: lbaw1716; Tablespace:
 --
 
-ALTER TABLE ONLY "user"
+ALTER TABLE IF EXISTS ONLY "user"
     ADD CONSTRAINT authenticated_user_email_key UNIQUE (email);
 
 
@@ -950,7 +950,7 @@ ALTER TABLE ONLY "user"
 -- Name: authenticated_user_pkey; Type: CONSTRAINT; Schema: public; Owner: lbaw1716; Tablespace:
 --
 
-ALTER TABLE ONLY "user"
+ALTER TABLE IF EXISTS ONLY "user"
     ADD CONSTRAINT authenticated_user_pkey PRIMARY KEY (id);
 
 
@@ -958,7 +958,7 @@ ALTER TABLE ONLY "user"
 -- Name: authenticated_user_username_key; Type: CONSTRAINT; Schema: public; Owner: lbaw1716; Tablespace:
 --
 
-ALTER TABLE ONLY "user"
+ALTER TABLE IF EXISTS ONLY "user"
     ADD CONSTRAINT authenticated_user_username_key UNIQUE (username);
 
 
@@ -966,7 +966,7 @@ ALTER TABLE ONLY "user"
 -- Name: bid_pkey; Type: CONSTRAINT; Schema: public; Owner: lbaw1716; Tablespace:
 --
 
-ALTER TABLE ONLY bid
+ALTER TABLE IF EXISTS ONLY bid
     ADD CONSTRAINT bid_pkey PRIMARY KEY (date, auctionbidded, bidder);
 
 
@@ -974,7 +974,7 @@ ALTER TABLE ONLY bid
 -- Name: blocks_pkey; Type: CONSTRAINT; Schema: public; Owner: lbaw1716; Tablespace:
 --
 
-ALTER TABLE ONLY blocks
+ALTER TABLE IF EXISTS ONLY blocks
     ADD CONSTRAINT blocks_pkey PRIMARY KEY (blocked, blocker);
 
 
@@ -982,7 +982,7 @@ ALTER TABLE ONLY blocks
 -- Name: category_name_key; Type: CONSTRAINT; Schema: public; Owner: lbaw1716; Tablespace:
 --
 
-ALTER TABLE ONLY category
+ALTER TABLE IF EXISTS ONLY category
     ADD CONSTRAINT category_name_key UNIQUE (name);
 
 
@@ -990,7 +990,7 @@ ALTER TABLE ONLY category
 -- Name: category_pkey; Type: CONSTRAINT; Schema: public; Owner: lbaw1716; Tablespace:
 --
 
-ALTER TABLE ONLY category
+ALTER TABLE IF EXISTS ONLY category
     ADD CONSTRAINT category_pkey PRIMARY KEY (categoryid);
 
 
@@ -998,7 +998,7 @@ ALTER TABLE ONLY category
 -- Name: categoryofauction_pkey; Type: CONSTRAINT; Schema: public; Owner: lbaw1716; Tablespace:
 --
 
-ALTER TABLE ONLY categoryofauction
+ALTER TABLE IF EXISTS ONLY categoryofauction
     ADD CONSTRAINT categoryofauction_pkey PRIMARY KEY (category, auction);
 
 
@@ -1006,7 +1006,7 @@ ALTER TABLE ONLY categoryofauction
 -- Name: city_name_key; Type: CONSTRAINT; Schema: public; Owner: lbaw1716; Tablespace:
 --
 
-ALTER TABLE ONLY city
+ALTER TABLE IF EXISTS ONLY city
     ADD CONSTRAINT city_name_key UNIQUE (name);
 
 
@@ -1014,7 +1014,7 @@ ALTER TABLE ONLY city
 -- Name: city_pkey; Type: CONSTRAINT; Schema: public; Owner: lbaw1716; Tablespace:
 --
 
-ALTER TABLE ONLY city
+ALTER TABLE IF EXISTS ONLY city
     ADD CONSTRAINT city_pkey PRIMARY KEY (id);
 
 
@@ -1022,7 +1022,7 @@ ALTER TABLE ONLY city
 -- Name: comment_pkey; Type: CONSTRAINT; Schema: public; Owner: lbaw1716; Tablespace:
 --
 
-ALTER TABLE ONLY comment
+ALTER TABLE IF EXISTS ONLY comment
     ADD CONSTRAINT comment_pkey PRIMARY KEY (id);
 
 
@@ -1030,7 +1030,7 @@ ALTER TABLE ONLY comment
 -- Name: country_name_key; Type: CONSTRAINT; Schema: public; Owner: lbaw1716; Tablespace:
 --
 
-ALTER TABLE ONLY country
+ALTER TABLE IF EXISTS ONLY country
     ADD CONSTRAINT country_name_key UNIQUE (name);
 
 
@@ -1038,7 +1038,7 @@ ALTER TABLE ONLY country
 -- Name: country_pkey; Type: CONSTRAINT; Schema: public; Owner: lbaw1716; Tablespace:
 --
 
-ALTER TABLE ONLY country
+ALTER TABLE IF EXISTS ONLY country
     ADD CONSTRAINT country_pkey PRIMARY KEY (id);
 
 
@@ -1046,7 +1046,7 @@ ALTER TABLE ONLY country
 -- Name: edit_categories_pkey; Type: CONSTRAINT; Schema: public; Owner: lbaw1716; Tablespace:
 --
 
-ALTER TABLE ONLY edit_categories
+ALTER TABLE IF EXISTS ONLY edit_categories
     ADD CONSTRAINT edit_categories_pkey PRIMARY KEY (category, admin);
 
 
@@ -1054,7 +1054,7 @@ ALTER TABLE ONLY edit_categories
 -- Name: edit_moderator_pkey; Type: CONSTRAINT; Schema: public; Owner: lbaw1716; Tablespace:
 --
 
-ALTER TABLE ONLY edit_moderator
+ALTER TABLE IF EXISTS ONLY edit_moderator
     ADD CONSTRAINT edit_moderator_pkey PRIMARY KEY (removedmod, removeradmin);
 
 
@@ -1062,7 +1062,7 @@ ALTER TABLE ONLY edit_moderator
 -- Name: notification_pkey; Type: CONSTRAINT; Schema: public; Owner: lbaw1716; Tablespace:
 --
 
-ALTER TABLE ONLY notification
+ALTER TABLE IF EXISTS ONLY notification
     ADD CONSTRAINT notification_pkey PRIMARY KEY (id);
 
 
@@ -1070,7 +1070,7 @@ ALTER TABLE ONLY notification
 -- Name: report_pkey; Type: CONSTRAINT; Schema: public; Owner: lbaw1716; Tablespace:
 --
 
-ALTER TABLE ONLY report
+ALTER TABLE IF EXISTS ONLY report
     ADD CONSTRAINT report_pkey PRIMARY KEY (auctionid, normaluserid);
 
 
@@ -1169,7 +1169,7 @@ CREATE TRIGGER winner_rate_auction BEFORE UPDATE OF rate ON auction FOR EACH ROW
 -- Name: add_credits_user_fkey; Type: FK CONSTRAINT; Schema: public; Owner: lbaw1716
 --
 
-ALTER TABLE ONLY add_credits
+ALTER TABLE IF EXISTS ONLY add_credits
     ADD CONSTRAINT add_credits_user_fkey FOREIGN KEY ("user") REFERENCES "user"(id);
 
 
@@ -1177,7 +1177,7 @@ ALTER TABLE ONLY add_credits
 -- Name: auction_auctioncreator_fkey; Type: FK CONSTRAINT; Schema: public; Owner: lbaw1716
 --
 
-ALTER TABLE ONLY auction
+ALTER TABLE IF EXISTS ONLY auction
     ADD CONSTRAINT auction_auctioncreator_fkey FOREIGN KEY (auctioncreator) REFERENCES "user"(id);
 
 
@@ -1185,7 +1185,7 @@ ALTER TABLE ONLY auction
 -- Name: auction_auctionwinner_fkey; Type: FK CONSTRAINT; Schema: public; Owner: lbaw1716
 --
 
-ALTER TABLE ONLY auction
+ALTER TABLE IF EXISTS ONLY auction
     ADD CONSTRAINT auction_auctionwinner_fkey FOREIGN KEY (auctionwinner) REFERENCES "user"(id);
 
 
@@ -1193,7 +1193,7 @@ ALTER TABLE ONLY auction
 -- Name: auction_responsiblemoderator_fkey; Type: FK CONSTRAINT; Schema: public; Owner: lbaw1716
 --
 
-ALTER TABLE ONLY auction
+ALTER TABLE IF EXISTS ONLY auction
     ADD CONSTRAINT auction_responsiblemoderator_fkey FOREIGN KEY (responsiblemoderator) REFERENCES "user"(id);
 
 
@@ -1201,7 +1201,7 @@ ALTER TABLE ONLY auction
 -- Name: authenticated_user_city_fkey; Type: FK CONSTRAINT; Schema: public; Owner: lbaw1716
 --
 
-ALTER TABLE ONLY "user"
+ALTER TABLE IF EXISTS ONLY "user"
     ADD CONSTRAINT authenticated_user_city_fkey FOREIGN KEY (city) REFERENCES city(id);
 
 
@@ -1209,7 +1209,7 @@ ALTER TABLE ONLY "user"
 -- Name: bid_auctionbidded_fkey; Type: FK CONSTRAINT; Schema: public; Owner: lbaw1716
 --
 
-ALTER TABLE ONLY bid
+ALTER TABLE IF EXISTS ONLY bid
     ADD CONSTRAINT bid_auctionbidded_fkey FOREIGN KEY (auctionbidded) REFERENCES auction(id);
 
 
@@ -1217,7 +1217,7 @@ ALTER TABLE ONLY bid
 -- Name: bid_bidder_fkey; Type: FK CONSTRAINT; Schema: public; Owner: lbaw1716
 --
 
-ALTER TABLE ONLY bid
+ALTER TABLE IF EXISTS ONLY bid
     ADD CONSTRAINT bid_bidder_fkey FOREIGN KEY (bidder) REFERENCES "user"(id);
 
 
@@ -1225,7 +1225,7 @@ ALTER TABLE ONLY bid
 -- Name: blocks_blocked_fkey; Type: FK CONSTRAINT; Schema: public; Owner: lbaw1716
 --
 
-ALTER TABLE ONLY blocks
+ALTER TABLE IF EXISTS ONLY blocks
     ADD CONSTRAINT blocks_blocked_fkey FOREIGN KEY (blocked) REFERENCES "user"(id);
 
 
@@ -1233,7 +1233,7 @@ ALTER TABLE ONLY blocks
 -- Name: blocks_blocker_fkey; Type: FK CONSTRAINT; Schema: public; Owner: lbaw1716
 --
 
-ALTER TABLE ONLY blocks
+ALTER TABLE IF EXISTS ONLY blocks
     ADD CONSTRAINT blocks_blocker_fkey FOREIGN KEY (blocker) REFERENCES "user"(id);
 
 
@@ -1241,7 +1241,7 @@ ALTER TABLE ONLY blocks
 -- Name: category_parent_fkey; Type: FK CONSTRAINT; Schema: public; Owner: lbaw1716
 --
 
-ALTER TABLE ONLY category
+ALTER TABLE IF EXISTS ONLY category
     ADD CONSTRAINT category_parent_fkey FOREIGN KEY (parent) REFERENCES category(categoryid);
 
 
@@ -1249,7 +1249,7 @@ ALTER TABLE ONLY category
 -- Name: categoryofauction_auction_fkey; Type: FK CONSTRAINT; Schema: public; Owner: lbaw1716
 --
 
-ALTER TABLE ONLY categoryofauction
+ALTER TABLE IF EXISTS ONLY categoryofauction
     ADD CONSTRAINT categoryofauction_auction_fkey FOREIGN KEY (auction) REFERENCES auction(id);
 
 
@@ -1257,7 +1257,7 @@ ALTER TABLE ONLY categoryofauction
 -- Name: categoryofauction_category_fkey; Type: FK CONSTRAINT; Schema: public; Owner: lbaw1716
 --
 
-ALTER TABLE ONLY categoryofauction
+ALTER TABLE IF EXISTS ONLY categoryofauction
     ADD CONSTRAINT categoryofauction_category_fkey FOREIGN KEY (category) REFERENCES category(categoryid);
 
 
@@ -1265,7 +1265,7 @@ ALTER TABLE ONLY categoryofauction
 -- Name: city_country_fkey; Type: FK CONSTRAINT; Schema: public; Owner: lbaw1716
 --
 
-ALTER TABLE ONLY city
+ALTER TABLE IF EXISTS ONLY city
     ADD CONSTRAINT city_country_fkey FOREIGN KEY (country) REFERENCES country(id);
 
 
@@ -1273,7 +1273,7 @@ ALTER TABLE ONLY city
 -- Name: comment_auctioncommented_fkey; Type: FK CONSTRAINT; Schema: public; Owner: lbaw1716
 --
 
-ALTER TABLE ONLY comment
+ALTER TABLE IF EXISTS ONLY comment
     ADD CONSTRAINT comment_auctioncommented_fkey FOREIGN KEY (auctioncommented) REFERENCES auction(id);
 
 
@@ -1281,7 +1281,7 @@ ALTER TABLE ONLY comment
 -- Name: comment_usercommenter_fkey; Type: FK CONSTRAINT; Schema: public; Owner: lbaw1716
 --
 
-ALTER TABLE ONLY comment
+ALTER TABLE IF EXISTS ONLY comment
     ADD CONSTRAINT comment_usercommenter_fkey FOREIGN KEY (usercommenter) REFERENCES "user"(id);
 
 
@@ -1289,7 +1289,7 @@ ALTER TABLE ONLY comment
 -- Name: edit_categories_admin_fkey; Type: FK CONSTRAINT; Schema: public; Owner: lbaw1716
 --
 
-ALTER TABLE ONLY edit_categories
+ALTER TABLE IF EXISTS ONLY edit_categories
     ADD CONSTRAINT edit_categories_admin_fkey FOREIGN KEY (admin) REFERENCES "user"(id);
 
 
@@ -1297,7 +1297,7 @@ ALTER TABLE ONLY edit_categories
 -- Name: edit_categories_category_fkey; Type: FK CONSTRAINT; Schema: public; Owner: lbaw1716
 --
 
-ALTER TABLE ONLY edit_categories
+ALTER TABLE IF EXISTS ONLY edit_categories
     ADD CONSTRAINT edit_categories_category_fkey FOREIGN KEY (category) REFERENCES category(categoryid);
 
 
@@ -1305,7 +1305,7 @@ ALTER TABLE ONLY edit_categories
 -- Name: edit_moderator_removedmod_fkey; Type: FK CONSTRAINT; Schema: public; Owner: lbaw1716
 --
 
-ALTER TABLE ONLY edit_moderator
+ALTER TABLE IF EXISTS ONLY edit_moderator
     ADD CONSTRAINT edit_moderator_removedmod_fkey FOREIGN KEY (removedmod) REFERENCES "user"(id);
 
 
@@ -1313,7 +1313,7 @@ ALTER TABLE ONLY edit_moderator
 -- Name: edit_moderator_removeradmin_fkey; Type: FK CONSTRAINT; Schema: public; Owner: lbaw1716
 --
 
-ALTER TABLE ONLY edit_moderator
+ALTER TABLE IF EXISTS ONLY edit_moderator
     ADD CONSTRAINT edit_moderator_removeradmin_fkey FOREIGN KEY (removeradmin) REFERENCES "user"(id);
 
 
@@ -1321,7 +1321,7 @@ ALTER TABLE ONLY edit_moderator
 -- Name: notification_auctionassociated_fkey; Type: FK CONSTRAINT; Schema: public; Owner: lbaw1716
 --
 
-ALTER TABLE ONLY notification
+ALTER TABLE IF EXISTS ONLY notification
     ADD CONSTRAINT notification_auctionassociated_fkey FOREIGN KEY (auctionassociated) REFERENCES auction(id);
 
 
@@ -1329,7 +1329,7 @@ ALTER TABLE ONLY notification
 -- Name: notification_authenticated_userid_fkey; Type: FK CONSTRAINT; Schema: public; Owner: lbaw1716
 --
 
-ALTER TABLE ONLY notification
+ALTER TABLE IF EXISTS ONLY notification
     ADD CONSTRAINT notification_authenticated_userid_fkey FOREIGN KEY (authenticated_userid) REFERENCES "user"(id);
 
 
@@ -1337,7 +1337,7 @@ ALTER TABLE ONLY notification
 -- Name: report_auctionid_fkey; Type: FK CONSTRAINT; Schema: public; Owner: lbaw1716
 --
 
-ALTER TABLE ONLY report
+ALTER TABLE IF EXISTS ONLY report
     ADD CONSTRAINT report_auctionid_fkey FOREIGN KEY (auctionid) REFERENCES auction(id);
 
 
@@ -1345,7 +1345,7 @@ ALTER TABLE ONLY report
 -- Name: report_normaluserid_fkey; Type: FK CONSTRAINT; Schema: public; Owner: lbaw1716
 --
 
-ALTER TABLE ONLY report
+ALTER TABLE IF EXISTS ONLY report
     ADD CONSTRAINT report_normaluserid_fkey FOREIGN KEY (normaluserid) REFERENCES "user"(id);
 
 

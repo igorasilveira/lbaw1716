@@ -1,0 +1,10 @@
+A7 conselhos
+
+-> módulos por ordem de prioridade
+-> links direitos?
+-> API REST em vez de Action
+-> não se pode ter mais do que um recurso igual por URL para coisas diferentes
+-> admin/... -> url por módulos
+-> organizar os URL não precisa de ser pelos UI é melhor por módulo
+-> Módulo_Comment ou passar Comment e Report para módulo Auctions
+-> Módulo Messages -> Módulo Notifications
