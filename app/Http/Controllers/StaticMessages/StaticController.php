@@ -24,7 +24,7 @@ class StaticController extends Controller
   */
   public function showFAQ()
   {
-    return view('pages/faq');
+    return view('pages/FAQ');
   }
 
   /**

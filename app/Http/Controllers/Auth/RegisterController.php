@@ -27,7 +27,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/cards';
+    protected $redirectTo = 'layouts/app';
 
     /**
      * Create a new controller instance.
@@ -48,7 +48,7 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
+            'username' => 'required|string|max:255|unique:users',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
         ]);
@@ -63,9 +63,23 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
+            'username' => $data['username'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'compName' => $data['compName'],
+            'phoneNumber' => $data['phoneNumber'],
+            'birthDate' => $data['birthDate'],
+            'photo' => $data['photo'],
+            'country' => $data['country'],
+            'city' => $data['city'],
+            'address' => $data['address'],
+            'postalCode' => $data['postalCode'],
         ]);
+    }
+
+
+    public function showRegistrationForm()
+    {
+        return view('auth/register');
     }
 }

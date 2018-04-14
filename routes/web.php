@@ -30,10 +30,10 @@ Route::delete('api/item/{id}', 'ItemController@delete');
 // Module 1 :
 //
 // Authentication
-Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::get('login', 'Auth\LoginController@showLoginForm')->name('auth.login');
 Route::post('login', 'Auth\LoginController@login');
 Route::post('logout', 'Auth\LoginController@logout');
-Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('auth.register');
 Route::post('register', 'Auth\RegisterController@register');
 
 /*
