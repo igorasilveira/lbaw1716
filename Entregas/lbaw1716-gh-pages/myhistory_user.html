@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html>
+
+  <head lang="en">
+    <title>PcAuctions</title>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="google-signin-client_id"
+          content="975377923169-t9t1r6gcdm7qoc7o829q786mqqg4rept.apps.googleusercontent.com">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet"
+          href="assets/bootstrap/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://apis.google.com/js/platform.js"
+            async
+            defer></script>
+    <link rel="stylesheet"
+          href="assets/common/css/style.css">
+  </head>
+
+
+  <body>
+
+      <header>
+  				<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  					<div class="container-fluid">
+
+  						<a class="navbar-brand" href="index.html"><img src="images/pcAuctions_logo.png" height="50"/></a>
+  						<div class="collapse navbar-collapse row"
+  							id="navbar1">
+  							<div class="col">
+  								<form class="form-inline my-2 my-lg-0">
+  									<input class="form-control mr-sm-2" type="text" placeholder="Search">
+  									<button class="btn btn-secondary my-2 my-sm-0 p-xs-0" type="submit">Search</button>
+  								</form>
+  							</div>
+  						</div>
+  						<ul class="nav pull-right">
+  							<a href="create-auction.html">
+  							<button type="button" name="button" class="btn btn-secondary btn-md mt-1 mr-5">+<span class="hidden-xs"> Create Auction</span></button>
+  						</a>
+  							<li class="dropdown" id="menuLogin">
+  							<a class="dropdown-toggle text-white" href="#" data-toggle="dropdown" id="navLogin" data-devgib="tagged">Go To</a>
+  							<a class="" href="profile.html" data-devgib="tagged"><img src="images/photos/igor_foto.jpg" height="50" class="profile-pic" style="display: inline"/></a>
+  							<div class="dropdown-menu test" style="padding:17px;">
+  								<a class="dropdown-item" href="profile.html">Profile </a>
+  								<div class="dropdown-divider"></div>
+  								<a class="dropdown-item" href="myauctions_user.html">My Auctions </a>
+  								<div class="dropdown-divider"></div>
+  								<a class="dropdown-item" href="index.html">Log Out </a>
+  								</ul>
+  							</div>
+  						</li>
+  				</ul>
+  						<br>
+  						<button class="navbar-toggler"
+  						type="button"
+  						data-toggle="collapse"
+  						data-target="#navbar1"
+  						aria-controls="navbar1"
+  						aria-expanded="false"
+  						aria-label="Toggle navigation"
+  						style="">
+  						<img src="images/search-logo.png" height="25" alt="">
+  					</button>
+
+  						<button class="navbar-toggler"
+  						type="button"
+  						data-toggle="collapse"
+  						data-target="#navbar2"
+  						aria-controls="navbar2"
+  						aria-expanded="false"
+  						aria-label="Toggle navigation"
+  						style="">
+  						<span class="navbar-toggler-icon"></span>
+  					</button>
+  					</div>
+  				</nav>
+  				<nav class="navbar navbar-expand-lg navbar-dark bg-primary p-md-1">
+  					<div class="container-fluid">
+
+  					<div class="collapse navbar-collapse"
+  					id="navbar2">
+  					<ul class="navbar-nav mr-auto">
+  						<li class="nav-item">
+  							<a class="nav-link text-white"
+  							href="#">Towers w/ Components</a>
+  						</li>
+  						<li class="nav-item">
+  							<a class="nav-link text-white"
+  							href="#">Towers</a>
+  						</li>
+  						<li class="nav-item">
+  							<a class="nav-link text-white"
+  							href="categoryLaptops.html">Laptops</a>
+  						</li>
+  						<li class="nav-item">
+  							<a class="nav-link text-white"
+  							href="#">Components</a>
+  						</li>
+  						<li class="nav-item">
+  							<a class="nav-link text-white"
+  							href="#">Peripherals</a>
+  						</li>
+  						<li class="nav-item dropdown">
+  							<a class="nav-link  text-white dropdown-toggle"id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  								Others
+  							</a>
+  							<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+  								<a class="dropdown-item" href="#">Category</a>
+  								<a class="dropdown-item" href="#">Another Category</a>
+  							</div>
+  						</li>
+  					</ul>
+  					</div>
+  					</nav>
+  		</header>
+    <div class="hidden-xs">
+      <hr class="my-md-4 my-sm-2 my-xs-1">
+      <div class="title jumbotron my-0 p-3">
+        <h1 class="display-6">My History</h1>
+      </div>
+      <hr class="my-md-4 my-sm-2 my-xs-1">
+    </div>
+
+    <div class="container">
+      <div id="bidding"
+           class="container-fluid my-3">
+        <div id="bidViewer">
+          <h2> Bought </h2>
+          <br />
+          <ul id="auctionsMosaic"
+              class="container-fluid row col-sm-12 row">
+            <li class="col-sm-4">
+              <div id="auctionProfile">
+                <img class="img-fluid"
+                     href="#"
+                     src="images/computers.jpg" />
+                <div id="infoAuctionProfile"
+                     class="container-fluid">
+                  <div id="auctionName">
+                    <a href="#"
+                       class="text-info"> Set Of Computers</a>
+                  </div>
+                  <div id="time-bids"
+                       class="row">
+                    <ul class="row col-sm-12 list-inline">
+                      <li id="timeLeft"
+                          class="col-sm-5 mr-sm-1"> 505€ </li>
+                      <li id="bidsDone"
+                          class="col-sm-5"> 23-02-2018 </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="col-sm-4">
+              <div id="auctionProfile">
+                <img class="img-fluid"
+                     href="#"
+                     src="https://static.lvengine.net/aquario/thumb/&w=555&h=555&src=/Imgs/produtos/product_73364/70SB155000001.jpg" />
+                <div id="infoAuctionProfile"
+                     class="container-fluid">
+                  <div id="auctionName">
+                    <a href="#"
+                       class="text-info"> CL Sound Blaster Audigy</a>
+                  </div>
+                  <div id="time-bids"
+                       class="row">
+                    <ul class="row col-sm-12 list-inline">
+                      <li id="timeLeft"
+                          class="col-sm-5 mr-sm-1"> 50€ </li>
+                      <li id="bidsDone"
+                          class="col-sm-5"> 21-01-2017 </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="col-sm-4">
+              <div id="auctionProfile">
+                <img class="img-fluid"
+                     href="#"
+                     src="https://static.lvengine.net/aquario/thumb/&w=555&h=555&src=/Imgs/produtos/product_84473/90-MXB3S0-A0UAYZ.jpg" />
+                <div id="infoAuctionProfile"
+                     class="container-fluid">
+                  <div id="auctionName">
+                    <a href="#"
+                       class="text-info"> PB ASRock 1151 B250 </a>
+                  </div>
+                  <div id="time-bids"
+                       class="row">
+                    <ul class="row col-sm-12 list-inline">
+                      <li id="timeLeft"
+                          class="col-sm-5 mr-sm-1"> 50€ </li>
+                      <li id="bidsDone"
+                          class="col-sm-5"> 21-01-2017 </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+          <br />
+        </div>
+        <button type="button"
+                class="btn
+                      btn-block
+                      btn-secondary
+                      dropdown-toggle"
+                data-toggle="collapse"
+                data-target=".bidsListViewMore">
+                View More
+      </button>
+        <div>
+          <div class="bidsListViewMore container-fluid collapse">
+            <div class="container-fluid">
+              <hr class="my-3">
+              <form class="form-inline my-2 my-lg-0">
+                <input class="form-control col-7"
+                       placeholder="Search"
+                       type="text">
+                <span class="col-1"></span>
+                <button class="btn btn-primary my-2 col-4"
+                        type="submit">Search</button>
+              </form>
+              <hr class="my-3">
+            </div>
+            <table class="bidsListViewMore table-responsive table-hover">
+              <thead>
+                <tr class="table-info">
+                  <th scope="col">Photo of Item</th>
+                  <th scope="col">Name of Auction</th>
+                  <th scope="col">Value of my Bid</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td scope="row"><img src="https://images10.newegg.com/NeweggImage/ProductImageCompressAll300/11-139-109-V01.jpg"
+                         width="80"
+                         height="80"></td>
+                  <td> <a href="#"> Corsair Crystal 570X</a> </td>
+                  <td> 140€ </td>
+                </tr>
+                <tr>
+                  <td scope="row"><img src="https://cdn.shopify.com/s/files/1/2354/6323/products/hyper212_512x.png?v=1511365040"
+                         width="80"
+                         height="80"></td>
+                  <td> <a href="#"> Hyper 212 LED CoolerMaster </a> </td>
+                  <td> 20€ </td>
+                </tr>
+                <tr>
+                  <td scope="row"><img src="https://images10.newegg.com/NeweggImage/ProductImageCompressAll300/16-118-217-02.jpg"
+                         width="80"
+                         height="80"></td>
+                  <td> <a href="#"> LSI 9300-8i PCI-Express 3.0  </a> </td>
+                  <td> 20€ </td>
+                </tr>
+                <tr>
+                  <td scope="row"><img src="https://images10.newegg.com/NeweggImage/ProductImageCompressAll300/17-103-060-02.jpg"
+                         width="80"
+                         height="80"></td>
+                  <td> <a href="#"> SPARKLE SPI4001UG 400W </a> </td>
+                  <td> 30€ </td>
+                </tr>
+                <tr>
+                  <td scope="row"><img src="https://images10.newegg.com/NeweggImage/ProductImageCompressAll300/AC5F_131606512092141614A2yEb6CCwt.jpg"
+                         width="80"
+                         height="80"></td>
+                  <td> <a href="#"> Professional 1600W Modular Power Supply</a> </td>
+                  <td> 50€ </td>
+                </tr>
+              </tbody>
+            </table>
+            <br />
+            <div id="pagination">
+              <ul class="pagination pagination-sm">
+                <li class="page-item disabled">
+                  <a class="page-link"
+                     href="#">&laquo;</a>
+                </li>
+                <li class="page-item active">
+                  <a class="page-link"
+                     href="#">1</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link"
+                     href="#">2</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link"
+                     href="#">3</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link"
+                     href="#">4</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link"
+                     href="#">5</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link"
+                     href="#">&raquo;</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+      <hr class="my-4">
+      <hr class="my-4">
+      <div id="selling"
+           class="container-fluid">
+        <h2> Sold </h2>
+        <ul id="auctionsMosaic"
+            class="container-fluid row col-sm-12 row">
+          <li class="col-sm-4">
+            <div id="auctionProfile">
+              <img class="img-fluid"
+                   href="#"
+                   src="https://images10.newegg.com/NeweggImage/ProductImageCompressAll300/56-501-022-Z01.jpg" />
+              <div id="infoAuctionProfile"
+                   class="container-fluid">
+                <div id="auctionName">
+                  <a href="#"
+                     class="text-info"> ECS LIVA Z Mini PC Intel N3350</a>
+                </div>
+                <div id="time-bids"
+                     class="row">
+                  <ul class="row col-sm-12 list-inline">
+                    <li id="timeLeft"
+                        class="col-sm-5 mr-sm-1"> 145,99€ </li>
+                    <li id="bidsDone"
+                        class="col-sm-5"> 28-02-2018 </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="col-sm-4">
+            <div id="auctionProfile">
+              <img class="img-fluid"
+                   href="#"
+                   src="https://images10.newegg.com/NeweggImage/ProductImageCompressAll300/A1PC_1_201705171227807183.jpg" />
+              <div id="infoAuctionProfile"
+                   class="container-fluid">
+                <div id="auctionName">
+                  <a href="#"
+                     class="text-info"> Adesso IMOUSE W3 Waterproof Mouse </a>
+                </div>
+                <div id="time-bids"
+                     class="row">
+                  <ul class="row col-sm-12 list-inline">
+                    <li id="timeLeft"
+                        class="col-sm-5 mr-sm-1"> 20€ </li>
+                    <li id="bidsDone"
+                        class="col-sm-5"> 28-02-2018 </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="col-sm-4">
+            <div id="auctionProfile">
+              <img class="img-fluid"
+                   href="#"
+                   src="https://images10.newegg.com/NeweggImage/ProductImageCompressAll300/A1PC_1_20161220532849569.jpg" />
+              <div id="infoAuctionProfile"
+                   class="container-fluid">
+                <div id="auctionName">
+                  <a href="#"
+                     class="text-info"> Western Digital 1TB 7200RPM</a>
+                </div>
+                <div id="time-bids"
+                     class="row">
+                  <ul class="row col-sm-12 list-inline">
+                    <li id="timeLeft"
+                        class="col-sm-5 mr-sm-1"> 145,99€ </li>
+                    <li id="bidsDone"
+                        class="col-sm-5"> 28-02-2018 </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+        <br />
+        <button type="button"
+                class="btn
+                      btn-block
+                      btn-secondary
+                      dropdown-toggle"
+                data-toggle="collapse"
+                data-target=".sellsListViewMore">
+                View More
+      </button>
+        <div class="sellsListViewMore container-fluid collapse">
+          <div class="container-fluid">
+            <hr class="my-3">
+            <form class="form-inline my-2 my-lg-0">
+              <input class="form-control col-7"
+                     placeholder="Search"
+                     type="text">
+              <span class="col-1"></span>
+              <button class="btn btn-primary my-2 col-4"
+                      type="submit">Search</button>
+            </form>
+            <hr class="my-3">
+          </div>
+          <table class="sellsListViewMore table-responsive table-hover">
+            <thead>
+              <tr class="table-dark">
+                <th scope="col">Photo of Item</th>
+                <th scope="col">Name of Auction</th>
+                <th scope="col">Value of last Bid</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td scope="row"><img src="https://images10.newegg.com/NeweggImage/ProductImageCompressAll300/A3AR_1_20170609159809572.jpg"
+                       width="80"
+                       height="80"></td>
+                <td> <a href="#"> General Electric 33585 Basic HDMI(R) Extension</a> </td>
+                <td> €6,99 </td>
+              </tr>
+              <tr>
+                <td scope="row"><img src="https://images10.newegg.com/NeweggImage/ProductImageCompressAll300/AEAP_1_201802071324120412.jpg"
+                       width="80"
+                       height="80"></td>
+                <td> <a href="#"> Aquacomputer cuplex kryos NEXT 2011/2011-3</a> </td>
+                <td> 5000€ </td>
+              </tr>
+              <tr>
+                <td scope="row"><img src="https://images10.newegg.com/NeweggImage/ProductImageCompressAll300/A9F9_1_201802051489829970.jpg"
+                       width="80"
+                       height="80"></td>
+                <td> <a href="#"> Masterkleer 10/8mm (5/16"ID) PVC Tubing | 10ft</a> </td>
+                <td> 9,58€ </td>
+              </tr>
+              <tr>
+                <td scope="row"><img src="https://images10.newegg.com/ProductImageCompressAll300/14-487-291-01.jpg"
+                       width="80"
+                       height="80"></td>
+                <td> <a href="#"> EVGA GeForce GTX 1050 Ti SC GAMING</a> </td>
+                <td> 203,99€ </td>
+              </tr>
+              <tr>
+                <td scope="row"><img src="https://images10.newegg.com/ProductImageCompressAll300/19-117-730-Z01.jpg"
+                       width="80"
+                       height="80"></td>
+                <td> <a href="#"> Intel Core i5-7500 3.4 GHz LGA 1151 </a> </td>
+                <td> 162,99€ </td>
+              </tr>
+            </tbody>
+          </table>
+          <br />
+          <div id="pagination">
+            <ul class="pagination pagination-sm">
+              <li class="page-item disabled">
+                <a class="page-link"
+                   href="#">&laquo;</a>
+              </li>
+              <li class="page-item active">
+                <a class="page-link"
+                   href="#">1</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link"
+                   href="#">2</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link"
+                   href="#">3</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link"
+                   href="#">4</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link"
+                   href="#">5</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link"
+                   href="#">&raquo;</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+
+    <hr class="my-4">
+    <footer class="page-footer">
+      <div class="nav justify-content-center">
+        <div class="nav-item">
+          <a href="about.html"> About </a>
+        </div>
+        <div class="nav-item">
+          <a href="FAQ.html"> FAQ </a>
+        </div>
+        <div class="nav-item">
+          <a href="contact.html"> Contacts </a>
+        </div>
+      </div>
+      <hr class="my-4">
+    </footer>
+  </body>
+
+</html>

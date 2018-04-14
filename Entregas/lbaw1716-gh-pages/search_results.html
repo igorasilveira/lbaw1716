@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+
+  <head lang="en">
+    <title>PcAuctions</title>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="google-signin-client_id"
+          content="975377923169-t9t1r6gcdm7qoc7o829q786mqqg4rept.apps.googleusercontent.com">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet"
+          href="assets/bootstrap/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://apis.google.com/js/platform.js"
+            async
+            defer></script>
+    <link rel="stylesheet"
+          href="assets/common/css/style.css">
+  </head>
+
+
+  <body>
+
+      <header>
+  				<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  					<div class="container-fluid">
+
+  						<a class="navbar-brand" href="index.html"><img src="images/pcAuctions_logo.png" height="50"/></a>
+  						<div class="collapse navbar-collapse row"
+  							id="navbar1">
+  							<div class="col">
+  								<form class="form-inline my-2 my-lg-0">
+  									<input class="form-control mr-sm-2" type="text" placeholder="Search">
+  									<button class="btn btn-secondary my-2 my-sm-0 p-xs-0" type="submit">Search</button>
+  								</form>
+  							</div>
+  						</div>
+  						<ul class="nav pull-right">
+  							<a href="create-auction.html">
+  							<button type="button" name="button" class="btn btn-secondary btn-md mt-1 mr-5">+<span class="hidden-xs"> Create Auction</span></button>
+  						</a>
+  							<li class="dropdown" id="menuLogin">
+  							<a class="dropdown-toggle text-white" href="#" data-toggle="dropdown" id="navLogin" data-devgib="tagged">Go To</a>
+  							<a class="" href="profile.html" data-devgib="tagged"><img src="images/photos/igor_foto.jpg" height="50" class="profile-pic" style="display: inline"/></a>
+  							<div class="dropdown-menu test" style="padding:17px;">
+  								<a class="dropdown-item" href="profile.html">Profile </a>
+  								<div class="dropdown-divider"></div>
+  								<a class="dropdown-item" href="myauctions_user.html">My Auctions </a>
+  								<div class="dropdown-divider"></div>
+  								<a class="dropdown-item" href="index.html">Log Out </a>
+  								</ul>
+  							</div>
+  						</li>
+  				</ul>
+  						<br>
+  						<button class="navbar-toggler"
+  						type="button"
+  						data-toggle="collapse"
+  						data-target="#navbar1"
+  						aria-controls="navbar1"
+  						aria-expanded="false"
+  						aria-label="Toggle navigation"
+  						style="">
+  						<img src="images/search-logo.png" height="25" alt="">
+  					</button>
+
+  						<button class="navbar-toggler"
+  						type="button"
+  						data-toggle="collapse"
+  						data-target="#navbar2"
+  						aria-controls="navbar2"
+  						aria-expanded="false"
+  						aria-label="Toggle navigation"
+  						style="">
+  						<span class="navbar-toggler-icon"></span>
+  					</button>
+  					</div>
+  				</nav>
+  				<nav class="navbar navbar-expand-lg navbar-dark bg-primary p-md-1">
+  					<div class="container-fluid">
+
+  					<div class="collapse navbar-collapse"
+  					id="navbar2">
+  					<ul class="navbar-nav mr-auto">
+  						<li class="nav-item">
+  							<a class="nav-link text-white"
+  							href="#">Towers w/ Components</a>
+  						</li>
+  						<li class="nav-item">
+  							<a class="nav-link text-white"
+  							href="#">Towers</a>
+  						</li>
+  						<li class="nav-item">
+  							<a class="nav-link text-white"
+  							href="categoryLaptops.html">Laptops</a>
+  						</li>
+  						<li class="nav-item">
+  							<a class="nav-link text-white"
+  							href="#">Components</a>
+  						</li>
+  						<li class="nav-item">
+  							<a class="nav-link text-white"
+  							href="#">Peripherals</a>
+  						</li>
+  						<li class="nav-item dropdown">
+  							<a class="nav-link  text-white dropdown-toggle"id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  								Others
+  							</a>
+  							<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+  								<a class="dropdown-item" href="#">Category</a>
+  								<a class="dropdown-item" href="#">Another Category</a>
+  							</div>
+  						</li>
+  					</ul>
+  					</div>
+  					</nav>
+  		</header>
+    <div class="hidden-xs">
+      <hr class="my-md-4 my-sm-2 my-xs-1">
+      <div class="title jumbotron my-0 p-3">
+        <h1 class="display-6">Search Results for "Processors"</h1>
+      </div>
+      <hr class="my-md-4 my-sm-2 my-xs-1">
+    </div>
+
+    <div class="container w-65">
+      <table class="table table-hover">
+        <thead>
+          <tr class="table">
+            <th>Item</th>
+            <th>Context</th>
+            <th>Go to Page</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td> Intel® Core™ <u>Processor</u> 8th Gen Intel® Core™ i7 </td>
+            <td>Auction</td>
+            <td><img href="#"
+                   src="images/goto_link.png"
+                   width="20"
+                   height="20" />
+            </td>
+          </tr>
+          <tr>
+            <td> Intel® Core™ <u>Processor</u> 7th Gen Intel® Core™ i7 </td>
+            <td>Auction</td>
+            <td><img href="#"
+                   src="images/goto_link.png"
+                   width="20"
+                   height="20" />
+            </td>
+          </tr>
+          <tr>
+            <td> Intel® Core™ <u>Processor</u> 8th Gen Intel® Core™ i5 </td>
+            <td>Auction</td>
+            <td><img href="#"
+                   src="images/goto_link.png"
+                   width="20"
+                   height="20" />
+            </td>
+          </tr>
+          <tr>
+            <td> <u>Processor</u> Cortex-A75 - 64/32-bit Armv8-A </td>
+            <td>Auction</td>
+            <td><img href="#"
+                   src="images/goto_link.png"
+                   width="20"
+                   height="20" />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <br />
+      <div id="pagination">
+        <ul class="pagination pagination-sm">
+          <li class="page-item disabled">
+            <a class="page-link"
+               href="#">&laquo;</a>
+          </li>
+          <li class="page-item active">
+            <a class="page-link"
+               href="#">1</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link"
+               href="#">2</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link"
+               href="#">3</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link"
+               href="#">4</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link"
+               href="#">5</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link"
+               href="#">&raquo;</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <br />
+
+    <hr class="my-4">
+    <footer class="page-footer">
+      <div class="nav justify-content-center">
+        <div class="nav-item">
+          <a href="about.html"> About </a>
+        </div>
+        <div class="nav-item">
+          <a href="FAQ.html"> FAQ </a>
+        </div>
+        <div class="nav-item">
+          <a href="contact.html"> Contacts </a>
+        </div>
+      </div>
+      <hr class="my-4">
+    </footer>
+  </body>
+
+</html>

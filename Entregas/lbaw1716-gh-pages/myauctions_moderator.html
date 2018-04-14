@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html>
+
+  <head lang="en">
+    <title>PcAuctions</title>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="google-signin-client_id"
+          content="975377923169-t9t1r6gcdm7qoc7o829q786mqqg4rept.apps.googleusercontent.com">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet"
+          href="assets/bootstrap/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://apis.google.com/js/platform.js"
+            async
+            defer></script>
+            <script src="assets/common/javascript/javascript.js"
+            async
+            defer></script>
+    <link rel="stylesheet"
+          href="assets/common/css/style.css">
+  </head>
+
+
+  <body>
+
+      <header>
+  				<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  					<div class="container-fluid">
+
+  						<a class="navbar-brand" href="index.html"><img src="images/pcAuctions_logo.png" height="50"/></a>
+  						<div class="collapse navbar-collapse row"
+  							id="navbar1">
+  							<div class="col">
+  								<form class="form-inline my-2 my-lg-0">
+  									<input class="form-control mr-sm-2" type="text" placeholder="Search">
+  									<button class="btn btn-secondary my-2 my-sm-0 p-xs-0" type="submit">Search</button>
+  								</form>
+  							</div>
+  						</div>
+  						<ul class="nav pull-right">
+  							<li class="dropdown" id="menuLogin">
+  							<a class="dropdown-toggle text-white" href="#" data-toggle="dropdown" id="navLogin" data-devgib="tagged">Go To</a>
+  							<a class="" href="profile.html" data-devgib="tagged"><img src="images/photos/igor_foto.jpg" height="50" class="profile-pic" style="display: inline"/></a>
+  							<div class="dropdown-menu test" style="padding:17px;">
+  								<a class="dropdown-item" href="profile.html">Profile </a>
+  								<div class="dropdown-divider"></div>
+  								<a class="dropdown-item" href="myauctions_user.html">My Auctions </a>
+  								<div class="dropdown-divider"></div>
+  								<a class="dropdown-item" href="index.html">Log Out </a>
+  								</ul>
+  							</div>
+  						</li>
+  				</ul>
+  						<br>
+  						<button class="navbar-toggler"
+  						type="button"
+  						data-toggle="collapse"
+  						data-target="#navbar1"
+  						aria-controls="navbar1"
+  						aria-expanded="false"
+  						aria-label="Toggle navigation"
+  						style="">
+  						<img src="images/search-logo.png" height="25" alt="">
+  					</button>
+
+  						<button class="navbar-toggler"
+  						type="button"
+  						data-toggle="collapse"
+  						data-target="#navbar2"
+  						aria-controls="navbar2"
+  						aria-expanded="false"
+  						aria-label="Toggle navigation"
+  						style="">
+  						<span class="navbar-toggler-icon"></span>
+  					</button>
+  					</div>
+  				</nav>
+  				<nav class="navbar navbar-expand-lg navbar-dark bg-primary p-md-1">
+  					<div class="container-fluid">
+
+  					<div class="collapse navbar-collapse"
+  					id="navbar2">
+  					<ul class="navbar-nav mr-auto">
+  						<li class="nav-item">
+  							<a class="nav-link text-white"
+  							href="#">Towers w/ Components</a>
+  						</li>
+  						<li class="nav-item">
+  							<a class="nav-link text-white"
+  							href="#">Towers</a>
+  						</li>
+  						<li class="nav-item">
+  							<a class="nav-link text-white"
+  							href="categoryLaptops.html">Laptops</a>
+  						</li>
+  						<li class="nav-item">
+  							<a class="nav-link text-white"
+  							href="#">Components</a>
+  						</li>
+  						<li class="nav-item">
+  							<a class="nav-link text-white"
+  							href="#">Peripherals</a>
+  						</li>
+  						<li class="nav-item dropdown">
+  							<a class="nav-link  text-white dropdown-toggle"id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  								Others
+  							</a>
+  							<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+  								<a class="dropdown-item" href="#">Category</a>
+  								<a class="dropdown-item" href="#">Another Category</a>
+  							</div>
+  						</li>
+  					</ul>
+  					</div>
+  					</nav>
+  		</header>
+    <div class="hidden-xs">
+      <hr class="my-md-4 my-sm-2 my-xs-1">
+      <div class="title jumbotron my-0 p-3">
+        <h1 class="display-6">My Auctions</h1>
+      </div>
+      <hr class="my-md-4 my-sm-2 my-xs-1">
+    </div>
+    <div class="container">
+
+      <div id="pending"
+           class="container-fluid">
+        <div id="pendingViewer">
+          <h2> Pending </h2>
+          <ul id="auctionsMosaic"
+              class="container-fluid row col-sm-12 row">
+            <li class="col-sm-4">
+              <div id="auctionProfile">
+                <img class="img-fluid"
+                     href="#"
+                     src="https://2.bp.blogspot.com/-d5PF-eydq78/WQtZbOqsYwI/AAAAAAAAIkA/E_jyk_rXk4g60oukZ4yVH5TrBMT7IFXgACK4B/s320/Asus%2BB350%2BPlus.jpg"
+                     class="img-fluid">
+                <div id="infoAuctionProfile"
+                     class="container-fluid">
+                  <div id="auctionName">
+                    <a href="#"
+                       class="text-info"> Motherboard - ASUS PRIME B350-PLUS Rs.8,125 </a>
+                  </div>
+                  <div id="time-bids"
+                       class="row">
+                    <ul class="row col-sm-12 list-inline">
+                      <li id="timeLeft"
+                          class="col-sm-5 mr-sm-1"> 100€ </li>
+                      <li id="bidsDone"
+                          class="col-sm-5"> Not Started </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="col-sm-4">
+              <div id="auctionProfile">
+                <img class="img-fluid"
+                     href="#"
+                     src="https://static.lvengine.net/aquario/thumb/&w=555&h=555&src=/Imgs/produtos/product_71153/0-761345-05055-5.jpg" />
+                <div id="infoAuctionProfile"
+                     class="container-fluid">
+                  <div id="auctionName">
+                    <a href="#"
+                       class="text-info"> Fonte Alim. Antec 0-761345-05055-5 550W ATX Preta </a>
+                  </div>
+                  <div id="time-bids"
+                       class="row">
+                    <ul class="row col-sm-12 list-inline">
+                      <li id="timeLeft"
+                          class="col-sm-5 mr-sm-1"> 200€ </li>
+                      <li id="bidsDone"
+                          class="col-sm-5"> Not Started </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="col-sm-4">
+              <div id="auctionProfile">
+                <img class="img-fluid"
+                     href="#"
+                     src="https://static.lvengine.net/aquario/thumb/&w=555&h=555&src=/Imgs/produtos/product_97919/0-761345-10106-6.jpg" />
+                <div id="infoAuctionProfile"
+                     class="container-fluid">
+                  <div id="auctionName">
+                    <a href="#"
+                       class="text-info"> Antec ISK110 Vesa-U3 </a>
+                  </div>
+                  <div id="time-bids"
+                       class="row">
+                    <ul class="row col-sm-12 list-inline">
+                      <li id="timeLeft"
+                          class="col-sm-5 mr-sm-1"> 500€ </li>
+                      <li id="bidsDone"
+                          class="col-sm-5"> Not Started </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+          <br />
+        </div>
+        <button type="button"
+                class="btn btn-block btn-secondary dropdown-toggle"
+                data-toggle="collapse"
+                data-target=".pendingListViewMore">
+      View More
+    </button>
+        <div class="pendingListViewMore container-fluid collapse">
+          <div class="container-fluid">
+            <hr class="my-3">
+            <form class="form-inline my-2 my-lg-0">
+              <input class="form-control col-7"
+                     placeholder="Search"
+                     type="text">
+              <span class="col-1"></span>
+              <button class="btn btn-primary my-2 col-4"
+                      type="submit">Search</button>
+            </form>
+            <hr class="my-3">
+          </div>
+          <table id="pendingListViewMoreTable" class="pendingListViewMore table-responsive table-hover">
+            <thead>
+              <tr class="table-info">
+                <th scope="col">Photo of Item</th>
+                <th scope="col">Name of Auction</th>
+                <th scope="col">Name of Seller</th>
+                <th scope="col">Minimum Value</th>
+                <th scope="col">Buy Now Price</th>
+                <th scope="col">Lifetime of Auction</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td scope="row"><img src="https://static.lvengine.net/aquario/thumb/&w=555&h=555&src=/Imgs/produtos/product_103593//90YV0AT0-M0NA00_2.jpg"
+                       width="80"
+                       height="80"></td>
+                <td> <a href="#"> Asus GT1030-SL-2G-BRK Geforce GT 1030 2GB GDDR5 </a> </td>
+                <td> Xpto_Seller </td>
+                <td> 20€ </td>
+                <td> 30€ </td>
+                <td> 1-03-2018 </td>
+              </tr>
+              <tr>
+                <td scope="row"><img src="https://cdn.shopify.com/s/files/1/2354/6323/products/hyper212_512x.png?v=1511365040"
+                       width="80"
+                       height="80"></td>
+                <td> <a href="#"> Hyper 212 LED CoolerMaster </a> </td>
+                <td> Xpto_Seller </td>
+                <td> 20€ </td>
+                <td> 30€ </td>
+                <td> 1-03-2018 </td>
+              </tr>
+              <tr>
+                <td scope="row"><img src="https://static.fnac-static.com/multimedia/Images/PT/NR/3c/d2/14/1364540/1540-1.jpg"
+                       width="80"
+                       height="80"></td>
+                <td> <a href="#"> Laptop Acer Spin SP513-51 | i7-7500U </a></td>
+                <td> Xpto_Seller </td>
+                <td> 20€ </td>
+                <td> 30€ </td>
+                <td> 1-03-2018 </td>
+              </tr>
+              <tr>
+                <td scope="row"><img src="https://static.fnac-static.com/multimedia/Images/PT/NR/5c/76/15/1406556/1540-1.jpg"
+                       width="80"
+                       height="80"></td>
+                <td> <a href="#"> HP Spectre 13-af002np Laptop </a> </td>
+                <td> Xpto_Seller245 </td>
+                <td> 20€ </td>
+                <td> 30€ </td>
+                <td> 1-03-2018 </td>
+              </tr>
+              <tr>
+                <td scope="row"><img src="https://images-na.ssl-images-amazon.com/images/I/71ox6J8%2BWHL._SL1500_.jpg"
+                       width="80"
+                       height="80"></td>
+                <td> <a href="#"> PNY GF1060GTX6GEPB GeForce GTX 1060 6GB GDDR5 </a> </td>
+                <td> AnotherSeller100 </td>
+                <td> 250€ </td>
+                <td> 200€ </td>
+                <td> 1-03-2018 </td>
+              </tr>
+            </tbody>
+          </table>
+          <div id="pagination">
+            <ul class="pagination pagination-sm">
+              <li class="page-item disabled">
+                <a class="page-link"
+                   href="#">&laquo;</a>
+              </li>
+              <li class="page-item active">
+                <a class="page-link"
+                   href="#">1</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link"
+                   href="#">2</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link"
+                   href="#">3</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link"
+                   href="#">4</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link"
+                   href="#">5</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link"
+                   href="#">&raquo;</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <hr class="my-4">
+      <div id="selling"
+           class="container-fluid">
+        <h2> Taking Place </h2>
+        <ul id="auctionsMosaic"
+            class="container-fluid row col-sm-12 row">
+          <li class="col-sm-4">
+            <div id="auctionProfile">
+              <img class="img-fluid"
+                   href="#"
+                   src="https://static.lvengine.net/aquario/thumb/&w=555&h=555&src=/Imgs/produtos/product_84090/5631150.jpg" />
+              <div id="infoAuctionProfile"
+                   class="container-fluid">
+                <div id="auctionName">
+                  <a href="#"
+                     class="text-info"> RAM Module 5631150 4GB DDR3 1600MHz </a>
+                </div>
+                <div id="time-bids"
+                     class="row">
+                  <ul class="row col-sm-12 list-inline">
+                    <li id="timeLeft"
+                        class="col-sm-5 mr-sm-1"> 5d 09h </li>
+                    <li id="bidsDone"
+                        class="col-sm-5"> 14 Bids </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="col-sm-4">
+            <div id="auctionProfile">
+              <img class="img-fluid"
+                   href="#"
+                   src="https://static.lvengine.net/aquario/thumb/&w=555&h=555&src=/Imgs/produtos/product_102242//90YV0A30-M0NA00_3.jpg" />
+              <div id="infoAuctionProfile"
+                   class="container-fluid">
+                <div id="auctionName">
+                  <a href="#"
+                     class="text-info"> Asus Strix-GTX1050TI-O4G-Gaming Geforce 1050 </a>
+                </div>
+                <div id="time-bids"
+                     class="row">
+                  <ul class="row col-sm-12 list-inline">
+                    <li id="timeLeft"
+                        class="col-sm-5 mr-sm-1"> 5d 09h </li>
+                    <li id="bidsDone"
+                        class="col-sm-5"> 14 Bids </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="col-sm-4">
+            <div id="auctionProfile">
+              <img class="img-fluid"
+                   href="#"
+                   src="https://static.lvengine.net/aquario/thumb/&w=555&h=555&src=/Imgs/produtos/product_86703/911-7A39-009.jpg" />
+              <div id="infoAuctionProfile"
+                   class="container-fluid">
+                <div id="auctionName">
+                  <a href="#"
+                     class="text-info"> Motherboard MSI A320M Grenade </a>
+                </div>
+                <div id="time-bids"
+                     class="row">
+                  <ul class="row col-sm-12 list-inline">
+                    <li id="timeLeft"
+                        class="col-sm-5 mr-sm-1"> 5d 09h </li>
+                    <li id="bidsDone"
+                        class="col-sm-5"> 14 Bids </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+        <br />
+        <button type="button"
+                class="btn
+                  btn-block
+                  btn-secondary
+                  dropdown-toggle"
+                data-toggle="collapse"
+                data-target=".sellsListViewMore">
+                  View More
+                </button>
+        <div class="sellsListViewMore container-fluid collapse">
+          <div class="container-fluid">
+            <hr class="my-3">
+            <form class="form-inline my-2 my-lg-0">
+              <input class="form-control col-7"
+                     placeholder="Search"
+                     type="text">
+              <span class="col-1"></span>
+              <button class="btn btn-primary my-2 col-4"
+                      type="submit">Search</button>
+            </form>
+            <hr class="my-3">
+          </div>
+          <table id="SellsListViewMoreTable" class="sellsListViewMore table-responsive table-hover">
+            <thead>
+              <tr class="table-dark">
+                <th scope="col">Photo of Item</th>
+                <th scope="col">Name of Auction</th>
+                <th scope="col">Name of Seller</th>
+                <th scope="col">Minimum Value</th>
+                <th scope="col">Buy Now Price</th>
+                <th scope="col">Value of last Bid</th>
+                <th scope="col">Lifetime of Auction</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td scope="row"><img src="https://pic.clubic.com/v1/images/772507/raw"
+                       width="80"
+                       height="80"></td>
+                <td> <a href="#"> PNY GF1060GTX6GEPB GeForce GTX 1060 6GB GDDR5 </a> </td>
+                <td> Exem_Seller </td>
+                <td> 250€ </td>
+                <td> 500€ </td>
+                <td> 350€ </td>
+                <td> 5-03-2018 </td>
+              </tr>
+              <tr>
+                <td scope="row"><img src="https://static.lvengine.net/aquario/thumb/&w=555&h=555&src=/Imgs/produtos/product_102304//4044951015986.jpg"
+                       width="80"
+                       height="80"></td>
+                <td> <a href="#"> Sharkoon 750W SilentStorm Icewind 80 Plus Bronze </a> </td>
+                <td> Igor </td>
+                <td> 50€ </td>
+                <td> 30€ </td>
+                <td> 25€ </td>
+                <td> 5-03-2018 </td>
+              </tr>
+              <tr>
+                <td scope="row"><img src="https://static.lvengine.net/aquario/thumb/&w=555&h=555&src=/Imgs/produtos/product_102305//4044951016037.jpg"
+                       width="80"
+                       height="80"></td>
+                <td> <a href="#"> Sharkoon VS4-V Torre-Midi PC ATX Micro ATX </a> </td>
+                <td> Igor </td>
+                <td> 15€ </td>
+                <td> 12€ </td>
+                <td> 12€ </td>
+                <td> 5-03-2018 </td>
+              </tr>
+              <tr>
+                <td scope="row"><img src="https://images10.newegg.com/NeweggImage/ProductImageCompressAll300/20-158-637-V01.jpg"
+                       width="80"
+                       height="80"></td>
+                <td> <a href="#"> GeIL SUPER LUCE RGB SYNC 16GB (2 x 8GB) 288-Pin DDR4 SDRAM DDR4 3000 (PC4 24000) Desktop Memory Model  </a> </td>
+                <td> Igor </td>
+                <td> 145€ </td>
+                <td> 145€ </td>
+                <td> 130€ </td>
+                <td> 5-03-2018 </td>
+              </tr>
+              <tr>
+                <td scope="row"><img src="https://images10.newegg.com/NeweggImage/ProductImageCompressAll300/13-157-781-V01.jpg"
+                       width="80"
+                       height="80"></td>
+                <td> <a href="#"> ASRock H110 Pro BTC+ LGA 1151 Intel H110 SATA 6Gb/s USB 3.0 ATX Intel Motherboard  </a> </td>
+                <td> Igor </td>
+                <td> 145€ </td>
+                <td> 143€ </td>
+                <td> 120€ </td>
+                <td> 2-03-2018 </td>
+              </tr>
+            </tbody>
+          </table>
+          <div id="pagination">
+            <ul class="pagination pagination-sm">
+              <li class="page-item disabled">
+                <a class="page-link"
+                   href="#">&laquo;</a>
+              </li>
+              <li class="page-item active">
+                <a class="page-link"
+                   href="#">1</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link"
+                   href="#">2</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link"
+                   href="#">3</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link"
+                   href="#">4</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link"
+                   href="#">5</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link"
+                   href="#">&raquo;</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+
+    <hr class="my-4">
+    <footer class="page-footer">
+      <div class="nav justify-content-center">
+        <div class="nav-item">
+          <a href="about.html"> About </a>
+        </div>
+        <div class="nav-item">
+          <a href="FAQ.html"> FAQ </a>
+        </div>
+        <div class="nav-item">
+          <a href="contact.html"> Contacts </a>
+        </div>
+      </div>
+      <hr class="my-4">
+    </footer>
+  </body>
+
+</html>

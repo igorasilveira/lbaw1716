@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+
+  <head lang="en">
+    <title>PcAuctions</title>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="google-signin-client_id"
+          content="975377923169-t9t1r6gcdm7qoc7o829q786mqqg4rept.apps.googleusercontent.com">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet"
+          href="assets/bootstrap/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://apis.google.com/js/platform.js"
+            async
+            defer></script>
+    <link rel="stylesheet"
+          href="assets/common/css/style.css">
+  </head>
+
+
+  <body>
+    <header>
+				<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+					<div class="container-fluid">
+            <a class="navbar-brand" href="index.html"><img src="images/pcAuctions_logo.png" height="50"/></a>
+
+						<div class="collapse navbar-collapse row"
+							id="navbar1">
+							<div class="col">
+								<form class="form-inline my-2 my-lg-0">
+									<input class="form-control mr-sm-2" type="text" placeholder="Search">
+									<button class="btn btn-secondary my-2 my-sm-0 p-xs-0" type="submit">Search</button>
+								</form>
+							</div>
+						</div>
+						<ul class="nav pull-right">
+							<a href="create-auction.html">
+							<button type="button" name="button" class="btn btn-secondary btn-md mt-1 mr-5">+<span class="hidden-xs"> Create Auction</span></button>
+						</a>
+							<li class="dropdown" id="menuLogin">
+							<a class="dropdown-toggle text-white" href="#" data-toggle="dropdown" id="navLogin" data-devgib="tagged">Go To</a>
+							<a class="" href="profile.html" data-devgib="tagged"><img src="images/photos/igor_foto.jpg" height="50" class="profile-pic" style="display: inline"/></a>
+							<div class="dropdown-menu test" style="padding:17px;">
+								<a class="dropdown-item" href="profile.html">Profile </a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="myauctions_user.html">My Auctions </a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="index.html">Log Out </a>
+								</ul>
+							</div>
+						</li>
+				</ul>
+						<br>
+						<button class="navbar-toggler"
+						type="button"
+						data-toggle="collapse"
+						data-target="#navbar1"
+						aria-controls="navbar1"
+						aria-expanded="false"
+						aria-label="Toggle navigation"
+						style="">
+						<img src="images/search-logo.png" height="25" alt="">
+					</button>
+
+						<button class="navbar-toggler"
+						type="button"
+						data-toggle="collapse"
+						data-target="#navbar2"
+						aria-controls="navbar2"
+						aria-expanded="false"
+						aria-label="Toggle navigation"
+						style="">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					</div>
+				</nav>
+				<nav class="navbar navbar-expand-lg navbar-dark bg-primary p-md-1">
+					<div class="container-fluid">
+
+					<div class="collapse navbar-collapse"
+					id="navbar2">
+					<ul class="navbar-nav mr-auto">
+						<li class="nav-item">
+							<a class="nav-link text-white"
+							href="#">Towers w/ Components</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link text-white"
+							href="#">Towers</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link text-white"
+							href="categoryLaptops.html">Laptops</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link text-white"
+							href="#">Components</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link text-white"
+							href="#">Peripherals</a>
+						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-link  text-white dropdown-toggle"id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								Others
+							</a>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+								<a class="dropdown-item" href="#">Category</a>
+								<a class="dropdown-item" href="#">Another Category</a>
+							</div>
+						</li>
+					</ul>
+					</div>
+					</nav>
+		</header>
+
+    <div class="hidden-xs">
+      <hr class="my-md-4 my-sm-2 my-xs-1">
+      <div class="title jumbotron my-0 p-3">
+        <h1 class="display-6">Auction</h1>
+      </div>
+      <hr class="my-md-4 my-sm-2 my-xs-1">
+    </div>
+
+    <div id="warningPendingTop" class=" my-md-5 my-sm-3 my-xs-2 alert alert-dismissible alert-info my-4 w-75 mx-auto box-shadow">
+      Your action is <strong class="alert-link">pending review</strong>. You will be notified of the decision once it is taken.
+    </div>
+
+    <div class="jumbotron">
+
+      <div id="profile-container"
+           class="w-75 mx-auto">
+        <div class="row">
+          <div class="col-md-6 col-sm-12 col-xs-12"> <a href="#"
+               title="Item 1"><img src="images/computers.jpg"
+          class="mb-4 box-shadow w-border w-100" title="Auction Image"></a> </div>
+          <div id="info-container"
+               class="col-md-6 col-sm-12 col-xs-12 vcen container-fluid ">
+            <div class="text-md-right text-xs-center">
+              <section class="pb-2">
+                <h5 class="text-muted">#13112</h5>
+                <h4>By <a href="profile">Igor</a><span class=" mx-4 badge badge-pill badge-info">4.5/5</span></h4>
+              </section>
+              <section>
+                <p>
+                  Set of Computers
+                </p>
+                <p>
+                  Complete bundle of computers all in perfect condition and ready to use.
+                </p>
+              </section>
+              <h3 class="text-info pb-2">NOT STARTED</h3>
+            </div>
+            <div id="buyPanel"
+                 class="text-center w-100 border border-dark p-2 d-inline-block">
+              <h4 class="pb-2">Bidding</h4>
+              <hr class="py-0" />
+              <!-- BID BUTTON AREA -->
+              <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 my-auto">
+                  <h5 class="align-bottom">Starting Bid: </h5>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 my-auto">
+                  <p>
+                    5,00€
+                  </p>
+                </div>
+                <div class="col-lg-4 col-md-0 col-sm-12 col-xs-12 my-auto">
+
+                </div>
+              </div>
+              <hr class="my-2">
+              <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 my-auto">
+                  <h5 class="align-bottom">Minimum Bid: </h5>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 my-auto">
+                  <p>
+                    20,00€
+                  </p>
+                </div>
+                <div class="col-lg-4 col-md-0 col-sm-12 col-xs-12 my-auto">
+
+                </div>
+              </div>
+              <hr class="my-2">
+              <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 my-auto">
+                  <h5 class="align-bottom">Buy Now Price: </h5>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 my-auto">
+                  <p>
+                    25,00€
+                  </p>
+                </div>
+                <div class="col-lg-4 col-md-0 col-sm-12 col-xs-12 my-auto">
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr class="pb-4">
+    <div id="auction-meta"
+         class="container mx-auto">
+      <ul class="nav nav-tabs">
+        <li class="nav-item"><a class="nav-link active show"
+             data-toggle="tab"
+             href="#info">More Info</a></li>
+        <li class="nav-item"><a class="nav-link"
+             data-toggle="tab"
+             href="#comments">Comments</a></li>
+        <li class="nav-item"><a class="nav-link"
+             data-toggle="tab"
+             href="#contacts">Contacts</a></li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade active show"
+             id="info"
+             role="tabpanel"
+             aria-labelledby="info-tab">
+          <div class="info">
+            <section class="my-4">
+              <h4>Description</h4>
+              <p>
+                Processor - dual core 2.4 GHz+ (i5 or i7 series Intel processor or equivalent AMD)<br> RAM - 16 GB <br> Hard Drive - 256 GB or larger solid state hard drive <br> Graphics Card - any with DisplayPort/HDMI or DVI support - desktop only <br>                Wireless (for laptops) - 802.11ac (WPA2 support required) <br> Monitor - 23" widescreen LCD with DisplayPort/HDMI or DVI support - desktop only <br> Operating System - Windows 10 Home or Professional editions, or Apple OS X 10.12.3 <br>                Warranty - 3 year warranty - desktop only <br> Warranty - 4 year warranty with accidental damage protection - laptop only <br> Backup Device - External hard drive and/or USB Flash Drive <br>
+              </p>
+            </section>
+            <hr class="my-2">
+            <section class="my-4">
+              <h4>Selling Reason</h4>
+              <p>
+                Offered on Christmas but were to many at once.
+              </p>
+            </section>
+          </div>
+        </div>
+        <div class="tab-pane fade"
+             id="comments"
+             role="tabpanel"
+             aria-labelledby="comments-tab">
+          <div class="alert alert-dismissible alert-warning my-3">
+            <button type="button"
+                    class="close"
+                    data-dismiss="alert">&times;</button>
+            <h4 class="alert-heading">Warning!</h4>
+            <p class="mb-0">All comments are supervised by the auction's moderator. Keep within the site's for the commenting section. <span class="alert-link">Breaking the rules may result in an account ban.</span>.</p>
+          </div>
+          <blockquote class="blockquote my-4">
+            <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+            <footer class="blockquote-footer"><cite title="Source Title"><a>anotherUser</a></cite></footer>
+          </blockquote>
+          <hr class="my-2">
+          <blockquote class="blockquote my-4">
+            <p class="mb-0">Ut lorem mauris, ultrices ac ante nec, cursus porta ipsum. Morbi felis felis, finibus ut vestibulum at, feugiat vel lorem. Nulla sapien dui, porttitor in nulla non, aliquet ultricies enim. Ut semper ac enim eget porta. Morbi arcu mauris, auctor
+              eget ex sed, condimentum eleifend nibh. Aenean risus dolor, placerat sit amet nisl imperdiet, feugiat aliquam odio. Vestibulum metus ex, molestie eu tempus eu, tristique quis elit. Maecenas nec neque posuere, aliquam quam sed, lobortis velit.
+              Vivamus semper quam id accumsan porta. Morbi in hendrerit orci, sit amet volutpat diam.</p>
+            <footer class="blockquote-footer"><cite title="Source Title"><a>niceUsername</a></cite></footer>
+          </blockquote>
+          <hr class="my-2">
+          <blockquote class="blockquote my-4">
+            <p class="mb-0">In sollicitudin tellus nec ex lacinia rutrum. Suspendisse potenti. Ut cursus efficitur ante, at mollis ligula rhoncus quis. Integer laoreet nibh a massa feugiat, sit amet sagittis risus vulputate. Integer tincidunt metus pellentesque justo
+              rutrum, eget faucibus libero porta.</p>
+            <footer class="blockquote-footer">Someone famous in <cite title="Source Title"><a>Igor</a></cite></footer>
+          </blockquote>
+          <hr class="my-2">
+        </div>
+        <div class="tab-pane fade"
+             id="contacts"
+             role="tabpanel"
+             aria-labelledby="contacts-tab">
+          <section class="my-4">
+            <h4>Phone Number</h4>
+            <p>
+              002336159038
+            </p>
+          </section>
+          <hr class="my-2">
+          <section class="my-4">
+            <h4>Email Address</h4>
+            <p>
+              username@example.com
+            </p>
+          </section>
+        </div>
+      </div>
+    </div>
+    <hr class="my-4">
+    <footer class="page-footer">
+      <div class="nav justify-content-center">
+        <div class="nav-item">
+          <a href="about.html"> About </a>
+        </div>
+        <div class="nav-item">
+          <a href="FAQ.html"> FAQ </a>
+        </div>
+        <div class="nav-item">
+          <a href="contact.html"> Contacts </a>
+        </div>
+      </div>
+      <hr class="my-4">
+    </footer>
+  </body>
+
+</html>

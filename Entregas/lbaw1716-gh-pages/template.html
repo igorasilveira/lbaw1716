@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+
+  <head lang="en">
+    <title>PcAuctions</title>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="google-signin-client_id"
+          content="975377923169-t9t1r6gcdm7qoc7o829q786mqqg4rept.apps.googleusercontent.com">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet"
+          href="assets/bootstrap/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://apis.google.com/js/platform.js"
+            async
+            defer></script>
+    <link rel="stylesheet"
+          href="assets/common/css/style.css">
+  </head>
+
+
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand"
+           href="home_AuthenticatedUser.html"><img src="images/pcAuctions_logo.png" width="40" height="40"/></a>
+        <button class="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarColor01"
+                aria-controls="navbarColor01"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+                style="">
+  			    <span class="navbar-toggler-icon"></span>
+  			  </button>
+        <div class="collapse navbar-collapse"
+             id="navbarColor01">
+          <div class="col-sm-8">
+            <form class="form-inline my-2 my-lg-0">
+              <input class="form-control mr-sm-2 col-sm-8"
+                     placeholder="Search"
+                     type="text">
+              <button class="btn btn-secondary my-2 my-sm-0 col-sm-3"
+                      type="submit">Search</button>
+            </form>
+          </div>
+          <div id="profileNav"
+               class="col-sm-2 nav-item">
+            <ul class="navbar-nav">
+              <li class="nav-item col-sm-6">
+                <a class="nav-link dropdown-toggle"
+                   data-toggle="dropdown"
+                   role="button"
+                   aria-haspopup="true"
+                   aria-expanded="false"
+                   href="#">Igor</a>
+                <div class="dropdown-menu"
+                     role="menu"
+                     x-placement="bottom-start"
+                     style="position: absolute;
+                               transform: translate3d(0px, 39px, 0px);
+                              top: 0px; left: 0px;
+                              will-change: transform;">
+                  <div class="container">
+                    <div class="dropdown-header"> Go To</div>
+                    <ul>
+                      <li><a href="profile.html"> Profile </a></li>
+                      <li><a href="myauctions_user.html"> My Auctions </a></li>
+                      <li><a href="index.html"> Log Out </a></li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+              <li class="col-sm-6">
+                <a href="profile.html">
+                     <img
+                       src="images/photos/igor_foto.jpg"
+                       href="profile.html"
+                       class="img-fluid profile-pic"
+                       width="40"
+                       height="40">
+                  </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <nav id="categories"
+         class="navbar navbar-expand-lg nav-justified">
+      <button class="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#catNav"
+              aria-controls="catNav"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+              style="">
+          <img src="images/menu-icon-300px.png" width="20" height="20"/>
+        </button>
+      <div id="catNav"
+           class="collapse navbar-collapse">
+        <div class="row">
+          <ul id="categories"
+              class="mr-auto btn-group">
+            <li class="nav-item">
+              <a type="button"
+                 class="btn btn-secondary"
+                 data-toggle="tooltip"
+                 data-placement="left"
+                 title=""
+                 data-original-title="Tooltip on Left"
+                 href="#"> Towers with Components </a>
+            </li>
+            <li class="nav-item">
+              <a type="button"
+                 class="btn btn-secondary"
+                 data-toggle="tooltip"
+                 data-placement="top"
+                 title=""
+                 data-original-title="Tooltip on Top"
+                 href="#"> Towers Only </a>
+            </li>
+            <li class="nav-item">
+              <a type="button"
+                 class="btn btn-secondary"
+                 data-toggle="tooltip"
+                 data-placement="bottom"
+                 title=""
+                 data-original-title="Tooltip on bottom"
+                 href="categoryLaptops.html"> Laptops </a>
+            </li>
+            <li class="nav-item">
+              <a type="button"
+                 class="btn btn-secondary"
+                 data-toggle="tooltip"
+                 data-placement="right"
+                 title=""
+                 data-original-title="Tooltip on Right"
+                 href="#"> Components </a>
+            </li>
+            <li class="nav-item">
+              <a type="button"
+                 class="btn btn-secondary"
+                 data-toggle="tooltip"
+                 data-placement="right"
+                 title=""
+                 data-original-title="Tooltip on Right"
+                 href="#"> Peripherals </a>
+            </li>
+            <li class="nav-item">
+              <a type="button"
+                 class="btn btn-secondary"
+                 data-toggle="tooltip"
+                 data-placement="right"
+                 title=""
+                 data-original-title="Tooltip on Right"
+                 href="#"> Others </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <hr class="my-md-4 my-sm-2 my-xs-1">
+    <div class="title jumbotron">
+      <h1 class="display-6">TITULO AQUI</h1>
+    </div>
+    <hr class="my-md-4 my-sm-2 my-xs-1">
+    <!-- ou mudar para w-75 -->
+    <div class="container-fluid w-50">
+      <!-- meter todo o conteudo a partir daqui, este e o div principal da pagina -->
+    </div>
+
+    <hr class="my-4">
+    <footer class="page-footer">
+      <div class="nav justify-content-center">
+        <div class="nav-item">
+          <a href="about.html"> About </a>
+        </div>
+        <div class="nav-item">
+          <a href="FAQ.html"> FAQ </a>
+        </div>
+        <div class="nav-item">
+          <a href="contact.html"> Contacts </a>
+        </div>
+      </div>
+      <hr class="my-4">
+    </footer>
+  </body>
+
+</html>
