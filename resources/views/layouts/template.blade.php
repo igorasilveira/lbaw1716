@@ -29,13 +29,9 @@
     <script type="text/javascript"
             src="{{ asset('js/app.js') }}"
             defer>
-
-
     </script>
     <script type="text/javascript"
             src="{{ asset('bootstrap/js/bootstrap.min.js') }}">
-
-
     </script>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
