@@ -62,6 +62,7 @@
             <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
               <button type="button"
                       name="placeBidBtn"
+                      href="{{url('/auction/bid/{{$auction->id}}')}}"
                       class="btn btn-success w-100"><span class="px-auto">Bid (1,29€)</span></button>
             </div>
           </div>
@@ -70,6 +71,7 @@
           <div class="w-100">
             <button type="button"
                     name="placeBidBtn"
+                    href="{{ url('/auction/buy-now/{{$auction->id}}') }}"
                     class="btn btn-info mw-75 text-center">Buy Now {{ $auction->buynow }}</button>
           </div>
         </div>

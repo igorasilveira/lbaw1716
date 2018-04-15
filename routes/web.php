@@ -40,9 +40,9 @@ Route::get('/{category}', '')->name('');*/
 Route::get('/auction/new', 'AuctionController@create')->name('');
 Route::post('/auction/add', 'AuctionController@save')->name('/auction/add');
 Route::get('/auction/{id}', 'AuctionController@show')->name('');
-/*Route::post('/auction/buy-now/{id}', '');
+Route::post('/auction/buy-now/{id}', '');
 Route::post('/auction/bid/{id}', '');
-Route::post('/auction/{id}/comments/add', '');
+/*Route::post('/auction/{id}/comments/add', '');
 Route::delete('/auction/{id}/comments/{comID}/remove/', '');
 Route::post('/auction/report/{id}', '');
 

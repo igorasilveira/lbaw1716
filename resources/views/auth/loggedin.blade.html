@@ -1,5 +1,5 @@
 <ul class="nav pull-right">
-  <a href="create-auction.html">
+  <a href="{{url('/auction/new')}}">
           <button type="button" name="button" class="btn btn-secondary btn-md mt-1 mr-5">+<span class="hidden-xs"> Create Auction</span></button>
         </a>
   <li class="dropdown"
@@ -11,15 +11,15 @@
        data-devgib="tagged">Go To</a>
     <a class=""
        href="profile.html"
-       data-devgib="tagged"><img src="images/photos/igor_foto.jpg" height="50" class="profile-pic" style="display: inline"/></a>
+       data-devgib="tagged"><img src="{{ }}" height="50" class="profile-pic" style="display: inline"/></a>
     <div class="dropdown-menu test"
          style="padding:17px;">
       <a class="dropdown-item"
-         href="profile.html">Profile </a>
+         href="profile.html"> Profile </a>
       <div class="dropdown-divider"></div>
       <a class="dropdown-item"
          href="myauctions_user.html">My Auctions </a>
       <div class="dropdown-divider"></div>
       <a class="dropdown-item"
-         href="index.html">Log Out </a>
+         href="{{ url('logout') }}"> Log Out </a>
 </ul>

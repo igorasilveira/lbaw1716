@@ -39,4 +39,5 @@ class LoginController extends Controller
   {
     return view('pages/home');
   }
+
 }

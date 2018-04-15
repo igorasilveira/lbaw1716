@@ -47,6 +47,10 @@ class AuctionController extends Controller
       'postalcode' => $data['postalCode'],
       'auctionCreator' => Auth::user()->id
     ]);
+
+  }
+
+  public function approve(){
     
   }
 }
