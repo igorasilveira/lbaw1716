@@ -22,7 +22,7 @@ Route::get('login', 'Auth\LoginController@showLoginForm')->name('auth.loginMenu'
 Route::post('login', 'Auth\LoginController@login')->name('login');
 Route::post('logout', 'Auth\LoginController@logout');
 Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('auth.register');
-Route::post('register','Auth\RegisterController@register')->name('register');
+Route::post('register', 'Auth\RegisterController@register')->name('register');
 /*
 // Profile
 Route::get('/users/{id}', '')->name('');
@@ -40,8 +40,8 @@ Route::get('/{category}', '')->name('');*/
 Route::get('/auction/new', 'AuctionController@create')->name('');
 Route::post('/auction/add', 'AuctionController@save')->name('/auction/add');
 Route::get('/auction/{id}', 'AuctionController@show')->name('');
-Route::post('/auction/buy-now/{id}', '');
-Route::post('/auction/bid/{id}', '');
+Route::post('/auction/buy-now/{id}', 'AuctionController@buynow');
+Route::post('/auction/bid/{id}', 'AuctionController@bid');
 /*Route::post('/auction/{id}/comments/add', '');
 Route::delete('/auction/{id}/comments/{comID}/remove/', '');
 Route::post('/auction/report/{id}', '');

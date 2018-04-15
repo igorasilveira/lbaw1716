@@ -65,8 +65,8 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        echo Country::all();
-        /*$country = Country::where('name', $data['country'])->get();
+        //echo Country::all();
+        $country = Country::find($data['country']);
         if (0 == City::where('name', $data['city'])->count()) {
             $city = new City();
             $city->name = $data['city'];
@@ -75,7 +75,7 @@ class RegisterController extends Controller
         } else {
             $city = City::where('name', $data['city'])->get();
         }
-*/
+
         return User::create([
               'typeofuser' => 'Normal',
               'username' => $data['username'],
@@ -85,7 +85,7 @@ class RegisterController extends Controller
               'phoneNumber' => $data['phoneNumber'],
               'birthDate' => $data['birthDate'],
               //'pathtophoto' => $data['photo'],
-              'city' => 1,
+              'city' => $city,
               'address' => $data['address'],
               'postalcode' => $data['postalCode'],
           ]);
@@ -94,6 +94,7 @@ class RegisterController extends Controller
     public function register(Request $request)
     {
         auth()->login($this->create($request->all()));
+        return view('/');
     }
 
     public function showRegistrationForm()

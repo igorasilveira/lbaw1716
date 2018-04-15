@@ -63,7 +63,7 @@
               <button type="button"
                       name="placeBidBtn"
                       href="{{url('/auction/bid/{{$auction->id}}')}}"
-                      class="btn btn-success w-100"><span class="px-auto">Bid (1,29€)</span></button>
+                      class="btn btn-success w-100"><span value="value" class="px-auto">Bid (1,29€)</span></button>
             </div>
           </div>
           <hr class="my-2">

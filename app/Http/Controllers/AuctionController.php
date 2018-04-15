@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-
 use App\Auction;
+use App\Bid;
 
 class AuctionController extends Controller
 {
@@ -31,7 +29,7 @@ class AuctionController extends Controller
 
   public function save(array $data)
   {
-    $auctionDuration = $data['auctionDuration'],
+    $auctionDuration = $data['auctionDuration'];
     $now = new DateTime();
     $date = $now->format('Y/m/d H:i:s');
 
@@ -45,12 +43,33 @@ class AuctionController extends Controller
       'buynow' => $data['buynow'],
       'limitdate' => $date + $auctionDuration,
       'postalcode' => $data['postalCode'],
-      'auctionCreator' => Auth::user()->id
+      'auctionCreator' => Auth::user()->id,
     ]);
-
   }
 
-  public function approve(){
-    
+  public function approve()
+  {
   }
+
+  public function bid(array $data)
+  {
+    return Bid::create([
+      //'value', 'auctionbidded', 'bidder', 'isBuyNow'
+      'value' => $data[value],
+      'auctionbidded' => $data['auctionbidded'],
+      'bidder' => Auth::user()->id,
+      'isBuyNow' => false,
+    ]);
+  }
+
+    public function buynow(array $data)
+    {
+      return Bid::create([
+        //'value', 'auctionbidded', 'bidder', 'isBuyNow'
+        'value' => $data[value],
+        'auctionbidded' => $data['auctionbidded'],
+        'bidder' => Auth::user()->id,
+        'isBuyNow' => true,
+      ]);
+    }
 }
