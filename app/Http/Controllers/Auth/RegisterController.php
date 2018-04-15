@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Country;
+use App\City;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -27,12 +30,10 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = 'layouts/app';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
-     *
-     * @return void
      */
     public function __construct()
     {
@@ -42,14 +43,15 @@ class RegisterController extends Controller
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param array $data
+     *
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'username' => 'required|string|max:255|unique:users',
-            'email' => 'required|string|email|max:255|unique:users',
+            'username' => 'required|string|max:255|unique:user',
+            'email' => 'required|string|email|max:255|unique:user',
             'password' => 'required|string|min:6|confirmed',
         ]);
     }
@@ -57,26 +59,42 @@ class RegisterController extends Controller
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param array $data
+     *
      * @return \App\User
      */
     protected function create(array $data)
     {
+        echo Country::all();
+        /*$country = Country::where('name', $data['country'])->get();
+        if (0 == City::where('name', $data['city'])->count()) {
+            $city = new City();
+            $city->name = $data['city'];
+            $city->country = $country;
+            //$city->save();
+        } else {
+            $city = City::where('name', $data['city'])->get();
+        }
+*/
         return User::create([
-            'username' => $data['username'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-            'compName' => $data['compName'],
-            'phoneNumber' => $data['phoneNumber'],
-            'birthDate' => $data['birthDate'],
-            'photo' => $data['photo'],
-            'country' => $data['country'],
-            'city' => $data['city'],
-            'address' => $data['address'],
-            'postalCode' => $data['postalCode'],
-        ]);
+              'typeofuser' => 'Normal',
+              'username' => $data['username'],
+              'email' => $data['email'],
+              'password' => bcrypt($data['password']),
+              'compName' => $data['compName'],
+              'phoneNumber' => $data['phoneNumber'],
+              'birthDate' => $data['birthDate'],
+              //'pathtophoto' => $data['photo'],
+              'city' => 1,
+              'address' => $data['address'],
+              'postalcode' => $data['postalCode'],
+          ]);
     }
 
+    public function register(Request $request)
+    {
+        auth()->login($this->create($request->all()));
+    }
 
     public function showRegistrationForm()
     {

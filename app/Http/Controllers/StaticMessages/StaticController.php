@@ -36,4 +36,9 @@ class StaticController extends Controller
   {
     return view('pages/contacts');
   }
+
+  public function showHomePage()
+  {
+    return view('layouts/app');
+  }
 }

@@ -21,19 +21,6 @@
     <link href="{{ asset('css/bootstrap.min.css') }}"
           rel="stylesheet">
 
-    <script type="text/javascript">
-    // Fix for Firefox autofocus CSS bug
-    // See: http://stackoverflow.com/questions/18943276/html-5-autofocus-messes-up-css-loading/18945951#18945951
-
-    </script>
-    <script type="text/javascript"
-            src="{{ asset('js/app.js') }}"
-            defer>
-    </script>
-    <script type="text/javascript"
-            src="{{ asset('bootstrap/js/bootstrap.min.js') }}">
-    </script>
-
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
             integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
             crossorigin="anonymous"></script>
@@ -43,6 +30,18 @@
     <script src="https://apis.google.com/js/platform.js"
             async
             defer></script>
+    <script type="text/javascript"
+            src="{{ asset('js/app.js') }}"
+            defer>
+    </script>
+    <script type="text/javascript"
+            src="{{ asset('js/bootstrap.min.js') }}">
+    </script>
+    <script type="text/javascript">
+        // Fix for Firefox autofocus CSS bug
+        // See: http://stackoverflow.com/questions/18943276/html-5-autofocus-messes-up-css-loading/18945951#18945951
+    </script>
+
   </head>
 <body>
   <header>
@@ -64,71 +63,9 @@
           </div>
         </div>
         @if (Auth::check())
-        <ul class="nav pull-right">
-          <a href="create-auction.html">
-          <button type="button" name="button" class="btn btn-secondary btn-md mt-1 mr-5">+<span class="hidden-xs"> Create Auction</span></button>
-        </a>
-          <li class="dropdown"
-              id="menuLogin">
-            <a class="dropdown-toggle text-white"
-               href="#"
-               data-toggle="dropdown"
-               id="navLogin"
-               data-devgib="tagged">Go To</a>
-            <a class=""
-               href="profile.html"
-               data-devgib="tagged"><img src="images/photos/igor_foto.jpg" height="50" class="profile-pic" style="display: inline"/></a>
-            <div class="dropdown-menu test"
-                 style="padding:17px;">
-              <a class="dropdown-item"
-                 href="profile.html">Profile </a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item"
-                 href="myauctions_user.html">My Auctions </a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item"
-                 href="index.html">Log Out </a>
-        </ul>
-        </div>
-        </li>
-        </ul>
+            @include('auth/loggedin')
         @else
-        <ul class="nav pull-right">
-          <li class="dropdown"
-              id="menuLogin">
-            <a class="dropdown-toggle text-white"
-               href="#"
-               data-toggle="dropdown"
-               id="navLogin"
-               data-devgib="tagged">Login</a>
-            <div class="dropdown-menu test"
-                 style="padding:17px;">
-              <form action="create_account.php"
-                    enctype="multipart/form-data"
-                    class="form-group navbar-form"
-                    id="signin">
-                <input type="text"
-                       class="form-control p-2 my-2"
-                       placeholder="Username"
-                       id="username"
-                       name="username"
-                       required>
-                <input type="password"
-                       class="form-control p-2 my-2"
-                       placeholder="Password"
-                       id="password"
-                       name="password"
-                       required>
-                <button type="button"
-                        id="btnLogin"
-                        class="btn btn-success w-100">Sign In</button>
-              </form>
-
-              <a id="registerNav"
-                 href="register.html"> No account yet? Sign Up here! </a>
-            </div>
-          </li>
-        </ul>
+            @include('auth/loginMenu')
         @endif
         <br>
         <button class="navbar-toggler"
@@ -184,8 +121,8 @@
                  data-toggle="dropdown"
                  aria-haspopup="true"
                  aria-expanded="false">
-        Others
-      </a>
+                            Others
+              </a>
               <div class="dropdown-menu"
                    aria-labelledby="navbarDropdownMenuLink">
                 <a class="dropdown-item"
@@ -206,10 +143,10 @@
             <a href="{{ url('/about') }}"> About </a>
           </div>
           <div class="nav-item">
-            <a href="FAQ.html"> FAQ </a>
+            <a href="{{ url('/FAQ') }}"> FAQ </a>
           </div>
           <div class="nav-item">
-            <a href="contact.html"> Contacts </a>
+            <a href="{{ url('/contact') }}"> Contacts </a>
           </div>
         </div>
         <hr class="my-4">
