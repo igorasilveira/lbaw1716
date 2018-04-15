@@ -8,32 +8,32 @@ use App\Bid;
 
 class AuctionController extends Controller
 {
-  /**
-  * Show the about page.
-  *
-  * @return \Illuminate\Http\Response
-  */
-  public function show()
-  {
-    $auction = Auction::find($id);
+    /**
+     * Show the about page.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $auction = Auction::find($id);
 
-    $this->authorize('show', $auction);
+        $this->authorize('show', $auction);
 
-    return view('pages.auction', ['auction' => $auction]);
-  }
+        return view('pages.auction', ['auction' => $auction]);
+    }
 
-  public function create()
-  {
-    return view('pages.auctionCreate');
-  }
+    public function create()
+    {
+        return view('pages.auctionCreate');
+    }
 
-  public function save(array $data)
-  {
-    $auctionDuration = $data['auctionDuration'];
-    $now = new DateTime();
-    $date = $now->format('Y/m/d H:i:s');
+    public function save(array $data)
+    {
+        $auctionDuration = $data['auctionDuration'];
+        $now = new DateTime();
+        $date = $now->format('Y/m/d H:i:s');
 
-    return Auction::create([
+        return Auction::create([
       'state' => 'Pending',
       'title' => $data['title'],
       'sellingreason' => $data['reason'],
@@ -45,29 +45,29 @@ class AuctionController extends Controller
       'postalcode' => $data['postalCode'],
       'auctionCreator' => Auth::user()->id,
     ]);
-  }
+    }
 
-  public function approve()
-  {
-  }
+    public function approve()
+    {
+    }
 
-  public function bid(array $data)
-  {
-    return Bid::create([
+    public function bid($id)
+    {
+        return Bid::create([
       //'value', 'auctionbidded', 'bidder', 'isBuyNow'
       'value' => $data[value],
-      'auctionbidded' => $data['auctionbidded'],
+      'auctionbidded' => $id,
       'bidder' => Auth::user()->id,
       'isBuyNow' => false,
     ]);
-  }
+    }
 
-    public function buynow(array $data)
+    public function buynow($id)
     {
-      return Bid::create([
+        return Bid::create([
         //'value', 'auctionbidded', 'bidder', 'isBuyNow'
         'value' => $data[value],
-        'auctionbidded' => $data['auctionbidded'],
+        'auctionbidded' => $id,
         'bidder' => Auth::user()->id,
         'isBuyNow' => true,
       ]);
