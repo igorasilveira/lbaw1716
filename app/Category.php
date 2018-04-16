@@ -14,9 +14,14 @@ class Category extends Model
   protected $table = 'category';
 
   protected $fillable = ['name', 'parent'];
-  
-  public function posts()
+
+  public function parent()
   {
-    return $this->hasMany(Post::class);
+    return self::find(self::parent);
+  }
+
+  public function auctions()
+  {
+    return $this->belongsToMany('App\Auction','categoryofauction');
   }
 }

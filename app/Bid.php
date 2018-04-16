@@ -22,4 +22,14 @@ class Bid extends Model
     'value', 'username', 'bidder', 'isBuyNow'
   ];
 
+  public function user()
+  {
+    return $this->belongsTo('App\User');
+  }
+
+  public function auction()
+  {
+    return $this->belongsTo('App\Auction','auctionbidded');
+  }
+
 }

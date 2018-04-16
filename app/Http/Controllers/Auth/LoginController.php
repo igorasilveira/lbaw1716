@@ -40,7 +40,7 @@ class LoginController extends Controller
         return view('pages/home');
     }
 
-    public function login()
+    public function login($id)
     {
         Auth::user()->id = find($id);
 

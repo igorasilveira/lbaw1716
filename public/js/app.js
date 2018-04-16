@@ -204,7 +204,6 @@ addEventListeners();
 
 this.pendingRow;
 
-
 /*              */
 
 function addModerator() {
@@ -565,4 +564,9 @@ function eliminatePending() {
 		.style.display = "none";
 	var modal = document.getElementById('myModal');
 	modal.style.display = "none";
+}
+
+function timecounter(time) {
+	document.getElementById('demo')
+		.innerHTML = date('Y W o', time);
 }

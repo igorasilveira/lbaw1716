@@ -366,8 +366,8 @@ CREATE SEQUENCE auto_increment_user
 CREATE TABLE bid (
     date timestamp with time zone DEFAULT transaction_timestamp() NOT NULL,
     value integer NOT NULL,
-    auctionbidded integer NOT NULL,
-    bidder integer NOT NULL,
+    auction_id integer NOT NULL,
+    user_id integer NOT NULL,
     "isBuyNow" boolean
 );
 
@@ -391,10 +391,10 @@ CREATE TABLE blocks (
 --
 
 CREATE TABLE category (
-    categoryid integer DEFAULT nextval('auto_increment_category'::regclass) NOT NULL,
+    id integer DEFAULT nextval('auto_increment_category'::regclass) NOT NULL,
     name character varying(50) NOT NULL,
     parent integer,
-    CONSTRAINT check_parent_not_equal CHECK ((parent <> categoryid))
+    CONSTRAINT check_parent_not_equal CHECK ((parent <> id))
 );
 
 --
@@ -402,8 +402,8 @@ CREATE TABLE category (
 --
 
 CREATE TABLE categoryofauction (
-    category integer NOT NULL,
-    auction integer NOT NULL
+    category_id integer NOT NULL,
+    auction_id integer NOT NULL
 );
 
 
@@ -552,7 +552,7 @@ ALTER TABLE IF EXISTS ONLY "user"
 --
 
 ALTER TABLE IF EXISTS ONLY bid
-    ADD CONSTRAINT bid_pkey PRIMARY KEY (date, auctionbidded, bidder);
+    ADD CONSTRAINT bid_pkey PRIMARY KEY (date, auction_id, user_id);
 
 
 --
@@ -576,7 +576,7 @@ ALTER TABLE IF EXISTS ONLY category
 --
 
 ALTER TABLE IF EXISTS ONLY category
-    ADD CONSTRAINT category_pkey PRIMARY KEY (categoryid);
+    ADD CONSTRAINT category_pkey PRIMARY KEY (id);
 
 
 --
@@ -584,7 +584,7 @@ ALTER TABLE IF EXISTS ONLY category
 --
 
 ALTER TABLE IF EXISTS ONLY categoryofauction
-    ADD CONSTRAINT categoryofauction_pkey PRIMARY KEY (category, auction);
+    ADD CONSTRAINT categoryofauction_pkey PRIMARY KEY (category_id, auction_id);
 
 
 --
@@ -674,7 +674,7 @@ CREATE FUNCTION auction_creator() RETURNS trigger
     AS $$BEGIN
   IF EXISTS (SELECT * FROM auction
     INNER JOIN "user" ON "user".id = auction.auctioncreator
-    WHERE NEW.auctionbidded = auction.id AND NEW.bidder = "user".id) THEN
+    WHERE NEW.auction_id = auction.id AND NEW.user_id = "user".id) THEN
     RAISE EXCEPTION 'The creator of an auction cannot make a bid on it!';
   END IF;
   RETURN NEW;
@@ -704,12 +704,12 @@ END;$$;
 CREATE FUNCTION bid_greater_than_last() RETURNS trigger
     LANGUAGE plpgsql
     AS $$BEGIN
-	IF EXISTS (SELECT * FROM bid WHERE NEW.auctionbidded = auctionbidded AND NEW.value <= value) THEN
+	IF EXISTS (SELECT * FROM bid WHERE NEW.auction_id = auction_id AND NEW.value <= value) THEN
 		RAISE EXCEPTION 'A bid on this auction has to have a greater value than a previous one on this auction.';
-        ELSE IF EXISTS(SELECT * FROM bid WHERE NEW.auctionbidded = auctionbidded)
+        ELSE IF EXISTS(SELECT * FROM bid WHERE NEW.auction_id = auction_id)
         THEN
-         UPDATE "user" SET balance = ((SELECT value FROM "bid" WHERE "bid".auctionBidded=NEW.auctionbidded ORDER BY value DESC LIMIT 1) + (SELECT balance FROM "user" WHERE id = (SELECT bidder FROM "bid" WHERE auctionbidded = NEW.auctionbidded ORDER BY value DESC LIMIT 1))) WHERE id = (SELECT bidder FROM "bid" WHERE auctionbidded = NEW.auctionbidded ORDER BY value DESC LIMIT 1);
-        INSERT INTO Notification (id, date, description, type, auctionassociated, authenticated_userid) VALUES (DEFAULT, transaction_timestamp(), 'Your bid on this auction was surpassed. Try again!', 'Bid Exceeded', NEW.auctionbidded, (SELECT bidder FROM "bid" WHERE auctionbidded = NEW.auctionbidded ORDER BY value DESC LIMIT 1));
+         UPDATE "user" SET balance = ((SELECT value FROM "bid" WHERE "bid".auction_id=NEW.auction_id ORDER BY value DESC LIMIT 1) + (SELECT balance FROM "user" WHERE id = (SELECT user_id FROM "bid" WHERE auction_id = NEW.auction_id ORDER BY value DESC LIMIT 1))) WHERE id = (SELECT user_id FROM "bid" WHERE auction_id = NEW.auction_id ORDER BY value DESC LIMIT 1);
+        INSERT INTO Notification (id, date, description, type, auctionassociated, authenticated_userid) VALUES (DEFAULT, transaction_timestamp(), 'Your bid on this auction was surpassed. Try again!', 'Bid Exceeded', NEW.auction_id, (SELECT user_id FROM "bid" WHERE auction_id = NEW.auction_id ORDER BY value DESC LIMIT 1));
         END IF;
       END IF;
 	RETURN NEW;
@@ -720,17 +720,17 @@ END$$;
 
 
 --
--- Name: bidder_has_money(); Type: FUNCTION; Schema: public; Owner: lbaw1716
+-- Name: user_id_has_money(); Type: FUNCTION; Schema: public; Owner: lbaw1716
 --
 
-CREATE FUNCTION bidder_has_money() RETURNS trigger
+CREATE FUNCTION user_id_has_money() RETURNS trigger
     LANGUAGE plpgsql
     AS $$BEGIN
-	IF EXISTS (SELECT * FROM "user" WHERE NEW.bidder = id AND NEW.value > balance)          THEN
-		RAISE EXCEPTION 'To make a bid on this auction the bidder must have a balance greater than bid value';
-ELSE IF EXISTS (SELECT * FROM "user" WHERE NEW.bidder = id AND NEW.value <= balance)
+	IF EXISTS (SELECT * FROM "user" WHERE NEW.user_id = id AND NEW.value > balance)          THEN
+		RAISE EXCEPTION 'To make a bid on this auction the user_id must have a balance greater than bid value';
+ELSE IF EXISTS (SELECT * FROM "user" WHERE NEW.user_id = id AND NEW.value <= balance)
 THEN
-      UPDATE "user" SET balance = (SELECT balance FROM "user" WHERE NEW.bidder = id) - NEW.value WHERE id = NEW.bidder;
+      UPDATE "user" SET balance = (SELECT balance FROM "user" WHERE NEW.user_id = id) - NEW.value WHERE id = NEW.user_id;
 END IF;
 	END IF;
 	RETURN NEW;
@@ -746,10 +746,10 @@ END$$;
 CREATE FUNCTION buy_now() RETURNS trigger
     LANGUAGE plpgsql
     AS $$BEGIN
-IF EXISTS (SELECT * FROM "auction" WHERE NEW.auctionbidded = id AND NEW.value = buyNow AND NEW."isBuyNow" = true)
+IF EXISTS (SELECT * FROM "auction" WHERE NEW.auction_id = id AND NEW.value = buyNow AND NEW."isBuyNow" = true)
 THEN
-UPDATE auction SET state = 'Over'::auctionstate, finaldate = NEW.date, finalprice = NEW.value, auctionwinner = NEW.bidder WHERE id = NEW.auctionbidded;
-INSERT INTO Notification (id, date, description, type, auctionassociated, authenticated_userid) VALUES (DEFAULT, transaction_timestamp(), 'You win this auction!', 'Won Auction', NEW.auctionbidded, (SELECT bidder FROM "bid" WHERE auctionbidded = NEW.auctionbidded ORDER BY value DESC LIMIT 1));
+UPDATE auction SET state = 'Over'::auctionstate, finaldate = NEW.date, finalprice = NEW.value, auctionwinner = NEW.user_id WHERE id = NEW.auction_id;
+INSERT INTO Notification (id, date, description, type, auctionassociated, authenticated_userid) VALUES (DEFAULT, transaction_timestamp(), 'You win this auction!', 'Won Auction', NEW.auction_id, (SELECT user_id FROM "bid" WHERE auction_id = NEW.auction_id ORDER BY value DESC LIMIT 1));
 END IF;
 RETURN NEW;
 END;$$;
@@ -783,7 +783,7 @@ END;$$;
 CREATE FUNCTION check_bid_value() RETURNS trigger
     LANGUAGE plpgsql
     AS $$BEGIN
-IF EXISTS (SELECT * FROM "auction" WHERE NEW.auctionbidded = id AND NEW.value < startingprice)
+IF EXISTS (SELECT * FROM "auction" WHERE NEW.auction_id = id AND NEW.value < startingprice)
 THEN
 RAISE EXCEPTION 'A Bid has to have a greater value than starting price of auction.';
 END IF;
@@ -876,15 +876,15 @@ IF (transaction_timestamp() >= NEW.limitdate AND NEW.state = 'Active'::auctionst
 THEN
 UPDATE "auction" SET state = 'Over'::auctionstate, finaldate = (  SELECT date
   FROM "bid"
-  WHERE "bid".auctionBidded= NEW.id
+  WHERE "bid".auction_id= NEW.id
   ORDER BY value DESC  ), finalprice = (  SELECT value
     FROM "bid"
-    WHERE "bid".auctionBidded= NEW.id
-    ORDER BY value DESC  ), auctionwinner = (  SELECT bidder
+    WHERE "bid".auction_id= NEW.id
+    ORDER BY value DESC  ), auctionwinner = (  SELECT user_id
       FROM "bid"
-      WHERE "bid".auctionBidded=NEW.id
+      WHERE "bid".auction_id=NEW.id
       ORDER BY value DESC LIMIT 1) WHERE id = NEW.id;
-      INSERT INTO Notification (id, date, description, type, auctionassociated, authenticated_userid) VALUES (DEFAULT, transaction_timestamp(), 'You win this auction!', 'Won Auction', NEW.auctionbidded, (SELECT bidder FROM "bid" WHERE auctionbidded = NEW.auctionbidded ORDER BY value DESC LIMIT 1));
+      INSERT INTO Notification (id, date, description, type, auctionassociated, authenticated_userid) VALUES (DEFAULT, transaction_timestamp(), 'You win this auction!', 'Won Auction', NEW.auction_id, (SELECT user_id FROM "bid" WHERE auction_id = NEW.auction_id ORDER BY value DESC LIMIT 1));
       END IF;
       RETURN NEW;
       END;$$;
@@ -937,10 +937,10 @@ CREATE TRIGGER auction_reported BEFORE INSERT ON report FOR EACH ROW EXECUTE PRO
 
 
 --
--- Name: bidder_has_money; Type: TRIGGER; Schema: public; Owner: lbaw1716
+-- Name: user_id_has_money; Type: TRIGGER; Schema: public; Owner: lbaw1716
 --
 
-CREATE TRIGGER bidder_has_money BEFORE INSERT ON bid FOR EACH ROW EXECUTE PROCEDURE bidder_has_money();
+CREATE TRIGGER user_id_has_money BEFORE INSERT ON bid FOR EACH ROW EXECUTE PROCEDURE user_id_has_money();
 
 
 --
@@ -1040,19 +1040,19 @@ ALTER TABLE IF EXISTS ONLY "user"
 
 
 --
--- Name: bid_auctionbidded_fkey; Type: FK CONSTRAINT; Schema: public; Owner: lbaw1716
+-- Name: bid_auction_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: lbaw1716
 --
 
 ALTER TABLE IF EXISTS ONLY bid
-    ADD CONSTRAINT bid_auctionbidded_fkey FOREIGN KEY (auctionbidded) REFERENCES auction(id);
+    ADD CONSTRAINT bid_auction_id_fkey FOREIGN KEY (auction_id) REFERENCES auction(id);
 
 
 --
--- Name: bid_bidder_fkey; Type: FK CONSTRAINT; Schema: public; Owner: lbaw1716
+-- Name: bid_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: lbaw1716
 --
 
 ALTER TABLE IF EXISTS ONLY bid
-    ADD CONSTRAINT bid_bidder_fkey FOREIGN KEY (bidder) REFERENCES "user"(id);
+    ADD CONSTRAINT bid_user_id_fkey FOREIGN KEY (user_id) REFERENCES "user"(id);
 
 
 --
@@ -1076,7 +1076,7 @@ ALTER TABLE IF EXISTS ONLY blocks
 --
 
 ALTER TABLE IF EXISTS ONLY category
-    ADD CONSTRAINT category_parent_fkey FOREIGN KEY (parent) REFERENCES category(categoryid);
+    ADD CONSTRAINT category_parent_fkey FOREIGN KEY (parent) REFERENCES category(id);
 
 
 --
@@ -1084,7 +1084,7 @@ ALTER TABLE IF EXISTS ONLY category
 --
 
 ALTER TABLE IF EXISTS ONLY categoryofauction
-    ADD CONSTRAINT categoryofauction_auction_fkey FOREIGN KEY (auction) REFERENCES auction(id);
+    ADD CONSTRAINT categoryofauction_auction_fkey FOREIGN KEY (auction_id) REFERENCES auction(id);
 
 
 --
@@ -1092,7 +1092,7 @@ ALTER TABLE IF EXISTS ONLY categoryofauction
 --
 
 ALTER TABLE IF EXISTS ONLY categoryofauction
-    ADD CONSTRAINT categoryofauction_category_fkey FOREIGN KEY (category) REFERENCES category(categoryid);
+    ADD CONSTRAINT categoryofauction_category_fkey FOREIGN KEY (category_id) REFERENCES category(id);
 
 
 --
@@ -1132,7 +1132,7 @@ ALTER TABLE IF EXISTS ONLY edit_categories
 --
 
 ALTER TABLE IF EXISTS ONLY edit_categories
-    ADD CONSTRAINT edit_categories_category_fkey FOREIGN KEY (category) REFERENCES category(categoryid);
+    ADD CONSTRAINT edit_categories_category_fkey FOREIGN KEY (category) REFERENCES category(id);
 
 
 --

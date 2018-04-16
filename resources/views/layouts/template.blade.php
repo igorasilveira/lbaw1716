@@ -16,9 +16,9 @@
 
     <!-- Styles -->
     <!--<link href="{{ asset('css/milligram.min.css') }}" rel="stylesheet">-->
-    <link href="{{ asset('css/app.css') }}"
-          rel="stylesheet">
     <link href="{{ asset('css/bootstrap.min.css') }}"
+          rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}"
           rel="stylesheet">
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
@@ -95,26 +95,16 @@
         <div class="collapse navbar-collapse"
              id="navbar2">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <a class="nav-link text-white"
-                 href="#">Towers w/ Components</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-white"
-                 href="#">Towers</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-white"
-                 href="categoryLaptops.html">Laptops</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-white"
-                 href="#">Components</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-white"
-                 href="#">Peripherals</a>
-            </li>
+              @foreach(App\Category::all() as $category)
+                @if ($category->parent == NULL)
+                    <li class="nav-item">
+                        <a class="nav-link text-white"
+                                 href="{{ url('/' . $category->id) }}">
+                                 {{ $category->name }}
+                        </a>
+                    </li>
+                @endif
+              @endforeach
             <li class="nav-item dropdown">
               <a class="nav-link  text-white dropdown-toggle"
                  id="navbarDropdownMenuLink"
@@ -125,10 +115,13 @@
               </a>
               <div class="dropdown-menu"
                    aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item"
-                   href="#">Category</a>
-                <a class="dropdown-item"
-                   href="#">Another Category</a>
+                   @foreach(App\Category::all() as $category)
+                      @if ($category->parent != NULL)
+                        <a class="dropdown-item"
+                          href="{{ url('/' . $category->id) }}">{{ App\Category::find($category->parent)->name . ": " . $category->name }}
+                        </a>
+                      @endif
+                   @endforeach
               </div>
             </li>
           </ul>
