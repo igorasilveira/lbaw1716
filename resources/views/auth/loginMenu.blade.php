@@ -26,11 +26,11 @@
                id="password"
                name="password"
                required>
-        <button type="button"
+        <button type="submit"
                 id="btnLogin"
-                class="btn btn-success w-100">Sign In</button>
+                class="btn btn-success w-100"
+                >Sign In</button>
       </form>
-
       <a id="registerNav"
          href="{{ url('/register') }}"> No account yet? Sign Up here! </a>
     </div>

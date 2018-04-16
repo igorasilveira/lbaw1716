@@ -12,4 +12,5 @@ php artisan clear-compiled
 php artisan optimize
 
 docker build -t $DOCKER_USERNAME/$IMAGE_NAME .
-docker push $DOCKER_USERNAME/$IMAGE_NAME
+docker run -it -p 8000:80 -e DB_DATABASE=lbaw1716 -e DB_USERNAME=lbaw1716 -e DB_PASSWORD=kr26rq13 --name=lbaw1716 nadiacarvalho/lbaw1716
+# docker push $DOCKER_USERNAME/$IMAGE_NAME
