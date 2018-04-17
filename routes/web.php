@@ -15,6 +15,8 @@ Route::get('/', function () {
     return redirect('login');
 });
 
+Route::get('home', 'Auth\LoginController@showHome');
+
 // Module 1 :
 //
 // Authentication
@@ -39,7 +41,7 @@ Route::get('/search', '')->name('');*/
 Route::get('/{category}', 'CategoryController@showAuctionsFromCategory');
 Route::get('/auction/new', 'AuctionController@create')->name('');
 Route::post('/auction/add', 'AuctionController@save')->name('/auction/add');
-Route::get('/auction/{id}', 'AuctionController@show')->name('');
+Route::get('/auction/{id}', 'AuctionController@show');
 Route::post('/auction/buy-now/{id}', 'AuctionController@buynow');
 Route::post('/auction/bid/{id}', 'AuctionController@bid');
 /*Route::post('/auction/{id}/comments/add', '');

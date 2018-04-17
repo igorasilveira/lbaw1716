@@ -1,6 +1,6 @@
 <div id="auctionProfile">
   <img class="img-fluid"
-       href=" url('/auction/' . $auction->id)"
+       href="{{ url('/auction/' . $auction->id) }}"
        src="images/computers.jpg" />
   <div id="infoAuctionProfile"
        class="container-fluid">

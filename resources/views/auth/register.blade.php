@@ -69,11 +69,11 @@
         <input class="form-control"
                type="text"
                name="city">
-        <label class="col-form-label required">Postal-Code</label></label>
+<!--        <label class="col-form-label required">Postal-Code</label></label>
         <input class="form-control"
                type="text"
                pattern="[0-9]{5}"
-               name="postalCode">
+               name="postalCode">-->
         <label class="col-form-label required">Address</label>
         <input class="form-control"
                type="text"

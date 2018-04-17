@@ -30,7 +30,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -67,14 +67,15 @@ class RegisterController extends Controller
     {
         //echo Country::all();
         $country = Country::find($data['country']);
-        if (0 == City::where('name', $data['city'])->count()) {
+        echo City::where('name', $data['city'])->get();
+        /*if (0 == City::where('name', $data['city'])->count()) {
             $city = new City();
             $city->name = $data['city'];
             $city->country = $country;
             //$city->save();
         } else {
             $city = City::where('name', $data['city'])->get();
-        }
+        }*/
 
         return User::create([
               'typeofuser' => 'Normal',
@@ -84,21 +85,21 @@ class RegisterController extends Controller
               'compName' => $data['compName'],
               'phoneNumber' => $data['phoneNumber'],
               'birthDate' => $data['birthDate'],
-              //'pathtophoto' => $data['photo'],
-              'city' => $city,
+              'pathtophoto' => $data['photo'],
+              'city' => 1,
               'address' => $data['address'],
-              'postalcode' => $data['postalCode'],
           ]);
     }
 
     public function register(Request $request)
     {
         auth()->login($this->create($request->all()));
-        return view('/');
+
+        return view('pages.home');
     }
 
     public function showRegistrationForm()
     {
-        return view('auth/register');
+        return view('auth.register');
     }
 }

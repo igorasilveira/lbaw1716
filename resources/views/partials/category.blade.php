@@ -14,17 +14,23 @@
       <ul id="auctionsMosaic"
           class="container-fluid col-sm-12 row">
         <div class="row">
-            @foreach($category->auctions as $auction)
+          @if($category->auctions->count() >= 3)
+            @foreach($category->auctions()->orderby('/numberOfBids', 'DESC')->take(3)->get() as $auction)
               <li class="col-md-4 col-sm-6 col-xs-6">
               @include('partials.auctionMosaic', ['auction' => $auction])
               </li>
             @endforeach
+          @endif
         </div>
         <hr class="my-5">
         <div class="row">
-           <li class="col-md-4 col-sm-6 col-xs-6">
-            {{--@include('partials.auctionMosaic', ['auction' => $auction])--}}
-          </li>
+          @if($category->auctions->count() >= 6)
+            @foreach($category->auctions()->skip(3)->take(3)->get() as $auction)
+              <li class="col-md-4 col-sm-6 col-xs-6">
+              @include('partials.auctionMosaic', ['auction' => $auction])
+              </li>
+            @endforeach
+          @endif
         </div>
       </ul>
       <br />

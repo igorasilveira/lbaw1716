@@ -17,7 +17,7 @@ class AuctionController extends Controller
     {
         $auction = Auction::find($id);
 
-        $this->authorize('show', $auction);
+        //$this->authorize('show', $auction);
 
         return view('pages.auction', ['auction' => $auction]);
     }

@@ -20,12 +20,22 @@
                id="username"
                name="username"
                required>
+               @if ($errors->has('username'))
+               <span class="error">
+                 {{ $errors->first('username') }}
+               </span>
+                @endif
         <input type="password"
                class="form-control p-2 my-2"
                placeholder="Password"
                id="password"
                name="password"
                required>
+               @if ($errors->has('password'))
+               <span class="error">
+                 {{ $errors->first('password') }}
+               </span>
+               @endif
         <button type="submit"
                 id="btnLogin"
                 class="btn btn-success w-100"
