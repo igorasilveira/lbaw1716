@@ -91,37 +91,35 @@
         <div class="collapse navbar-collapse"
              id="navbar2">
           <ul class="navbar-nav mr-auto">
-              @foreach(App\Category::all() as $category)
-                @if ($category->parent == NULL)
-                    <li class="nav-item">
+              @foreach(App\Category::all() as $categoryParent)
+                @if ($categoryParent->parent == NULL)
+                    <li class="nav-item dropdown">
                         <a class="nav-link text-white"
-                                 href="{{ url('/' . $category->id) }}">
-                                 {{ $category->name }}
+                                 href="{{ url('/category/' . $categoryParent->id) }}"
+                                 id="category{{ $categoryParent->id}}"
+                                 data-toggle=""
+                                 aria-haspopup="true"
+                                 aria-expanded="false">
+                                 {{ $categoryParent->name }}
                         </a>
+                        @if ($categoryParent->hasChilds())
+                        <div class="dropdown-menu"
+                             aria-labelledby="category{{ $categoryParent->id }}">
+                             @foreach(App\Category::all() as $categoryChild)
+                                @if ($categoryChild->parent != NULL && ($categoryChild->parent == $categoryParent->id))
+                                  <a class="dropdown-item"
+                                    href="{{ url('/category/' . $categoryChild->id) }}">{{ App\Category::find($categoryChild->parent)->name . ": " . $categoryChild->name }}
+                                  </a>
+                                @endif
+                             @endforeach
+                        </div>
+                        @endif
                     </li>
                 @endif
               @endforeach
-            <li class="nav-item dropdown">
-              <a class="nav-link  text-white dropdown-toggle"
-                 id="navbarDropdownMenuLink"
-                 data-toggle="dropdown"
-                 aria-haspopup="true"
-                 aria-expanded="false">
-                            Others
-              </a>
-              <div class="dropdown-menu"
-                   aria-labelledby="navbarDropdownMenuLink">
-                   @foreach(App\Category::all() as $category)
-                      @if ($category->parent != NULL)
-                        <a class="dropdown-item"
-                          href="{{ url('/' . $category->id) }}">{{ App\Category::find($category->parent)->name . ": " . $category->name }}
-                        </a>
-                      @endif
-                   @endforeach
-              </div>
-            </li>
           </ul>
         </div>
+      </div>
     </nav>
   </header>
   @yield('content')
