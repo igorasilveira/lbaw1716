@@ -45,4 +45,11 @@ class LoginController extends Controller
     return view('pages.home');
   }
 
+  public function login(Request $request)
+  {
+      echo $request;
+      auth()->login($request->all());
+      return view('pages.home');
+  }
+
 }
