@@ -20,15 +20,15 @@ class Auction extends Model
      * @var array
      */
     protected $fillable = [
-        'state', 'title', 'sellingreason', 'pathtophoto', 'startingprice', 'phonenumber', 'buynow', 'limitdate', 'postalcode', 'auctionCreator',
-      ];
+    'state', 'title', 'sellingreason', 'pathtophoto', 'startingprice', 'phonenumber', 'buynow', 'limitdate', 'postalcode', 'auctioncreator',
+  ];
 
     /**
      * The user this auction belongs to.
      */
-    public function user()
+    public function creator()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\User', 'auctioncreator');
     }
 
     public function categories()

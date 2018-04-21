@@ -1,4 +1,3 @@
-
 <div class="hidden-xs">
   <hr class="my-md-4 my-sm-2 my-xs-1">
   <div class="title jumbotron my-0  p-3">

@@ -42,4 +42,8 @@ class User extends Authenticatable
     return $this->belongsTo('App\City');
   }
 
+  public function auctions()
+  {
+    return $this->hasMany('App\Auction');
+  }
 }

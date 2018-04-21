@@ -1,7 +1,7 @@
 <div class="hidden-xs">
   <hr class="my-md-4 my-sm-2 my-xs-1">
   <div class="title jumbotron my-0  p-3">
-    <h1 class="display-6">Auction</h1>
+    <h1 class="display-6">Auction </h1>
   </div>
   <hr class="my-md-4 my-sm-2 my-xs-1">
 </div>
@@ -18,15 +18,21 @@
            class="col-md-6 col-sm-12 col-xs-12 vcen container-fluid ">
         <div class="text-md-right text-xs-center">
           <section class="pb-2">
-            <h5 class="text-muted">#13112</h5>
-            <h4>By <a href="profile"> {{ $auction->auctionCreator }} </a><span class=" mx-4 badge badge-pill badge-info">4.5/5</span></h4>
+            <h5 class="text-muted">#{{ $auction->id }}</h5>
+            <h4>By <a href="/users/{{ $auction->creator }}"> {{ $auction->creator->username }} </a>
+              @if($auction->creator->rate != NULL)
+              <span class=" mx-4 badge badge-pill badge-info">
+                {{ $auction->creator->rate }}/5
+              </span>
+              @endif
+            </h4>
           </section>
           <section>
             <p>
               {{ $auction->title }}
             </p>
             <p>
-              {{ $auction->description }}
+              {{ substr($auction->description,0,100) }}
             </p>
           </section>
           <h3 class="text-info pb-2">14H 23M 09S</h3>
@@ -42,7 +48,7 @@
             </div>
             <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 my-auto">
               <p>
-                {{ $auction->startingprice }}
+                {{ $auction->startingprice }} €
               </p>
             </div>
             <div class="col-lg-4 col-md-0 col-sm-12 col-xs-12 my-auto">
@@ -56,14 +62,27 @@
             </div>
             <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 my-auto">
               <p>
-                13,48€
+                @if($auction->bids->count() > 0)
+                {{ $auction->bids->sortByDesc('date')->first()->value }} €
+                @else
+                0 €
+                @endif
               </p>
             </div>
             <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
               <button type="button"
                       name="placeBidBtn"
-                      href="{{url('/auction/bid/{{$auction->id}}')}}"
-                      class="btn btn-success w-100"><span value="value" class="px-auto">Bid (1,29€)</span></button>
+                      href="/auction/bid/{{ $auction->id }}"
+                      class="btn btn-success w-100">
+                      <span value="value" class="px-auto">
+                        Bid
+                        @if($auction->bids->count() > 0)
+                        {{ $auction->bids->sortByDesc('date')->first()->value + 0.10*($auction->bids->sortByDesc('date')->first()->value) }}
+                        @else
+                        {{ $auction->startingprice }}
+                        @endif
+                         €
+                      </span></button>
             </div>
           </div>
           <hr class="my-2">
@@ -71,7 +90,7 @@
           <div class="w-100">
             <button type="button"
                     name="placeBidBtn"
-                    href="{{ url('/auction/buy-now/{{$auction->id}}') }}"
+                    href="/auction/buy-now/{{ $auction->id }}"
                     class="btn btn-info mw-75 text-center">Buy Now {{ $auction->buynow }}</button>
           </div>
         </div>
@@ -109,7 +128,7 @@
         <section class="my-4">
           <h4>Selling Reason</h4>
           <p>
-            {{ $auction->sellingReason }}
+            {{ $auction->sellingreason }}
           </p>
         </section>
       </div>
@@ -151,14 +170,14 @@
       <section class="my-4">
         <h4>Phone Number</h4>
         <p>
-          002336159038
+          {{ $auction->creator->phonenumber }}
         </p>
       </section>
       <hr class="my-2">
       <section class="my-4">
         <h4>Email Address</h4>
         <p>
-          username@example.com
+          {{ $auction->creator->email }}
         </p>
       </section>
     </div>
