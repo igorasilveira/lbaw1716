@@ -21,7 +21,7 @@
         <hr class="my-0" />
         <label class="col-form-label required">Username</label> <input class="form-control"
                type="text"
-               name="username">
+               name="username" value='{{{ old('username') }}}'>
                @if ($errors->has('username'))
                <span class="error">
                  <strong>{{ $errors->first('username') }}</strong>
@@ -35,6 +35,14 @@
                  <strong>{{ $errors->first('password') }}</strong>
                </span>
                @endif
+        <label class="col-form-label required">Password Confirmation</label> <input class="form-control"
+               type="password"
+               name="password_confirmation">
+               @if ($errors->has('password_confirmation'))
+               <span class="error">
+                 <strong>{{ $errors->first('password_confirmation') }}</strong>
+               </span>
+               @endif
       </fieldset>
       <hr class="my-md-4 my-sm-1">
       <fieldset>
@@ -42,15 +50,15 @@
         <hr class="my-0" />
         <label class="col-form-label required">Complete Name</label> <input class="form-control"
                type="text"
-               name="compName">
-               @if ($errors->has('compName'))
+               name="completeName" value='{{{ old('completeName') }}}'>
+               @if ($errors->has('completeName'))
                <span class="error">
-                 <strong>{{ $errors->first('compName') }}</strong>
+                 <strong>{{ $errors->first('completeName') }}</strong>
                </span>
                @endif
         <label class="col-form-label required">Email</label><input class="form-control"
                type="e-mail"
-               name="email">
+               name="email" value='{{{ old('email') }}}'>
                @if ($errors->has('email'))
                <span class="error">
                  <strong>{{ $errors->first('email') }}</strong>
@@ -58,7 +66,7 @@
                @endif
         <label class="col-form-label required">Phone Number</label><input class="form-control"
                type="phone"
-               name="phoneNumber">
+               name="phoneNumber" value='{{{ old('phoneNumber') }}}'>
                @if ($errors->has('phoneNumber'))
                <span class="error">
                  <strong>{{ $errors->first('phoneNumber') }}</strong>
@@ -66,7 +74,7 @@
                @endif
         <label class="col-form-label required">Birthdate</label> <input class="form-control"
                type="date"
-               name="birthDate">
+               name="birthDate" value='{{{ old('birthDate') }}}'>
                @if ($errors->has('birthDate'))
                <span class="error">
                  <strong>{{ $errors->first('birthDate') }}</strong>
@@ -103,11 +111,11 @@
         <label class="col-form-label required">City</label>
         <input class="form-control"
                type="text"
-               name="city">
+               name="city" value='{{{ old('city') }}}'>
         <label class="col-form-label required">Address</label>
         <input class="form-control"
                type="text"
-               name="address">
+               name="address" value='{{{ old('address') }}}'>
                @if ($errors->has('address'))
                <span class="error">
                  <strong>{{ $errors->first('address') }}</strong>

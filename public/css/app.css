@@ -1,6 +1,10 @@
 /* common */
 
 
+.error {
+  display: block;
+}
+
 ul.navbar-nav li.dropdown:hover div.dropdown-menu {
     display: block;
 }

@@ -13,6 +13,7 @@ class Auction extends Model
      * @var string
      */
     protected $table = 'auction';
+    public $timestamps = false;
 
     /**
      * The attributes that are mass assignable.
@@ -20,7 +21,7 @@ class Auction extends Model
      * @var array
      */
     protected $fillable = [
-    'state', 'title', 'sellingreason', 'pathtophoto', 'startingprice', 'phonenumber', 'buynow', 'limitdate', 'postalcode', 'auctioncreator',
+    'state', 'title', 'sellingreason', 'pathtophoto', 'startingprice', 'phonenumber', 'buynow', 'limitdate', 'auctioncreator',
   ];
 
     /**

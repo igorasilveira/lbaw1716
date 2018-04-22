@@ -49,11 +49,6 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
-            'username' => 'required|string|max:255|unique:user',
-            'email' => 'required|string|email|max:255|unique:user',
-            'password' => 'required|string|min:6|confirmed',
-        ]);
     }
 
     /**
@@ -65,6 +60,19 @@ class RegisterController extends Controller
      */
     protected function create(Request $request, array $data)
     {
+
+        $validator = $request->validate([
+            'username' => 'required|string|max:255|unique:user',
+            'completeName' => 'required|string|max:255',
+            'phoneNumber' => 'required|string|max:25',
+            'birthDate' => 'required|string|date|min:10|max:10',
+            'city' => 'required|string|min:3',
+            'address' => 'required|string|min:5|max:255',
+            'email' => 'required|string|email|max:255|unique:user',
+            'password' => 'required|string|min:6|confirmed',
+            'photo' => 'image|mimes:jpg,png',
+        ]);
+
         $country = Country::find($data['country']);
         global $city;
         //echo City::where('name', $data['city'])->get();
@@ -82,28 +90,35 @@ class RegisterController extends Controller
          'username' => $data['username'],
          'email' => $data['email'],
          'password' => bcrypt($data['password']),
-         'completename' => $data['compName'],
+         'completename' => $data['completeName'],
          'phoneNumber' => $data['phoneNumber'],
          'birthDate' => $data['birthDate'],
          'city' => $city->first()->id,
          'address' => $data['address'],
        ]);
 
-        /*$file = $user->id.'.'.$request->file('photo')->getClientOriginalExtension();
+       $filename = "";
 
-        $request->file('photo')->move(
-                base_path().'/public/images/catalog/', $file
-          );
-        $file_name = '/images/catalog/'.$file;
+       if ($request->file('photo')) {
+         $file = $user->id.'.'.$request->file('photo')->getClientOriginalExtension();
 
-        $user->update(['pathtophoto' => $file_name]);*/
+         $request->file('photo')->move(
+           base_path().'/public/images/catalog/users/', $file
+         );
+         $file_name = '/images/catalog/users/'.$file;
+       } else {
+         $file_name = '/images/catalog/users/default.png';
+       }
+
+        $user->update(['pathtophoto' => $file_name]);
 
         return $user;
     }
 
     public function register(Request $request)
     {
-        return auth()->login($this->create($request, $request->all()));
+        auth()->login($this->create($request, $request->all()));
+        return redirect('/');
     }
 
     public function showRegistrationForm()

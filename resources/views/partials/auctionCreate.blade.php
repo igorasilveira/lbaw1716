@@ -17,7 +17,7 @@
     </div>
     <div id="auction-form"
          class="container">
-      <form action="/auction/add"
+      <form action="{{ action('AuctionController@save') }}"
             method="post"
             class="mx-auto py-2">
         <div class="form-group">
@@ -53,7 +53,7 @@
                     required></textarea>
 
           <label class="col-form-label required"
-          for="title">Selling Reason</label>
+          for="reason">Selling Reason</label>
           <input type="text"
           class="form-control"
           placeholder="Default input"
@@ -82,7 +82,9 @@
                          class="form-control"
                          aria-label="Amount (to the nearest euro)"
                          name="startingprice"
-                         required>
+                         required
+                         min=1
+                         value=0>
                   <div class="input-group-append">
                     <span class="input-group-text">.00</span>
                   </div>
@@ -100,7 +102,8 @@
                   <input type="number"
                          class="form-control"
                          aria-label="Amount (to the nearest euro)"
-                         name="minimumsellingprice">
+                         name="minimumsellingprice"
+                         value=0>
                   <div class="input-group-append">
                     <span class="input-group-text">.00</span>
                   </div>
@@ -118,7 +121,8 @@
                   <input type="number"
                          class="form-control"
                          aria-label="Amount (to the nearest euro)"
-                         name="buynow">
+                         name="buynow"
+                         value=0>
                   <div class="input-group-append">
                     <span class="input-group-text">.00</span>
                   </div>
@@ -149,5 +153,6 @@
           <button class="btn btn-primary  col-md-6 col-sm-12"
                   type="submit">Send for Review</button>
         </div>
+        {{csrf_field() }}
       </form>
     </div>
