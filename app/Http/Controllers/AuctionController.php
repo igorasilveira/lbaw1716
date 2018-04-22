@@ -73,20 +73,4 @@ class AuctionController extends Controller
     {
     }
 
-    public function bid($id, Request $request)
-    {
-        echo $id;
-        return Bid::create($request);
-    }
-
-    public function buynow($id)
-    {
-        return Bid::create([
-        //'value', 'auctionbidded', 'bidder', 'isBuyNow'
-        'value' => $data[value],
-        'auctionbidded' => $id,
-        'bidder' => Auth::user()->id,
-        'isBuyNow' => true,
-      ]);
-    }
 }

@@ -1,3 +1,23 @@
+function encodeForAjax(data) {
+	if (data == null) return null;
+	return Object.keys(data)
+		.map(function (k) {
+			return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
+		})
+		.join('&');
+}
+
+function sendAjaxRequest(method, url, data, handler) {
+	let request = new XMLHttpRequest();
+
+	request.open(method, url, true);
+	request.setRequestHeader('X-CSRF-TOKEN', document.querySelector('meta[name="csrf-token"]')
+		.content);
+	request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+	request.addEventListener('load', handler);
+	request.send(encodeForAjax(data));
+}
+
 /*function addEventListeners() {
 	let itemCheckers = document.querySelectorAll('article.card li.item input[type=checkbox]');
   [].forEach.call(itemCheckers, function (checker) {
@@ -22,26 +42,6 @@
 	let cardCreator = document.querySelector('article.card form.new_card');
 	if (cardCreator != null)
 		cardCreator.addEventListener('submit', sendCreateCardRequest);
-}
-
-function encodeForAjax(data) {
-	if (data == null) return null;
-	return Object.keys(data)
-		.map(function (k) {
-			return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
-		})
-		.join('&');
-}
-
-function sendAjaxRequest(method, url, data, handler) {
-	let request = new XMLHttpRequest();
-
-	request.open(method, url, true);
-	request.setRequestHeader('X-CSRF-TOKEN', document.querySelector('meta[name="csrf-token"]')
-		.content);
-	request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-	request.addEventListener('load', handler);
-	request.send(encodeForAjax(data));
 }
 
 function sendItemUpdateRequest() {
@@ -570,3 +570,12 @@ function timecounter(time) {
 	document.getElementById('demo')
 		.innerHTML = date('Y W o', time);
 }
+
+/*function bid() {
+	let auction_bid = document.getElementById('auctionBid')
+		.innerHTML;
+	console.log(auction_bid);
+	sendAjaxRequest('post', '/api/cards/' + id, {
+			description: description
+		}
+	}*/

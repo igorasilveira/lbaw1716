@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Bid extends Model
 {
+
+  // Don't add create and update timestamps in database.
+  public $timestamps = false;
+
   /**
   * The table associated with the model.
   *
@@ -19,7 +23,7 @@ class Bid extends Model
   * @var array
   */
   protected $fillable = [
-    'value', 'username', 'bidder', 'isBuyNow'
+    'value', 'auction_id', 'user_id', 'isBuyNow'
   ];
 
   public function user()

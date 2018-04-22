@@ -69,31 +69,57 @@
                 @endif
               </p>
             </div>
-            <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
-              <button type="button"
-                      name="placeBidBtn"
-                      href="/auction/bid/{{ $auction->id }}"
-                      class="btn btn-success w-100">
+            @if($auction->state == 'Active')
+            @if(Auth::id() != $auction->auctionCreator)
+            <form class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                {{ csrf_field() }}
+                  @if($auction->bids->count() > 0)
+                  <input name="value" type="hidden" value="{{ $auction->bids->sortByDesc('date')->first()->value + 0.10*($auction->bids->sortByDesc('date')->first()->value) }}" />
+                  @else
+                  <input name="value" type="hidden" value="{{ $auction->startingprice }}" />
+                  @endif
+                <button type="submit"
+                        name="placeBidBtn"
+                        formaction="/auction/bid/{{ $auction->id }}"
+                        formmethod="post"
+                        class="btn btn-success w-100">
                         Bid
-                        <span value="value" class="px-auto">
+                        <span id="auctionBid">
                         @if($auction->bids->count() > 0)
                         {{ $auction->bids->sortByDesc('date')->first()->value + 0.10*($auction->bids->sortByDesc('date')->first()->value) }}
                         @else
                         {{ $auction->startingprice }}
                         @endif
                         </span>
-                         €
-              </button>
-            </div>
+                        €
+                </button>
+              </form>
           </div>
           <hr class="my-2">
           <!-- BUY NOW BUTTON AREA -->
-          <div class="w-100">
-            <button type="button"
+          <form class="w-100">
+            {{ csrf_field() }}
+            <input name="value" type="hidden" value="{{ $auction->buynow }}"/>
+            <button type="submit"
                     name="placeBidBtn"
-                    href="/auction/buy-now/{{ $auction->id }}"
-                    class="btn btn-info mw-75 text-center">Buy Now {{ $auction->buynow }}</button>
-          </div>
+                    formaction="/auction/buy-now/{{ $auction->id }}"
+                    formmethod="post"
+                    class="btn btn-info mw-75 text-center">
+                    Buy Now {{ $auction->buynow }} €
+            </button>
+          </form>
+          @endif
+          @else
+          @if($auction->state == 'Over')
+        </div>
+            <hr class="my-2">
+            <div class="w-100 alert alert-dismissible alert-info">
+              <p>
+                Auction Over!!!
+              </p>
+            </div>
+          @endif
+          @endif
         </div>
       </div>
     </div>
