@@ -89,12 +89,12 @@ class RegisterController extends Controller
          'address' => $data['address'],
        ]);
 
-        $file = $user->id . '.' . $request->file('photo')->getClientOriginalExtension();
+        $file = $user->id.'.'.$request->file('photo')->getClientOriginalExtension();
 
         $request->file('photo')->move(
-                base_path() . '/public/images/catalog/', $file
+                base_path().'/public/images/catalog/', $file
           );
-        $file_name = '/public/images/catalog/' . $imageName;
+        $file_name = '/public/images/catalog/'.$imageName;
 
         $user->update(['pathtophoto' => $file_name]);
 
@@ -109,5 +109,8 @@ class RegisterController extends Controller
     public function showRegistrationForm()
     {
         return view('auth.register');
+    }
+}
+');
     }
 }
