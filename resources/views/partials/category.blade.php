@@ -14,7 +14,7 @@
           class="container-fluid col-sm-12 row">
         <div class="row">
           @if($category->auctions->count() >= 3)
-            @foreach($category->auctions()->where('state','Active')->orderby('/numberOfBids', 'DESC')->take(3)->get() as $auction)
+            @foreach($category->auctions()->where('state','Active')->orderby('numberofbids', 'DESC')->take(3)->get() as $auction)
               <li class="col-md-4 col-sm-6 col-xs-6">
               @include('partials.auctionMosaic', ['auction' => $auction])
               </li>
@@ -24,7 +24,7 @@
         <hr class="my-5">
         <div class="row">
           @if($category->auctions->count() >= 6)
-            @foreach($category->auctions()->where('state','Active')->orderby('/numberOfBids', 'DESC')->skip(3)->take(3)->get() as $auction)
+            @foreach($category->auctions()->where('state','Active')->orderby('numberofbids', 'DESC')->skip(3)->take(3)->get() as $auction)
               <li class="col-md-4 col-sm-6 col-xs-6">
               @include('partials.auctionMosaic', ['auction' => $auction])
               </li>

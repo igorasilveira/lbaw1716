@@ -1,7 +1,7 @@
 
 ### Refering to Classes
 
-* auction(state NN,  title,  description, sellingReason, pathToPhoto, startingPrice <b>CK</b> startingPrice > 0, minimumSellingPrice, buyNow, startDate, limitDate, refusalDate, /numberOfBids, reasonOfRefusal, <u>auctionID</u> <b>NN</b>,  normal_UserID -> Normal_User <b>NN</b>,  autheticated_UserID -> Autheticated_User <b>NN</b>)
+* auction(state NN,  title,  description, sellingReason, pathToPhoto, startingPrice <b>CK</b> startingPrice > 0, minimumSellingPrice, buyNow, startDate, limitDate, refusalDate, numberofbids, reasonOfRefusal, <u>auctionID</u> <b>NN</b>,  normal_UserID -> Normal_User <b>NN</b>,  autheticated_UserID -> Autheticated_User <b>NN</b>)
 
 * authenticated_User(typeOfUser, username, password, pathToPhoto, <u>autheticated_UserID</u> <b>NN</b>)
 

@@ -66,8 +66,6 @@ $$;
 
 
 --
-
---
 -- Name: check_auction_users(integer, integer, integer); Type: FUNCTION; Schema: public; Owner: lbaw1716
 --
 
@@ -859,7 +857,17 @@ RETURN NEW;
 END;$$;
 
 
+--
+-- Name: update_bid_number(); Type: FUNCTION; Schema: public; Owner: lbaw1716
+--
 
+CREATE FUNCTION update_bid_number() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$BEGIN
+UPDATE "auction" SET numberofbids = numberofbids + 1 WHERE "auction".id = NEW.auction_id;
+RETURN NEW;
+END;$$;
+--
 
 --
 -- Name: win_auction(); Type: FUNCTION; Schema: public; Owner: lbaw1716
@@ -968,7 +976,11 @@ CREATE TRIGGER delete_comment BEFORE DELETE ON comment FOR EACH ROW EXECUTE PROC
 
 CREATE TRIGGER notification_auction AFTER INSERT OR UPDATE OF state ON auction FOR EACH ROW EXECUTE PROCEDURE notification_auction();
 
+--
+-- Name: update_bid_number; Type: TRIGGER; Schema: public; Owner: lbaw1716
+--
 
+CREATE TRIGGER update_bid_number AFTER INSERT ON bid FOR EACH ROW EXECUTE PROCEDURE update_bid_number();
 --
 -- Name: update_rating; Type: TRIGGER; Schema: public; Owner: lbaw1716
 --
@@ -979,9 +991,9 @@ CREATE TRIGGER update_rating BEFORE INSERT OR UPDATE ON auction FOR EACH ROW EXE
 --
 -- Name: win_auction; Type: TRIGGER; Schema: public; Owner: lbaw1716
 --
-
+/*
 CREATE TRIGGER win_auction BEFORE UPDATE ON auction FOR EACH ROW EXECUTE PROCEDURE win_auction();
-
+*/
 
 --
 -- Name: winner_rate_auction; Type: TRIGGER; Schema: public; Owner: lbaw1716

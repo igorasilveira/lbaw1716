@@ -6,12 +6,12 @@
        class="carousel slide"
        data-ride="carousel . {{ $category->id }}">
     <div class="carousel-inner">
-      @foreach($category->auctions()->orderby('/numberOfBids', 'DESC')->take(1)->get() as $auction)
+      @foreach($category->auctions()->orderby('numberofbids', 'DESC')->take(1)->get() as $auction)
       <div class="carousel-item active">
         @include('partials.auctionCarousel', ['auction' => $auction])
       </div>
       @endforeach
-      @foreach($category->auctions()->orderby('/numberOfBids', 'DESC')->skip(1)->take(2)->get() as $auction)
+      @foreach($category->auctions()->orderby('numberofbids', 'DESC')->skip(1)->take(2)->get() as $auction)
       <div class="carousel-item">
         @include('partials.auctionCarousel', ['auction' => $auction])
       </div>
