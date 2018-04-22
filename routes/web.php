@@ -39,7 +39,7 @@ Route::post('/users/add_credits/{id}', '');
 //Route::get('/', '')->name('');
 Route::get('/search', '')->name('');*/
 Route::get('/category/{category}', 'CategoryController@showAuctionsFromCategory');
-Route::get('/auction/new', 'AuctionController@create')->name('');
+Route::get('/auction/new', 'AuctionController@create');
 Route::post('/auction/add', 'AuctionController@save')->name('/auction/add');
 Route::get('/auction/{id}', 'AuctionController@show');
 Route::post('/auction/buy-now/{id}', 'AuctionController@buynow');

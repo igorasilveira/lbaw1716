@@ -17,7 +17,7 @@
     </div>
     <div id="auction-form"
          class="container">
-      <form action="{{ url('/auction/add') }}"
+      <form action="/auction/add"
             method="post"
             class="mx-auto py-2">
         <div class="form-group">
@@ -37,11 +37,9 @@
                   id="category"
                   required>
             <option value="" selected disabled hidden>Category</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-            <option value="4">Four</option>
-            <option value="5">Five</option>
+            @foreach(App\Category::all() as $category)
+            <option value="{{ $category->id }}"> {{ $category->name }} </option>
+            @endforeach
           </select>
 
           <label class="col-form-label required"

@@ -74,15 +74,16 @@
                       name="placeBidBtn"
                       href="/auction/bid/{{ $auction->id }}"
                       class="btn btn-success w-100">
-                      <span value="value" class="px-auto">
                         Bid
+                        <span value="value" class="px-auto">
                         @if($auction->bids->count() > 0)
                         {{ $auction->bids->sortByDesc('date')->first()->value + 0.10*($auction->bids->sortByDesc('date')->first()->value) }}
                         @else
                         {{ $auction->startingprice }}
                         @endif
+                        </span>
                          €
-                      </span></button>
+              </button>
             </div>
           </div>
           <hr class="my-2">
