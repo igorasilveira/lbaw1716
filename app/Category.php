@@ -24,4 +24,9 @@ class Category extends Model
   {
     return $this->belongsToMany('App\Auction','categoryofauction');
   }
+
+  public function hasChilds()
+  {
+    return static::where('parent', $this['id'])->count();
+  }
 }

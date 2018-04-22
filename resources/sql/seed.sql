@@ -1764,8 +1764,9 @@ INSERT INTO category (name, parent) VALUES ('Peripherals', NULL);
 INSERT INTO category (name, parent) VALUES ('Motherboards', 4);
 INSERT INTO category (name, parent) VALUES ('Processors', 4);
 INSERT INTO category (name, parent) VALUES ('RAM', 4);
-INSERT INTO category (name, parent) VALUES ('Graphics/Video Cards ', 4);
-INSERT INTO category (name, parent) VALUES ('Power Supplies ', 4);
+INSERT INTO category (name, parent) VALUES ('Graphic Cards', 4);
+INSERT INTO category (name, parent) VALUES ('Power Supplies', 4);
+INSERT INTO category (name, parent) VALUES ('Keyboards', 5);
 
 
 --
