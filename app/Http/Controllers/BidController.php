@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Bid;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Auction;
 
 class BidController extends Controller
 {
@@ -25,12 +27,37 @@ class BidController extends Controller
     public function create(Request $request)
     {
         echo $request;
-        $user = DB::insert( DB::raw("CREATE TEMPORARY TABLE current_user(username varchar);
+        /*$user = DB::insert( DB::raw("CREATE TEMPORARY TABLE current_user(username varchar);
           INSERT INTO current_user(username) VALUES (User::find(Auth::id())->username);"));
 
-        //return 
-
+        $this->save();
+       Auction::find($id)->"/numberOfBids"++;
+       */
     }
+
+        public function bid($id, Request $request)
+        {
+            // echo $request['value'];
+            //'value', 'auction_id, 'user_id', 'isBuyNow'
+            return Bid::create([
+              'value' => $request['value'],
+              'user_id' => Auth::id(),
+              'auction_id' => Auction::find($id)->id,
+            ]);
+
+        }
+
+        public function buynow($id)
+        {
+            echo $request['value'];
+            //'value', 'auction_id, 'user_id', 'isBuyNow'
+            return Bid::create([
+              'value' => $request['value'],
+              'user_id' => Auth::id(),
+              'auction_id' => $id,
+              'isBuyNow' => true,
+            ]);
+        }
 
     /**
      * Store a newly created resource in storage.

@@ -42,8 +42,8 @@ Route::get('/category/{category}', 'CategoryController@showAuctionsFromCategory'
 Route::get('/auction/new', 'AuctionController@create');
 Route::post('/auction/add', 'AuctionController@save')->name('/auction/add');
 Route::get('/auction/{id}', 'AuctionController@show');
-Route::post('/auction/buy-now/{id}', 'AuctionController@buynow');
-Route::post('/auction/bid/{id}', 'AuctionController@bid');
+Route::post('/auction/buy-now/{id}', 'BidController@buynow');
+Route::post('/auction/bid/{id}', 'BidController@bid');
 /*Route::post('/auction/{id}/comments/add', '');
 Route::delete('/auction/{id}/comments/{comID}/remove/', '');
 Route::post('/auction/report/{id}', '');
