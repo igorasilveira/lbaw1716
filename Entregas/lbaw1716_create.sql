@@ -560,7 +560,7 @@ CREATE TABLE auction (
     startdate timestamp with time zone DEFAULT transaction_timestamp() NOT NULL,
     limitdate timestamp with time zone NOT NULL,
     refusaldate timestamp with time zone,
-    "/numberOfBids" integer,
+    numberofbids integer,
     reasonofrefusal character varying,
     finaldate timestamp with time zone,
     finalprice integer,

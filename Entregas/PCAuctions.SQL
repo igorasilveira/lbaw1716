@@ -68,7 +68,7 @@ CREATE TABLE Auction
 	startDate TIMESTAMP WITH TIME zone NOT NULL,
 	limitDate TIMESTAMP WITH TIME zone NOT NULL,
 	refusalDate TIMESTAMP WITH TIME zone NULL,
-	"/numberOfBids" integer NULL,
+	numberofbids integer NULL,
 	reasonOfRefusal varchar(50) NULL,
   	finalDate TIMESTAMP WITH TIME zone NULL,
   	finalPrice integer NULL,
