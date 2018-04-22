@@ -364,6 +364,7 @@ CREATE SEQUENCE auto_increment_user
 --
 
 CREATE TABLE bid (
+    id SERIAL NOT NULL,
     date timestamp with time zone DEFAULT transaction_timestamp() NOT NULL,
     value integer NOT NULL,
     auction_id integer NOT NULL,
@@ -552,7 +553,7 @@ ALTER TABLE IF EXISTS ONLY "user"
 --
 
 ALTER TABLE IF EXISTS ONLY bid
-    ADD CONSTRAINT bid_pkey PRIMARY KEY (date, auction_id, user_id);
+    ADD CONSTRAINT bid_pkey PRIMARY KEY (id);
 
 
 --
@@ -1728,21 +1729,21 @@ INSERT INTO "auction" (state,title,description,sellingreason,pathtophoto,startin
 -- Data for Name: bid; Type: TABLE DATA; Schema: public; Owner: lbaw1716
 --
 
-INSERT INTO bid VALUES ('2018-03-31 20:10:10+01', 165, 1, 3, NULL);
-INSERT INTO bid VALUES ('2018-03-31 20:20:10+01', 167, 1, 4, NULL);
-INSERT INTO bid VALUES ('2018-03-31 16:30:10+01', 175, 1, 6, NULL);
-INSERT INTO bid VALUES ('2018-03-31 16:15:10+01', 160, 7, 9, NULL);
-INSERT INTO bid VALUES ('2018-03-31 16:20:10+01', 150, 12, 11, NULL);
-INSERT INTO bid VALUES ('2016-04-07 16:10:10+01', 160, 12, 2, NULL);
-INSERT INTO bid VALUES ('2018-03-31 16:15:10+01', 570, 12, 4, NULL);
-INSERT INTO bid VALUES ('2018-04-04 01:57:47.609897+01', 500, 1, 18, NULL);
-INSERT INTO bid VALUES ('2018-04-04 09:34:44.568129+01', 200, 7, 11, false);
-INSERT INTO bid VALUES ('2018-04-04 09:38:20.780618+01', 205, 7, 11, NULL);
-INSERT INTO bid VALUES ('2018-04-04 09:45:40.80046+01', 600, 7, 11, true);
-INSERT INTO bid VALUES ('2018-04-04 10:18:45.488189+01', 505, 1, 6, NULL);
-INSERT INTO bid VALUES ('2018-04-04 10:20:12.186704+01', 600, 1, 8, NULL);
-INSERT INTO bid VALUES ('2018-04-04 10:21:40.598228+01', 650, 1, 11, NULL);
-INSERT INTO bid VALUES ('2018-04-04 10:29:30.442617+01', 660, 1, 3, NULL);
+INSERT INTO bid (date,value,auction_id,user_id,"isBuyNow") VALUES ('2018-03-31 20:10:10+01', 165, 1, 3, NULL);
+INSERT INTO bid (date,value,auction_id,user_id,"isBuyNow") VALUES ('2018-03-31 20:20:10+01', 167, 1, 4, NULL);
+INSERT INTO bid (date,value,auction_id,user_id,"isBuyNow") VALUES ('2018-03-31 16:30:10+01', 175, 1, 6, NULL);
+INSERT INTO bid (date,value,auction_id,user_id,"isBuyNow") VALUES ('2018-03-31 16:15:10+01', 160, 7, 9, NULL);
+INSERT INTO bid (date,value,auction_id,user_id,"isBuyNow") VALUES ('2018-03-31 16:20:10+01', 150, 12, 11, NULL);
+INSERT INTO bid (date,value,auction_id,user_id,"isBuyNow") VALUES ('2016-04-07 16:10:10+01', 160, 12, 2, NULL);
+INSERT INTO bid (date,value,auction_id,user_id,"isBuyNow") VALUES ('2018-03-31 16:15:10+01', 570, 12, 4, NULL);
+INSERT INTO bid (date,value,auction_id,user_id,"isBuyNow") VALUES ('2018-04-04 01:57:47.609897+01', 500, 1, 18, NULL);
+INSERT INTO bid (date,value,auction_id,user_id,"isBuyNow") VALUES ('2018-04-04 09:34:44.568129+01', 200, 7, 11, false);
+INSERT INTO bid (date,value,auction_id,user_id,"isBuyNow") VALUES ('2018-04-04 09:38:20.780618+01', 205, 7, 11, NULL);
+INSERT INTO bid (date,value,auction_id,user_id,"isBuyNow") VALUES ('2018-04-04 09:45:40.80046+01', 600, 7, 11, true);
+INSERT INTO bid (date,value,auction_id,user_id,"isBuyNow") VALUES ('2018-04-04 10:18:45.488189+01', 505, 1, 6, NULL);
+INSERT INTO bid (date,value,auction_id,user_id,"isBuyNow") VALUES ('2018-04-04 10:20:12.186704+01', 600, 1, 8, NULL);
+INSERT INTO bid (date,value,auction_id,user_id,"isBuyNow") VALUES ('2018-04-04 10:21:40.598228+01', 650, 1, 11, NULL);
+INSERT INTO bid (date,value,auction_id,user_id,"isBuyNow") VALUES ('2018-04-04 10:29:30.442617+01', 660, 1, 3, NULL);
 
 
 --

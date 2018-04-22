@@ -35,17 +35,17 @@ class AuctionController extends Controller
         $date = $now->format('Y/m/d H:i:s');
 
         return Auction::create([
-      'state' => 'Pending',
-      'title' => $data['title'],
-      'sellingreason' => $data['reason'],
-      'pathtophoto' => $data['pathtophoto'],
-      'startingprice' => $data['startingprice'],
-      'minimumsellingprice' => $data['minimumsellingprice'],
-      'buynow' => $data['buynow'],
-      'limitdate' => $date + $auctionDuration,
-      'postalcode' => $data['postalCode'],
-      'auctionCreator' => Auth::user()->id,
-    ]);
+          'state' => 'Pending',
+          'title' => $data['title'],
+          'sellingreason' => $data['reason'],
+          'pathtophoto' => $data['pathtophoto'],
+          'startingprice' => $data['startingprice'],
+          'minimumsellingprice' => $data['minimumsellingprice'],
+          'buynow' => $data['buynow'],
+          'limitdate' => $date + $auctionDuration,
+          'postalcode' => $data['postalCode'],
+          'auctionCreator' => Auth::user()->id,
+        ]);
     }
 
     public function approve()

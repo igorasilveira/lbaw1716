@@ -69,6 +69,7 @@
                 @endif
               </p>
             </div>
+            @if($auction->state == 'Active')
             @if(Auth::id() != $auction->auctionCreator)
             <form class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
                 {{ csrf_field() }}
@@ -107,6 +108,17 @@
                     Buy Now {{ $auction->buynow }} €
             </button>
           </form>
+          @endif
+          @else
+          @if($auction->state == 'Over')
+        </div>
+            <hr class="my-2">
+            <div class="w-100 alert alert-dismissible alert-info">
+              <p>
+                Auction Over!!!
+              </p>
+            </div>
+          @endif
           @endif
         </div>
       </div>
