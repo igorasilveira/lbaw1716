@@ -59,9 +59,9 @@
           </div>
         </div>
         @if (Auth::check())
-            @include('auth/loggedin')
+            @include('auth.loggedin')
         @else
-            @include('auth/loginMenu')
+            @include('auth.loginMenu')
         @endif
         <br>
         <button class="navbar-toggler"
@@ -95,7 +95,7 @@
                 @if ($category->parent == NULL)
                     <li class="nav-item">
                         <a class="nav-link text-white"
-                                 href="{{ url('/' . $category->id) }}">
+                                 href="{{ url('/cat/' . $category->id) }}">
                                  {{ $category->name }}
                         </a>
                     </li>
@@ -114,7 +114,7 @@
                    @foreach(App\Category::all() as $category)
                       @if ($category->parent != NULL)
                         <a class="dropdown-item"
-                          href="{{ url('/' . $category->id) }}">{{ App\Category::find($category->parent)->name . ": " . $category->name }}
+                          href="{{ url('/cat' . $category->id) }}">{{ App\Category::find($category->parent)->name . ": " . $category->name }}
                         </a>
                       @endif
                    @endforeach

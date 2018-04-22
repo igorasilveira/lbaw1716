@@ -4,52 +4,58 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-  /*
-  |--------------------------------------------------------------------------
-  | Login Controller
-  |--------------------------------------------------------------------------
-  |
-  | This controller handles authenticating users for the application and
-  | redirecting them to your home screen. The controller uses a trait
-  | to conveniently provide its functionality to your applications.
-  |
-  */
+    /*
+    |--------------------------------------------------------------------------
+    | Login Controller
+    |--------------------------------------------------------------------------
+    |
+    | This controller handles authenticating users for the application and
+    | redirecting them to your home screen. The controller uses a trait
+    | to conveniently provide its functionality to your applications.
+    |
+    */
 
-  use AuthenticatesUsers;
+    use AuthenticatesUsers;
 
-  /**
-  * Where to redirect users after login.
-  *
-  * @var string
-  */
-  protected $redirectTo = '/login';
+    /**
+     * Where to redirect users after login.
+     *
+     * @var string
+     */
+    protected $redirectTo = '/home';
 
-  /**
-  * Create a new controller instance.
-  */
-  public function __construct()
-  {
-    $this->middleware('guest')->except('logout');
-  }
+    /**
+     * Create a new controller instance.
+     */
+    public function __construct()
+    {
+        $this->middleware('guest')->except('logout');
+    }
 
-  public function showLoginForm()
-  {
-    return view('pages.home');
-  }
+    public function username()
+    {
+        return 'username';
+    }
 
-  public function showHome()
-  {
-    return view('pages.home');
-  }
+    public function showLoginForm()
+    {
+        return view('pages.home');
+    }
 
-  public function login(Request $request)
-  {
-      echo $request;
-      auth()->login($request->all());
-      return view('pages.home');
-  }
+    public function showHome()
+    {
+        return view('pages.home');
+    }
 
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        return redirect('login');
+    }
 }

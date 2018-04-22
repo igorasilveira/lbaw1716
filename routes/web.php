@@ -21,8 +21,8 @@ Route::get('home', 'Auth\LoginController@showHome');
 //
 // Authentication
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('auth.loginMenu');
-Route::post('login', 'Auth\LoginController@login')->name('login');
-Route::post('logout', 'Auth\LoginController@logout');
+Route::post('login', 'Auth\LoginController@login');
+Route::get('logout', 'Auth\LoginController@logout');
 Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('auth.register');
 Route::post('register', 'Auth\RegisterController@register')->name('register');
 /*
@@ -38,7 +38,7 @@ Route::post('/users/add_credits/{id}', '');
 // Auctions
 //Route::get('/', '')->name('');
 Route::get('/search', '')->name('');*/
-Route::get('/{category}', 'CategoryController@showAuctionsFromCategory');
+Route::get('/cat/{category}', 'CategoryController@showAuctionsFromCategory');
 Route::get('/auction/new', 'AuctionController@create')->name('');
 Route::post('/auction/add', 'AuctionController@save')->name('/auction/add');
 Route::get('/auction/{id}', 'AuctionController@show');

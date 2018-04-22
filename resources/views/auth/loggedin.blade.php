@@ -11,7 +11,7 @@
        data-devgib="tagged">Go To</a>
     <a class=""
        href="profile.html"
-       data-devgib="tagged"><img src="{{ }}" height="50" class="profile-pic" style="display: inline"/></a>
+       data-devgib="tagged"><img src="{{ Auth::user()->pathtophoto }}" height="50" class="profile-pic" style="display: inline"/></a>
     <div class="dropdown-menu test"
          style="padding:17px;">
       <a class="dropdown-item"

@@ -63,7 +63,7 @@ class RegisterController extends Controller
      *
      * @return \App\User
      */
-    protected function create(array $data)
+    protected function create(Request $request, array $data)
     {
         $country = Country::find($data['country']);
         global $city;
@@ -77,26 +77,33 @@ class RegisterController extends Controller
             $city = City::where('name', $data['city']);
         }
 
-        echo $city;
+        $user = User::create([
+         'typeofuser' => 'Normal',
+         'username' => $data['username'],
+         'email' => $data['email'],
+         'password' => bcrypt($data['password']),
+         'compName' => $data['compName'],
+         'phoneNumber' => $data['phoneNumber'],
+         'birthDate' => $data['birthDate'],
+         'city' => $city->first()->id,
+         'address' => $data['address'],
+       ]);
 
-        return User::create([
-              'typeofuser' => 'Normal',
-              'username' => $data['username'],
-              'email' => $data['email'],
-              'password' => bcrypt($data['password']),
-              'compName' => $data['compName'],
-              'phoneNumber' => $data['phoneNumber'],
-              'birthDate' => $data['birthDate'],
-              'pathtophoto' => $data['photo'],
-              'city' => $city->first()->id,
-              'address' => $data['address'],
-          ]);
+        $file = $user->id . '.' . $request->file('photo')->getClientOriginalExtension();
+
+        $request->file('photo')->move(
+                base_path() . '/public/images/catalog/', $file
+          );
+        $file_name = '/public/images/catalog/' . $imageName;
+
+        $user->update(['pathtophoto' => $file_name]);
+
+        return $user;
     }
 
     public function register(Request $request)
     {
-      auth()->login($this->create($request->all()));
-      return view('pages.home');
+        return auth()->login($this->create($request, $request->all()));
     }
 
     public function showRegistrationForm()

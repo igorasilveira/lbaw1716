@@ -22,7 +22,7 @@
                required>
                @if ($errors->has('username'))
                <span class="error">
-                 {{ $errors->first('username') }}
+                 <strong>{{ $errors->first('username') }}</strong>
                </span>
                 @endif
         <input type="password"
@@ -33,7 +33,7 @@
                required>
                @if ($errors->has('password'))
                <span class="error">
-                 {{ $errors->first('password') }}
+                 <strong>{{ $errors->first('password') }}</strong>
                </span>
                @endif
         <button type="submit"
