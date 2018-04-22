@@ -22,10 +22,14 @@ class BidController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
+        echo $request;
         $user = DB::insert( DB::raw("CREATE TEMPORARY TABLE current_user(username varchar);
-          INSERT INTO current_user(username) VALUES ($username);"));
+          INSERT INTO current_user(username) VALUES (User::find(Auth::id())->username);"));
+
+        //return 
+
     }
 
     /**
