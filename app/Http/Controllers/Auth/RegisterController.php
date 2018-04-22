@@ -30,7 +30,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = 'home';
 
     /**
      * Create a new controller instance.
@@ -82,21 +82,21 @@ class RegisterController extends Controller
          'username' => $data['username'],
          'email' => $data['email'],
          'password' => bcrypt($data['password']),
-         'compName' => $data['compName'],
+         'completename' => $data['compName'],
          'phoneNumber' => $data['phoneNumber'],
          'birthDate' => $data['birthDate'],
          'city' => $city->first()->id,
          'address' => $data['address'],
        ]);
 
-        $file = $user->id.'.'.$request->file('photo')->getClientOriginalExtension();
+        /*$file = $user->id.'.'.$request->file('photo')->getClientOriginalExtension();
 
         $request->file('photo')->move(
                 base_path().'/public/images/catalog/', $file
           );
         $file_name = '/public/images/catalog/'.$imageName;
 
-        $user->update(['pathtophoto' => $file_name]);
+        $user->update(['pathtophoto' => $file_name]);*/
 
         return $user;
     }
@@ -109,8 +109,5 @@ class RegisterController extends Controller
     public function showRegistrationForm()
     {
         return view('auth.register');
-    }
-}
-');
     }
 }

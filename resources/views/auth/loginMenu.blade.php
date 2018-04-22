@@ -9,7 +9,7 @@
     <div class="dropdown-menu test"
          style="padding:17px;">
       <form method="POST"
-            action="{{ url('/login') }}"
+            action="/login"
             enctype="multipart/form-data"
             class="form-group navbar-form"
             id="signin">

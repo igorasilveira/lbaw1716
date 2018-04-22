@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $auction->name)
+@section('title', 'create_auction')
 
 @section('content')
   @include('partials.auctionCreate')
