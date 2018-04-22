@@ -94,7 +94,7 @@ class RegisterController extends Controller
         $request->file('photo')->move(
                 base_path().'/public/images/catalog/', $file
           );
-        $file_name = '/public/images/catalog/'.$imageName;
+        $file_name = '/images/catalog/'.$file;
 
         $user->update(['pathtophoto' => $file_name]);
 
@@ -109,8 +109,5 @@ class RegisterController extends Controller
     public function showRegistrationForm()
     {
         return view('auth.register');
-    }
-}
-');
     }
 }
