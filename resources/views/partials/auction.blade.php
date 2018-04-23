@@ -170,24 +170,13 @@
         <h4 class="alert-heading">Warning!</h4>
         <p class="mb-0">All comments are supervised by the auction's moderator. Keep within the site's for the commenting section. <span class="alert-link">Breaking the rules may result in an account ban.</span>.</p>
       </div>
+      @foreach($auction->comments->sortByDesc('date') as $comment)
       <blockquote class="blockquote my-4">
-        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-        <footer class="blockquote-footer"><cite title="Source Title"><a>anotherUser</a></cite></footer>
+        <p class="mb-0">{{$comment->description}}</p>
+        <footer class="blockquote-footer"><cite title="Source Title"><a>by {{ $comment->user->username }}, in </a></cite><cite title="Source Title"><a>{{ $comment->date }}</a></cite></footer>
       </blockquote>
       <hr class="my-2">
-      <blockquote class="blockquote my-4">
-        <p class="mb-0">Ut lorem mauris, ultrices ac ante nec, cursus porta ipsum. Morbi felis felis, finibus ut vestibulum at, feugiat vel lorem. Nulla sapien dui, porttitor in nulla non, aliquet ultricies enim. Ut semper ac enim eget porta. Morbi arcu mauris, auctor
-          eget ex sed, condimentum eleifend nibh. Aenean risus dolor, placerat sit amet nisl imperdiet, feugiat aliquam odio. Vestibulum metus ex, molestie eu tempus eu, tristique quis elit. Maecenas nec neque posuere, aliquam quam sed, lobortis velit.
-          Vivamus semper quam id accumsan porta. Morbi in hendrerit orci, sit amet volutpat diam.</p>
-        <footer class="blockquote-footer"><cite title="Source Title"><a>niceUsername</a></cite></footer>
-      </blockquote>
-      <hr class="my-2">
-      <blockquote class="blockquote my-4">
-        <p class="mb-0">In sollicitudin tellus nec ex lacinia rutrum. Suspendisse potenti. Ut cursus efficitur ante, at mollis ligula rhoncus quis. Integer laoreet nibh a massa feugiat, sit amet sagittis risus vulputate. Integer tincidunt metus pellentesque justo
-          rutrum, eget faucibus libero porta.</p>
-        <footer class="blockquote-footer">Someone famous in <cite title="Source Title"><a>Igor</a></cite></footer>
-      </blockquote>
-      <hr class="my-2">
+      @endforeach
     </div>
     <div class="tab-pane fade"
          id="contacts"
