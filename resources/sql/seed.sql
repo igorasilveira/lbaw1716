@@ -744,7 +744,7 @@ CREATE FUNCTION buy_now() RETURNS trigger
 IF EXISTS (SELECT * FROM "auction" WHERE NEW.auction_id = id AND NEW.value = buyNow AND NEW."isBuyNow" = true)
 THEN
 UPDATE auction SET state = 'Over'::auctionstate, finaldate = NEW.date, finalprice = NEW.value, auctionwinner = NEW.user_id WHERE id = NEW.auction_id;
-INSERT INTO Notification (id, date, description, type, auctionassociated, authenticated_userid) VALUES (DEFAULT, transaction_timestamp(), 'You win this auction!', 'Won Auction', NEW.auction_id, (SELECT user_id FROM "bid" WHERE auction_id = NEW.auction_id ORDER BY value DESC LIMIT 1));
+INSERT INTO Notification (id, date, description, type, auctionassociated, authenticated_userid) VALUES (DEFAULT, transaction_timestamp(), 'You win this auction!', 'Won Auction', NEW.auction_id, NEW.user_id);
 END IF;
 RETURN NEW;
 END;$$;

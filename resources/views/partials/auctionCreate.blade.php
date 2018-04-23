@@ -153,6 +153,6 @@
           <button class="btn btn-primary  col-md-6 col-sm-12"
                   type="submit">Send for Review</button>
         </div>
-        {{csrf_field() }}
+        {{ csrf_field() }}
       </form>
     </div>

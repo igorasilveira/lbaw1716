@@ -50,7 +50,7 @@ class BidController extends Controller
 
     public function buynow($id, Request $request)
     {
-      echo $request['value'];
+      // echo $request['value'];
       //'value', 'auction_id, 'user_id', 'isBuyNow'
       Bid::create([
         'value' => intval($request['value']),

@@ -95,6 +95,7 @@
               </form>
           </div>
           <hr class="my-2">
+          @if($auction->bids->count() == 0 || ($auction->bids->count() > 0 && $auction->bids->sortByDesc('date')->first()->value + 0.10*($auction->bids->sortByDesc('date')->first()->value) <= $auction->buynow))
           <!-- BUY NOW BUTTON AREA -->
           <form class="w-100">
             {{ csrf_field() }}
@@ -107,6 +108,7 @@
                     Buy Now {{ $auction->buynow }} €
             </button>
           </form>
+          @endif
           @endif
           @else
           @if($auction->state == 'Over')

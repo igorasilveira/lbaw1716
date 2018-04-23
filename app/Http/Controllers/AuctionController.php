@@ -5,15 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Auction;
-use App\Bid;
 use Carbon\Carbon;
 
 class AuctionController extends Controller
 {
     public function __construct()
     {
-       $this->middleware('guest');
+        $this->middleware('guest');
     }
+
     /**
      * Show the about page.
      *
@@ -30,7 +30,12 @@ class AuctionController extends Controller
 
     public function create()
     {
-        $this->authorize('create');
+        if (!Auth::check()) {
+            return redirect('/login');
+        }
+
+        $this->authorize('create', Auction::class);
+
         return view('pages.auctionCreate');
     }
 
@@ -40,21 +45,20 @@ class AuctionController extends Controller
         $now = new Carbon('Europe/Lisbon');
         $dateFinished = $now->addDays($auctionDuration);
 
-
-        $file_name = "";
+        $file_name = '';
 
         if ($request->file('photo')) {
-          $file = 'auctions/' . $auction->id.'.'.$request->file('photo')->getClientOriginalExtension();
+            $file = 'auctions/'.$auction->id.'.'.$request->file('photo')->getClientOriginalExtension();
 
-          $request->file('photo')->move(
+            $request->file('photo')->move(
             base_path().'/public/images/catalog/', $file
           );
-          $file_name = '/images/catalog/auctions/'.$file;
+            $file_name = '/images/catalog/auctions/'.$file;
         } else {
-          $file_name = '/images/catalog/auctions/default.png';
+            $file_name = '/images/catalog/auctions/default.png';
         }
 
-       $auction = Auction::create([
+        $auction = Auction::create([
         'state' => 'Pending',
         'title' => $request->input('title'),
         'description' => $request->input('description'),
@@ -67,11 +71,10 @@ class AuctionController extends Controller
         'auctioncreator' => Auth::user()->id,
     ]);
 
-      return self::show($auction->id);
+        return self::show($auction->id);
     }
 
     public function approve()
     {
     }
-
 }

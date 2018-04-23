@@ -5,6 +5,7 @@ namespace App\Policies;
 use App\User;
 use App\Auction;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Illuminate\Support\Facades\Auth;
 
 class AuctionPolicy
 {
@@ -28,7 +29,7 @@ class AuctionPolicy
      * @param  \App\User  $user
      * @return mixed
      */
-    public function create(Auction $auction)
+    public function create(User  $user)
     {
         return Auth::check();
     }
