@@ -1,13 +1,12 @@
 <div class="hidden-xs">
   <hr class="my-md-4 my-sm-2 my-xs-1">
   <div class="title jumbotron my-0  p-3">
-    <h1 class="display-6">Auction {{ $auction->title}}</h1>
+    <h1 class="display-6">Auction {{ $auction->title }}</h1>
   </div>
   <hr class="my-md-4 my-sm-2 my-xs-1">
 </div>
 
 <div class="jumbotron">
-
   <div id="profile-container"
        class="w-75 mx-auto">
     <div class="row">
@@ -31,9 +30,9 @@
             <p>
               {{ $auction->title }}
             </p>
-            <p>
+            <!--<p>
               {{ substr($auction->description,0,100) }}
-            </p>
+            </p>-->
           </section>
           <h3 class="text-info pb-2">14H 23M 09S</h3>
         </div>

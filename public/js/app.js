@@ -247,7 +247,6 @@ function addModerator() {
 
 function confirmModerator() {
 
-
 	var table = document.getElementById("moderatorsList");
 	var nameCell = document.getElementById("moderatorsList")
 		.rows[table.rows.length - 1].cells[1];
@@ -268,8 +267,6 @@ function confirmModerator() {
 		var createBtt = document.getElementById("createModBtt");
 		createBtt.disabled = false;
 	}
-
-
 }
 
 function editModerators() {
@@ -570,12 +567,3 @@ function timecounter(time) {
 	document.getElementById('demo')
 		.innerHTML = date('Y W o', time);
 }
-
-/*function bid() {
-	let auction_bid = document.getElementById('auctionBid')
-		.innerHTML;
-	console.log(auction_bid);
-	sendAjaxRequest('post', '/api/cards/' + id, {
-			description: description
-		}
-	}*/

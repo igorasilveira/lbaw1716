@@ -46,12 +46,4 @@ class Auction extends Model
     {
         return ceil((strtotime($this->limitdate) - strtotime('now')) / 60 / 60);
     }
-
-    public function undo_tz(Carbon $date)
-    {
-        $me = \Auth::user();
-        $tz = $me->timezone ?: \Cookie::get('tz');
-
-        return $date->subHours($tz);
-    }
 }
