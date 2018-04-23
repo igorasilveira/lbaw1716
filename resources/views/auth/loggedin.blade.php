@@ -18,7 +18,7 @@
          href="/users/{{ Auth::user()->username }}"> Profile </a>
       <div class="dropdown-divider"></div>
       <a class="dropdown-item"
-         href="myauctions_user.html">My Auctions </a>
+         href="/users/{{ Auth::user()->id }}/auctions">My Auctions </a>
       <div class="dropdown-divider"></div>
       <a class="dropdown-item"
          href="{{ url('logout') }}"> Log Out </a>
