@@ -12,7 +12,7 @@ class AuctionController extends Controller
 {
     public function __construct()
     {
-       $this->middleware('auth');
+       $this->middleware('guest');
     }
     /**
      * Show the about page.
@@ -23,13 +23,14 @@ class AuctionController extends Controller
     {
         $auction = Auction::find($id);
 
-        //$this->authorize('show', $auction);
+        //$this->authorize('view', $auction);
 
         return view('pages.auction', ['auction' => $auction]);
     }
 
     public function create()
     {
+        $this->authorize('create');
         return view('pages.auctionCreate');
     }
 

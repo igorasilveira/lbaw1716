@@ -1606,36 +1606,37 @@ INSERT INTO city (name, country) VALUES ('Lubango', 6);
 -- Data for Name: user; Type: TABLE DATA; Schema: public; Owner: lbaw1716
 --
 
-INSERT INTO "user" (typeofuser,username,password,pathtophoto,completename,email,birthdate,"/rating",address,postalcode,balance,city,phonenumber,blocked) VALUES ('Normal', 'erika_wilk1978', '$2y$10$b4WG5dgxlXJbGM.Dt/BHve6QqAnr9qvJbYBchxiu1by42FpNEXogW', NULL, 'Mia S Burke', 'purus.Maecenas@ipsumdolorsit.net', '1996-11-03', NULL, '73 York Road', 'OX1 4PP', 9440, 89, NULL, false);
-INSERT INTO "user" (typeofuser,username,password,pathtophoto,completename,email,birthdate,"/rating",address,postalcode,balance,city,phonenumber,blocked) VALUES ('Administrator', 'NadiaCarvalho', '$2y$10$b4WG5dgxlXJbGM.Dt/BHve6QqAnr9qvJbYBchxiu1by42FpNEXogW', NULL, 'Nádia Carvalho', NULL, NULL, NULL, NULL, NULL, 9800, NULL, NULL, false);
-INSERT INTO "user" (typeofuser,username,password,pathtophoto,completename,email,birthdate,"/rating",address,postalcode,balance,city,phonenumber,blocked) VALUES ('Normal', 'DavisonNaomi', '$2y$10$b4WG5dgxlXJbGM.Dt/BHve6QqAnr9qvJbYBchxiu1by42FpNEXogW', NULL, 'Naomi L Davison', 'non.lobortis@ultricesposuere.org', '1975-05-17', NULL, '90 Cunnery Rd', 'M2 1HE', 9800, 88, NULL, false);
-INSERT INTO "user" (typeofuser,username,password,pathtophoto,completename,email,birthdate,"/rating",address,postalcode,balance,city,phonenumber,blocked) VALUES ('Normal', 'langeles', '$2y$10$b4WG5dgxlXJbGM.Dt/BHve6QqAnr9qvJbYBchxiu1by42FpNEXogW', NULL, 'Adam M Shah', 'quis.accumsan.convallis@pellentesquetellus.org', '1976-03-16', NULL, '62 Cunnery Rd', 'M60 9DW', 9800, 88, NULL, false);
-INSERT INTO "user" (typeofuser,username,password,pathtophoto,completename,email,birthdate,"/rating",address,postalcode,balance,city,phonenumber,blocked) VALUES ('Normal', 'fearfultruck', '$2y$10$b4WG5dgxlXJbGM.Dt/BHve6QqAnr9qvJbYBchxiu1by42FpNEXogW', NULL, 'Naomi L Davison', '0manan.bhalla.mbz@myfaceb00k.ml', '1975-05-17', NULL, '90 Cunnery Rd', 'M2 1HE', 9800, 88, NULL, false);
-INSERT INTO "user" (typeofuser,username,password,pathtophoto,completename,email,birthdate,"/rating",address,postalcode,balance,city,phonenumber,blocked) VALUES ('Normal', 'frillymammoth', '$2y$10$b4WG5dgxlXJbGM.Dt/BHve6QqAnr9qvJbYBchxiu1by42FpNEXogW', NULL, 'Mia S Burke', 'dictum@ridiculusmus.co.uk', '1996-11-03', NULL, '73 York Road', 'OX1 4PP', 9800, 89, NULL, false);
-INSERT INTO "user" (typeofuser,username,password,pathtophoto,completename,email,birthdate,"/rating",address,postalcode,balance,city,phonenumber,blocked) VALUES ('Normal', 'assetsopengl', '$2y$10$b4WG5dgxlXJbGM.Dt/BHve6QqAnr9qvJbYBchxiu1by42FpNEXogW', 'http://4.bp.blogspot.com/-SoLmj_KD-oE/VCbiHfUzMjI/AAAAAAAAD-A/mlZ-3j-TAvk/s1600/Ian%2BH%2B(7).jpg', 'Max H Harding', 'Enswearry45@dayrep.com', '1981-05-28', NULL, '82 Guild Street', 'NW6 3LF', 9800, 19, NULL, false);
-INSERT INTO "user" (typeofuser,username,password,pathtophoto,completename,email,birthdate,"/rating",address,postalcode,balance,city,phonenumber,blocked) VALUES ('Normal', 'switchsparkling', '$2y$10$b4WG5dgxlXJbGM.Dt/BHve6QqAnr9qvJbYBchxiu1by42FpNEXogW', NULL, 'Mia S Burke', 'a.tortor@estNunc.co.uk', '1996-11-03', NULL, '73 York Road', 'OX1 4PP', 9800, 89, NULL, false);
-INSERT INTO "user" (typeofuser,username,password,pathtophoto,completename,email,birthdate,"/rating",address,postalcode,balance,city,phonenumber,blocked) VALUES ('Normal', 'nippykrypton', '$2y$10$b4WG5dgxlXJbGM.Dt/BHve6QqAnr9qvJbYBchxiu1by42FpNEXogW', NULL, 'Adam M Shah', 'Integer.aliquam.adipiscing@non.org', '1976-03-16', NULL, '62 Cunnery Rd', 'M60 9DW', 9800, 88, NULL, false);
-INSERT INTO "user" (typeofuser,username,password,pathtophoto,completename,email,birthdate,"/rating",address,postalcode,balance,city,phonenumber,blocked) VALUES ('Normal', 'informdunghill', '$2y$10$b4WG5dgxlXJbGM.Dt/BHve6QqAnr9qvJbYBchxiu1by42FpNEXogW', NULL, 'Mia S Burke', 'lorem.sit@Namnulla.org', '1996-11-03', NULL, '73 York Road', 'OX1 4PP', 9800, 89, 224056703, false);
-INSERT INTO "user" (typeofuser,username,password,pathtophoto,completename,email,birthdate,"/rating",address,postalcode,balance,city,phonenumber,blocked) VALUES ('Normal', 'grossboars', '$2y$10$b4WG5dgxlXJbGM.Dt/BHve6QqAnr9qvJbYBchxiu1by42FpNEXogW', NULL, 'Naomi L Davison', 'sociis.natoque@iaculisaliquetdiam.co.uk', '1975-05-17', NULL, '90 Cunnery Rd', 'M2 1HE', 9800, 88, NULL, false);
-INSERT INTO "user" (typeofuser,username,password,pathtophoto,completename,email,birthdate,"/rating",address,postalcode,balance,city,phonenumber,blocked) VALUES ('Normal', 'rubberspinner', '$2y$10$b4WG5dgxlXJbGM.Dt/BHve6QqAnr9qvJbYBchxiu1by42FpNEXogW', NULL, 'Adam M Shah', 'velit@orci.co.uk', '1976-03-16', NULL, '62 Cunnery Rd', 'M60 9DW', 9800, 88, NULL, false);
-INSERT INTO "user" (typeofuser,username,password,pathtophoto,completename,email,birthdate,"/rating",address,postalcode,balance,city,phonenumber,blocked) VALUES ('Normal', 'branchgreat', '$2y$10$b4WG5dgxlXJbGM.Dt/BHve6QqAnr9qvJbYBchxiu1by42FpNEXogW', NULL, 'Mia S Burke', 'leo.in.lobortis@litoratorquentper.net', '1996-11-03', NULL, '73 York Road', 'OX1 4PP', 9800, 89, NULL, false);
-INSERT INTO "user" (typeofuser,username,password,pathtophoto,completename,email,birthdate,"/rating",address,postalcode,balance,city,phonenumber,blocked) VALUES ('Normal', 'evilpublic', '$2y$10$b4WG5dgxlXJbGM.Dt/BHve6QqAnr9qvJbYBchxiu1by42FpNEXogW', NULL, 'Naomi L Davison', 'nisl.arcu@velnislQuisque.ca', '1975-05-17', NULL, '90 Cunnery Rd', 'M2 1HE', 9800, 88, NULL, false);
-INSERT INTO "user" (typeofuser,username,password,pathtophoto,completename,email,birthdate,"/rating",address,postalcode,balance,city,phonenumber,blocked) VALUES ('Normal', 'mizunaspider', '$2y$10$b4WG5dgxlXJbGM.Dt/BHve6QqAnr9qvJbYBchxiu1by42FpNEXogW', NULL, 'Adam M Shah', 'Nulla@aliquetdiam.com', '1976-03-16', NULL, '62 Cunnery Rd', 'M60 9DW', 9800, 88, NULL, false);
-INSERT INTO "user" (typeofuser,username,password,pathtophoto,completename,email,birthdate,"/rating",address,postalcode,balance,city,phonenumber,blocked) VALUES ('Normal', 'dilationwaals', '$2y$10$b4WG5dgxlXJbGM.Dt/BHve6QqAnr9qvJbYBchxiu1by42FpNEXogW', NULL, 'Naomi L Davison', 'ultrices@malesuadavelvenenatis.co.uk', '1975-05-17', NULL, '90 Cunnery Rd', 'M2 1HE', 9800, 88, NULL, false);
-INSERT INTO "user" (typeofuser,username,password,pathtophoto,completename,email,birthdate,"/rating",address,postalcode,balance,city,phonenumber,blocked) VALUES ('Normal', 'watchinggemini', '$2y$10$b4WG5dgxlXJbGM.Dt/BHve6QqAnr9qvJbYBchxiu1by42FpNEXogW', NULL, 'Adam M Shah', 'et.eros.Proin@vitaemaurissit.edu', '1976-03-16', NULL, '62 Cunnery Rd', 'M60 9DW', 9800, 88, NULL, false);
-INSERT INTO "user" (typeofuser,username,password,pathtophoto,completename,email,birthdate,"/rating",address,postalcode,balance,city,phonenumber,blocked) VALUES ('Normal', 'cambrianend', '$2y$10$b4WG5dgxlXJbGM.Dt/BHve6QqAnr9qvJbYBchxiu1by42FpNEXogW', NULL, 'Mia S Burke', 'volutpat.ornare@Suspendisse.edu', '1996-11-03', NULL, '73 York Road', 'OX1 4PP', 9800, 89, NULL, false);
-INSERT INTO "user" (typeofuser,username,password,pathtophoto,completename,email,birthdate,"/rating",address,postalcode,balance,city,phonenumber,blocked) VALUES ('Normal', 'pastiedash', '$2y$10$b4WG5dgxlXJbGM.Dt/BHve6QqAnr9qvJbYBchxiu1by42FpNEXogW', NULL, 'Naomi L Davison', 'nec.urna@ascelerisquesed.com', '1975-05-17', NULL, '90 Cunnery Rd', 'M2 1HE', 9800, 88, NULL, false);
-INSERT INTO "user" (typeofuser,username,password,pathtophoto,completename,email,birthdate,"/rating",address,postalcode,balance,city,phonenumber,blocked) VALUES ('Normal', 'jockeypruning', '$2y$10$b4WG5dgxlXJbGM.Dt/BHve6QqAnr9qvJbYBchxiu1by42FpNEXogW', NULL, 'Adam M Shah', 'ut.ipsum.ac@quismassaMauris.net', '1976-03-16', NULL, '62 Cunnery Rd', 'M60 9DW', 9800, 88, NULL, false);
-INSERT INTO "user" (typeofuser,username,password,pathtophoto,completename,email,birthdate,"/rating",address,postalcode,balance,city,phonenumber,blocked) VALUES ('Moderator', 'starkshell', '$2y$10$b4WG5dgxlXJbGM.Dt/BHve6QqAnr9qvJbYBchxiu1by42FpNEXogW', NULL, 'Nádia Carvalho', NULL, NULL, NULL, NULL, NULL, 9800, NULL, NULL, false);
-INSERT INTO "user" (typeofuser,username,password,pathtophoto,completename,email,birthdate,"/rating",address,postalcode,balance,city,phonenumber,blocked) VALUES ('Moderator', 'bolidesorrowful', '$2y$10$b4WG5dgxlXJbGM.Dt/BHve6QqAnr9qvJbYBchxiu1by42FpNEXogW', NULL, 'Nádia Carvalho', NULL, NULL, NULL, NULL, NULL, 9800, NULL, NULL, false);
-INSERT INTO "user" (typeofuser,username,password,pathtophoto,completename,email,birthdate,"/rating",address,postalcode,balance,city,phonenumber,blocked) VALUES ('Moderator', 'valuemonitoring', '$2y$10$b4WG5dgxlXJbGM.Dt/BHve6QqAnr9qvJbYBchxiu1by42FpNEXogW', NULL, 'Nádia Carvalho', NULL, NULL, NULL, NULL, NULL, 9800, NULL, NULL, false);
-INSERT INTO "user" (typeofuser,username,password,pathtophoto,completename,email,birthdate,"/rating",address,postalcode,balance,city,phonenumber,blocked) VALUES ('Moderator', 'abovedoubtful', '$2y$10$b4WG5dgxlXJbGM.Dt/BHve6QqAnr9qvJbYBchxiu1by42FpNEXogW', NULL, 'Nádia Carvalho', NULL, NULL, NULL, NULL, NULL, 9800, NULL, NULL, false);
-INSERT INTO "user" (typeofuser,username,password,pathtophoto,completename,email,birthdate,"/rating",address,postalcode,balance,city,phonenumber,blocked) VALUES ('Moderator', 'expectantridge', '$2y$10$b4WG5dgxlXJbGM.Dt/BHve6QqAnr9qvJbYBchxiu1by42FpNEXogW', NULL, 'Nádia Carvalho', NULL, NULL, NULL, NULL, NULL, 9800, NULL, NULL, false);
-INSERT INTO "user" (typeofuser,username,password,pathtophoto,completename,email,birthdate,"/rating",address,postalcode,balance,city,phonenumber,blocked) VALUES ('Normal', 'Ritmock', '$2y$10$b4WG5dgxlXJbGM.Dt/BHve6QqAnr9qvJbYBchxiu1by42FpNEXogW', 'http://4.bp.blogspot.com/-SoLmj_KD-oE/VCbiHfUzMjI/AAAAAAAAD-A/mlZ-3j-TAvk/s1600/Ian%2BH%2B(7).jpg', 'Max H Harding', 'lectus.sit@ligula.co.uk', '1981-05-28', NULL, '82 Guild Street', 'NW6 3LF', 9800, 19, NULL, false);
-INSERT INTO "user" (typeofuser,username,password,pathtophoto,completename,email,birthdate,"/rating",address,postalcode,balance,city,phonenumber,blocked) VALUES ('Normal', 'unbecominglabour', '$2y$10$b4WG5dgxlXJbGM.Dt/BHve6QqAnr9qvJbYBchxiu1by42FpNEXogW', NULL, 'Mia S Burke', 'Nullam@ullamcorpervelit.net', '1996-11-03', NULL, '73 York Road', 'OX1 4PP', 500, 89, NULL, false);
-INSERT INTO "user" (typeofuser,username,password,pathtophoto,completename,email,birthdate,"/rating",address,postalcode,balance,city,phonenumber,blocked) VALUES ('Normal', 'helicopteruk', '$2y$10$b4WG5dgxlXJbGM.Dt/BHve6QqAnr9qvJbYBchxiu1by42FpNEXogW', NULL, 'Adam M Shah', 'panama@smellypotato.tk', '1976-03-16', 1, '62 Cunnery Rd', 'M60 9DW', 9800, 88, NULL, false);
-INSERT INTO "user" (typeofuser,username,password,pathtophoto,completename,email,birthdate,"/rating",address,postalcode,balance,city,phonenumber,blocked) VALUES ('Normal', 'laggedcolony', '$2y$10$b4WG5dgxlXJbGM.Dt/BHve6QqAnr9qvJbYBchxiu1by42FpNEXogW', NULL, 'Naomi L Davison', 'Vivamus@Etiam.ca', '1975-05-17', NULL, '90 Cunnery Rd', 'M2 1HE', 8995, 88, NULL, false);
-INSERT INTO "user" (typeofuser,username,password,pathtophoto,completename,email,birthdate,"/rating",address,postalcode,balance,city,phonenumber,blocked) VALUES ('Normal', 'rabbitsfootortolan', '$2y$10$b4WG5dgxlXJbGM.Dt/BHve6QqAnr9qvJbYBchxiu1by42FpNEXogW', 'http://4.bp.blogspot.com/-SoLmj_KD-oE/VCbiHfUzMjI/AAAAAAAAD-A/mlZ-3j-TAvk/s1600/Ian%2BH%2B(7).jpg', 'Max H Harding', 'Curabitur.sed.tortor@quisdiamPellentesque.net', '1981-05-28', 3, '82 Guild Street', 'NW6 3LF', 9800, 19, NULL, false);
+INSERT INTO "user" (typeofuser,username,password,pathtophoto,completename,email,birthdate,"/rating",address,postalcode,balance,city,phonenumber,blocked) VALUES ('Normal', 'erika_wilk1978', '$2y$10$ZCNsTeh/TpPG5Js4YYpfCujhXIYMyqTFDy6/i5nWw82EKz9InTrdK', '/images/catalog/users/default.png', 'Mia S Burke', 'purus.Maecenas@ipsumdolorsit.net', '1996-11-03', NULL, '73 York Road', 'OX1 4PP', 9440, 89, NULL, false);
+INSERT INTO "user" (typeofuser,username,password,pathtophoto,completename,email,birthdate,"/rating",address,postalcode,balance,city,phonenumber,blocked) VALUES ('Administrator', 'NadiaCarvalho', '$2y$10$ZCNsTeh/TpPG5Js4YYpfCujhXIYMyqTFDy6/i5nWw82EKz9InTrdK', '/images/catalog/users/default.png', 'Nádia Carvalho', NULL, NULL, NULL, NULL, NULL, 9800, NULL, NULL, false);
+INSERT INTO "user" (typeofuser,username,password,pathtophoto,completename,email,birthdate,"/rating",address,postalcode,balance,city,phonenumber,blocked) VALUES ('Normal', 'DavisonNaomi', '$2y$10$ZCNsTeh/TpPG5Js4YYpfCujhXIYMyqTFDy6/i5nWw82EKz9InTrdK', '/images/catalog/users/default.png', 'Naomi L Davison', 'non.lobortis@ultricesposuere.org', '1975-05-17', NULL, '90 Cunnery Rd', 'M2 1HE', 9800, 88, NULL, false);
+INSERT INTO "user" (typeofuser,username,password,pathtophoto,completename,email,birthdate,"/rating",address,postalcode,balance,city,phonenumber,blocked) VALUES ('Normal', 'langeles', '$2y$10$ZCNsTeh/TpPG5Js4YYpfCujhXIYMyqTFDy6/i5nWw82EKz9InTrdK', '/images/catalog/users/default.png', 'Adam M Shah', 'quis.accumsan.convallis@pellentesquetellus.org', '1976-03-16', NULL, '62 Cunnery Rd', 'M60 9DW', 9800, 88, NULL, false);
+INSERT INTO "user" (typeofuser,username,password,pathtophoto,completename,email,birthdate,"/rating",address,postalcode,balance,city,phonenumber,blocked) VALUES ('Normal', 'fearfultruck', '$2y$10$ZCNsTeh/TpPG5Js4YYpfCujhXIYMyqTFDy6/i5nWw82EKz9InTrdK', '/images/catalog/users/default.png', 'Naomi L Davison', '0manan.bhalla.mbz@myfaceb00k.ml', '1975-05-17', NULL, '90 Cunnery Rd', 'M2 1HE', 9800, 88, NULL, false);
+INSERT INTO "user" (typeofuser,username,password,pathtophoto,completename,email,birthdate,"/rating",address,postalcode,balance,city,phonenumber,blocked) VALUES ('Normal', 'frillymammoth', '$2y$10$ZCNsTeh/TpPG5Js4YYpfCujhXIYMyqTFDy6/i5nWw82EKz9InTrdK', '/images/catalog/users/default.png', 'Mia S Burke', 'dictum@ridiculusmus.co.uk', '1996-11-03', NULL, '73 York Road', 'OX1 4PP', 9800, 89, NULL, false);
+INSERT INTO "user" (typeofuser,username,password,pathtophoto,completename,email,birthdate,"/rating",address,postalcode,balance,city,phonenumber,blocked) VALUES ('Normal', 'assetsopengl', '$2y$10$ZCNsTeh/TpPG5Js4YYpfCujhXIYMyqTFDy6/i5nWw82EKz9InTrdK', 'http://4.bp.blogspot.com/-SoLmj_KD-oE/VCbiHfUzMjI/AAAAAAAAD-A/mlZ-3j-TAvk/s1600/Ian%2BH%2B(7).jpg', 'Max H Harding', 'Enswearry45@dayrep.com', '1981-05-28', NULL, '82 Guild Street', 'NW6 3LF', 9800, 19, NULL, false);
+INSERT INTO "user" (typeofuser,username,password,pathtophoto,completename,email,birthdate,"/rating",address,postalcode,balance,city,phonenumber,blocked) VALUES ('Normal', 'switchsparkling', '$2y$10$ZCNsTeh/TpPG5Js4YYpfCujhXIYMyqTFDy6/i5nWw82EKz9InTrdK', '/images/catalog/users/default.png', 'Mia S Burke', 'a.tortor@estNunc.co.uk', '1996-11-03', NULL, '73 York Road', 'OX1 4PP', 9800, 89, NULL, false);
+INSERT INTO "user" (typeofuser,username,password,pathtophoto,completename,email,birthdate,"/rating",address,postalcode,balance,city,phonenumber,blocked) VALUES ('Normal', 'nippykrypton', '$2y$10$ZCNsTeh/TpPG5Js4YYpfCujhXIYMyqTFDy6/i5nWw82EKz9InTrdK', '/images/catalog/users/default.png', 'Adam M Shah', 'Integer.aliquam.adipiscing@non.org', '1976-03-16', NULL, '62 Cunnery Rd', 'M60 9DW', 9800, 88, NULL, false);
+INSERT INTO "user" (typeofuser,username,password,pathtophoto,completename,email,birthdate,"/rating",address,postalcode,balance,city,phonenumber,blocked) VALUES ('Normal', 'informdunghill', '$2y$10$ZCNsTeh/TpPG5Js4YYpfCujhXIYMyqTFDy6/i5nWw82EKz9InTrdK', '/images/catalog/users/default.png', 'Mia S Burke', 'lorem.sit@Namnulla.org', '1996-11-03', NULL, '73 York Road', 'OX1 4PP', 9800, 89, 224056703, false);
+INSERT INTO "user" (typeofuser,username,password,pathtophoto,completename,email,birthdate,"/rating",address,postalcode,balance,city,phonenumber,blocked) VALUES ('Normal', 'grossboars', '$2y$10$ZCNsTeh/TpPG5Js4YYpfCujhXIYMyqTFDy6/i5nWw82EKz9InTrdK', '/images/catalog/users/default.png', 'Naomi L Davison', 'sociis.natoque@iaculisaliquetdiam.co.uk', '1975-05-17', NULL, '90 Cunnery Rd', 'M2 1HE', 9800, 88, NULL, false);
+INSERT INTO "user" (typeofuser,username,password,pathtophoto,completename,email,birthdate,"/rating",address,postalcode,balance,city,phonenumber,blocked) VALUES ('Normal', 'rubberspinner', '$2y$10$ZCNsTeh/TpPG5Js4YYpfCujhXIYMyqTFDy6/i5nWw82EKz9InTrdK', '/images/catalog/users/default.png', 'Adam M Shah', 'velit@orci.co.uk', '1976-03-16', NULL, '62 Cunnery Rd', 'M60 9DW', 9800, 88, NULL, false);
+INSERT INTO "user" (typeofuser,username,password,pathtophoto,completename,email,birthdate,"/rating",address,postalcode,balance,city,phonenumber,blocked) VALUES ('Normal', 'branchgreat', '$2y$10$ZCNsTeh/TpPG5Js4YYpfCujhXIYMyqTFDy6/i5nWw82EKz9InTrdK', '/images/catalog/users/default.png', 'Mia S Burke', 'leo.in.lobortis@litoratorquentper.net', '1996-11-03', NULL, '73 York Road', 'OX1 4PP', 9800, 89, NULL, false);
+INSERT INTO "user" (typeofuser,username,password,pathtophoto,completename,email,birthdate,"/rating",address,postalcode,balance,city,phonenumber,blocked) VALUES ('Normal', 'evilpublic', '$2y$10$ZCNsTeh/TpPG5Js4YYpfCujhXIYMyqTFDy6/i5nWw82EKz9InTrdK', '/images/catalog/users/default.png', 'Naomi L Davison', 'nisl.arcu@velnislQuisque.ca', '1975-05-17', NULL, '90 Cunnery Rd', 'M2 1HE', 9800, 88, NULL, false);
+INSERT INTO "user" (typeofuser,username,password,pathtophoto,completename,email,birthdate,"/rating",address,postalcode,balance,city,phonenumber,blocked) VALUES ('Normal', 'mizunaspider', '$2y$10$ZCNsTeh/TpPG5Js4YYpfCujhXIYMyqTFDy6/i5nWw82EKz9InTrdK', '/images/catalog/users/default.png', 'Adam M Shah', 'Nulla@aliquetdiam.com', '1976-03-16', NULL, '62 Cunnery Rd', 'M60 9DW', 9800, 88, NULL, false);
+INSERT INTO "user" (typeofuser,username,password,pathtophoto,completename,email,birthdate,"/rating",address,postalcode,balance,city,phonenumber,blocked) VALUES ('Normal', 'dilationwaals', '$2y$10$ZCNsTeh/TpPG5Js4YYpfCujhXIYMyqTFDy6/i5nWw82EKz9InTrdK', '/images/catalog/users/default.png', 'Naomi L Davison', 'ultrices@malesuadavelvenenatis.co.uk', '1975-05-17', NULL, '90 Cunnery Rd', 'M2 1HE', 9800, 88, NULL, false);
+INSERT INTO "user" (typeofuser,username,password,pathtophoto,completename,email,birthdate,"/rating",address,postalcode,balance,city,phonenumber,blocked) VALUES ('Normal', 'watchinggemini', '$2y$10$ZCNsTeh/TpPG5Js4YYpfCujhXIYMyqTFDy6/i5nWw82EKz9InTrdK', '/images/catalog/users/default.png', 'Adam M Shah', 'et.eros.Proin@vitaemaurissit.edu', '1976-03-16', NULL, '62 Cunnery Rd', 'M60 9DW', 9800, 88, NULL, false);
+INSERT INTO "user" (typeofuser,username,password,pathtophoto,completename,email,birthdate,"/rating",address,postalcode,balance,city,phonenumber,blocked) VALUES ('Normal', 'cambrianend', '$2y$10$ZCNsTeh/TpPG5Js4YYpfCujhXIYMyqTFDy6/i5nWw82EKz9InTrdK', '/images/catalog/users/default.png', 'Mia S Burke', 'volutpat.ornare@Suspendisse.edu', '1996-11-03', NULL, '73 York Road', 'OX1 4PP', 9800, 89, NULL, false);
+INSERT INTO "user" (typeofuser,username,password,pathtophoto,completename,email,birthdate,"/rating",address,postalcode,balance,city,phonenumber,blocked) VALUES ('Normal', 'pastiedash', '$2y$10$ZCNsTeh/TpPG5Js4YYpfCujhXIYMyqTFDy6/i5nWw82EKz9InTrdK', '/images/catalog/users/default.png', 'Naomi L Davison', 'nec.urna@ascelerisquesed.com', '1975-05-17', NULL, '90 Cunnery Rd', 'M2 1HE', 9800, 88, NULL, false);
+INSERT INTO "user" (typeofuser,username,password,pathtophoto,completename,email,birthdate,"/rating",address,postalcode,balance,city,phonenumber,blocked) VALUES ('Normal', 'jockeypruning', '$2y$10$ZCNsTeh/TpPG5Js4YYpfCujhXIYMyqTFDy6/i5nWw82EKz9InTrdK', '/images/catalog/users/default.png', 'Adam M Shah', 'ut.ipsum.ac@quismassaMauris.net', '1976-03-16', NULL, '62 Cunnery Rd', 'M60 9DW', 9800, 88, NULL, false);
+INSERT INTO "user" (typeofuser,username,password,pathtophoto,completename,email,birthdate,"/rating",address,postalcode,balance,city,phonenumber,blocked) VALUES ('Moderator', 'starkshell', '$2y$10$ZCNsTeh/TpPG5Js4YYpfCujhXIYMyqTFDy6/i5nWw82EKz9InTrdK', '/images/catalog/users/default.png', 'Nádia Carvalho', NULL, NULL, NULL, NULL, NULL, 9800, NULL, NULL, false);
+INSERT INTO "user" (typeofuser,username,password,pathtophoto,completename,email,birthdate,"/rating",address,postalcode,balance,city,phonenumber,blocked) VALUES ('Moderator', 'bolidesorrowful', '$2y$10$ZCNsTeh/TpPG5Js4YYpfCujhXIYMyqTFDy6/i5nWw82EKz9InTrdK', '/images/catalog/users/default.png', 'Nádia Carvalho', NULL, NULL, NULL, NULL, NULL, 9800, NULL, NULL, false);
+INSERT INTO "user" (typeofuser,username,password,pathtophoto,completename,email,birthdate,"/rating",address,postalcode,balance,city,phonenumber,blocked) VALUES ('Moderator', 'valuemonitoring', '$2y$10$ZCNsTeh/TpPG5Js4YYpfCujhXIYMyqTFDy6/i5nWw82EKz9InTrdK', '/images/catalog/users/default.png', 'Nádia Carvalho', NULL, NULL, NULL, NULL, NULL, 9800, NULL, NULL, false);
+INSERT INTO "user" (typeofuser,username,password,pathtophoto,completename,email,birthdate,"/rating",address,postalcode,balance,city,phonenumber,blocked) VALUES ('Moderator', 'abovedoubtful', '$2y$10$ZCNsTeh/TpPG5Js4YYpfCujhXIYMyqTFDy6/i5nWw82EKz9InTrdK', '/images/catalog/users/default.png', 'Nádia Carvalho', NULL, NULL, NULL, NULL, NULL, 9800, NULL, NULL, false);
+INSERT INTO "user" (typeofuser,username,password,pathtophoto,completename,email,birthdate,"/rating",address,postalcode,balance,city,phonenumber,blocked) VALUES ('Moderator', 'expectantridge', '$2y$10$ZCNsTeh/TpPG5Js4YYpfCujhXIYMyqTFDy6/i5nWw82EKz9InTrdK', '/images/catalog/users/default.png', 'Nádia Carvalho', NULL, NULL, NULL, NULL, NULL, 9800, NULL, NULL, false);
+INSERT INTO "user" (typeofuser,username,password,pathtophoto,completename,email,birthdate,"/rating",address,postalcode,balance,city,phonenumber,blocked) VALUES ('Normal', 'Ritmock', '$2y$10$ZCNsTeh/TpPG5Js4YYpfCujhXIYMyqTFDy6/i5nWw82EKz9InTrdK', 'http://4.bp.blogspot.com/-SoLmj_KD-oE/VCbiHfUzMjI/AAAAAAAAD-A/mlZ-3j-TAvk/s1600/Ian%2BH%2B(7).jpg', 'Max H Harding', 'lectus.sit@ligula.co.uk', '1981-05-28', NULL, '82 Guild Street', 'NW6 3LF', 9800, 19, NULL, false);
+INSERT INTO "user" (typeofuser,username,password,pathtophoto,completename,email,birthdate,"/rating",address,postalcode,balance,city,phonenumber,blocked) VALUES ('Normal', 'unbecominglabour', '$2y$10$ZCNsTeh/TpPG5Js4YYpfCujhXIYMyqTFDy6/i5nWw82EKz9InTrdK', '/images/catalog/users/default.png', 'Mia S Burke', 'Nullam@ullamcorpervelit.net', '1996-11-03', NULL, '73 York Road', 'OX1 4PP', 500, 89, NULL, false);
+INSERT INTO "user" (typeofuser,username,password,pathtophoto,completename,email,birthdate,"/rating",address,postalcode,balance,city,phonenumber,blocked) VALUES ('Normal', 'helicopteruk', '$2y$10$ZCNsTeh/TpPG5Js4YYpfCujhXIYMyqTFDy6/i5nWw82EKz9InTrdK', '/images/catalog/users/default.png', 'Adam M Shah', 'panama@smellypotato.tk', '1976-03-16', 1, '62 Cunnery Rd', 'M60 9DW', 9800, 88, NULL, false);
+INSERT INTO "user" (typeofuser,username,password,pathtophoto,completename,email,birthdate,"/rating",address,postalcode,balance,city,phonenumber,blocked) VALUES ('Normal', 'laggedcolony', '$2y$10$ZCNsTeh/TpPG5Js4YYpfCujhXIYMyqTFDy6/i5nWw82EKz9InTrdK', '/images/catalog/users/default.png', 'Naomi L Davison', 'Vivamus@Etiam.ca', '1975-05-17', NULL, '90 Cunnery Rd', 'M2 1HE', 8995, 88, NULL, false);
+INSERT INTO "user" (typeofuser,username,password,pathtophoto,completename,email,birthdate,"/rating",address,postalcode,balance,city,phonenumber,blocked) VALUES ('Normal', 'rabbitsfootortolan', '$2y$10$ZCNsTeh/TpPG5Js4YYpfCujhXIYMyqTFDy6/i5nWw82EKz9InTrdK', 'http://4.bp.blogspot.com/-SoLmj_KD-oE/VCbiHfUzMjI/AAAAAAAAD-A/mlZ-3j-TAvk/s1600/Ian%2BH%2B(7).jpg', 'Max H Harding', 'Curabitur.sed.tortor@quisdiamPellentesque.net', '1981-05-28', 3, '82 Guild Street', 'NW6 3LF', 9800, 19, NULL, false);
+INSERT INTO "user" (typeofuser,username,password,pathtophoto,completename,email,birthdate,"/rating",address,postalcode,balance,city,phonenumber,blocked) VALUES ('Normal', 'Ritmock520', '$2y$10$ZCNsTeh/TpPG5Js4YYpfCujhXIYMyqTFDy6/i5nWw82EKz9InTrdK', '/images/catalog/users/41.png', 'Naomi L Davison', 'nisl.aLLrcu@velnislQuisque.ca', '1975-05-17', NULL, '90 Cunnery Rd', 'M2 1HE', 9800, 88, NULL, false);
 
 
 --
@@ -1780,48 +1781,112 @@ INSERT INTO category (name, parent) VALUES ('RAM', 4);
 INSERT INTO category (name, parent) VALUES ('Graphic Cards', 4);
 INSERT INTO category (name, parent) VALUES ('Power Supplies', 4);
 INSERT INTO category (name, parent) VALUES ('Keyboards', 5);
+INSERT INTO category (name, parent) VALUES ('HDD', 4);
+INSERT INTO category (name, parent) VALUES ('Mouse', 5);
 
 
 --
 -- Data for Name: categoryofauction; Type: TABLE DATA; Schema: public; Owner: lbaw1716
 
-INSERT INTO categoryofauction VALUES (1, 28);
-INSERT INTO categoryofauction VALUES (1, 30);
-INSERT INTO categoryofauction VALUES (1, 32);--
+INSERT INTO categoryofauction VALUES (1, 1);
+INSERT INTO categoryofauction VALUES (12, 2);
+INSERT INTO categoryofauction VALUES (4, 2);
+INSERT INTO categoryofauction VALUES (3, 3);
+INSERT INTO categoryofauction VALUES (12, 4);
+INSERT INTO categoryofauction VALUES (4, 4);
+INSERT INTO categoryofauction VALUES (3, 5);
+INSERT INTO categoryofauction VALUES (12, 6);
+INSERT INTO categoryofauction VALUES (4, 6);
+INSERT INTO categoryofauction VALUES (1, 7);
+INSERT INTO categoryofauction VALUES (3, 8);
+INSERT INTO categoryofauction VALUES (12, 9);
+INSERT INTO categoryofauction VALUES (4, 9);
+INSERT INTO categoryofauction VALUES (3, 10);
+INSERT INTO categoryofauction VALUES (12, 11);
+INSERT INTO categoryofauction VALUES (4, 11);
+INSERT INTO categoryofauction VALUES (1, 12);
+INSERT INTO categoryofauction VALUES (3, 13);
+INSERT INTO categoryofauction VALUES (12, 14);
+INSERT INTO categoryofauction VALUES (4, 14);
+INSERT INTO categoryofauction VALUES (3, 15);
+INSERT INTO categoryofauction VALUES (12, 16);
+INSERT INTO categoryofauction VALUES (4, 16);
+INSERT INTO categoryofauction VALUES (3, 17);
+INSERT INTO categoryofauction VALUES (1, 18);
+INSERT INTO categoryofauction VALUES (12, 19);
+INSERT INTO categoryofauction VALUES (4, 19);
+INSERT INTO categoryofauction VALUES (1, 20);
+INSERT INTO categoryofauction VALUES (1, 21);
+INSERT INTO categoryofauction VALUES (12, 22);
+INSERT INTO categoryofauction VALUES (4, 22);
+INSERT INTO categoryofauction VALUES (1, 23);
+INSERT INTO categoryofauction VALUES (3, 24);
+INSERT INTO categoryofauction VALUES (1, 25);
+INSERT INTO categoryofauction VALUES (3, 26);
+INSERT INTO categoryofauction VALUES (3, 27);
+INSERT INTO categoryofauction VALUES (2, 28);
 INSERT INTO categoryofauction VALUES (2, 29);
+INSERT INTO categoryofauction VALUES (2, 30);
 INSERT INTO categoryofauction VALUES (2, 31);
+INSERT INTO categoryofauction VALUES (2, 32);
 INSERT INTO categoryofauction VALUES (2, 33);
-INSERT INTO categoryofauction VALUES (3, 34);
-INSERT INTO categoryofauction VALUES (3, 38);
-INSERT INTO categoryofauction VALUES (3, 42);
-INSERT INTO categoryofauction VALUES (3, 46);
-INSERT INTO categoryofauction VALUES (3, 50);
-INSERT INTO categoryofauction VALUES (3, 54);
-INSERT INTO categoryofauction VALUES (3, 71);
-INSERT INTO categoryofauction VALUES (4, 59);
-INSERT INTO categoryofauction VALUES (4, 61);
-INSERT INTO categoryofauction VALUES (4, 63);
-INSERT INTO categoryofauction VALUES (4, 65);
-INSERT INTO categoryofauction VALUES (4, 67);
-INSERT INTO categoryofauction VALUES (4, 69);
-INSERT INTO categoryofauction VALUES (4, 71);
-INSERT INTO categoryofauction VALUES (5, 58);
-INSERT INTO categoryofauction VALUES (5, 60);
-INSERT INTO categoryofauction VALUES (5, 62);
-INSERT INTO categoryofauction VALUES (5, 64);
-INSERT INTO categoryofauction VALUES (5, 66);
-INSERT INTO categoryofauction VALUES (5, 68);
-INSERT INTO categoryofauction VALUES (5, 70);
+INSERT INTO categoryofauction VALUES (1, 34);
+INSERT INTO categoryofauction VALUES (2, 35);
+INSERT INTO categoryofauction VALUES (11, 36);
 INSERT INTO categoryofauction VALUES (5, 36);
+INSERT INTO categoryofauction VALUES (9, 37);
+INSERT INTO categoryofauction VALUES (4, 37);
+INSERT INTO categoryofauction VALUES (1, 38);
+INSERT INTO categoryofauction VALUES (2, 39);
+INSERT INTO categoryofauction VALUES (11, 40);
 INSERT INTO categoryofauction VALUES (5, 40);
+INSERT INTO categoryofauction VALUES (9, 41);
+INSERT INTO categoryofauction VALUES (4, 41);
+INSERT INTO categoryofauction VALUES (1, 42);
+INSERT INTO categoryofauction VALUES (2, 43);
+INSERT INTO categoryofauction VALUES (11, 44);
 INSERT INTO categoryofauction VALUES (5, 44);
+INSERT INTO categoryofauction VALUES (9, 45);
+INSERT INTO categoryofauction VALUES (4, 45);
+INSERT INTO categoryofauction VALUES (1, 46);
+INSERT INTO categoryofauction VALUES (2, 47);
+INSERT INTO categoryofauction VALUES (11, 48);
 INSERT INTO categoryofauction VALUES (5, 48);
+INSERT INTO categoryofauction VALUES (9, 49);
+INSERT INTO categoryofauction VALUES (4, 49);
+INSERT INTO categoryofauction VALUES (1, 50);
+INSERT INTO categoryofauction VALUES (2, 51);
+INSERT INTO categoryofauction VALUES (11, 52);
 INSERT INTO categoryofauction VALUES (5, 52);
+INSERT INTO categoryofauction VALUES (9, 53);
+INSERT INTO categoryofauction VALUES (4, 53);
+INSERT INTO categoryofauction VALUES (1, 54);
+INSERT INTO categoryofauction VALUES (2, 55);
+INSERT INTO categoryofauction VALUES (11, 56);
 INSERT INTO categoryofauction VALUES (5, 56);
-
-
-
-
+INSERT INTO categoryofauction VALUES (9, 57);
+INSERT INTO categoryofauction VALUES (4, 57);--here
+INSERT INTO categoryofauction VALUES (13, 58);
+INSERT INTO categoryofauction VALUES (10, 59);
+INSERT INTO categoryofauction VALUES (4, 59);
+INSERT INTO categoryofauction VALUES (13, 60);
+INSERT INTO categoryofauction VALUES (10, 61);
+INSERT INTO categoryofauction VALUES (4, 61);
+INSERT INTO categoryofauction VALUES (13, 62);
+INSERT INTO categoryofauction VALUES (10, 63);
+INSERT INTO categoryofauction VALUES (4, 63);
+INSERT INTO categoryofauction VALUES (13, 64);
+INSERT INTO categoryofauction VALUES (10, 65);
+INSERT INTO categoryofauction VALUES (4, 65);
+INSERT INTO categoryofauction VALUES (13, 66);
+INSERT INTO categoryofauction VALUES (10, 67);
+INSERT INTO categoryofauction VALUES (4, 67);
+INSERT INTO categoryofauction VALUES (13, 68);
+INSERT INTO categoryofauction VALUES (10, 69);
+INSERT INTO categoryofauction VALUES (4, 69);
+INSERT INTO categoryofauction VALUES (13, 70);
+INSERT INTO categoryofauction VALUES (10, 71);
+INSERT INTO categoryofauction VALUES (4, 71);
 
 
 --

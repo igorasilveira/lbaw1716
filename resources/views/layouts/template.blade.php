@@ -108,7 +108,7 @@
                              @foreach(App\Category::all() as $categoryChild)
                                 @if ($categoryChild->parent != NULL && ($categoryChild->parent == $categoryParent->id))
                                   <a class="dropdown-item"
-                                    href="{{ url('/category/' . $categoryChild->id) }}">{{ App\Category::find($categoryChild->parent)->name . ": " . $categoryChild->name }}
+                                    href="{{ url('/category/' . $categoryChild->id) }}">{{ $categoryChild->name }}
                                   </a>
                                 @endif
                              @endforeach

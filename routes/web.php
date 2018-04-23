@@ -37,7 +37,6 @@ Route::post('/users/add_credits/{id}', '');
 // Module 2:
 //
 // Auctions
-//Route::get('/', '')->name('');
 Route::get('/search', '')->name('');*/
 Route::get('/category/{category}', 'CategoryController@showAuctionsFromCategory');
 Route::get('/auction/new', 'AuctionController@create');

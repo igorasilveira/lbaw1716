@@ -19,7 +19,7 @@ class AuctionPolicy
      */
     public function view(User $user, Auction $auction)
     {
-        //
+        return $this->auth->guest();
     }
 
     /**
@@ -28,9 +28,9 @@ class AuctionPolicy
      * @param  \App\User  $user
      * @return mixed
      */
-    public function create(User $user)
+    public function create(Auction $auction)
     {
-        //
+        return Auth::check();
     }
 
     /**

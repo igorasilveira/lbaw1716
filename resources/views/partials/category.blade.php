@@ -13,22 +13,32 @@
       <ul id="auctionsMosaic"
           class="container-fluid col-sm-12 row">
         <div class="row">
-          @if($category->auctions->count() >= 3)
-            @foreach($category->auctions()->where('state','Active')->orderby('numberofbids', 'DESC')->take(3)->get() as $auction)
-              <li class="col-md-4 col-sm-6 col-xs-6">
-              @include('partials.auctionMosaic', ['auction' => $auction])
-              </li>
-            @endforeach
+          @foreach($category->auctions()->where('state','Active')->orderby('numberofbids', 'DESC')->take(3)->get() as $auction)
+          @if($category->auctions()->where('state','Active')->count()>=3)
+          <li class="col-md-4 col-sm-6 col-xs-6">
+          @elseif($category->auctions()->where('state','Active')->count()==2)
+          <li class="col-md-6 col-sm-6 col-xs-6">
+          @else
+          <li class="col-md-12 col-sm-6 col-xs-6">
           @endif
+          @include('partials.auctionMosaic', ['auction' => $auction])
+          </li>
+          @endforeach
         </div>
         <hr class="my-5">
         <div class="row">
           @if($category->auctions->count() >= 6)
-            @foreach($category->auctions()->where('state','Active')->orderby('numberofbids', 'DESC')->skip(3)->take(3)->get() as $auction)
-              <li class="col-md-4 col-sm-6 col-xs-6">
-              @include('partials.auctionMosaic', ['auction' => $auction])
-              </li>
-            @endforeach
+          @foreach($category->auctions()->where('state','Active')->orderby('numberofbids', 'DESC')->skip(3)->take(3)->get() as $auction)
+          @if($category->auctions()->where('state','Active')->count()>=6)
+          <li class="col-md-4 col-sm-6 col-xs-6">
+          @elseif($category->auctions()->where('state','Active')->count()==5)
+          <li class="col-md-6 col-sm-6 col-xs-6">
+          @else
+          <li class="col-md-12 col-sm-6 col-xs-6">
+          @endif
+          @include('partials.auctionMosaic', ['auction' => $auction])
+          </li>
+          @endforeach
           @endif
         </div>
       </ul>
