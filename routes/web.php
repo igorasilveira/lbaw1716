@@ -25,11 +25,12 @@ Route::post('login', 'Auth\LoginController@login');
 Route::get('logout', 'Auth\LoginController@logout');
 Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('auth.register');
 Route::post('register', 'Auth\RegisterController@register')->name('register');
-/*
+
 // Profile
-Route::get('/users/{id}', '')->name('/users/{id}');
-Route::get('/users/{id}/edit', '')->name('');
-Route::post('/users/edit/{id}', '');
+Route::get('users/{id}/auctions', 'ProfileController@auctions');
+Route::get('/users/{id}', 'ProfileController@show')->name('/users/{id}');
+/*Route::get('/users/{id}/edit', '')->name('');
+Route::post('/users/{id}/edit', '');
 Route::get('/users/{id}/add_credits', '')->name('');
 Route::post('/users/add_credits/{id}', '');
 
