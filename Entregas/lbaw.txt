@@ -1,0 +1,123 @@
+---->   ON BID:
+
+/**
+*
+* This Trigger raises an exception if the user that is bidding on an auction is it's creator.
+*/
+CREATE TRIGGER auction_creator BEFORE INSERT ON bid FOR EACH ROW EXECUTE PROCEDURE auction_creator();
+
+CREATE FUNCTION auction_creator() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$BEGIN
+  IF EXISTS (SELECT * FROM auction
+    INNER JOIN "user" ON "user".id = auction.auctioncreator
+    WHERE NEW.auction_id = auction.id AND NEW.user_id = "user".id) THEN
+    RAISE EXCEPTION 'The creator of an auction cannot make a bid on it!';
+  END IF;
+  RETURN NEW;
+END;$$;
+
+/**
+*
+* This Trigger raises an exception if the value of the bid is lower than the value of any other bid on the same auction.
+*/
+CREATE TRIGGER bid_greater_than_last BEFORE INSERT ON bid FOR EACH ROW EXECUTE PROCEDURE bid_greater_than_last();
+
+CREATE FUNCTION bid_greater_than_last() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$BEGIN
+	IF EXISTS (SELECT * FROM bid WHERE NEW.auction_id = auction_id AND NEW.value <= value) THEN
+		RAISE EXCEPTION 'A bid on this auction has to have a greater value than a previous one on this auction.';
+        ELSE IF EXISTS(SELECT * FROM bid WHERE NEW.auction_id = auction_id)
+        THEN
+         UPDATE "user" SET balance = ((SELECT value FROM "bid" WHERE "bid".auction_id=NEW.auction_id ORDER BY value DESC LIMIT 1) + (SELECT balance FROM "user" WHERE id = (SELECT user_id FROM "bid" WHERE auction_id = NEW.auction_id ORDER BY value DESC LIMIT 1))) WHERE id = (SELECT user_id FROM "bid" WHERE auction_id = NEW.auction_id ORDER BY value DESC LIMIT 1);
+        INSERT INTO Notification (id, date, description, type, auctionassociated, authenticated_userid) VALUES (DEFAULT, transaction_timestamp(), 'Your bid on this auction was surpassed. Try again!', 'Bid Exceeded', NEW.auction_id, (SELECT user_id FROM "bid" WHERE auction_id = NEW.auction_id ORDER BY value DESC LIMIT 1));
+        END IF;
+      END IF;
+	RETURN NEW;
+END$$;
+
+/**
+*
+* This Trigger raises an exception if the user that is making the bid doesn't have enough money to do it.
+*/
+CREATE TRIGGER user_id_has_money BEFORE INSERT ON bid FOR EACH ROW EXECUTE PROCEDURE user_id_has_money();
+
+CREATE FUNCTION user_id_has_money() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$BEGIN
+	IF EXISTS (SELECT * FROM "user" WHERE NEW.user_id = id AND NEW.value > balance)
+  THEN
+		RAISE EXCEPTION 'To make a bid on this auction the user_id must have a balance greater than bid value';
+  ELSE IF EXISTS (SELECT * FROM "user" WHERE NEW.user_id = id AND NEW.value <= balance)
+  THEN
+      UPDATE "user" SET balance = (SELECT balance FROM "user" WHERE NEW.user_id = id) - NEW.value WHERE id = NEW.user_id;
+  END IF;
+	END IF;
+	RETURN NEW;
+END$$;
+
+/**
+* This function causes the state of the auction to change to 'Over' on buy now and attributes of winner,
+* date and price to be updated on auction
+*/
+CREATE TRIGGER buy_now BEFORE INSERT ON bid FOR EACH ROW EXECUTE PROCEDURE buy_now();
+
+CREATE FUNCTION buy_now() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$BEGIN
+IF EXISTS (SELECT * FROM "auction" WHERE NEW.auction_id = id AND NEW.value = buyNow AND NEW."isBuyNow" = true)
+THEN
+UPDATE auction SET state = 'Over'::auctionstate, finaldate = NEW.date, finalprice = NEW.value, auctionwinner = NEW.user_id WHERE id = NEW.auction_id;
+INSERT INTO Notification (id, date, description, type, auctionassociated, authenticated_userid) VALUES (DEFAULT, transaction_timestamp(), 'You win this auction!', 'Won Auction', NEW.auction_id, (SELECT user_id FROM "bid" WHERE auction_id = NEW.auction_id ORDER BY value DESC LIMIT 1));
+END IF;
+RETURN NEW;
+END;$$;
+
+/**
+* This Trigger raises an exception if the value of the bid is lower than starting price.
+*/
+CREATE TRIGGER check_bid_value BEFORE INSERT ON bid FOR EACH ROW EXECUTE PROCEDURE check_bid_value();
+
+CREATE FUNCTION check_bid_value() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$BEGIN
+IF EXISTS (SELECT * FROM "auction" WHERE NEW.auction_id = id AND NEW.value < startingprice)
+THEN
+RAISE EXCEPTION 'A Bid has to have a greater value than starting price of auction.';
+END IF;
+RETURN NEW;
+END;$$;
+
+/**
+* This Trigger updates the number of bids on auction after a bid is done
+*/
+CREATE TRIGGER update_bid_number AFTER INSERT ON bid FOR EACH ROW EXECUTE PROCEDURE update_bid_number();
+
+CREATE FUNCTION update_bid_number() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$BEGIN
+UPDATE "auction" SET numberofbids = numberofbids + 1 WHERE "auction".id = NEW.auction_id;
+RETURN NEW;
+END;$$;
+
+
+****************************************************************
+
+--->  ADD CREDITS:
+
+/**
+*   This Trigger updates the balance of the user with credits added
+*/
+CREATE TRIGGER add_credits_trigger BEFORE INSERT ON add_credits FOR EACH ROW EXECUTE PROCEDURE add_credits_trigger();
+
+
+CREATE FUNCTION add_credits_trigger() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$BEGIN
+UPDATE "user" SET balance = ((SELECT balance FROM "user" WHERE id = NEW.user) +  NEW.value) WHERE id = NEW.user;
+RETURN NEW;
+END;$$;
+
+
+---> All the other triggers have to do with generation of automatic notifications
