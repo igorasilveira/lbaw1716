@@ -41,11 +41,9 @@ class BidController extends Controller
         'auction_id' => Auction::find($id)->id,
       ]);
 
-      $auction = Auction::find($id);
-
-      //$this->authorize('show', $auction);
-
-      return view('pages.auction', ['auction' => $auction]);
+      return redirect()->action(
+        'AuctionController@show', ['id' => $id]
+      );
     }
 
     public function buynow($id, Request $request)
@@ -59,12 +57,9 @@ class BidController extends Controller
         'isBuyNow' => true,
       ]);
 
-      $auction = Auction::find($id);
-
-      //$this->authorize('show', $auction);
-
-      return view('pages.auction', ['auction' => $auction]);
-
+      return redirect()->action(
+        'AuctionController@show', ['id' => $id]
+      );
     }
 
     /**

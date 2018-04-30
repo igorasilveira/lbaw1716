@@ -44,9 +44,9 @@ Route::post('/auction/new', 'AuctionController@save')->name('/auction/new');
 Route::get('/auction/{id}', 'AuctionController@show');
 Route::post('/auction/buy-now/{id}', 'BidController@buynow');
 Route::post('/auction/bid/{id}', 'BidController@bid');
-/*Route::post('/auction/{id}/comments/add', '');
-Route::delete('/auction/{id}/comments/{comID}/remove/', '');
-Route::post('/auction/report/{id}', '');
+Route::post('/auction/{id}/comments/add', 'CommentController@create');
+Route::delete('/auction/{id}/comments/{comID}/remove/', 'CommentController@delete');
+/*Route::post('/auction/report/{id}', '');
 
 // Module 3:
 //

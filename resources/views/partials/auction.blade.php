@@ -177,8 +177,25 @@
         <p class="mb-0">{{$comment->description}}</p>
         <footer class="blockquote-footer"><cite title="Source Title"><a>by {{ $comment->user->username }}, in </a></cite><cite title="Source Title"><a>{{ $comment->date }}</a></cite></footer>
       </blockquote>
+      @if($comment->user == Auth::user())
+      <form class="form-group" action="/auction/{{ $auction->id }}/comments/{{ $comment->id }}/remove/" method="POST">
+        {{ method_field('DELETE') }}
+        {{ csrf_field() }}
+        <input type="submit" class="btn btn-primary btn-sm" name="_method" value="delete">
+      </form>
+      @endif
       <hr class="my-2">
       @endforeach
+      <form class="form-group">
+        {{ csrf_field() }}
+        <label class="text-mutted" for="newcomment"> Comment as {{ @Auth::user()->username }} </label>
+        <textarea class="form-control" id="newcomment" name="description" rows="2"></textarea>
+        <br />
+        <button type="submit"
+                formaction="/auction/{{ $auction->id }}/comments/add"
+                formmethod="post"
+                class="btn btn-primary btn-sm">Comment</button>
+      </form>
     </div>
     <div class="tab-pane fade"
          id="contacts"
@@ -190,7 +207,7 @@
           {{ $auction->creator->phonenumber }}
         </p>
       </section>
-      <hr class="my-2">
+      <hr class="my-4">
       <section class="my-4">
         <h4>Email Address</h4>
         <p>
