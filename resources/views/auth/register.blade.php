@@ -64,7 +64,7 @@
                  <strong>{{ $errors->first('email') }}</strong>
                </span>
                @endif
-        <label class="col-form-label required">Phone Number</label><input class="form-control"
+        <label class="col-form-label">Phone Number</label><input class="form-control"
                type="phone"
                name="phoneNumber" value='{{{ old('phoneNumber') }}}'>
                @if ($errors->has('phoneNumber'))

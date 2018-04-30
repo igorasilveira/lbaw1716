@@ -22,4 +22,5 @@
       <div class="dropdown-divider"></div>
       <a class="dropdown-item"
          href="{{ url('logout') }}"> Log Out </a>
+   </div>
 </ul>
