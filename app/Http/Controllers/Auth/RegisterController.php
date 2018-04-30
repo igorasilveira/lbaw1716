@@ -74,7 +74,7 @@ class RegisterController extends Controller
         ]);
 
         $country = Country::find($data['country']);
-        global $city;
+        var $city;
         //echo City::where('name', $data['city'])->get();
         if (0 == City::where('name', $data['city'])->count()) {
             $city = new City();
@@ -82,7 +82,7 @@ class RegisterController extends Controller
             $city->country = $country->id;
             $city->save();
         } else {
-            $city = City::where('name', $data['city']);
+            $city = City::where('name', $data['city'])->firstOrFail();
         }
 
         $user = User::create([

@@ -1,10 +1,10 @@
 @if (count($errors) != 0)
-@if (Session::get('form') == 'edit')
-  <script>
-    $( document ).ready(function() {
-      $('#editModal').modal('show');
-    });
-  </script>
+  @if (Session::get('form') == 'edit')
+    <script>
+      $( document ).ready(function() {
+        $('#editModal').modal('show');
+      });
+    </script>
   @endif
 @endif
 <hr class="my-md-4 my-sm-2 my-xs-1">
@@ -21,9 +21,13 @@
 class="jumbotron">
 
 <div class="row">
-  <div class="col-md-6 col-sm-12 col-xs-12"> <a href="#"
-    title="Item 1"><img src="{{ $user->pathtophoto }}"
-    class="profile-pic mb-4 box-shadow mx-auto w-border " title="Change Profile Picture"></a> </div>
+  <div class="col-md-6 col-sm-12 col-xs-12">
+    @if (Auth::check() && (Auth::user()->id == $user->id))<img data-toggle="modal" data-target="#photoModal" src="{{ $user->pathtophoto }}"
+      class="profile-pic mb-4 box-shadow mx-auto w-border " title="Change Profile Picture">
+    @else
+      <img src="{{ $user->pathtophoto }}"
+      class="profile-pic mb-4 box-shadow mx-auto w-border " title="Profile Picture">
+    @endif</div>
     <div id="info-container"
     class="col-md-6 col-sm-12 col-xs-12 vcen container-fluid ">
       <section class="pb-2">
@@ -263,7 +267,7 @@ class="container">
   </div>
 </div>
 
-<!-- Modal -->
+<!-- Profile Editor Modal -->
 <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModal" aria-hidden="true" data-backdrop="false">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content"  style="border-radius: 5px">
@@ -360,6 +364,49 @@ class="container">
                      <strong>{{ $errors->first('address') }}</strong>
                    </span>
                    @endif
+          </fieldset>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Save changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Profile Photo Modal -->
+<div class="modal fade" id="photoModal" tabindex="-1" role="dialog" aria-labelledby="photoModal" aria-hidden="true" data-backdrop="false">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content"  style="border-radius: 5px">
+      <form method="post"
+      action=" {{ action('ProfileController@editPhoto', ['username' => $user->username]) }}"
+      enctype="multipart/form-data">
+      {{ csrf_field() }}
+      <input type="hidden" name="id" value="{{ $user->id }}">
+        <div class="modal-header">
+          <h5 class="modal-title" id="photoModalLabel">Edit Picture</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" name="id" value="{{ $user->id }}">
+          <fieldset>
+            <label class="col-form-label"
+                   for="image">Profile Image</label>
+            <input type="file"
+                   class="form-control-file"
+                   id="image"
+                   aria-describedby="image"
+                   name="photo">
+                   @if ($errors->has('photo'))
+                   <span class="error">
+                     <strong>{{ $errors->first('photo') }}</strong>
+                   </span>
+                   @endif
+            <small id="fileHelp"
+                   class="form-text text-muted">This is the image that will be displayed publicly on your profile.</small>
           </fieldset>
         </div>
         <div class="modal-footer">

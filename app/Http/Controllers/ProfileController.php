@@ -73,16 +73,64 @@ class ProfileController extends Controller
           'password' => 'nullable|string|min:6|confirmed',
       ]);
 
+
+      $country = Country::find($request['country']);
+
+      $city;
+      //echo City::where('name', $data['city'])->get();
+      if (0 == City::where('name', $request['city'])->count()) {
+          $city = new City();
+          $city->name = $request['city'];
+          $city->country = $country->id;
+          $city->save();
+      } else {
+          $city = City::where('name', $request['city'])->firstOrFail();
+      }
+
       User::find($request['id'])
                 ->update([
                   'username' => $request['username'],
                   'completename' => $request['completeName'],
                   'phonenumber' => $request['phoneNumber'],
-                  'city' => $request['city'],
+                  'city' => $city->id,
                   'address' => $request['address'],
                   'email' => $request['email'],
                 ]);
 
-      return view('pages.user.profile', ['username' => $request['username']]);
+      return redirect('/users/' . $request['username']);
+    }
+
+    /**
+     * update user profile picture after form submission
+     *
+     * @param array $data
+     *
+     * @return \App\User
+     */
+    public function editPhoto(Request $request)
+    {
+      $request->session()->flash('form', 'editPhoto');
+      $user = User::find($request['id']);
+
+      $validator = $request->validate([
+        'photo' => 'image|mimes:jpg,png',
+      ]);
+
+      $filename = "";
+
+      if ($request->file('photo')) {
+        $file = $user->id.'.'.$request->file('photo')->getClientOriginalExtension();
+
+        $request->file('photo')->move(
+          base_path().'/public/images/catalog/users/', $file
+        );
+        $file_name = '/images/catalog/users/'.$file;
+      } else {
+        $file_name = '/images/catalog/users/default.png';
+      }
+
+       $user->update(['pathtophoto' => $file_name]);
+
+       return redirect('/users/' . $request['username']);
     }
 }
