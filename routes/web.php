@@ -27,11 +27,10 @@ Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('au
 Route::post('register', 'Auth\RegisterController@register')->name('register');
 
 // Profile
-Route::get('users/{id}/auctions', 'ProfileController@auctions');
-Route::get('/users/{id}', 'ProfileController@show')->name('/users/{id}');
-Route::get('/users/{id}/edit', 'ProfileController@edit');
-/*Route::post('/users/{id}/edit', '');
-Route::get('/users/{id}/add_credits', '')->name('');
+Route::get('users/{username}/auctions', 'ProfileController@auctions');
+Route::get('/users/{username}', 'ProfileController@show')->name('/users/{username}');
+Route::post('/users/{username}/edit', 'ProfileController@edit');
+/*Route::get('/users/{id}/add_credits', '')->name('');
 Route::post('/users/add_credits/{id}', '');
 
 // Module 2:
