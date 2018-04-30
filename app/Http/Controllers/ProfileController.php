@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\User;
 use App\Bid;
+use App\City;
+use App\Country;
 use App\Auction;
 
 class ProfileController extends Controller
@@ -22,7 +24,11 @@ class ProfileController extends Controller
         $sold = Auction::where('state', 'Over')->where('auctioncreator', $user->id)->get();
         $pending = [];
 
-        return view('pages.user.profile', ['user' => $user, 'bought' => $bought, 'sold' => $sold, 'pending' => $pending]);
+        return view('pages.user.profile', ['user' => $user,
+        'bought' => $bought,
+        'sold' => $sold,
+        'pending' => $pending,
+      ]);
     }
 
     /**
