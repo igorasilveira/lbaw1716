@@ -17,11 +17,12 @@
     </div>
     <div id="auction-form"
          class="container">
-      <form action="{{ action('AuctionController@save') }}"
+         <!-- action="{{ route('auction_create') }}" -->
+      <form
             method="post"
+            enctype="multipart/form-data"
             class="mx-auto py-2">
         <div class="form-group">
-
           <label class="col-form-label required"
                  for="title">Title</label>
           <input type="text"
@@ -50,8 +51,8 @@
                     maxlength="254"
                     class="form-control"
                     placeholder="Max. 254 characters"
-                    required></textarea>
-
+                    required>
+          </textarea>
           <label class="col-form-label required"
           for="reason">Selling Reason</label>
           <input type="text"
@@ -68,8 +69,13 @@
                  aria-describedby="image"
                  name="pathtophoto">
           <small id="fileHelp"
-                 class="form-text text-muted">This is the image that will be displayed has the main auction image.</small>
-
+                 class="form-text text-muted">This is the image that will be displayed has the main auction image.
+          </small>
+          @if ($errors->has('pathtophoto'))
+          <span class="help-block">
+            <strong>{{ $errors->first('pathtophoto') }}</strong>
+          </span>
+          @endif
           <div class="row">
             <div class="col-lg-4 col-md-12 col-sm-12">
               <label class="col-form-label required">Starting Price</label>
@@ -149,9 +155,11 @@
         <hr class="my-4">
         <div class="row mt-5 container-fluid mx-auto">
           <button class="btn btn-outline-primary col-md-6 col-sm-12"
-                  type="button">Preview Auction</button>
+                  type="submit"
+                  formaction="{{ url('auction/new/preview') }}">Preview Auction</button>
           <button class="btn btn-primary  col-md-6 col-sm-12"
-                  type="submit">Send for Review</button>
+                  type="submit"
+                  formaction="{{ route('auction_create') }}">Send for Review</button>
         </div>
         {{ csrf_field() }}
       </form>

@@ -33,14 +33,15 @@ Route::post('/users/{username}/edit', 'ProfileController@edit');
 Route::post('/users/{username}/edit/photo', 'ProfileController@editPhoto');
 /*Route::get('/users/{id}/add_credits', '')->name('');
 Route::post('/users/add_credits/{id}', '');
-
+*/
 // Module 2:
 //
 // Auctions
-Route::get('/search', '')->name('');*/
+//Route::get('/search', '')->name('');
 Route::get('/category/{category}', 'CategoryController@showAuctionsFromCategory');
 Route::get('/auction/new', 'AuctionController@create');
-Route::post('/auction/new', 'AuctionController@save')->name('/auction/new');
+Route::post('/auction/new', 'AuctionController@save')->name('auction_create');
+Route::post('/auction/new/preview', 'AuctionController@preview')->name('auction_preview');
 Route::get('/auction/{id}', 'AuctionController@show');
 Route::post('/auction/buy-now/{id}', 'BidController@buynow');
 Route::post('/auction/bid/{id}', 'BidController@bid');

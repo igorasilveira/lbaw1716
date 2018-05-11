@@ -1,12 +1,11 @@
 /* common */
 
-
 .error {
   display: block;
 }
 
 ul.navbar-nav li.dropdown:hover div.dropdown-menu {
-    display: block;
+  display: block;
 }
 
 .text-shadow {
@@ -566,5 +565,11 @@ nav.navbar:nth-child(2) {
   }
   ul.nav {
     max-width: 68%;
+  }
+}
+
+@media screen and (max-width: 574px) {
+  #lateralNavBar {
+    display: none;
   }
 }

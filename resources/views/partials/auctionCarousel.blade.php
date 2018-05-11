@@ -1,6 +1,7 @@
 <div id="auctionProfile">
   <img class="img-fluid"
        href="/auction/{{ $auction->id }}"
+       width="246" height="280"
        src="{{ $auction->pathtophoto }}"/>
   <div id="infoAuctionProfile"
        class="container-fluid">

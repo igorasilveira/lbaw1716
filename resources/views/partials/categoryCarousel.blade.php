@@ -1,4 +1,4 @@
-<div class="col-md-4 col-sm-12">
+<div class="col-md-4 col-sm-12 col-xs-12">
   <hr class="my-3">
   <h5 class="text-shadow"> {{ $category->name }} </h5>
   <hr class="my-3">
