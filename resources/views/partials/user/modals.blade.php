@@ -123,6 +123,7 @@
                    @endif
           </fieldset>
 
+          @if ($user->typeofuser=='Normal')
           <hr class="my-md-4 my-sm-1">
           <fieldset>
             <legend>Location information</legend>
@@ -130,13 +131,13 @@
             <label class="col-form-label required">Country</label>
             <select class="form-control"
                     name="country">
-                    {{ $userCountryID = App\Country::find(App\City::find($user->city)->country)->id }}
-                @foreach(App\Country::all() as $country)
-                    <option value="{{ $country->id }}"
-                      {{ ($userCountryID == $country->id) ? 'selected' : ''}}
-                      >{{ $country->name }}
-                    </option>
-                @endforeach
+                      {{ $userCountryID = App\Country::find(App\City::find($user->city)->country)->id }}
+                  @foreach(App\Country::all() as $country)
+                      <option value="{{ $country->id }}"
+                        {{ ($userCountryID == $country->id) ? 'selected' : ''}}
+                        >{{ $country->name }}
+                      </option>
+                  @endforeach
             </select>
             <label class="col-form-label required">City</label>
             <input class="form-control"
@@ -152,6 +153,9 @@
                    </span>
                    @endif
           </fieldset>
+
+        @endif
+
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

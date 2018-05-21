@@ -22,15 +22,27 @@ class ProfileController extends Controller
     public function show($username)
     {
         $user = User::get()->where('username', '=', $username)->first();
-        $bought = Auction::where('state', 'Over')->where('auctionwinner', $user->id)->get();
-        $sold = Auction::where('state', 'Over')->where('auctioncreator', $user->id)->get();
-        $pending = [];
+        $us_type =  User::find($user->id)->typeofuser;
+      
+        if($us_type=='Normal'){
+          $bought = Auction::where('state', 'Over')->where('auctionwinner', $user->id)->get();
+          $sold = Auction::where('state', 'Over')->where('auctioncreator', $user->id)->get();
+          $pending = [];
 
-        return view('pages.user.profile', ['user' => $user,
-        'bought' => $bought,
-        'sold' => $sold,
-        'pending' => $pending,
-      ]);
+          return view('pages.user.profile', ['user' => $user,
+          'bought' => $bought,
+          'sold' => $sold,
+          'pending' => $pending,
+        ]);
+      }else{
+
+        $responAuct = Auction::where('state', 'Over')->where('responsiblemoderator', $user->id)->get();
+
+        return view('pages.user.profile', ['user' => $user, 'responAuct' => $responAuct]);
+      }
+
+
+
     }
 
     /**
@@ -49,6 +61,23 @@ class ProfileController extends Controller
         $buying = Auction::whereIn('id', $buyingIds)->where('state', 'Active')->get();
 
         return view('pages.user.auctions', ['user' => $user, 'selling' => $selling, 'buying' => $buying]);
+    }
+
+    /**
+     * Show the moderator/admin's live auctions page.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function manageAuctions($username)
+    {
+        $user = User::get()->where('username', '=', $username)->first();
+        //$this->authorize('view', $user);
+
+        $pending = Auction::all()->where('state', 'Pending');
+        // TODO mudar query dos buying
+        $moderating = Auction::all()->where('responsiblemoderator', $user->id)->where('state', 'Active' );
+
+        return view('pages.user.manageAuctions', ['user' => $user, 'pending' => $pending, 'moderating' => $moderating]);
     }
 
     /**
