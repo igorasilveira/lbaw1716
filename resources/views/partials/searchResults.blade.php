@@ -52,7 +52,7 @@
       <td>{{ $result->username }}</td>
       <td>User</td>
       <td>
-        <a href="/user/{{ $result->id }}">
+        <a href="/users/{{ $result->username }}">
           <img src="images/goto_link.png"
           width="20"
           height="20" />
