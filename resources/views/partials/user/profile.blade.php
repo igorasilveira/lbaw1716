@@ -11,9 +11,12 @@
 
 @if (Auth::check())
 @if (Auth::user()->id == $user->id)
+
+@if($user->typeofuser=='Normal')
 <div id="warningPendingTop" class="alert alert-dismissible alert-danger my-4 w-75 mx-auto box-shadow">
   <strong class="alert-link">Attention!</strong> You have pending actions required on finished auctions.
 </div>
+@endif
 <hr class="my-md-4 my-sm-2 my-xs-1">
 @endif
 @endif
@@ -53,6 +56,7 @@ class="jumbotron">
             {{ $user->email}}
           </p>
         </section>
+        @if ($user->typeofuser=='Normal')
       <div id="balance"
       class="text-center w-50 border border-dark">
         <h4 class="pb-2">Balance</h4>
@@ -73,6 +77,7 @@ class="jumbotron">
           </div>
         </div>
       </div>
+      @endif
     </div>
   </div>
 </div>
@@ -82,14 +87,24 @@ class="jumbotron">
 <hr class="mb-5">
 <div class="row">
   <span class="col-md-2 col-sm-0 col-xs-0"></span>
+  @if($user->typeofuser=='Normal')
   <a href="{{ $user->username }}/auctions"
     class="col-md-8 col-sm-12 col-xs-12">
     <button class="btn btn-info w-100 box-shadow">My Live Auctions
     </button>
   </a>
+  @else
+  <a href="{{ $user->username }}/manageAuctions"
+    class="col-md-8 col-sm-12 col-xs-12">
+    <button class="btn btn-info w-100 box-shadow">My Live Auctions
+    </button>
+  </a>
+  @endif
+
   <span class="col-md-2 col-sm-0 col-xs-0"></span>
 </div>
 
+@if ($user->typeofuser=='Normal')
 <hr class="my-5">
 <div id="statistics"
 class="container">
@@ -183,6 +198,53 @@ class="container">
       </div>
       @endif
     </div>
+    @else
+    <hr class="my-5">
+    <div id="statistics"
+    class="container">
+      <h3 class="pb-2">Auction History</h3>
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link active show"
+            data-toggle="tab"
+            href="#pending">Former Responsible Auctions
+          </a>
+      </ul>
+      <div class=" table-responsive tab-content ">
+        <div class="tab-pane fade"
+        id="responAuct"
+        role="tabpanel"
+        aria-labelledby="sold-tab">
+
+          @if (count($responAuct) > 0)
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Auction</th>
+                <th scope="col">Item</th>
+                <th scope="col">Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for ($i = 0; $i < min(6, count($responAuct)); $i++)
+              <tr class="table">
+                <th scope="row">#{{ $responAuct->slice($i, 1)->first()->id }}</th>
+                <td>{{ $responAuct->slice($i, 1)->first()->title }}</td>
+                <td>{{ substr($responAuct->slice($i, 1)->first()->finaldate, 0, 10) }}</td>
+              </tr>
+              @endfor
+            </tbody>
+          </table>
+            @if (count($responAuct) > 6)
+            <a href="myhistory_user.html"><button class="btn btn-outline-primary w-100">See More</button></a>
+            @endif
+          @else
+          <div id="warningNoAuctions" class="alert alert-info my-5 w-75 mx-auto box-shadow">
+            <strong class="alert-link">Ups!</strong> You have not any items yet.
+          </div>
+          @endif
+        </div>
+        @endif
     <div class="tab-pane fade active show"
       id="pending"
       role="tabpanel"
@@ -202,10 +264,11 @@ class="container">
         </tbody>
       </table>
     -->
+    @if($user->typeofuser=='Normal')
       <div id="warningNoAuctions" class="alert alert-info my-5 w-75 mx-auto box-shadow">
         <strong class="alert-link">Good!</strong> You have no <strong>pending</strong> businesses.
       </div>
-
+    @endif
     </div>
   </div>
 </div>

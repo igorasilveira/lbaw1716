@@ -28,6 +28,7 @@ Route::post('register', 'Auth\RegisterController@register')->name('register');
 
 // Profile
 Route::get('users/{username}/auctions', 'ProfileController@auctions');
+Route::get('users/{username}/manageAuctions', 'ProfileController@manageAuctions');
 Route::get('/users/{username}', 'ProfileController@show')->name('/users/{username}');
 Route::post('/users/{username}/edit', 'ProfileController@edit');
 Route::post('/users/{username}/edit/photo', 'ProfileController@editPhoto');
