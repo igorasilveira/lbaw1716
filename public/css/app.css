@@ -573,3 +573,11 @@ nav.navbar:nth-child(2) {
     display: none;
   }
 }
+
+.link-button {
+  background: none !important;
+  border: none;
+  padding: 0 !important;
+  color: #20a8d8;
+  cursor: pointer;
+}

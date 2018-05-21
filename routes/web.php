@@ -64,18 +64,19 @@ Route::post('/admin/manage/moderators/add', '');
 Route::delete('/admin/manage/moderators/{id}/remove', '');
 Route::post('/admin/manage/categories/add', '');
 Route::delete('/admin/manage/categories/{id}/remove', '');
+*/
 
 // Module 4:
 //
 // Notifications
-Route::get('/users/{id}/notifications/', '')->name('');
-Route::get('/users/{id}/notifications/{notID}', '')->name('');
-Route::delete('/users/{id}/notifications/{notID}/remove', '');
-*/
+Route::get('/users/{username}/notifications/', 'NotificationController@list');
+Route::get('/users/{username}/notifications/{id}', 'NotificationController@show');
+Route::delete('/users/{username}/notifications/{id}/remove', 'NotificationController@delete');
+
 
 // Module 5:
 //
-// Static Messages
+// Static Pages
 Route::get('/about', 'StaticMessages\StaticController@showAbout');
 Route::get('/FAQ', 'StaticMessages\StaticController@showFAQ');
 Route::get('/contact', 'StaticMessages\StaticController@showContacts');
