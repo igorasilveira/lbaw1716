@@ -1,13 +1,13 @@
 <div class="hidden-xs">
   <hr class="my-md-4 my-sm-2 my-xs-1">
   <div class="title jumbotron my-0 p-3">
-    <h1 class="display-6"> Search Results for {{ $search }} </h1>
+    <h1 class="display-6"> Search Results for "{{ $search }}" </h1>
   </div>
   <hr class="my-md-4 my-sm-2 my-xs-1">
 </div>
 
 <div class="container w-65">
-  <h4>{{ $search }} in Auctions</h4>
+  <h4> "{{ $search }}" in Auctions</h4>
   <table class="table table-hover">
     <thead>
       <tr class="table">
@@ -37,7 +37,7 @@
 </div>
 <br />
 <div class="container w-65">
-<h4>{{ $search }} in Users</h4>
+<h4> "{{ $search }}" in Users </h4>
 <table class="table table-hover">
   <thead>
     <tr class="table">
