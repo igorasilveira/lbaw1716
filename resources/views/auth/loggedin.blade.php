@@ -1,6 +1,6 @@
 <ul class="nav pull-right">
   <a href="/auction/new">
-          <button type="button" name="button" class="btn btn-secondary btn-md mt-1 mr-5">+<span class="hidden-xs"> Create Auction</span></button>
+          <button type="button" name="button" class="btn btn-secondary btn-md mt-1 mr-5 btn-round">+<span class="hidden-xs"> Create Auction</span></button>
         </a>
   <li class="dropdown"
       id="menuLogin">

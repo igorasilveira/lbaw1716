@@ -12,6 +12,7 @@ use App\City;
 use App\Country;
 use App\Auction;
 
+
 class ProfileController extends Controller
 {
     /**
@@ -87,7 +88,7 @@ class ProfileController extends Controller
      *
      * @return \App\User
      */
-    public function edit(Request $request)
+    public function edit(Request $request, $username)
     {
       $request->session()->flash('form', 'edit');
       $user = User::get()->where('username', '=', $request['username'])->first();

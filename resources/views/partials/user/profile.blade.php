@@ -1,28 +1,34 @@
-@if (count($errors) != 0)
-  @if (Session::get('form') == 'edit')
-    <script>
-      $( document ).ready(function() {
+<script>
+  $( document ).ready(function() {
+    @if (count($errors) != 0)
+      @if (session()->get('form') == 'edit')
         $('#editModal').modal('show');
-      });
-    </script>
-  @endif
-@endif
+      @endif
+    @endif
+    @if (session()->has('paypal'))
+      @if (session()->get('paypal') == "approved")
+        $("#approvedPaymentModal").modal('show');
+      @elseif (session()->get('paypal') == "rejected")
+        $("#rejectedPaymentModal").modal('show');
+      @endif
+      {{ session()->forget('paypal') }}
+    @endif
+  });
+</script>
 <hr class="my-md-4 my-sm-2 my-xs-1">
-
 @if (Auth::check())
-@if (Auth::user()->id == $user->id)
+  @if (Auth::user()->id == $user->id)
 
-@if($user->typeofuser=='Normal')
-<div id="warningPendingTop" class="alert alert-dismissible alert-danger my-4 w-75 mx-auto box-shadow">
-  <strong class="alert-link">Attention!</strong> You have pending actions required on finished auctions.
-</div>
-@endif
-<hr class="my-md-4 my-sm-2 my-xs-1">
-@endif
+    @if($user->typeofuser=='Normal')
+    <div id="warningPendingTop" class="alert alert-dismissible alert-danger my-4 w-75 mx-auto box-shadow">
+      <strong class="alert-link">Attention!</strong> You have pending actions required on finished auctions.
+    </div>
+    @endif
+  <hr class="my-md-4 my-sm-2 my-xs-1">
+  @endif
 @endif
 <div id="profile-container"
 class="jumbotron">
-
 <div class="row">
   <div class="col-md-6 col-sm-12 col-xs-12">
     @if (Auth::check() && (Auth::user()->id == $user->id))<img data-toggle="modal" data-target="#photoModal" src="{{ $user->pathtophoto }}"
@@ -72,8 +78,13 @@ class="jumbotron">
             @endif
           </div>
           <div class="col-md-6 col-sm-12 col-xs-12">
-            <button type="button"
-            class="btn btn-success w-100">Add Credit</button>
+            @if (Auth::check())
+              @if (Auth::user()->id == $user->id)
+              <a href="#" data-toggle="modal" data-target="#creditsModal">
+              <button type="button"
+              class="btn btn-success w-100 box-shadow btn-round">Add Credits</button></a>
+              @endif
+            @endif
           </div>
         </div>
       </div>
@@ -90,7 +101,7 @@ class="jumbotron">
   @if($user->typeofuser=='Normal')
   <a href="{{ $user->username }}/auctions"
     class="col-md-8 col-sm-12 col-xs-12">
-    <button class="btn btn-info w-100 box-shadow">My Live Auctions
+    <button class="btn btn-info w-100 box-shadow btn-round">My Live Auctions
     </button>
   </a>
   @else

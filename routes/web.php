@@ -32,9 +32,9 @@ Route::get('users/{username}/manageAuctions', 'ProfileController@manageAuctions'
 Route::get('/users/{username}', 'ProfileController@show')->name('/users/{username}');
 Route::post('/users/{username}/edit', 'ProfileController@edit');
 Route::post('/users/{username}/edit/photo', 'ProfileController@editPhoto');
-/*Route::get('/users/{id}/add_credits', '')->name('');
-Route::post('/users/add_credits/{id}', '');
-*/
+Route::post('/users/{username}/add_credits', 'PaypalController@add_credits');
+Route::get('/users/{username}/add_credits', 'PaypalController@process_payment');
+
 // Module 2:
 //
 // Auctions

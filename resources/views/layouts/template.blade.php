@@ -53,12 +53,12 @@
             <form class="form-inline my-2 my-lg-0"
             action="/search"
             method="GET">
-              <input class="form-control mr-sm-2"
+              <input class="form-control mr-sm-2 btn-round"
                      type="text"
                      placeholder="Search"
                      name="search"
                      required>
-              <button class="btn btn-secondary my-2 my-sm-0 p-xs-0"
+              <button class="btn btn-secondary my-2 my-sm-0 p-xs-0 btn-round"
                       type="submit">Search</button>
             </form>
           </div>
