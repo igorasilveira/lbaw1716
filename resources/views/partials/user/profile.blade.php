@@ -20,7 +20,7 @@
   @if (Auth::user()->id == $user->id)
 
     @if($user->typeofuser=='Normal')
-    <div id="warningPendingTop" class="alert alert-dismissible alert-danger my-4 w-75 mx-auto box-shadow">
+    <div id="warningPendingTop" class="alert alert-dismissible alert-danger my-4 w-75 mx-auto">
       <strong class="alert-link">Attention!</strong> You have pending actions required on finished auctions.
     </div>
     @endif
@@ -169,7 +169,7 @@ class="container">
         <a href="myhistory_user.html"><button class="btn btn-outline-primary w-100">See More</button></a>
         @endif
       @else
-      <div id="warningNoAuctions" class="alert alert-info my-5 w-75 mx-auto box-shadow">
+      <div id="warningNoAuctions" class="alert alert-info my-5 w-75 mx-auto ">
         <strong class="alert-link">Ups!</strong> You have not <strong>sold</strong> any items yet.
       </div>
       @endif
@@ -204,7 +204,7 @@ class="container">
       </a>
       @endif
       @else
-      <div id="warningNoAuctions" class="alert alert-info my-5 w-75 mx-auto box-shadow">
+      <div id="warningNoAuctions" class="alert alert-info my-5 w-75 mx-auto">
         <strong class="alert-link">Ups!</strong> You have not <strong>bought</strong> any items yet.
       </div>
       @endif
@@ -250,7 +250,7 @@ class="container">
             <a href="myhistory_user.html"><button class="btn btn-outline-primary w-100">See More</button></a>
             @endif
           @else
-          <div id="warningNoAuctions" class="alert alert-info my-5 w-75 mx-auto box-shadow">
+          <div id="warningNoAuctions" class="alert alert-info my-5 w-75 mx-auto">
             <strong class="alert-link">Ups!</strong> You have not any items yet.
           </div>
           @endif
@@ -276,7 +276,7 @@ class="container">
       </table>
     -->
     @if($user->typeofuser=='Normal')
-      <div id="warningNoAuctions" class="alert alert-info my-5 w-75 mx-auto box-shadow">
+      <div id="warningNoAuctions" class="alert alert-info my-5 w-75 mx-auto">
         <strong class="alert-link">Good!</strong> You have no <strong>pending</strong> businesses.
       </div>
     @endif
