@@ -92,7 +92,7 @@
       </div>
     </nav>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary p-md-1">
-      <div class="container-fluid">
+      <div id="menuCat" class="container-fluid">
         <div class="collapse navbar-collapse"
              id="navbar2">
           <ul class="navbar-nav mr-auto">

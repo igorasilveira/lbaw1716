@@ -3,7 +3,7 @@
 @section('content')
 <div class="hidden-xs">
   <hr class="my-md-4 my-sm-2 my-xs-1">
-  <div class="title jumbotron my-0 p-3">
+  <div class="title jumbotron my-0 p-3 text-center">
     <h1 class="display-6">Sign Up</h1>
   </div>
   <hr class="my-md-4 my-sm-2 my-xs-1">
@@ -123,7 +123,7 @@
                @endif
       </fieldset>
       <hr class="my-md-4 my-xs-1">
-      <input class="btn btn-primary w-100 my-4"
+      <input class="btn btn-primary w-100 my-4 btn-round box-shadow"
              type="submit"
              value="Submit Information" />
     </form>

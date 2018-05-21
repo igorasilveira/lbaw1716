@@ -12,8 +12,8 @@
     <a class=""
        href="/users/{{ Auth::user()->username }}"
        data-devgib="tagged"><img src="{{ Auth::user()->pathtophoto }}" height="50" class="profile-pic img-hover" style="display: inline"/></a>
-    <div class="dropdown-menu test"
-         style="padding:17px;">
+    <div class="dropdown-menu test box-shadow"
+         style="padding:12px; border-radius: 10px">
       <a class="dropdown-item"
          href="/users/{{ Auth::user()->username }}"> Profile </a>
       <div class="dropdown-divider"></div>

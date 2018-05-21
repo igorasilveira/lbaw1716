@@ -1,6 +1,6 @@
 <div class="hidden-xs">
   <hr class="my-md-4 my-sm-2 my-xs-1">
-  <div class="title jumbotron my-0  p-3">
+  <div class="title jumbotron my-0  p-3 text-center">
     <h1 class="display-6"> {{ $category->name }}</h1>
   </div>
   <hr class="my-md-4 my-sm-2 my-xs-1">

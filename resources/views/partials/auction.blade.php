@@ -188,7 +188,7 @@
       @endforeach
       <form class="form-group">
         {{ csrf_field() }}
-        <label class="text-mutted" for="newcomment"> Comment as {{ @Auth::user()->username }} </label>
+        <label class="text-muted" for="newcomment"> Comment as {{ @Auth::user()->username }} </label>
         <textarea class="form-control" id="newcomment" name="description" rows="2"></textarea>
         <br />
         <button type="submit"

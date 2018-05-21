@@ -64,7 +64,7 @@ class RegisterController extends Controller
         $validator = $request->validate([
             'username' => 'required|string|max:255|unique:user',
             'completeName' => 'required|string|max:255',
-            'phoneNumber' => 'required|string|max:25',
+            'phoneNumber' => 'nullable|numeric|digits_between:5,25',
             'birthDate' => 'required|string|date|min:10|max:10',
             'city' => 'required|string|min:3',
             'address' => 'required|string|min:5|max:255',
@@ -93,7 +93,7 @@ class RegisterController extends Controller
          'completename' => $data['completeName'],
          'phoneNumber' => $data['phoneNumber'],
          'birthDate' => $data['birthDate'],
-         'city' => $city->first()->id,
+         'city' => $GLOBALS['city']->first()->id,
          'address' => $data['address'],
        ]);
 

@@ -1,6 +1,6 @@
   <div class="hidden-xs">
     <hr class="my-md-4 my-sm-2 my-xs-1">
-    <div class="title jumbotron my-0 p-3">
+    <div class="title jumbotron my-0 p-3 text-center">
       <h1 class="display-6">New Auction</h1>
     </div>
     <hr class="my-md-4 my-sm-2 my-xs-1">
@@ -154,10 +154,10 @@
         </select>
         <hr class="my-4">
         <div class="row mt-5 container-fluid mx-auto">
-          <button class="btn btn-outline-primary col-md-6 col-sm-12"
+          <button class="btn btn-outline-primary col-md-6 col-sm-12 btn-round-top box-shadow"
                   type="submit"
                   formaction="{{ url('auction/new/preview') }}">Preview Auction</button>
-          <button class="btn btn-primary  col-md-6 col-sm-12"
+          <button class="btn btn-primary  col-md-6 col-sm-12 btn-round-bot box-shadow"
                   type="submit"
                   formaction="{{ route('auction_create') }}">Send for Review</button>
         </div>

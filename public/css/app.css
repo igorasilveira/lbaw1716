@@ -2,6 +2,7 @@
 
 .error {
   display: block;
+  color: red;
 }
 
 ul.navbar-nav li.dropdown:hover div.dropdown-menu {
@@ -14,6 +15,14 @@ ul.navbar-nav li.dropdown:hover div.dropdown-menu {
 
 .btn-round {
   border-radius: 20px;
+}
+
+.btn-round-top {
+  border-radius: 20px 0 0 20px;
+}
+
+.btn-round-bot {
+  border-radius: 0 20px 20px 0;
 }
 
 #menuLogin .dropdown-menu {
@@ -33,6 +42,16 @@ li {
   .hidden-xs {
     display: none !important;
   }
+
+  .btn-round-top, .btn-round-bot {
+    border-radius: 20px;
+    margin-bottom: 2em;
+  }
+}
+
+.alert {
+  border-radius: 10px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.01);
 }
 
 .test {
@@ -260,13 +279,16 @@ legend {
 }
 
 #menuCat {
-  margin-top: .2em;
+  padding: 3em auto;
+  border-top: 1px solid white;
+  width: 100%;
 }
 
 @media screen and (min-width: 480px) {
   #catNav {
     width: 100%;
   }
+
   #catNav>div:nth-child(1), #catNav ul#categories.mr-auto {
     width: 100%;
     padding-left: 0;
