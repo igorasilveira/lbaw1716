@@ -44,7 +44,8 @@ class LoginController extends Controller
 
     public function showLoginForm()
     {
-        return view('pages.home');
+      session()->flash('form', 'login');  
+      return view('pages.home');
     }
 
     public function showHome()
