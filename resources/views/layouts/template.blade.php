@@ -49,10 +49,15 @@
         <div class="collapse navbar-collapse row"
              id="navbar1">
           <div class="col">
-            <form class="form-inline my-2 my-lg-0">
+            {{ csrf_field() }}
+            <form class="form-inline my-2 my-lg-0"
+            action="/search"
+            method="GET">
               <input class="form-control mr-sm-2"
                      type="text"
-                     placeholder="Search">
+                     placeholder="Search"
+                     name="search"
+                     required>
               <button class="btn btn-secondary my-2 my-sm-0 p-xs-0"
                       type="submit">Search</button>
             </form>

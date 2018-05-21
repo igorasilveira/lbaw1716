@@ -648,6 +648,8 @@ ALTER TABLE IF EXISTS ONLY edit_moderator
 ALTER TABLE IF EXISTS ONLY report
     ADD CONSTRAINT report_pkey PRIMARY KEY (auctionid, normaluserid);
 
+ALTER TABLE IF EXISTS ONLY "user" ADD COLUMN textsearchable_user_col tsvector;
+ALTER TABLE IF EXISTS ONLY auction ADD COLUMN textsearchable_auction_col tsvector;
 
 --
 -- Name: add_credits_trigger(); Type: FUNCTION; Schema: public; Owner: lbaw1716
@@ -908,7 +910,25 @@ END IF;
 RETURN NEW;
 END;$$;
 
+--
+-- Name: full_text_search_user(); Type: FUNCTION; Schema: public; Owner: lbaw1716
+--
+CREATE FUNCTION full_text_search_user() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$BEGIN
+    NEW.textsearchable_user_col = to_tsvector('english', NEW.username);
+RETURN NEW;
+END;$$;
 
+--
+-- Name: full_text_search_auction(); Type: FUNCTION; Schema: public; Owner: lbaw1716
+--
+CREATE FUNCTION full_text_search_auction() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$BEGIN
+    NEW.textsearchable_auction_col = to_tsvector('english', coalesce(NEW.title,'') || ' ' || coalesce(NEW.description,''));
+    RETURN NEW;
+    END;$$;
 --
 -- Name: add_credits_trigger; Type: TRIGGER; Schema: public; Owner: lbaw1716
 --
@@ -987,7 +1007,17 @@ CREATE TRIGGER update_bid_number AFTER INSERT ON bid FOR EACH ROW EXECUTE PROCED
 
 CREATE TRIGGER update_rating BEFORE INSERT OR UPDATE ON auction FOR EACH ROW EXECUTE PROCEDURE update_ratings();
 
+--
+-- Name: full_text_search_auction; Type: TRIGGER; Schema: public; Owner: lbaw1716
+--
 
+CREATE TRIGGER full_text_search_auction BEFORE INSERT OR UPDATE ON auction FOR EACH ROW EXECUTE PROCEDURE full_text_search_auction();
+
+--
+-- Name: full_text_search_user; Type: TRIGGER; Schema: public; Owner: lbaw1716
+--
+
+CREATE TRIGGER full_text_search_user BEFORE INSERT OR UPDATE ON "user" FOR EACH ROW EXECUTE PROCEDURE full_text_search_user();
 --
 -- Name: win_auction; Type: TRIGGER; Schema: public; Owner: lbaw1716
 --
@@ -1186,11 +1216,10 @@ ALTER TABLE IF EXISTS ONLY report
 
 CREATE INDEX bid_ind ON bid USING hash (auction_id);
 CREATE INDEX pending_ind ON auction USING hash (state);
-CREATE INDEX search_title_idx ON auction USING GIST (to_tsvector('english', coalesce(title,'') || ' ' || coalesce(description,'')));
-CREATE INDEX search_name_idx ON "user" USING GIST (to_tsvector('english', completename));
-
-
 --
+CREATE INDEX search_name_idx ON "user" USING GIST (textsearchable_user_col);
+CREATE INDEX search_title_idx ON auction USING GIST (textsearchable_auction_col);
+
 -- Data for Name: country; Type: TABLE DATA; Schema: public; Owner: lbaw1716
 --
 ALTER SEQUENCE auto_increment_user restart;
