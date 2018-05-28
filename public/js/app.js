@@ -305,11 +305,23 @@ function delModerator(row) {
 	if (confBox == true) {
 		var i = row.parentNode.parentNode.rowIndex;
 		var username = (document.getElementById("moderatorsList").rows[i].cells[1].innerHTML);
-		document.getElementById("moderatorsList")
-			.deleteRow(i);
 
-sendAjaxRequest('GET', '/admin/manage/moderators/{username}/remove', username);
+var url = window.location.href + '/moderators/' + username + '/remove';
+console.log(url);
+console.log(username);
+			jQuery.ajax({
+					type: 'GET',
+					url: url,
+					success: function () {
+							document.getElementById("moderatorsList")
+								.deleteRow(i);
+					},
+					error: function () {
+							alert('Could not delete moderator');
+					}
+			});
 
+//sendAjaxRequest('POST', window.location.href + '/moderators/remove', username);
 
 			//App\User::where('username', username)->delete();
 	}

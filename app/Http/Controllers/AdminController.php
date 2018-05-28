@@ -43,12 +43,9 @@ class AdminController extends Controller
 
   public function deleteModerator($username)
   {
-
+    //$user = User::delete()->where('username', $username)->first();
     User::where('username', $username)->delete();
-    $id = User::where('username', 'Ritmock')->get();
-    $myJSON = json_encode($id);
 
-    echo $myJSON;
 
   }
 
