@@ -24,7 +24,7 @@ class ProfileController extends Controller
     {
         $user = User::get()->where('username', '=', $username)->first();
         $us_type =  User::find($user->id)->typeofuser;
-      
+
         if($us_type=='Normal'){
           $bought = Auction::where('state', 'Over')->where('auctionwinner', $user->id)->get();
           $sold = Auction::where('state', 'Over')->where('auctioncreator', $user->id)->get();
@@ -72,10 +72,8 @@ class ProfileController extends Controller
     public function manageAuctions($username)
     {
         $user = User::get()->where('username', '=', $username)->first();
-        //$this->authorize('view', $user);
 
         $pending = Auction::all()->where('state', 'Pending');
-        // TODO mudar query dos buying
         $moderating = Auction::all()->where('responsiblemoderator', $user->id)->where('state', 'Active' );
 
         return view('pages.user.manageAuctions', ['user' => $user, 'pending' => $pending, 'moderating' => $moderating]);

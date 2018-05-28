@@ -69,7 +69,7 @@
               </p>
             </div>
             @if($auction->state == 'Active')
-            @if(Auth::id() != $auction->auctionCreator && Auth::check())
+            @if(Auth::id() != $auction->auctionCreator && Auth::check() && Auth::user()->typeofuser=='Normal')
             <form class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
                 {{ csrf_field() }}
                   @if($auction->bids->count() > 0)
@@ -111,8 +111,22 @@
           @endif
           @endif
           @else
-          @if($auction->state == 'Over')
         </div>
+        @if($auction->state == 'Pending' && (Auth::user()->typeofuser=='Administrator' || Auth::user()->typeofuser=='Moderator' ) )
+        <div id="pendingActions"
+        class="container mt-md-5 mt-sm-3 mt-3">
+          <div class="row">
+            <a href="/admin/auction/{{$auction->id}}/reject">
+                    <button class="btn btn-danger mw-75 text-center">Reject</button>
+                  </a>
+
+                  <a href="/admin/auction/{{$auction->id}}/approve">
+                    <button class="btn btn-success mw-75 text-center">Accept</button>
+                  </a>
+          </div>
+        </div>
+        @endif
+        @if($auction->state == 'Over')
             <hr class="my-2">
             <div class="w-100 alert alert-dismissible alert-info">
               <p>

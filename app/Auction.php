@@ -20,7 +20,7 @@ class Auction extends Model
      * @var array
      */
     protected $fillable = [
-    'state', 'title', 'sellingreason', 'description', 'pathtophoto', 'startingprice', 'minimumsellingprice', 'buynow', 'limitdate', 'auctioncreator',
+    'state', 'title', 'sellingreason', 'description', 'pathtophoto', 'startingprice', 'minimumsellingprice', 'buynow', 'limitdate', 'auctioncreator', 'responsiblemoderator'
   ];
 
     /**
