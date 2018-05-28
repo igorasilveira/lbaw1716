@@ -92,7 +92,7 @@
                 height="20"
                 class="removeBtt"
                 title='Remove Category'
-                onclick="delCategory(this)"> </td>
+                onclick="delCategory(this,{{$categories->slice($j, 1)->first()->id}})"> </td>
               </tr>
             @endfor
                     </tbody>

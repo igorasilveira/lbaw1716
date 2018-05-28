@@ -463,13 +463,39 @@ function editCategories() {
 }
 
 
-function delCategory(row) {
+function delCategory(row, id) {
 	var confBox = confirm("Do you really want to delete this category?");
 	if (confBox == true) {
 		var i = row.parentNode.parentNode.rowIndex;
-		document.getElementById("categoriesList")
-			.deleteRow(i);
+
+		var url = window.location.href + 'categories/' + id + '/remove';
+		var json = "{'id':'" + id + "'}";
+
+		$.ajaxSetup({
+			headers: {
+				'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')
+					.content
+			},
+			contentType: 'application/x-www-form-urlencoded'
+		});
+
+		$.ajax({
+			type: 'DELETE',
+			url: url,
+			contentType: 'application/json; charset=utf-8',
+			data: json,
+			cache: false,
+			success: function () {
+				document.getElementById("categoriesList")
+					.deleteRow(i);
+			},
+			error: function () {
+				alert('Could not delete category');
+			}
+		});
 	}
+
+
 
 }
 

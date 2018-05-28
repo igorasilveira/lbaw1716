@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\User;
 use App\Category;
+use App\Edit_Categories;
 
 class AdminController extends Controller
 {
@@ -21,7 +22,7 @@ class AdminController extends Controller
      */
     public function show()
     {
-        $moderators = User::where('typeofuser', 'Moderator')->where('blocked','false')->get();
+        $moderators = User::where('typeofuser', 'Moderator')->where('blocked', 'false')->get();
         $categories = Category::all();
 
         return view('pages.admin.adminManagement', [
@@ -42,9 +43,14 @@ class AdminController extends Controller
 
     public function deleteModerator($username)
     {
-        //$user = User::delete()->where('username', $username)->first();
         User::where('username', $username)->update(['blocked' => true]);
+        return null;
+    }
 
+    public function deleteCategory($id)
+    {
+        Edit_Categories::where('category',$id)->delete();
+        Category::find($id)->delete();
         return null;
     }
 
