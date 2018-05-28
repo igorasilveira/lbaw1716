@@ -7,16 +7,17 @@ function encodeForAjax(data) {
 		.join('&');
 }
 
-function sendAjaxRequest(method, url, data, handler) {
+function sendAjaxRequest(method, url, data) {
 	let request = new XMLHttpRequest();
 
 	request.open(method, url, true);
 	request.setRequestHeader('X-CSRF-TOKEN', document.querySelector('meta[name="csrf-token"]')
 		.content);
 	request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-	request.addEventListener('load', handler);
+	//request.addEventListener('load', handler);
 	request.send(encodeForAjax(data));
 }
+
 
 /*function addEventListeners() {
 	let itemCheckers = document.querySelectorAll('article.card li.item input[type=checkbox]');
@@ -303,8 +304,26 @@ function delModerator(row) {
 	var confBox = confirm("Do you really want to delete this user?");
 	if (confBox == true) {
 		var i = row.parentNode.parentNode.rowIndex;
-		document.getElementById("moderatorsList")
-			.deleteRow(i);
+		var username = (document.getElementById("moderatorsList").rows[i].cells[1].innerHTML);
+
+var url = window.location.href + '/moderators/' + username + '/remove';
+console.log(url);
+console.log(username);
+			jQuery.ajax({
+					type: 'GET',
+					url: url,
+					success: function () {
+							document.getElementById("moderatorsList")
+								.deleteRow(i);
+					},
+					error: function () {
+							alert('Could not delete moderator');
+					}
+			});
+
+//sendAjaxRequest('POST', window.location.href + '/moderators/remove', username);
+
+			//App\User::where('username', username)->delete();
 	}
 
 }

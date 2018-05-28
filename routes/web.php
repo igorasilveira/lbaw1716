@@ -48,11 +48,16 @@ Route::post('/auction/buy-now/{id}', 'BidController@buynow');
 Route::post('/auction/bid/{id}', 'BidController@bid');
 Route::post('/auction/{id}/comments/add', 'CommentController@create');
 Route::delete('/auction/{id}/comments/{comID}/remove/', 'CommentController@delete');
-/*Route::post('/auction/report/{id}', '');
+
+
+//Route::post('/auction/report/{id}', '');
 
 // Module 3:
 //
 // Administrative Decisions
+Route::get('/admin/manage', 'AdminController@show');
+Route::get('/admin/manage/moderators/{username}/remove', 'AdminController@deleteModerator');
+/*
 Route::get('/admin/auctions', '')->name('');
 Route::put('/admin/auction/{id}/approve', '');
 Route::put('/admin/auction/{id}/reject', '');
