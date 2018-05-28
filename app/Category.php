@@ -15,6 +15,8 @@ class Category extends Model
 
   protected $fillable = ['name', 'parent'];
 
+  public $timestamps = false;
+
   public function parent()
   {
     return self::find(self::parent);

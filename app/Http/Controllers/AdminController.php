@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Category;
 use App\Edit_Categories;
+use App\CategoryOfAuction;
 
 class AdminController extends Controller
 {
@@ -44,13 +45,23 @@ class AdminController extends Controller
     public function deleteModerator($username)
     {
         User::where('username', $username)->update(['blocked' => true]);
+
         return null;
     }
 
     public function deleteCategory($id)
     {
-        Edit_Categories::where('category',$id)->delete();
+        Edit_Categories::where('category', $id)->delete();
+        CategoryOfAuction::where('category_id', $id)->delete();
+
+        $cats = Category::where('parent', $id)->get();
+        foreach($cats as $cat){
+          $cat->parent = null;
+          $cat->save();
+        }
+
         Category::find($id)->delete();
+
         return null;
     }
 
@@ -64,4 +75,5 @@ class AdminController extends Controller
 
         return view('pages.auction', ['auction' => $auction]);
     }
+
 }
