@@ -486,8 +486,7 @@ function delCategory(row, id) {
 			data: json,
 			cache: false,
 			success: function () {
-				document.getElementById("categoriesList")
-					.deleteRow(i);
+				if (!json.error) location.reload(true);
 			},
 			error: function () {
 				alert('Could not delete category');

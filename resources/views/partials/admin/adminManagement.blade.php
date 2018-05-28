@@ -83,7 +83,7 @@
               <td>@if($categories->slice($j, 1)->first()->parent==null)
                 N/A
                 @else
-                {{  $categories->slice(($categories->slice($j, 1)->first()->parent), 1)->first()->name }}
+                {{  App\Category::find($categories->slice($j, 1)->first()->parent)->name }}
                 @endif
               </td>
               <td>{{ $categories->slice($j, 1)->first()->auctions()->where('state','Active')->count() }}</td>
