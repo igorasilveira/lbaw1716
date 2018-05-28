@@ -7,16 +7,17 @@ function encodeForAjax(data) {
 		.join('&');
 }
 
-function sendAjaxRequest(method, url, data, handler) {
+function sendAjaxRequest(method, url, data) {
 	let request = new XMLHttpRequest();
 
 	request.open(method, url, true);
 	request.setRequestHeader('X-CSRF-TOKEN', document.querySelector('meta[name="csrf-token"]')
 		.content);
 	request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-	request.addEventListener('load', handler);
+	//request.addEventListener('load', handler);
 	request.send(encodeForAjax(data));
 }
+
 
 /*function addEventListeners() {
 	let itemCheckers = document.querySelectorAll('article.card li.item input[type=checkbox]');
@@ -303,8 +304,14 @@ function delModerator(row) {
 	var confBox = confirm("Do you really want to delete this user?");
 	if (confBox == true) {
 		var i = row.parentNode.parentNode.rowIndex;
+		var username = (document.getElementById("moderatorsList").rows[i].cells[1].innerHTML);
 		document.getElementById("moderatorsList")
 			.deleteRow(i);
+
+sendAjaxRequest('GET', '/admin/manage/moderators/{username}/remove', username);
+
+
+			//App\User::where('username', username)->delete();
 	}
 
 }

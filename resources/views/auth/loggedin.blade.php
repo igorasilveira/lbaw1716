@@ -1,7 +1,13 @@
 <ul class="nav pull-right">
+  @if (Auth::user()->typeofuser=='Normal')
   <a href="/auction/new">
           <button type="button" name="button" class="btn btn-secondary btn-md mt-1 mr-5 btn-round">+<span class="hidden-xs"> Create Auction</span></button>
         </a>
+  @elseif(Auth::user()->typeofuser=='Administrator')
+  <a href="/admin/manage">
+          <button type="button" name="button" class="btn btn-secondary btn-md mt-1 mr-5 btn-round">+<span class="hidden-xs"> Admin Management</span></button>
+        </a>
+  @endif
   <li class="dropdown"
       id="menuLogin">
     <a class="dropdown-toggle text-white"
