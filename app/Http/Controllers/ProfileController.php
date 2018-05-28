@@ -24,7 +24,7 @@ class ProfileController extends Controller
     {
         $user = User::get()->where('username', '=', $username)->first();
         $us_type =  User::find($user->id)->typeofuser;
-      
+
         if($us_type=='Normal'){
           $bought = Auction::where('state', 'Over')->where('auctionwinner', $user->id)->get();
           $sold = Auction::where('state', 'Over')->where('auctioncreator', $user->id)->get();
@@ -35,15 +35,12 @@ class ProfileController extends Controller
           'sold' => $sold,
           'pending' => $pending,
         ]);
-      }else{
+      } else{
 
         $responAuct = Auction::where('state', 'Over')->where('responsiblemoderator', $user->id)->get();
 
         return view('pages.user.profile', ['user' => $user, 'responAuct' => $responAuct]);
       }
-
-
-
     }
 
     /**

@@ -68,7 +68,6 @@ Route::put('/admin/users/{id}/block', '');
 Route::put('/admin/users/{id}/unblock', '');
 Route::get('/admin/manage', '')->name('');
 Route::post('/admin/manage/moderators/add', '');
-Route::delete('/admin/manage/moderators/{id}/remove', '');
 Route::post('/admin/manage/categories/add', '');
 */
 

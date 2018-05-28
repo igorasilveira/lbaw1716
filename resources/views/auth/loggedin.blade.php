@@ -23,8 +23,13 @@
       <a class="dropdown-item"
          href="/users/{{ Auth::user()->username }}"> Profile </a>
       <div class="dropdown-divider"></div>
+      @if(Auth::user()->typeofuser == 'Normal')
       <a class="dropdown-item"
-         href="/users/{{ Auth::user()->username }}/auctions">My Auctions </a>
+      href="/users/{{ Auth::user()->username }}/auctions">My Auctions </a>
+      @else
+      <a class="dropdown-item"
+      href="/users/{{ Auth::user()->username }}/manageAuctions">My Auctions </a>
+      @endif
       <div class="dropdown-divider"></div>
       <a class="dropdown-item"
          href="{{ url('logout') }}"> Log Out </a>
