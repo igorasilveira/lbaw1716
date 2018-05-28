@@ -6,57 +6,62 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\User;
 use App\Category;
-use Carbon\Carbon;
+use App\Edit_Categories;
 
 class AdminController extends Controller
 {
-  public function __construct()
-  {
-    $this->middleware('guest');
-  }
-
-  /**
-  * Show the about page.
-  *
-  * @return \Illuminate\Http\Response
-  */
-  public function show()
-  {
-    $moderators = User::where('typeofuser', 'Moderator')->get();
-    $categories = Category::all();
-
-    return view('pages.admin.adminManagement',[
-    'moderators' => $moderators,
-    'categories' => $categories]);
-  }
-
-  public function create()
-  {
-    if (!Auth::check()) {
-      return redirect('/login');
+    public function __construct()
+    {
+        $this->middleware('guest');
     }
 
-    $this->authorize('create', Auction::class);
+    /**
+     * Show the about page.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function show()
+    {
+        $moderators = User::where('typeofuser', 'Moderator')->where('blocked', 'false')->get();
+        $categories = Category::all();
 
-    return view('pages.auctionCreate');
-  }
+        return view('pages.admin.adminManagement', [
+    'moderators' => $moderators,
+    'categories' => $categories, ]);
+    }
 
-  public function deleteModerator($username)
-  {
-    //$user = User::delete()->where('username', $username)->first();
-    User::where('username', $username)->delete();
+    public function create()
+    {
+        if (!Auth::check()) {
+            return redirect('/login');
+        }
 
+        $this->authorize('create', Auction::class);
 
-  }
+        return view('pages.auctionCreate');
+    }
 
-  public function approve()
-  {
-  }
+    public function deleteModerator($username)
+    {
+        User::where('username', $username)->update(['blocked' => true]);
+        return null;
+    }
 
-  public function preview(Request $request)
-  {
-    $auction = $request;
+    public function deleteCategory($id)
+    {
+        Edit_Categories::where('category',$id)->delete();
+        Category::find($id)->delete();
+        return null;
+    }
 
-    return view('pages.auction', ['auction' => $auction]);
-  }
+    public function approve()
+    {
+    }
+
+    public function preview(Request $request)
+    {
+        $auction = $request;
+
+        return view('pages.auction', ['auction' => $auction]);
+    }
 }

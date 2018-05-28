@@ -304,26 +304,35 @@ function delModerator(row) {
 	var confBox = confirm("Do you really want to delete this user?");
 	if (confBox == true) {
 		var i = row.parentNode.parentNode.rowIndex;
-		var username = (document.getElementById("moderatorsList").rows[i].cells[1].innerHTML);
+		var username = (document.getElementById("moderatorsList")
+			.rows[i].cells[1].innerHTML);
 
-var url = window.location.href + '/moderators/' + username + '/remove';
-console.log(url);
-console.log(username);
-			jQuery.ajax({
-					type: 'GET',
-					url: url,
-					success: function () {
-							document.getElementById("moderatorsList")
-								.deleteRow(i);
-					},
-					error: function () {
-							alert('Could not delete moderator');
-					}
-			});
+		var url = window.location.href + 'moderators/' + username + '/remove';
+		var json = "{'username':'" + username + "'}";
 
-//sendAjaxRequest('POST', window.location.href + '/moderators/remove', username);
+		$.ajaxSetup({
+			headers: {
+				'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')
+					.content
+			},
+			contentType: 'application/x-www-form-urlencoded'
+		});
 
-			//App\User::where('username', username)->delete();
+		$.ajax({
+			type: 'DELETE',
+			url: url,
+			contentType: 'application/json; charset=utf-8',
+			data: json,
+			cache: false,
+			success: function () {
+				document.getElementById("moderatorsList")
+					.deleteRow(i);
+			},
+			error: function () {
+				alert('Could not delete moderator');
+			}
+		});
+
 	}
 
 }
@@ -454,13 +463,39 @@ function editCategories() {
 }
 
 
-function delCategory(row) {
+function delCategory(row, id) {
 	var confBox = confirm("Do you really want to delete this category?");
 	if (confBox == true) {
 		var i = row.parentNode.parentNode.rowIndex;
-		document.getElementById("categoriesList")
-			.deleteRow(i);
+
+		var url = window.location.href + 'categories/' + id + '/remove';
+		var json = "{'id':'" + id + "'}";
+
+		$.ajaxSetup({
+			headers: {
+				'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')
+					.content
+			},
+			contentType: 'application/x-www-form-urlencoded'
+		});
+
+		$.ajax({
+			type: 'DELETE',
+			url: url,
+			contentType: 'application/json; charset=utf-8',
+			data: json,
+			cache: false,
+			success: function () {
+				document.getElementById("categoriesList")
+					.deleteRow(i);
+			},
+			error: function () {
+				alert('Could not delete category');
+			}
+		});
 	}
+
+
 
 }
 
