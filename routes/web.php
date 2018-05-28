@@ -56,6 +56,8 @@ Route::delete('/auction/{id}/comments/{comID}/remove/', 'CommentController@delet
 //
 // Administrative Decisions
 Route::get('/admin/manage', 'AdminController@show');
+Route::get('/admin/auction/{id}/approve', 'AdminController@approveAuction');
+Route::get('/admin/auction/{id}/reject', 'AdminController@rejectAuction');
 Route::delete('/admin/manage/moderators/{username}/remove', 'AdminController@deleteModerator');
 Route::delete('/admin/manage/categories/{id}/remove', 'AdminController@deleteCategory');
 

@@ -69,10 +69,8 @@ class ProfileController extends Controller
     public function manageAuctions($username)
     {
         $user = User::get()->where('username', '=', $username)->first();
-        //$this->authorize('view', $user);
 
         $pending = Auction::all()->where('state', 'Pending');
-        // TODO mudar query dos buying
         $moderating = Auction::all()->where('responsiblemoderator', $user->id)->where('state', 'Active' );
 
         return view('pages.user.manageAuctions', ['user' => $user, 'pending' => $pending, 'moderating' => $moderating]);
