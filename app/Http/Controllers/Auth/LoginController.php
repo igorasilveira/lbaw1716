@@ -4,11 +4,17 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Contracts\Auth\CanResetPassword;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class LoginController extends Controller
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
+class LoginController extends Controller extends Authenticatable
 {
+
+    use Notifiable;
     /*
     |--------------------------------------------------------------------------
     | Login Controller
@@ -44,7 +50,7 @@ class LoginController extends Controller
 
     public function showLoginForm()
     {
-      session()->flash('form', 'login');  
+      session()->flash('form', 'login');
       return view('pages.home');
     }
 

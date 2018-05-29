@@ -105,14 +105,16 @@
                      <strong>{{ $errors->first('completeName') }}</strong>
                    </span>
                    @endif
-            <label class="col-form-label required">Email</label><input class="form-control"
-                   type="e-mail"
-                   name="email" value='{{ old('email', $user->email) }}'>
-                   @if ($errors->has('email'))
-                   <span class="error">
-                     <strong>{{ $errors->first('email') }}</strong>
-                   </span>
-                   @endif
+            @if ($user->typeofuser == 'Normal')
+              <label class="col-form-label required">Email</label><input class="form-control"
+              type="e-mail"
+              name="email" value='{{ old('email', $user->email) }}'>
+              @if ($errors->has('email'))
+                <span class="error">
+                  <strong>{{ $errors->first('email') }}</strong>
+                </span>
+              @endif
+            @endif
             <label class="col-form-label">Phone Number</label><input class="form-control"
                    type="phone"
                    name="phoneNumber" value='{{ old('phoneNumber', $user->phonenumber) }}'>
@@ -124,42 +126,42 @@
           </fieldset>
 
           @if ($user->typeofuser=='Normal')
-          <hr class="my-md-4 my-sm-1">
-          <fieldset>
-            <legend>Location information</legend>
-            <hr class="my-0" />
-            <label class="col-form-label required">Country</label>
-            <select class="form-control"
-                    name="country">
-                      {{ $userCountryID = App\Country::find(App\City::find($user->city)->country)->id }}
-                  @foreach(App\Country::all() as $country)
-                      <option value="{{ $country->id }}"
-                        {{ ($userCountryID == $country->id) ? 'selected' : ''}}
-                        >{{ $country->name }}
-                      </option>
-                  @endforeach
-            </select>
-            <label class="col-form-label required">City</label>
-            <input class="form-control"
-                   type="text"
-                   name="city" value='{{ old('city', App\City::find($user->city)->name) }}'>
-            <label class="col-form-label required">Address</label>
-            <input class="form-control"
-                   type="text"
-                   name="address" value='{{ old('address', $user->address) }}'>
-                   @if ($errors->has('address'))
-                   <span class="error">
-                     <strong>{{ $errors->first('address') }}</strong>
-                   </span>
-                   @endif
-          </fieldset>
+            <hr class="my-md-4 my-sm-1">
+            <fieldset>
+              <legend>Location information</legend>
+              <hr class="my-0" />
+              <label class="col-form-label required">Country</label>
+              <select class="form-control"
+                      name="country">
+                        {{ $userCountryID = App\Country::find(App\City::find($user->city)->country)->id }}
+                    @foreach(App\Country::all() as $country)
+                        <option value="{{ $country->id }}"
+                          {{ ($userCountryID == $country->id) ? 'selected' : ''}}
+                          >{{ $country->name }}
+                        </option>
+                    @endforeach
+              </select>
+              <label class="col-form-label required">City</label>
+              <input class="form-control"
+                     type="text"
+                     name="city" value='{{ old('city', App\City::find($user->city)->name) }}'>
+              <label class="col-form-label required">Address</label>
+              <input class="form-control"
+                     type="text"
+                     name="address" value='{{ old('address', $user->address) }}'>
+                     @if ($errors->has('address'))
+                     <span class="error">
+                       <strong>{{ $errors->first('address') }}</strong>
+                     </span>
+                     @endif
+            </fieldset>
 
         @endif
 
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-secondary btn-round" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary btn-round box-shadow">Save changes</button>
         </div>
       </form>
     </div>
