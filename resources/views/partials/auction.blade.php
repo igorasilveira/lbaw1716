@@ -9,6 +9,9 @@
 <div class="jumbotron">
   <div id="profile-container"
        class="w-75 mx-auto">
+       <script language="javascript">
+       timecounter("{{ $auction->timeleft()}}",{{ $auction->id }});
+       </script>
     <div class="row">
       <div class="col-md-6 col-sm-12 col-xs-12"> <a href="#"
            title="Item 1"><img src="{{ $auction->pathtophoto }}"
@@ -34,7 +37,7 @@
               {{ substr($auction->description,0,100) }}
             </p>-->
           </section>
-          <h3 class="text-info pb-2">14H 23M 09S</h3>
+          <h3 id="countdown_{{$auction->id}}"class="text-info pb-2">14H 23M 09S</h3>
         </div>
         <div id="buyPanel"
              class="text-center w-100 border border-dark p-2 d-inline-block">

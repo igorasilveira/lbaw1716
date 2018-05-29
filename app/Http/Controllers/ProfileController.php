@@ -35,15 +35,12 @@ class ProfileController extends Controller
           'sold' => $sold,
           'pending' => $pending,
         ]);
-      }else{
+      } else{
 
         $responAuct = Auction::where('state', 'Over')->where('responsiblemoderator', $user->id)->get();
 
         return view('pages.user.profile', ['user' => $user, 'responAuct' => $responAuct]);
       }
-
-
-
     }
 
     /**

@@ -1,4 +1,7 @@
 <div id="auctionProfile">
+  <script language="javascript">
+  timecounter("{{ $auction->timeleft()}}",{{ $auction->id }});
+  </script>
   <img class="img-fluid"
        href="/auction/{{ $auction->id }}"
        width="246" height="280"
@@ -14,10 +17,7 @@
       <ul class="row col-sm-12 list-inline">
         <li id="timeLeft"
             class="col-sm-5 mr-sm-1">
-            <!--<script> timecounter({{-- $auction->timeleft() --}}); </script>-->
-            <p id="demo">
-
-            </p>
+            <p id="countdown_{{$auction->id}}" class="countdown"></p>
         </li>
         <li id="bidsDone"
             class="col-sm-5"> {{ $auction->bids()->count() }} Bids </li>

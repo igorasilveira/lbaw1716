@@ -67,6 +67,29 @@ class AdminController extends Controller
         return null;
     }
 
+    public function addModerator($username)
+    {
+      User::where('username', $username)->update(['blocked' => true]);
+
+      return null;
+    }
+
+    public function addCategory($id)
+    {
+      Edit_Categories::where('category', $id)->delete();
+      CategoryOfAuction::where('category_id', $id)->delete();
+
+      $cats = Category::where('parent', $id)->get();
+      foreach($cats as $cat){
+        $cat->parent = null;
+        $cat->save();
+      }
+
+      Category::find($id)->delete();
+
+      return null;
+    }
+
     public function approve()
     {
     }
