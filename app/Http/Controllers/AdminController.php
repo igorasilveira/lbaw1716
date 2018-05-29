@@ -28,8 +28,8 @@ class AdminController extends Controller
         $categories = Category::all();
 
         return view('pages.admin.adminManagement', [
-    'moderators' => $moderators,
-    'categories' => $categories, ]);
+      'moderators' => $moderators,
+      'categories' => $categories, ]);
     }
 
     public function create()
@@ -50,8 +50,8 @@ class AdminController extends Controller
         $username = User::find($id)->username;
 
         return redirect()->action(
-          'ProfileController@show', ['username' => $username]
-        );
+        'ProfileController@show', ['username' => $username]
+      );
     }
 
     public function unblockUser($id)
@@ -61,8 +61,8 @@ class AdminController extends Controller
         $username = User::find($id)->username;
 
         return redirect()->action(
-          'ProfileController@show', ['username' => $username]
-        );
+        'ProfileController@show', ['username' => $username]
+      );
     }
 
     public function deleteModerator($username)
@@ -88,25 +88,46 @@ class AdminController extends Controller
         return null;
     }
 
-    public function addModerator($username)
+    public function addModerator(Request $request)
     {
-        //User::where('username', $username)->update(['blocked' => true]);
+        $validator = $request->validate([
+        'username' => 'required|string|max:255|unique:user',
+        'email' => 'required|string|email|max:255|unique:user',
+      ]);
 
-        /*User::create([
-         'typeofuser' => 'Moderator',
-         'username' => $username,
-         //'email' => $email,
-     ]); */
+        $password = $this->randomPassword();
+
+        User::create([
+        'typeofuser' => 'Moderator',
+        'username' => $request->input('username'),
+        'email' => $request->input('email'),
+        'password' => bcrypt($password),
+        'pathtophoto' => '/images/catalog/users/default.png',
+      ]);
 
         return null;
+    }
+
+    public function randomPassword()
+    {
+        $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+        $pass = array(); //remember to declare $pass as an array
+      $alphaLength = strlen($alphabet) - 1; //put the length -1 in cache
+      for ($i = 0; $i < 8; ++$i) {
+          $n = rand(0, $alphaLength);
+          $pass[] = $alphabet[$n];
+      }
+
+        return implode($pass); //turn the array into a string
     }
 
     public function addCategory(Request $request)
     {
         $category = new Category();
         $category->name = $request->input('categoryName');
-        if($request->input('parent') != "N/A")
-          $category->parent = Category::where('name',$request->input('parent'))->first()->id;
+        if ('N/A' != $request->input('parent')) {
+            $category->parent = Category::where('name', $request->input('parent'))->first()->id;
+        }
         $category->save();
 
         return null;
@@ -124,36 +145,28 @@ class AdminController extends Controller
         $auction->update(['responsiblemoderator' => $mod]);
 
         return redirect()->action(
-      'ProfileController@manageAuctions', ['username' => Auth::user()->username]
-    );
+        'ProfileController@manageAuctions', ['username' => Auth::user()->username]
+      );
     }
 
-    public function rejectAuction($auctionid, $reason)
+    public function rejectAuction(Request $request, $auctionid)
     {
         $auction = Auction::find($auctionid);
+        $auctionCreator = $auction->auctioncreator;
         $mod = Auth::user()->id;
+        $reason = $request->input('reasonOfRefusal');
 
-        dd($mod);
+        date_default_timezone_set('Europe/Lisbon');
+        $timestamp = date('Y-m-d H:i:s', time());
 
-  public function rejectAuction(Request $request, $auctionid)
-  {
-    $auction = Auction::find($auctionid);
-    $auctionCreator = $auction->auctioncreator;
-    $mod = Auth::user()->id;
-    $reason = $request->input('reasonOfRefusal');
+        $auction->update(['responsiblemoderator' => $mod]);
+        $auction->update(['reasonofrefusal' => $reason]);
+        $auction->update(['refusaldate' => $timestamp]);
+        $auction->update(['state' => 'Rejected']);
 
-    date_default_timezone_set('Europe/Lisbon');
-    $timestamp = date("Y-m-d H:i:s",time());
-
-    $auction->update(['responsiblemoderator' => $mod]);
-    $auction->update(['reasonofrefusal' => $reason]);
-    $auction->update(['refusaldate' => $timestamp]);
-    $auction->update(['state' => 'Rejected']);
-
-
-    return redirect()->action(
-      'ProfileController@manageAuctions', ['username' => Auth::user()->username]
-    );
+        return redirect()->action(
+        'ProfileController@manageAuctions', ['username' => Auth::user()->username]
+      );
     }
 
     public function preview(Request $request)
