@@ -22,6 +22,7 @@
           <th scope="col">Username</th>
           <th scope="col">Nr Auctions</th>
           <th><img src="{{ asset('images/logo_edit.png') }}"
+            alt="Edit Image"
             width="20"
             height="20"
             class="editModBtt"
@@ -33,12 +34,14 @@
           @for ($j = 0; $j < count($moderators); $j++)
           <tr>
             <td scope="row"><img src="{{ $moderators->slice($j, 1)->first()->pathtophoto }}"
+              alt="Moderator slice"
               width="70"
               height="70"
               class="profile-pic box-shadow"></td>
               <td>{{ $moderators->slice($j, 1)->first()->username }}</td>
               <td>{{ App\Auction::all()->where('responsiblemoderator', $moderators->slice($j, 1)->first()->id)->where('state', 'Active' )->count() }}</td>
               <td><img src="{{ asset('images/remove_logo.png') }}"
+                alt="Remove Image"
                 width="20"
                 height="20"
                 class="removeBtt"
@@ -69,6 +72,7 @@
       <th scope="col">Parent</th>
       <th scope="col">Nr Items</th>
       <th><img src="{{ asset('images/logo_edit.png') }}"
+        alt="Edit Image"
         width="20"
         height="20"
         class="editCatBtt"
@@ -88,6 +92,7 @@
         </td>
         <td>{{ $categories->slice($j, 1)->first()->auctions()->where('state','Active')->count() }}</td>
         <td><img src="{{ asset('images/remove_logo.png') }}"
+          alt="Remove Image"
           width="20"
           height="20"
           class="removeBtt"

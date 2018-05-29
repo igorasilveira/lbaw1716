@@ -11,6 +11,7 @@
   <td class="form-check-inline">
     <a href="/users/{{Auth::user()->username}}/notifications/{{$notification->id}}">
       <img src="{{ asset('images/confirm_edit.png') }}"
+      alt="Confirm edit."
       width="20"
       height="20"
       class="removeBtt"
@@ -21,6 +22,7 @@
       {{ csrf_field() }}
       <button class="link-button">
         <img src="{{ asset('images/remove_logo.png') }}"
+        alt="Remove logo."
         width="20"
         height="20"
         class="removeBtt"

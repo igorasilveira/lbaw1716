@@ -15,7 +15,7 @@
     <div class="row">
       <div class="col-md-6 col-sm-12 col-xs-12"> <a href="#"
            title="Item 1"><img src="{{ $auction->pathtophoto }}"
-      class="mb-4 box-shadow w-border w-100" title="Auction Image"></a> </div>
+      class="mb-4 box-shadow w-border w-100" title="Auction Image" alt="Auction item image"></a> </div>
       <div id="info-container"
            class="col-md-6 col-sm-12 col-xs-12 vcen container-fluid ">
         <div class="text-md-right text-xs-center">
