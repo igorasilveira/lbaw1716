@@ -33,6 +33,7 @@ function addModerator() {
 	var cell2 = row.insertCell();
 	var cell3 = row.insertCell();
 	var cell4 = row.insertCell();
+
 	var photo = document.createElement('img');
 	photo.setAttribute('class', 'photoModerator');
 	photo.setAttribute('src', '../images/profile_pic.png');
@@ -56,21 +57,28 @@ function addModerator() {
 	name.setAttribute("class", 'form-control');
 	name.setAttribute("placeholder", 'Username');
 	name.setAttribute('required', 'required');
+	var email = document.createElement('input');
+	email.setAttribute('type', 'email');
+	email.setAttribute("class", 'form-control');
+	email.setAttribute("placeholder", 'Email');
+	email.setAttribute('required', 'required');
 	cell1.appendChild(photo);
 	cell2.appendChild(name);
+	cell2.appendChild(document.createElement('br'));
+	cell2.appendChild(email);
 	cell3.innerHTML = "0";
 	cell4.appendChild(confirm);
 	cell4.appendChild(cancel);
 }
 
 function makeid() {
-  var text = "";
-  var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+	var text = "";
+	var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
-  for (var i = 0; i < 5; i++)
-    text += possible.charAt(Math.floor(Math.random() * possible.length));
+	for (var i = 0; i < 5; i++)
+		text += possible.charAt(Math.floor(Math.random() * possible.length));
 
-  return text;
+	return text;
 }
 
 function confirmModerator() {
@@ -78,14 +86,18 @@ function confirmModerator() {
 	var table = document.getElementById("moderatorsList");
 	var nameCell = document.getElementById("moderatorsList")
 		.rows[table.rows.length - 1].cells[1];
+
 	if (nameCell.children[0].value == null || nameCell.children[0].value == "") {
 		alert("You need to give a name to the moderator");
+	} else if (nameCell.children[2].value == null || nameCell.children[2].value == "") {
+		alert("Tthe moderator has to have an email");
 	} else {
+		var username = nameCell.children[0].value;
 
-		var username =nameCell.children[0].value;
-		console.log(username);
-		var url = window.location.href + 'moderators/' + username + '/add';
-		var json = "{'username':'" + username + "'}";
+		var url = window.location.href + '/moderators/' + username + '/add';
+		var json = {};
+		json.username = username;
+		json.email = nameCell.children[2].value;
 
 		$.ajaxSetup({
 			headers: {
@@ -98,10 +110,16 @@ function confirmModerator() {
 		$.ajax({
 			type: 'POST',
 			url: url,
-			contentType: 'application/json; charset=utf-8',
-			data: json,
+			contentType: "application/json; charset=utf-8",
+			data: JSON.stringify(json),
 			cache: false,
 			success: function () {
+				var photo = document.getElementById("moderatorsList")
+					.rows[table.rows.length - 1].cells[0].children[0];
+				photo.setAttribute('class', 'profile-pic box-shadow');
+				photo.setAttribute('src', '../images/catalog/users/default.png');
+				photo.setAttribute("width", "70");
+				photo.setAttribute("height", "70");
 				nameCell.innerHTML = nameCell.children[0].value;
 				var bttChildren = document.getElementById("moderatorsList")
 					.rows[table.rows.length - 1].cells[3];
@@ -160,7 +178,7 @@ function delModerator(row) {
 		var username = (document.getElementById("moderatorsList")
 			.rows[i].cells[1].innerHTML);
 
-		var url = window.location.href + 'moderators/' + username + '/remove';
+		var url = window.location.href + '/moderators/' + username + '/remove';
 		var json = "{'username':'" + username + "'}";
 
 		$.ajaxSetup({
@@ -225,10 +243,7 @@ function addCategory() {
 		parent.add(option);
 	}
 
-
-
 	parent.setAttribute('class', 'form-control');
-
 
 	var confirm = document.createElement('img');
 	confirm.setAttribute('src', '../images/confirm_edit.png');
@@ -257,33 +272,57 @@ function addCategory() {
 
 function confirmCategory() {
 
-
 	var table = document.getElementById("categoriesList");
 	var nameCell = document.getElementById("categoriesList")
 		.rows[table.rows.length - 1].cells[0];
+	var parentCell = document.getElementById("categoriesList")
+		.rows[table.rows.length - 1].cells[1];
+
 	if (nameCell.children[0].value == null || nameCell.children[0].value == "") {
 		alert("You need to give a name to the Category");
 	} else {
-		nameCell.setAttribute('scope', 'row');
-		nameCell.innerHTML = nameCell.children[0].value;
-		var parentCell = document.getElementById("categoriesList")
-			.rows[table.rows.length - 1].cells[1];
-		parentCell.innerHTML = parentCell.children[0].value;
-		var bttChildren = document.getElementById("categoriesList")
-			.rows[table.rows.length - 1].cells[3];
-		var remBtt = bttChildren.childNodes[1];
-		var confBtt = bttChildren.childNodes[0];
-		remBtt.style.marginLeft = "0px";
-		remBtt.setAttribute("class", "removeBtt");
-		remBtt.style.visibility = 'visible';
-		remBtt.setAttribute("title", "Remove Category");
-		remBtt.setAttribute("onclick", "delCategory(this)");
-		bttChildren.removeChild(confBtt);
-		var createBtt = document.getElementById("createCategoryBtt");
-		createBtt.disabled = false;
+
+		var url = window.location.href + '/categories/add';
+		var json = {};
+		json.categoryName = nameCell.children[0].value;
+		json.parent = parentCell.children[0].value;
+
+		$.ajaxSetup({
+			headers: {
+				'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')
+					.content
+			},
+			contentType: 'application/x-www-form-urlencoded'
+		});
+
+		$.ajax({
+			type: 'POST',
+			url: url,
+			contentType: "application/json; charset=utf-8",
+			data: JSON.stringify(json),
+			cache: false,
+			success: function () {
+				nameCell.setAttribute('scope', 'row');
+				nameCell.innerHTML = nameCell.children[0].value;
+				parentCell.innerHTML = parentCell.children[0].value;
+				var bttChildren = document.getElementById("categoriesList")
+					.rows[table.rows.length - 1].cells[3];
+				var remBtt = bttChildren.childNodes[1];
+				var confBtt = bttChildren.childNodes[0];
+				remBtt.style.marginLeft = "0px";
+				remBtt.setAttribute("class", "removeBtt");
+				remBtt.style.visibility = 'visible';
+				remBtt.setAttribute("title", "Remove Category");
+				remBtt.setAttribute("onclick", "delCategory(this)");
+				bttChildren.removeChild(confBtt);
+				var createBtt = document.getElementById("createCategoryBtt");
+				createBtt.disabled = false;
+			},
+			error: function () {
+				alert('Could not create category');
+			}
+		});
 	}
-
-
 }
 
 function editCategories() {
@@ -321,7 +360,7 @@ function delCategory(row, id) {
 	if (confBox == true) {
 		var i = row.parentNode.parentNode.rowIndex;
 
-		var url = window.location.href + 'categories/' + id + '/remove';
+		var url = window.location.href + '/categories/' + id + '/remove';
 		var json = "{'id':'" + id + "'}";
 
 		$.ajaxSetup({

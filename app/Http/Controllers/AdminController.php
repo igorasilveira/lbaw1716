@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Category;
 use App\Auction;
-use Carbon\Carbon;
 use App\Edit_Categories;
 use App\CategoryOfAuction;
 
@@ -29,8 +28,8 @@ class AdminController extends Controller
         $categories = Category::all();
 
         return view('pages.admin.adminManagement', [
-    'moderators' => $moderators,
-    'categories' => $categories, ]);
+      'moderators' => $moderators,
+      'categories' => $categories, ]);
     }
 
     public function create()
@@ -51,8 +50,8 @@ class AdminController extends Controller
         $username = User::find($id)->username;
 
         return redirect()->action(
-          'ProfileController@show', ['username' => $username]
-        );
+        'ProfileController@show', ['username' => $username]
+      );
     }
 
     public function unblockUser($id)
@@ -62,8 +61,8 @@ class AdminController extends Controller
         $username = User::find($id)->username;
 
         return redirect()->action(
-          'ProfileController@show', ['username' => $username]
-        );
+        'ProfileController@show', ['username' => $username]
+      );
     }
 
     public function deleteModerator($username)
@@ -79,9 +78,9 @@ class AdminController extends Controller
         CategoryOfAuction::where('category_id', $id)->delete();
 
         $cats = Category::where('parent', $id)->get();
-        foreach($cats as $cat){
-          $cat->parent = null;
-          $cat->save();
+        foreach ($cats as $cat) {
+            $cat->parent = null;
+            $cat->save();
         }
 
         Category::find($id)->delete();
@@ -89,72 +88,86 @@ class AdminController extends Controller
         return null;
     }
 
-    public function addModerator($username)
+    public function addModerator(Request $request)
     {
-      //User::where('username', $username)->update(['blocked' => true]);
+        $validator = $request->validate([
+        'username' => 'required|string|max:255|unique:user',
+        'email' => 'required|string|email|max:255|unique:user',
+      ]);
 
-      /*User::create([
-       'typeofuser' => 'Moderator',
-       'username' => $username,
-       //'email' => $email,
-     ]); */
+        $password = $this->randomPassword();
 
-      return null;
+        User::create([
+        'typeofuser' => 'Moderator',
+        'username' => $request->input('username'),
+        'email' => $request->input('email'),
+        'password' => bcrypt($password),
+        'pathtophoto' => '/images/catalog/users/default.png',
+      ]);
+
+        return null;
     }
 
-    public function addCategory($id)
+    public function randomPassword()
     {
-      Edit_Categories::where('category', $id)->delete();
-      CategoryOfAuction::where('category_id', $id)->delete();
-
-      $cats = Category::where('parent', $id)->get();
-      foreach($cats as $cat){
-        $cat->parent = null;
-        $cat->save();
+        $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+        $pass = array(); //remember to declare $pass as an array
+      $alphaLength = strlen($alphabet) - 1; //put the length -1 in cache
+      for ($i = 0; $i < 8; ++$i) {
+          $n = rand(0, $alphaLength);
+          $pass[] = $alphabet[$n];
       }
 
-      Category::find($id)->delete();
+        return implode($pass); //turn the array into a string
+    }
 
-      return null;
+    public function addCategory(Request $request)
+    {
+        $category = new Category();
+        $category->name = $request->input('categoryName');
+        if ('N/A' != $request->input('parent')) {
+            $category->parent = Category::where('name', $request->input('parent'))->first()->id;
+        }
+        $category->save();
+
+        return null;
     }
 
     public function approve()
     {
     }
 
+    public function approveAuction($auctionid)
+    {
+        $auction = Auction::find($auctionid);
+        $mod = Auth::user()->id;
+        $auction->update(['state' => 'Active']);
+        $auction->update(['responsiblemoderator' => $mod]);
 
-  public function approveAuction($auctionid)
-  {
-    $auction = Auction::find($auctionid);
-    $mod = Auth::user()->id;
-    $auction->update(['state' => 'Active']);
-    $auction->update(['responsiblemoderator' => $mod]);
+        return redirect()->action(
+        'ProfileController@manageAuctions', ['username' => Auth::user()->username]
+      );
+    }
 
+    public function rejectAuction(Request $request, $auctionid)
+    {
+        $auction = Auction::find($auctionid);
+        $auctionCreator = $auction->auctioncreator;
+        $mod = Auth::user()->id;
+        $reason = $request->input('reasonOfRefusal');
 
-    return redirect()->action(
-      'ProfileController@manageAuctions', ['username' => Auth::user()->username]
-    );
+        date_default_timezone_set('Europe/Lisbon');
+        $timestamp = date('Y-m-d H:i:s', time());
 
+        $auction->update(['responsiblemoderator' => $mod]);
+        $auction->update(['reasonofrefusal' => $reason]);
+        $auction->update(['refusaldate' => $timestamp]);
+        $auction->update(['state' => 'Rejected']);
 
-  }
-
-  public function rejectAuction(Request $request, $auctionid)
-  {
-    $auctionCreator = Auction::find($auctionid)->auctioncreator;
-    $mod = Auth::user()->id;
-    $reason = $request->input('reasonOfRefusal');
-
-
-    //$auction->update(['state' => 'Rejected']);
-    //$auction->update(['reasonofrefusal' => $reason]);
-
-    return redirect()->action(
-      'ProfileController@manageAuctions', ['username' => Auth::user()->username]
-    );
-
-
-  }
-
+        return redirect()->action(
+        'ProfileController@manageAuctions', ['username' => Auth::user()->username]
+      );
+    }
 
     public function preview(Request $request)
     {
@@ -162,5 +175,4 @@ class AdminController extends Controller
 
         return view('pages.auction', ['auction' => $auction]);
     }
-
 }

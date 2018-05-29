@@ -37,10 +37,11 @@
 class="jumbotron">
 <div class="row">
   <div class="col-md-6 col-sm-12 col-xs-12">
-    @if (Auth::check() && (Auth::user()->id == $user->id))<img data-toggle="modal" data-target="#photoModal" src="{{ $user->pathtophoto }}"
+    @if (Auth::check() && (Auth::user()->id == $user->id))<img data-toggle="modal" data-target="#photoModal" src="{{ $user->pathtophoto }}" alt="User photo"
       class="profile-pic mb-4 box-shadow mx-auto w-border img-hover" title="Change Profile Picture">
     @else
       <img src="{{ $user->pathtophoto }}"
+      alt="User photo"
       class="profile-pic mb-4 box-shadow mx-auto w-border" title="Profile Picture">
     @endif</div>
     <div id="info-container"
@@ -67,7 +68,7 @@ class="jumbotron">
 
             @if (Auth::check())
               @if (Auth::user()->id == $user->id)
-              <a href="#" data-toggle="modal" data-target="#editModal"><img src="/images/logo_edit.png" height="20" width="20" class="ml-4 pointer"/></a>
+              <a href="#" data-toggle="modal" data-target="#editModal"><img src="/images/logo_edit.png" alt="Logo edit" height="20" width="20" class="ml-4 pointer"/></a>
               @endif
             @endif
           </p>

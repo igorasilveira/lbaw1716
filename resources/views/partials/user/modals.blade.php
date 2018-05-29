@@ -307,7 +307,7 @@
         <div class="modal-body">
           <div class="row">
             <div class="mx-auto my-5">
-              <img src="/images/loading.gif" alt="">
+              <img src="/images/loading.gif" alt="Loading Gif">
             </div>
           </div>
         </div>

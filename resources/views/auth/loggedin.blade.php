@@ -10,14 +10,22 @@
   @endif
   <li class="dropdown"
       id="menuLogin">
-    <a class="dropdown-toggle text-white"
+@if(count(App\Notification::where('authenticated_userid', Auth::id())->where('_read',false)->get())>0)
+    <a class="dropdown-toggle text-white btn-danger"
        href="#"
        data-toggle="dropdown"
        id="navLogin"
        data-devgib="tagged">Go To</a>
+@else
+<a class="dropdown-toggle text-white"
+   href="#"
+   data-toggle="dropdown"
+   id="navLogin"
+   data-devgib="tagged">Go To</a>
+@endif
     <a class=""
        href="/users/{{ Auth::user()->username }}"
-       data-devgib="tagged"><img src="{{ Auth::user()->pathtophoto }}" height="50" class="profile-pic img-hover" style="display: inline"/></a>
+       data-devgib="tagged"><img src="{{ Auth::user()->pathtophoto }}" alt="User photo" height="50" class="profile-pic img-hover" style="display: inline"/></a>
     <div class="dropdown-menu test box-shadow"
          style="padding:12px; border-radius: 10px">
       <a class="dropdown-item"
@@ -30,6 +38,14 @@
       <a class="dropdown-item"
       href="/users/{{ Auth::user()->username }}/manageAuctions">My Auctions </a>
       @endif
+      <div class="dropdown-divider"></div>
+@if(count(App\Notification::where('authenticated_userid', Auth::id())->where('_read',false)->get())>0)
+      <a class="dropdown-item"
+         href="/users/{{ Auth::user()->username }}/notifications"> Notifications ({{count(App\Notification::where('authenticated_userid', Auth::id())->where('_read',false)->get())}})</a>
+@else
+<a class="dropdown-item"
+   href="/users/{{ Auth::user()->username }}/notifications"> Notifications</a>
+@endif
       <div class="dropdown-divider"></div>
       <a class="dropdown-item"
          href="{{ url('logout') }}"> Log Out </a>
