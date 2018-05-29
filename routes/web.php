@@ -48,11 +48,22 @@ Route::post('/auction/buy-now/{id}', 'BidController@buynow');
 Route::post('/auction/bid/{id}', 'BidController@bid');
 Route::post('/auction/{id}/comments/add', 'CommentController@create');
 Route::delete('/auction/{id}/comments/{comID}/remove/', 'CommentController@delete');
-/*Route::post('/auction/report/{id}', '');
+
+
+//Route::post('/auction/report/{id}', '');
 
 // Module 3:
 //
 // Administrative Decisions
+Route::get('/admin/manage', 'AdminController@show');
+Route::get('/admin/auction/{id}/approve', 'AdminController@approveAuction');
+Route::get('/admin/auction/{id}/{reason}/reject', 'AdminController@rejectAuction');
+Route::delete('/admin/manage/moderators/{username}/remove', 'AdminController@deleteModerator');
+Route::delete('/admin/manage/categories/{id}/remove', 'AdminController@deleteCategory');
+Route::post('/admin/manage/moderators/{username}/add', 'AdminController@addModerator');
+Route::post('/admin/manage/categories/add', 'AdminController@addCategory');
+
+/*
 Route::get('/admin/auctions', '')->name('');
 Route::put('/admin/auction/{id}/approve', '');
 Route::put('/admin/auction/{id}/reject', '');
@@ -60,10 +71,6 @@ Route::get('/admin/users/{id}', '')->name('');
 Route::put('/admin/users/{id}/block', '');
 Route::put('/admin/users/{id}/unblock', '');
 Route::get('/admin/manage', '')->name('');
-Route::post('/admin/manage/moderators/add', '');
-Route::delete('/admin/manage/moderators/{id}/remove', '');
-Route::post('/admin/manage/categories/add', '');
-Route::delete('/admin/manage/categories/{id}/remove', '');
 */
 
 // Module 4:

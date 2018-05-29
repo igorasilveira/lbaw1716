@@ -9,6 +9,9 @@
 <div class="jumbotron">
   <div id="profile-container"
        class="w-75 mx-auto">
+       <script language="javascript">
+       timecounter("{{ $auction->timeleft()}}",{{ $auction->id }});
+       </script>
     <div class="row">
       <div class="col-md-6 col-sm-12 col-xs-12"> <a href="#"
            title="Item 1"><img src="{{ $auction->pathtophoto }}"
@@ -34,7 +37,7 @@
               {{ substr($auction->description,0,100) }}
             </p>-->
           </section>
-          <h3 class="text-info pb-2">14H 23M 09S</h3>
+          <h3 id="countdown_{{$auction->id}}"class="text-info pb-2">14H 23M 09S</h3>
         </div>
         <div id="buyPanel"
              class="text-center w-100 border border-dark p-2 d-inline-block">
@@ -69,7 +72,7 @@
               </p>
             </div>
             @if($auction->state == 'Active')
-            @if(Auth::id() != $auction->auctionCreator && Auth::check())
+            @if(Auth::id() != $auction->auctionCreator && Auth::check() && Auth::user()->typeofuser=='Normal')
             <form class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
                 {{ csrf_field() }}
                   @if($auction->bids->count() > 0)
@@ -111,8 +114,46 @@
           @endif
           @endif
           @else
-          @if($auction->state == 'Over')
         </div>
+        @if($auction->state == 'Pending' && (Auth::user()->typeofuser=='Administrator' || Auth::user()->typeofuser=='Moderator' ) )
+        <div id="pendingActions"
+        class="container mt-md-5 mt-sm-3 mt-3">
+          <div class="row">
+                    <button id="rejectbtt" class="btn btn-danger mw-75 text-center">Reject</button>
+
+                  <a href="/admin/auction/{{$auction->id}}/approve">
+                    <button class="btn btn-success mw-75 text-center">Accept</button>
+                  </a>
+          </div>
+          <div id="reasonModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <div class="modal-body py-5 mx-md-5 mx-sm-1 mx-xs-1">
+                <form method="GET"
+                      action="/admin/auction/{{$auction->id}}/reject"
+                      enctype="multipart/form-data"
+                      class="form-group navbar-form">
+                  <input type="textarea"
+                         class="form-control p-2 my-2"
+                         placeholder="Reason of Rejection Here"
+                         id="reasonOfRefusal"
+                         name="reasonOfRefusal"
+                         required>
+                  <button type="submit"
+                          id="btnRefusal"
+                          class="btn btn-success w-100 btn-round mx-auto my-3 box-shadow"
+                          >Send Reason</button>
+                </form>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+        @endif
+        @if($auction->state == 'Over')
             <hr class="my-2">
             <div class="w-100 alert alert-dismissible alert-info">
               <p>
@@ -217,3 +258,27 @@
     </div>
   </div>
 </div>
+
+<script>
+// Get the modal
+var modal = document.getElementById('reasonModal');
+
+// Get the button that opens the modal
+var btn = document.getElementById("rejectbtt");
+var span = document.getElementsByClassName("close")[0];
+// When the user clicks the button, open the modal
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>

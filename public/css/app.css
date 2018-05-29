@@ -58,7 +58,6 @@ li {
   .hidden-xs {
     display: none !important;
   }
-
   .btn-round-top, .btn-round-bot {
     border-radius: 20px;
     margin-bottom: 2em;
@@ -67,7 +66,7 @@ li {
 
 .alert {
   border-radius: 10px;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.01);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.01);
 }
 
 .test {
@@ -269,12 +268,6 @@ legend {
   max-height: 20em;
 }
 
-#pagination {
-  display: inline-block;
-  vertical-align: middle;
-  float: right;
-}
-
 #profileNav {
   margin-left: 12%;
 }
@@ -304,7 +297,6 @@ legend {
   #catNav {
     width: 100%;
   }
-
   #catNav>div:nth-child(1), #catNav ul#categories.mr-auto {
     width: 100%;
     padding-left: 0;
@@ -622,4 +614,49 @@ nav.navbar:nth-child(2) {
   padding: 0 !important;
   color: #20a8d8;
   cursor: pointer;
+}
+
+p.countdown, #bidsDone {
+  font-size: 12px;
+}
+
+#auctionName {
+  min-height: 65px;
+}
+
+ul.pagination {
+  float: right;
+}
+
+ul.pagination li {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  width: 18px;
+  text-decoration: none;
+}
+
+ul.pagination li span {
+  text-decoration: none;
+  color: black;
+  padding: 8px 8px;
+  text-decoration: none;
+  border: 1px solid #ddd;
+  margin: 4px;
+  background-color: #ddd;
+}
+
+ul.pagination li a {
+  text-decoration: none;
+  color: black;
+  padding: 8px 8px;
+  text-decoration: none;
+  transition: background-color .3s;
+  border: 1px solid #ddd;
+  margin: 4px;
+}
+
+ul.pagination li a:hover:not(.active) {
+  background-color: #999999;
+  transition: background-color .3s;
 }
