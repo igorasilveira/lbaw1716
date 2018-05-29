@@ -91,7 +91,7 @@ class AdminController extends Controller
 
     public function addModerator($username)
     {
-      User::where('username', $username)->update(['blocked' => true]);
+      //User::where('username', $username)->update(['blocked' => true]);
 
       /*User::create([
        'typeofuser' => 'Moderator',
@@ -162,4 +162,7 @@ class AdminController extends Controller
         return view('pages.auction', ['auction' => $auction]);
     }
 
+}
+rn view('pages.auction', ['auction' => $auction]);
+    }
 }
