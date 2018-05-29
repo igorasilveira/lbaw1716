@@ -107,7 +107,7 @@ class="jumbotron">
   @else
   <a href="{{ $user->username }}/manageAuctions"
     class="col-md-8 col-sm-12 col-xs-12">
-    <button class="btn btn-info w-100 box-shadow">My Live Auctions
+    <button class="btn btn-info w-100 box-shadow btn-round">My Live Auctions
     </button>
   </a>
   @endif

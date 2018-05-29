@@ -10,18 +10,18 @@
     <h2> Pending </h2>
     <div id="bidViewer">
       @if (count($pending) > 0)
-      <ul id="auctionsMosaic"
-      class="container-fluid row col-sm-12 row">
-      @foreach($pending->take(6) as $auction)
-      <li class="col-sm-4">
-        @include('partials.auctionMosaic', ['auction' => $auction])
-      </li>
-      @endforeach
-    </ul>
-    @else
-    <div id="warningNoAuctions" class="alert alert-info my-5 w-75 mx-auto box-shadow">
-      <strong class="alert-link">Ups!</strong> There are no <strong>pending</strong> auctions currently.
-    </div>
+        <ul id="auctionsMosaic"
+        class="container-fluid row col-sm-12 row">
+        @foreach($pending->take(6) as $auction)
+        <li class="col-sm-4">
+          @include('partials.auctionMosaic', ['auction' => $auction])
+        </li>
+        @endforeach
+      </ul>
+      @else
+      <div id="warningNoAuctions" class="alert alert-info my-5 w-75 mx-auto box-shadow">
+        <strong class="alert-link">Ups!</strong> There are no <strong>pending</strong> auctions currently.
+      </div>
     @endif
   </div>
   @if (count($pending) > 6)
