@@ -252,12 +252,6 @@ legend {
   max-height: 20em;
 }
 
-#pagination {
-  display: inline-block;
-  vertical-align: middle;
-  float: right;
-}
-
 #profileNav {
   margin-left: 12%;
 }
@@ -612,4 +606,41 @@ p.countdown, #bidsDone {
 
 #auctionName {
   min-height: 65px;
+}
+
+ul.pagination {
+  float: right;
+}
+
+ul.pagination li {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  width: 18px;
+  text-decoration: none;
+}
+
+ul.pagination li span {
+  text-decoration: none;
+  color: black;
+  padding: 8px 8px;
+  text-decoration: none;
+  border: 1px solid #ddd;
+  margin: 4px;
+  background-color: #ddd;
+}
+
+ul.pagination li a {
+  text-decoration: none;
+  color: black;
+  padding: 8px 8px;
+  text-decoration: none;
+  transition: background-color .3s;
+  border: 1px solid #ddd;
+  margin: 4px;
+}
+
+ul.pagination li a:hover:not(.active) {
+  background-color: #999999;
+  transition: background-color .3s;
 }
