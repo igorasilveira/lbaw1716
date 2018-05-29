@@ -89,7 +89,7 @@
                   @if($auction->bids->count() > 0)
                   {{ $auction->bids->sortByDesc('date')->first()->value }} €
                   @else
-                  0 €
+                  N/A
                   @endif
                 </td>
                 <td> {{ $auction->timeleft() }} </td>
