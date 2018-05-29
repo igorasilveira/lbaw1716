@@ -46,7 +46,7 @@
       <div class="container-fluid">
         <a class="navbar-brand"
            href="/">
-        <img src="{{ asset('images/pcAuctions_logo.png') }}" height="50"/>
+        <img src="{{ asset('images/pcAuctions_logo.png') }}" alt="Website logo" height="50"/>
         </a>
         <div class="collapse navbar-collapse row"
              id="navbar1">
@@ -79,7 +79,7 @@
                 aria-expanded="false"
                 aria-label="Toggle navigation"
                 style="">
-<img src="images/search-logo.png" height="25" alt="">
+<img src="images/search-logo.png" height="25" alt="Search button">
 </button>
         <button class="navbar-toggler"
                 type="button"
