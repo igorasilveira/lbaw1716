@@ -1,5 +1,5 @@
 <ul class="nav pull-right">
-  @if (Auth::user()->typeofuser=='Normal')
+  @if (Auth::user()->typeofuser=='Normal' && Auth::user()->blocked==false)
   <a href="/auction/new">
           <button type="button" name="button" class="btn btn-secondary btn-md mt-1 mr-5 btn-round">+<span class="hidden-xs"> Create Auction</span></button>
         </a>

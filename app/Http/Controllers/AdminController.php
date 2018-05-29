@@ -44,6 +44,28 @@ class AdminController extends Controller
         return view('pages.auctionCreate');
     }
 
+    public function blockUser($id)
+    {
+        User::where('id', $id)->update(['blocked' => true]);
+
+        $username = User::find($id)->username;
+
+        return redirect()->action(
+          'ProfileController@show', ['username' => $username]
+        );
+    }
+
+    public function unblockUser($id)
+    {
+        User::where('id', $id)->update(['blocked' => false]);
+
+        $username = User::find($id)->username;
+
+        return redirect()->action(
+          'ProfileController@show', ['username' => $username]
+        );
+    }
+
     public function deleteModerator($username)
     {
         User::where('username', $username)->update(['blocked' => true]);
@@ -69,7 +91,7 @@ class AdminController extends Controller
 
     public function addModerator($username)
     {
-      User::where('username', $username)->update(['blocked' => true]);
+      //User::where('username', $username)->update(['blocked' => true]);
 
       /*User::create([
        'typeofuser' => 'Moderator',
@@ -140,4 +162,7 @@ class AdminController extends Controller
         return view('pages.auction', ['auction' => $auction]);
     }
 
+}
+rn view('pages.auction', ['auction' => $auction]);
+    }
 }

@@ -29,12 +29,16 @@ class Category extends Model
 
     public function active_auctions()
     {
-        return $this->auctions()->where('state', 'Active')->orderby('numberofbids', 'DESC');
+        return $this->auctions()->where('state', 'Active')->orderby('numberofbids', 'DESC')->orderby('limitdate', 'ASC');
     }
 
     public function active_auctions_m6()
     {
-        return $this->auctions()->where('state', 'Active')->orderby('numberofbids', 'DESC')->offset(6)->paginate(5);
+        $active_auctions = $this->active_auctions()->skip(5)->take(1)->get()->first();
+        $numberofbids_6 = $active_auctions->numberofbids;
+        $limitdate_6 = $active_auctions->limitdate;
+
+        return $this->active_auctions()->where('numberofbids', '<=', $numberofbids_6)->where('limitdate', '>', $limitdate_6)->paginate(5);
     }
 
     public function hasChilds()

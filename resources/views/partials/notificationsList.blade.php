@@ -7,6 +7,7 @@
 </div>
 <div id="notifications"
      class="container">
+  @if(count(App\Notification::where('authenticated_userid', Auth::id())->get())>0)
   <table class="table table-hover">
     <thead>
       <tr>
@@ -20,4 +21,9 @@
       @endforeach
     </tbody>
   </table>
+  @else
+  <div id="warningNoAuctions" class="alert alert-info my-5 w-75 mx-auto box-shadow">
+    <strong class="alert-link"></strong> You have no <strong>Notifications</strong>.
+  </div>
+  @endif
 </div>

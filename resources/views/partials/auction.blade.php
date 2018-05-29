@@ -72,7 +72,7 @@
               </p>
             </div>
             @if($auction->state == 'Active')
-            @if(Auth::id() != $auction->auctionCreator && Auth::check() && Auth::user()->typeofuser=='Normal')
+            @if(Auth::id() != $auction->auctionCreator && Auth::check() && Auth::user()->typeofuser=='Normal' && Auth::user()->blocked==false)
             <form class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
                 {{ csrf_field() }}
                   @if($auction->bids->count() > 0)
