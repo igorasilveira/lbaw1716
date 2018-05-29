@@ -71,6 +71,7 @@ class="jumbotron">
             {{ $user->email}}
           </p>
         </section>
+        @if (Auth::check() && (Auth::user()->id == $user->id))
         @if ($user->typeofuser=='Normal')
       <div id="balance"
       class="text-center w-50 border border-dark">
@@ -97,6 +98,19 @@ class="jumbotron">
           </div>
         </div>
       </div>
+      @endif
+      @endif
+      @if (Auth::user()->id != $user->id)
+      @if (Auth::user()->typeofuser == 'Moderator' || Auth::user()->typeofuser =='Administrator' )
+      <div id="report"
+                     class="text-center w-50">
+                  <div class="col">
+                    <button type="button"
+                            class="btn btn-danger w-100 box-shadow mt-4">Block User</button>
+                  </div>
+
+      </div>
+      @endif
       @endif
     </div>
   </div>
