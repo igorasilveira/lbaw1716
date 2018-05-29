@@ -105,8 +105,17 @@ class="jumbotron">
       <div id="report"
                      class="text-center w-50">
                   <div class="col">
-                    <button type="button"
-                            class="btn btn-danger w-100 box-shadow mt-4">Block User</button>
+                    @if ($user->blocked)
+                    <a href="/admin/users/{{$user->id}}/unblock">
+                      <button type="button"
+                              class="btn btn-danger w-100 box-shadow mt-4">UnBlock User</button>
+                    </a>
+                    @else
+                    <a href="/admin/users/{{$user->id}}/block">
+                      <button type="button"
+                              class="btn btn-danger w-100 box-shadow mt-4">Block User</button>
+                    </a>
+                    @endif
                   </div>
 
       </div>

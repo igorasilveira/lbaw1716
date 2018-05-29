@@ -64,6 +64,8 @@ Route::delete('/admin/manage/moderators/{username}/remove', 'AdminController@del
 Route::delete('/admin/manage/categories/{id}/remove', 'AdminController@deleteCategory');
 Route::post('/admin/manage/moderators/{username}/add', 'AdminController@addModerator');
 Route::post('/admin/manage/categories/add', 'AdminController@addCategory');
+Route::get('/admin/users/{id}/block', 'AdminController@blockUser');
+Route::get('/admin/users/{id}/unblock', 'AdminController@unblockUser');
 
 /*
 Route::get('/admin/auctions', '')->name('');
