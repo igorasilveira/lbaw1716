@@ -42,7 +42,6 @@ li {
   .hidden-xs {
     display: none !important;
   }
-
   .btn-round-top, .btn-round-bot {
     border-radius: 20px;
     margin-bottom: 2em;
@@ -51,7 +50,7 @@ li {
 
 .alert {
   border-radius: 10px;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.01);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.01);
 }
 
 .test {
@@ -288,7 +287,6 @@ legend {
   #catNav {
     width: 100%;
   }
-
   #catNav>div:nth-child(1), #catNav ul#categories.mr-auto {
     width: 100%;
     padding-left: 0;
@@ -606,4 +604,12 @@ nav.navbar:nth-child(2) {
   padding: 0 !important;
   color: #20a8d8;
   cursor: pointer;
+}
+
+p.countdown, #bidsDone {
+  font-size: 12px;
+}
+
+#auctionName {
+  min-height: 65px;
 }

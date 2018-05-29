@@ -56,8 +56,12 @@ Route::delete('/auction/{id}/comments/{comID}/remove/', 'CommentController@delet
 //
 // Administrative Decisions
 Route::get('/admin/manage', 'AdminController@show');
+Route::get('/admin/auction/{id}/approve', 'AdminController@approveAuction');
+Route::get('/admin/auction/{id}/reject', 'AdminController@rejectAuction');
 Route::delete('/admin/manage/moderators/{username}/remove', 'AdminController@deleteModerator');
 Route::delete('/admin/manage/categories/{id}/remove', 'AdminController@deleteCategory');
+Route::post('/admin/manage/moderators/add', 'AdminController@addModerator');
+Route::post('/admin/manage/categories/add', 'AdminController@addCategory');
 
 /*
 Route::get('/admin/auctions', '')->name('');
@@ -67,9 +71,6 @@ Route::get('/admin/users/{id}', '')->name('');
 Route::put('/admin/users/{id}/block', '');
 Route::put('/admin/users/{id}/unblock', '');
 Route::get('/admin/manage', '')->name('');
-Route::post('/admin/manage/moderators/add', '');
-Route::delete('/admin/manage/moderators/{id}/remove', '');
-Route::post('/admin/manage/categories/add', '');
 */
 
 // Module 4:

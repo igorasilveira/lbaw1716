@@ -20,7 +20,7 @@ class Auction extends Model
      * @var array
      */
     protected $fillable = [
-    'state', 'title', 'sellingreason', 'description', 'pathtophoto', 'startingprice', 'minimumsellingprice', 'buynow', 'limitdate', 'auctioncreator',
+    'state', 'title', 'sellingreason', 'description', 'pathtophoto', 'startingprice', 'minimumsellingprice', 'buynow', 'limitdate', 'auctioncreator', 'responsiblemoderator'
   ];
 
     /**
@@ -48,6 +48,6 @@ class Auction extends Model
 
     public function timeleft()
     {
-        return ceil((strtotime($this->limitdate) - strtotime('now')) / 60 / 60);
+        return date('M d, Y H:i:s',strtotime($this->limitdate));
     }
 }

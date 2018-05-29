@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\User;
 use App\Category;
+use App\Auction;
+use Carbon\Carbon;
 use App\Edit_Categories;
 use App\CategoryOfAuction;
 
@@ -65,9 +67,48 @@ class AdminController extends Controller
         return null;
     }
 
+    public function addModerator($username)
+    {
+      User::where('username', $username)->update(['blocked' => true]);
+
+      return null;
+    }
+
+    public function addCategory($id)
+    {
+      Edit_Categories::where('category', $id)->delete();
+      CategoryOfAuction::where('category_id', $id)->delete();
+
+      $cats = Category::where('parent', $id)->get();
+      foreach($cats as $cat){
+        $cat->parent = null;
+        $cat->save();
+      }
+
+      Category::find($id)->delete();
+
+      return null;
+    }
+
     public function approve()
     {
     }
+
+
+  public function approveAuction($auctionid)
+  {
+    $auction = Auction::find($auctionid);
+    $mod = Auth::user()->id;
+    $auction->update(['state' => 'Active']);
+    $auction->update(['responsiblemoderator' => $mod]);
+
+
+    return redirect()->action(
+      'ProfileController@manageAuctions', ['username' => Auth::user()->username]
+    );
+
+
+  }
 
     public function preview(Request $request)
     {
