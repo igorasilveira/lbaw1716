@@ -110,6 +110,21 @@ class AdminController extends Controller
 
   }
 
+  public function rejectAuction($auctionid)
+  {
+    $auction = Auction::find($auctionid);
+    $mod = Auth::user()->id;
+
+
+
+    return redirect()->action(
+      'ProfileController@manageAuctions', ['username' => Auth::user()->username]
+    );
+
+
+  }
+
+
     public function preview(Request $request)
     {
         $auction = $request;

@@ -119,13 +119,37 @@
         <div id="pendingActions"
         class="container mt-md-5 mt-sm-3 mt-3">
           <div class="row">
-            <a href="/admin/auction/{{$auction->id}}/reject">
-                    <button class="btn btn-danger mw-75 text-center">Reject</button>
-                  </a>
+                    <button id="rejectbtt" class="btn btn-danger mw-75 text-center">Reject</button>
 
                   <a href="/admin/auction/{{$auction->id}}/approve">
                     <button class="btn btn-success mw-75 text-center">Accept</button>
                   </a>
+          </div>
+          <div id="reasonModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <div class="modal-body py-5 mx-md-5 mx-sm-1 mx-xs-1">
+                <form method="POST"
+                      action="/admin/auction/{{$auction->id}}/reject"
+                      enctype="multipart/form-data"
+                      class="form-group navbar-form">
+                  <input type="textarea"
+                         class="form-control p-2 my-2"
+                         placeholder="Reason of Rejection Here"
+                         id="reasonOfRefusal"
+                         name="reasonOfRefusal"
+                         required>
+                  <button type="submit"
+                          id="btnRefusal"
+                          class="btn btn-success w-100 btn-round mx-auto my-3 box-shadow"
+                          >Send Reason</button>
+                </form>
+
+              </div>
+            </div>
+
           </div>
         </div>
         @endif
@@ -234,3 +258,27 @@
     </div>
   </div>
 </div>
+
+<script>
+// Get the modal
+var modal = document.getElementById('reasonModal');
+
+// Get the button that opens the modal
+var btn = document.getElementById("rejectbtt");
+var span = document.getElementsByClassName("close")[0];
+// When the user clicks the button, open the modal
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
