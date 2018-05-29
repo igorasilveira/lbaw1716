@@ -17,6 +17,8 @@ Route::get('/', function () {
 
 Route::get('home', 'Auth\LoginController@showHome');
 
+Auth::routes();
+
 // Module 1 :
 //
 // Authentication

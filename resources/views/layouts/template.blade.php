@@ -129,7 +129,9 @@
       </div>
     </nav>
   </header>
-  @yield('content')
+  <div class="min-height">
+    @yield('content')
+  </div>
       <hr class="my-4">
       <footer class="page-footer">
         <div class="nav justify-content-center">
