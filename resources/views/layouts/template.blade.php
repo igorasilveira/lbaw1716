@@ -55,10 +55,11 @@
             <form class="form-inline my-2 my-lg-0"
             action="/search"
             method="GET">
-              <input class="form-control mr-sm-2 btn-round"
+              <input class="form-control mr-sm-2"
                      type="text"
                      placeholder="Search"
                      name="search"
+                     style="border-radius: 20px !important"
                      required>
               <button class="btn btn-secondary my-2 my-sm-0 p-xs-0 btn-round"
                       type="submit">Search</button>

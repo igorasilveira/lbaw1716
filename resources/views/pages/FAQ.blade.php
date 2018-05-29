@@ -4,20 +4,20 @@
 <div class="hidden-xs">
   <hr class="my-md-4 my-sm-2 my-xs-1">
   <div class="title jumbotron my-0 p-3">
-    <h1 class="display-6">FAQ's</h1>
+    <h1 class="display-6 text-center">FAQ's</h1>
   </div>
   <hr class="my-md-4 my-sm-2 my-xs-1">
 </div>
 <!-- ou mudar para w-75 -->
 <hr class="my-3">
-<div class="container-fluid mt-3">
+<div class="container-fluid mt-3 mx-auto">
 
   <div id="FAQ_questions">
 
 
     <div id="questions">
-      <div class="card mb-1">
-        <div class="card-header">
+      <div class="card mb-1 my-2">
+        <div class="card-header ">
 
           <button class="btn btn-link collapsed"
                   data-toggle="collapse"
@@ -35,7 +35,7 @@
           </div>
         </div>
       </div>
-      <div class="card mb-1">
+      <div class="card mb-1  my-2">
         <div class="card-header">
 
           <button class="btn btn-link collapsed"
@@ -53,7 +53,7 @@
           </div>
         </div>
       </div>
-      <div class="card mb-1">
+      <div class="card mb-1 my-2">
         <div class="card-header">
 
           <button class="btn btn-link collapsed"
@@ -71,7 +71,7 @@
           </div>
         </div>
       </div>
-      <div class="card mb-1">
+      <div class="card mb-1 my-2">
         <div class="card-header">
 
           <button class="btn btn-link"
@@ -89,7 +89,7 @@
           </div>
         </div>
       </div>
-      <div class="card mb-1">
+      <div class="card mb-1 my-2">
         <div class="card-header">
 
           <button class="btn btn-link collapsed"

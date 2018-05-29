@@ -20,10 +20,3 @@ services:
       - "5050:5050"
     depends_on:
       - postgres
-
-  mailhog:
-    image: mailhog/mailhog
-    restart: always
-    ports:
-        - "1025:1025"
-        - "8025:8025"

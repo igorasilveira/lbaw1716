@@ -1,7 +1,7 @@
 @extends('layouts.template')
 
 @section('content')
-    <div class="container-fluid">
+    <div class="container-fluid ">
       <div class="hidden-xs">
         <hr class="my-3">
         <h3 class="py-3 text-center">Quick Start</h3>

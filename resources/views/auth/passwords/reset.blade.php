@@ -4,8 +4,8 @@
 <div class="container mt-md-5 mt-sm-3">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card btn-round">
-                <div class="card-header">{{ __('Reset Password') }}</div>
+            <div class="card btn-round box-shadow">
+                <h4 class="card-header text-primary">{{ __('Reset Password') }}</h4>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('password.request') }}">
@@ -49,9 +49,11 @@
                             </div>
                         </div>
 
+                        <hr class="my-4">
+
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary btn-round box-shadow">
+                                <button type="submit" class="btn btn-success btn-round box-shadow w-100">
                                     {{ __('Reset Password') }}
                                 </button>
                             </div>
