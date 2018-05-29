@@ -65,6 +65,7 @@
           @foreach(Auth::user()->auctionsBidding_m6() as $auction)
           <tr>
             <td scope="row"><img src="{{ $auction->pathtophoto }}"
+              alt="Auction Item Image"
               width="80"
               height="80"></td>
               <td width="30%"> <a href="/auction/{{ $auction->id }}"> {{ $auction->title }} </a> </td>
@@ -141,6 +142,7 @@
           @foreach(Auth::user()->auctionsSelling_m6() as $auction)
           <tr>
             <td scope="row"><img src="{{ $auction->pathtophoto }}"
+              alt="Auction Item Image"
               width="80"
               height="80"></td>
               <td width="50%"> <a href="/auction/{{ $auction->id }}"> {{ $auction->title }} </a> </td>

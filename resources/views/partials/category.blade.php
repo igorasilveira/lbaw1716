@@ -82,6 +82,7 @@
             @foreach($category->active_auctions_m6() as $auction)
             <tr>
               <td scope="row"><img src="{{ $auction->pathtophoto }}"
+                alt="Auction item image"
                 width="80"
                 height="80"></td>
                 <td width="50%"> <a href="/auction/{{ $auction->id }}"> {{ $auction->title }} </a> </td>

@@ -29,6 +29,7 @@
           <td>
             <a href="/auction/{{ $result->id }}">
               <img src="images/goto_link.png"
+              alt="Search Image"
               width="20"
               height="20" />
             </a>
@@ -65,6 +66,7 @@
         <td>
           <a href="/users/{{ $result->username }}">
             <img src="images/goto_link.png"
+            alt="Search Image"
             width="20"
             height="20" />
           </a>
