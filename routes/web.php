@@ -57,10 +57,10 @@ Route::delete('/auction/{id}/comments/{comID}/remove/', 'CommentController@delet
 // Administrative Decisions
 Route::get('/admin/manage', 'AdminController@show');
 Route::get('/admin/auction/{id}/approve', 'AdminController@approveAuction');
-Route::post('/admin/auction/{id}/reject', 'AdminController@rejectAuction');
+Route::get('/admin/auction/{id}/{reason}/reject', 'AdminController@rejectAuction');
 Route::delete('/admin/manage/moderators/{username}/remove', 'AdminController@deleteModerator');
 Route::delete('/admin/manage/categories/{id}/remove', 'AdminController@deleteCategory');
-Route::post('/admin/manage/moderators/add', 'AdminController@addModerator');
+Route::post('/admin/manage/moderators/{username}/add', 'AdminController@addModerator');
 Route::post('/admin/manage/categories/add', 'AdminController@addCategory');
 
 /*

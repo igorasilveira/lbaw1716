@@ -53,7 +53,8 @@ function addModerator() {
 	cancel.style.marginLeft = "15px";
 	var name = document.createElement('input');
 	name.setAttribute('type', 'text');
-	name.setAttribute("class", 'form-control')
+	name.setAttribute("class", 'form-control');
+	name.setAttribute("placeholder", 'Username');
 	name.setAttribute('required', 'required');
 	cell1.appendChild(photo);
 	cell2.appendChild(name);
@@ -62,6 +63,15 @@ function addModerator() {
 	cell4.appendChild(cancel);
 }
 
+function makeid() {
+  var text = "";
+  var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+  for (var i = 0; i < 5; i++)
+    text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+  return text;
+}
 
 function confirmModerator() {
 
@@ -71,19 +81,45 @@ function confirmModerator() {
 	if (nameCell.children[0].value == null || nameCell.children[0].value == "") {
 		alert("You need to give a name to the moderator");
 	} else {
-		nameCell.innerHTML = "[Mod]" + nameCell.children[0].value;
-		var bttChildren = document.getElementById("moderatorsList")
-			.rows[table.rows.length - 1].cells[3];
-		var remBtt = bttChildren.childNodes[1];
-		var confBtt = bttChildren.childNodes[0];
-		remBtt.style.marginLeft = "0px";
-		remBtt.setAttribute("class", "removeBtt");
-		remBtt.style.visibility = 'visible';
-		remBtt.setAttribute("title", "Remove Moderator");
-		remBtt.setAttribute("onclick", "delModerator(this)");
-		bttChildren.removeChild(confBtt);
-		var createBtt = document.getElementById("createModBtt");
-		createBtt.disabled = false;
+
+		var username =nameCell.children[0].value;
+		console.log(username);
+		var url = window.location.href + 'moderators/' + username + '/add';
+		var json = "{'username':'" + username + "'}";
+
+		$.ajaxSetup({
+			headers: {
+				'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')
+					.content
+			},
+			contentType: 'application/x-www-form-urlencoded'
+		});
+
+		$.ajax({
+			type: 'POST',
+			url: url,
+			contentType: 'application/json; charset=utf-8',
+			data: json,
+			cache: false,
+			success: function () {
+				nameCell.innerHTML = nameCell.children[0].value;
+				var bttChildren = document.getElementById("moderatorsList")
+					.rows[table.rows.length - 1].cells[3];
+				var remBtt = bttChildren.childNodes[1];
+				var confBtt = bttChildren.childNodes[0];
+				remBtt.style.marginLeft = "0px";
+				remBtt.setAttribute("class", "removeBtt");
+				remBtt.style.visibility = 'visible';
+				remBtt.setAttribute("title", "Remove Moderator");
+				remBtt.setAttribute("onclick", "delModerator(this)");
+				bttChildren.removeChild(confBtt);
+				var createBtt = document.getElementById("createModBtt");
+				createBtt.disabled = false;
+			},
+			error: function () {
+				alert('Could not add moderator');
+			}
+		});
 	}
 }
 

@@ -71,6 +71,12 @@ class AdminController extends Controller
     {
       User::where('username', $username)->update(['blocked' => true]);
 
+      /*User::create([
+       'typeofuser' => 'Moderator',
+       'username' => $username,
+       //'email' => $email,
+     ]); */
+
       return null;
     }
 
@@ -110,12 +116,14 @@ class AdminController extends Controller
 
   }
 
-  public function rejectAuction($auctionid)
+  public function rejectAuction($auctionid, $reason)
   {
     $auction = Auction::find($auctionid);
     $mod = Auth::user()->id;
 
 
+
+    dd($mod);
 
     return redirect()->action(
       'ProfileController@manageAuctions', ['username' => Auth::user()->username]
