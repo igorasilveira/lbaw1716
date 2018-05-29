@@ -21,9 +21,13 @@
 @if (Auth::check())
   @if (Auth::user()->id == $user->id)
 
-    @if($user->typeofuser=='Normal')
+    @if($user->typeofuser=='Normal' && $user->blocked==false)
     <div id="warningPendingTop" class="alert alert-dismissible alert-danger my-4 w-75 mx-auto">
       <strong class="alert-link">Attention!</strong> You have pending actions required on finished auctions.
+    </div>
+    @elseif($user->typeofuser=='Normal' && $user->blocked==true)
+    <div id="warningPendingTop" class="alert alert-dismissible alert-danger my-4 w-75 mx-auto">
+      <strong class="alert-link">Attention!</strong> You are currently blocked!
     </div>
     @endif
   <hr class="my-md-4 my-sm-2 my-xs-1">
@@ -72,7 +76,7 @@ class="jumbotron">
           </p>
         </section>
         @if (Auth::check() && (Auth::user()->id == $user->id))
-        @if ($user->typeofuser=='Normal')
+        @if ($user->typeofuser=='Normal' && $user->blocked==false)
       <div id="balance"
       class="text-center w-50 border border-dark">
         <h4 class="pb-2">Balance</h4>

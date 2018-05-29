@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class LoginController extends Controller extends Authenticatable
+class LoginController extends Controller //extends Authenticatable
 {
 
     use Notifiable;
