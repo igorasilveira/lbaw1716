@@ -33,6 +33,7 @@ function addModerator() {
 	var cell2 = row.insertCell();
 	var cell3 = row.insertCell();
 	var cell4 = row.insertCell();
+
 	var photo = document.createElement('img');
 	photo.setAttribute('class', 'photoModerator');
 	photo.setAttribute('src', '../images/profile_pic.png');
@@ -56,8 +57,15 @@ function addModerator() {
 	name.setAttribute("class", 'form-control');
 	name.setAttribute("placeholder", 'Username');
 	name.setAttribute('required', 'required');
+	var email = document.createElement('input');
+	email.setAttribute('type', 'email');
+	email.setAttribute("class", 'form-control');
+	email.setAttribute("placeholder", 'Email');
+	email.setAttribute('required', 'required');
 	cell1.appendChild(photo);
 	cell2.appendChild(name);
+	cell2.appendChild(document.createElement('br'));
+	cell2.appendChild(email);
 	cell3.innerHTML = "0";
 	cell4.appendChild(confirm);
 	cell4.appendChild(cancel);
@@ -78,14 +86,18 @@ function confirmModerator() {
 	var table = document.getElementById("moderatorsList");
 	var nameCell = document.getElementById("moderatorsList")
 		.rows[table.rows.length - 1].cells[1];
+
 	if (nameCell.children[0].value == null || nameCell.children[0].value == "") {
 		alert("You need to give a name to the moderator");
+	} else if (nameCell.children[2].value == null || nameCell.children[2].value == "") {
+		alert("Tthe moderator has to have an email");
 	} else {
-
 		var username = nameCell.children[0].value;
-		console.log(username);
-		var url = window.location.href + 'moderators/' + username + '/add';
-		var json = "{'username':'" + username + "'}";
+
+		var url = window.location.href + '/moderators/' + username + '/add';
+		var json = {};
+		json.username = username;
+		json.email = nameCell.children[2].value;
 
 		$.ajaxSetup({
 			headers: {
@@ -98,10 +110,16 @@ function confirmModerator() {
 		$.ajax({
 			type: 'POST',
 			url: url,
-			contentType: 'application/json; charset=utf-8',
-			data: json,
+			contentType: "application/json; charset=utf-8",
+			data: JSON.stringify(json),
 			cache: false,
 			success: function () {
+				var photo = document.getElementById("moderatorsList")
+					.rows[table.rows.length - 1].cells[0].children[0];
+				photo.setAttribute('class', 'profile-pic box-shadow');
+				photo.setAttribute('src', '../images/catalog/users/default.png');
+				photo.setAttribute("width", "70");
+				photo.setAttribute("height", "70");
 				nameCell.innerHTML = nameCell.children[0].value;
 				var bttChildren = document.getElementById("moderatorsList")
 					.rows[table.rows.length - 1].cells[3];
@@ -160,7 +178,7 @@ function delModerator(row) {
 		var username = (document.getElementById("moderatorsList")
 			.rows[i].cells[1].innerHTML);
 
-		var url = window.location.href + 'moderators/' + username + '/remove';
+		var url = window.location.href + '/moderators/' + username + '/remove';
 		var json = "{'username':'" + username + "'}";
 
 		$.ajaxSetup({
@@ -342,7 +360,7 @@ function delCategory(row, id) {
 	if (confBox == true) {
 		var i = row.parentNode.parentNode.rowIndex;
 
-		var url = window.location.href + 'categories/' + id + '/remove';
+		var url = window.location.href + '/categories/' + id + '/remove';
 		var json = "{'id':'" + id + "'}";
 
 		$.ajaxSetup({
