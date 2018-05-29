@@ -140,13 +140,19 @@ class AdminController extends Controller
 
   public function rejectAuction(Request $request, $auctionid)
   {
-    $auctionCreator = Auction::find($auctionid)->auctioncreator;
+    $auction = Auction::find($auctionid);
+    $auctionCreator = $auction->auctioncreator;
     $mod = Auth::user()->id;
     $reason = $request->input('reasonOfRefusal');
 
+    date_default_timezone_set('Europe/Lisbon');
+    $timestamp = date("Y-m-d H:i:s",time());
 
-    //$auction->update(['state' => 'Rejected']);
-    //$auction->update(['reasonofrefusal' => $reason]);
+    $auction->update(['responsiblemoderator' => $mod]);
+    $auction->update(['reasonofrefusal' => $reason]);
+    $auction->update(['refusaldate' => $timestamp]);
+    $auction->update(['state' => 'Rejected']);
+
 
     return redirect()->action(
       'ProfileController@manageAuctions', ['username' => Auth::user()->username]
