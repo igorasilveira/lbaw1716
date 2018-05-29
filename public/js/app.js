@@ -64,13 +64,13 @@ function addModerator() {
 }
 
 function makeid() {
-  var text = "";
-  var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+	var text = "";
+	var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
-  for (var i = 0; i < 5; i++)
-    text += possible.charAt(Math.floor(Math.random() * possible.length));
+	for (var i = 0; i < 5; i++)
+		text += possible.charAt(Math.floor(Math.random() * possible.length));
 
-  return text;
+	return text;
 }
 
 function confirmModerator() {
@@ -82,7 +82,7 @@ function confirmModerator() {
 		alert("You need to give a name to the moderator");
 	} else {
 
-		var username =nameCell.children[0].value;
+		var username = nameCell.children[0].value;
 		console.log(username);
 		var url = window.location.href + 'moderators/' + username + '/add';
 		var json = "{'username':'" + username + "'}";
@@ -225,10 +225,7 @@ function addCategory() {
 		parent.add(option);
 	}
 
-
-
 	parent.setAttribute('class', 'form-control');
-
 
 	var confirm = document.createElement('img');
 	confirm.setAttribute('src', '../images/confirm_edit.png');
@@ -257,33 +254,57 @@ function addCategory() {
 
 function confirmCategory() {
 
-
 	var table = document.getElementById("categoriesList");
 	var nameCell = document.getElementById("categoriesList")
 		.rows[table.rows.length - 1].cells[0];
+	var parentCell = document.getElementById("categoriesList")
+		.rows[table.rows.length - 1].cells[1];
+
 	if (nameCell.children[0].value == null || nameCell.children[0].value == "") {
 		alert("You need to give a name to the Category");
 	} else {
-		nameCell.setAttribute('scope', 'row');
-		nameCell.innerHTML = nameCell.children[0].value;
-		var parentCell = document.getElementById("categoriesList")
-			.rows[table.rows.length - 1].cells[1];
-		parentCell.innerHTML = parentCell.children[0].value;
-		var bttChildren = document.getElementById("categoriesList")
-			.rows[table.rows.length - 1].cells[3];
-		var remBtt = bttChildren.childNodes[1];
-		var confBtt = bttChildren.childNodes[0];
-		remBtt.style.marginLeft = "0px";
-		remBtt.setAttribute("class", "removeBtt");
-		remBtt.style.visibility = 'visible';
-		remBtt.setAttribute("title", "Remove Category");
-		remBtt.setAttribute("onclick", "delCategory(this)");
-		bttChildren.removeChild(confBtt);
-		var createBtt = document.getElementById("createCategoryBtt");
-		createBtt.disabled = false;
+
+		var url = window.location.href + '/categories/add';
+		var json = {};
+		json.categoryName = nameCell.children[0].value;
+		json.parent = parentCell.children[0].value;
+
+		$.ajaxSetup({
+			headers: {
+				'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')
+					.content
+			},
+			contentType: 'application/x-www-form-urlencoded'
+		});
+
+		$.ajax({
+			type: 'POST',
+			url: url,
+			contentType: "application/json; charset=utf-8",
+			data: JSON.stringify(json),
+			cache: false,
+			success: function () {
+				nameCell.setAttribute('scope', 'row');
+				nameCell.innerHTML = nameCell.children[0].value;
+				parentCell.innerHTML = parentCell.children[0].value;
+				var bttChildren = document.getElementById("categoriesList")
+					.rows[table.rows.length - 1].cells[3];
+				var remBtt = bttChildren.childNodes[1];
+				var confBtt = bttChildren.childNodes[0];
+				remBtt.style.marginLeft = "0px";
+				remBtt.setAttribute("class", "removeBtt");
+				remBtt.style.visibility = 'visible';
+				remBtt.setAttribute("title", "Remove Category");
+				remBtt.setAttribute("onclick", "delCategory(this)");
+				bttChildren.removeChild(confBtt);
+				var createBtt = document.getElementById("createCategoryBtt");
+				createBtt.disabled = false;
+			},
+			error: function () {
+				alert('Could not create category');
+			}
+		});
 	}
-
-
 }
 
 function editCategories() {

@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Category;
 use App\Auction;
-use Carbon\Carbon;
 use App\Edit_Categories;
 use App\CategoryOfAuction;
 
@@ -79,9 +78,9 @@ class AdminController extends Controller
         CategoryOfAuction::where('category_id', $id)->delete();
 
         $cats = Category::where('parent', $id)->get();
-        foreach($cats as $cat){
-          $cat->parent = null;
-          $cat->save();
+        foreach ($cats as $cat) {
+            $cat->parent = null;
+            $cat->save();
         }
 
         Category::find($id)->delete();
@@ -91,52 +90,50 @@ class AdminController extends Controller
 
     public function addModerator($username)
     {
-      //User::where('username', $username)->update(['blocked' => true]);
+        //User::where('username', $username)->update(['blocked' => true]);
 
-      /*User::create([
-       'typeofuser' => 'Moderator',
-       'username' => $username,
-       //'email' => $email,
+        /*User::create([
+         'typeofuser' => 'Moderator',
+         'username' => $username,
+         //'email' => $email,
      ]); */
 
-      return null;
+        return null;
     }
 
-    public function addCategory($id)
+    public function addCategory(Request $request)
     {
-      Edit_Categories::where('category', $id)->delete();
-      CategoryOfAuction::where('category_id', $id)->delete();
+        $category = new Category();
+        $category->name = $request->input('categoryName');
+        if($request->input('parent') != "N/A")
+          $category->parent = Category::where('name',$request->input('parent'))->first()->id;
+        $category->save();
 
-      $cats = Category::where('parent', $id)->get();
-      foreach($cats as $cat){
-        $cat->parent = null;
-        $cat->save();
-      }
-
-      Category::find($id)->delete();
-
-      return null;
+        return null;
     }
 
     public function approve()
     {
     }
 
+    public function approveAuction($auctionid)
+    {
+        $auction = Auction::find($auctionid);
+        $mod = Auth::user()->id;
+        $auction->update(['state' => 'Active']);
+        $auction->update(['responsiblemoderator' => $mod]);
 
-  public function approveAuction($auctionid)
-  {
-    $auction = Auction::find($auctionid);
-    $mod = Auth::user()->id;
-    $auction->update(['state' => 'Active']);
-    $auction->update(['responsiblemoderator' => $mod]);
-
-
-    return redirect()->action(
+        return redirect()->action(
       'ProfileController@manageAuctions', ['username' => Auth::user()->username]
     );
+    }
 
+    public function rejectAuction($auctionid, $reason)
+    {
+        $auction = Auction::find($auctionid);
+        $mod = Auth::user()->id;
 
-  }
+        dd($mod);
 
   public function rejectAuction(Request $request, $auctionid)
   {
@@ -157,10 +154,7 @@ class AdminController extends Controller
     return redirect()->action(
       'ProfileController@manageAuctions', ['username' => Auth::user()->username]
     );
-
-
-  }
-
+    }
 
     public function preview(Request $request)
     {
@@ -168,5 +162,4 @@ class AdminController extends Controller
 
         return view('pages.auction', ['auction' => $auction]);
     }
-
 }

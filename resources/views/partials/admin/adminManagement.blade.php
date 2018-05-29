@@ -77,29 +77,27 @@
       </tr>
     </thead>
     <tbody>
-          @for ($j = 0; $j < count($categories); $j++)
-          <tr>
-            <td scope="row">{{ $categories->slice($j, 1)->first()->name }}</td>
-              <td>@if($categories->slice($j, 1)->first()->parent==null)
-                N/A
-                @else
-                {{  App\Category::find($categories->slice($j, 1)->first()->parent)->name }}
-                @endif
-              </td>
-              <td>{{ $categories->slice($j, 1)->first()->auctions()->where('state','Active')->count() }}</td>
-              <td><img src="{{ asset('images/remove_logo.png') }}"
-                width="20"
-                height="20"
-                class="removeBtt"
-                title='Remove Category'
-                onclick="delCategory(this,{{$categories->slice($j, 1)->first()->id}})"> </td>
-              </tr>
-            @endfor
-                    </tbody>
-                  </table>
-
+      @for ($j = 0; $j < count($categories); $j++)
+      <tr>
+        <td scope="row">{{ $categories->slice($j, 1)->first()->name }}</td>
+        <td>@if($categories->slice($j, 1)->first()->parent==null)
+          N/A
+          @else
+          {{  App\Category::find($categories->slice($j, 1)->first()->parent)->name }}
+          @endif
+        </td>
+        <td>{{ $categories->slice($j, 1)->first()->auctions()->where('state','Active')->count() }}</td>
+        <td><img src="{{ asset('images/remove_logo.png') }}"
+          width="20"
+          height="20"
+          class="removeBtt"
+          title='Remove Category'
+          onclick="delCategory(this,{{$categories->slice($j, 1)->first()->id}})"> </td>
+        </tr>
+        @endfor
+      </tbody>
+    </table>
   </div>
-
   <button class="btn btn-info"
         id="createCategoryBtt"
         onclick="addCategory()">Create Category</button>
