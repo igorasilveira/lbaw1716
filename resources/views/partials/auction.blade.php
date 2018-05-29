@@ -131,7 +131,7 @@
             <div class="modal-content">
               <span class="close">&times;</span>
               <div class="modal-body py-5 mx-md-5 mx-sm-1 mx-xs-1">
-                <form method="GET"
+                <form method="POST"
                       action="/admin/auction/{{$auction->id}}/reject"
                       enctype="multipart/form-data"
                       class="form-group navbar-form">
@@ -145,6 +145,7 @@
                           id="btnRefusal"
                           class="btn btn-success w-100 btn-round mx-auto my-3 box-shadow"
                           >Send Reason</button>
+                          {{ csrf_field() }}
                 </form>
 
               </div>

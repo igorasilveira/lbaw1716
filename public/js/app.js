@@ -231,13 +231,13 @@ function addCategory() {
 
 
 	var confirm = document.createElement('img');
-	confirm.setAttribute('src', 'images/confirm_edit.png');
+	confirm.setAttribute('src', '../images/confirm_edit.png');
 	confirm.setAttribute("width", "20");
 	confirm.setAttribute("height", "20");
 	confirm.setAttribute("title", "Confirm Category");
 	confirm.setAttribute("onclick", "confirmCategory()");
 	var cancel = document.createElement('img');
-	cancel.setAttribute('src', 'images/remove_logo.png');
+	cancel.setAttribute('src', '../images/remove_logo.png');
 	cancel.setAttribute("width", "20");
 	cancel.setAttribute("height", "20");
 	cancel.setAttribute("title", "Cancel");

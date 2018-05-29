@@ -138,14 +138,15 @@ class AdminController extends Controller
 
   }
 
-  public function rejectAuction($auctionid, $reason)
+  public function rejectAuction(Request $request, $auctionid)
   {
-    $auction = Auction::find($auctionid);
+    $auctionCreator = Auction::find($auctionid)->auctioncreator;
     $mod = Auth::user()->id;
+    $reason = $request->input('reasonOfRefusal');
 
 
-
-    dd($mod);
+    //$auction->update(['state' => 'Rejected']);
+    //$auction->update(['reasonofrefusal' => $reason]);
 
     return redirect()->action(
       'ProfileController@manageAuctions', ['username' => Auth::user()->username]
