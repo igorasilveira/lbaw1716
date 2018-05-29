@@ -1,5 +1,10 @@
 /* common */
 
+.min-height {
+  min-height: 100vh !important;
+  height: auto;
+}
+
 input, select, textarea {
   border-radius: 10px !important;
 }

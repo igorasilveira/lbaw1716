@@ -57,8 +57,13 @@
                   >Sign In</button>
         </form>
         <h6 class="text-center my-3">
-        <a id="registerNav"
-           href="{{ url('/register') }}"> No account yet? Sign Up here! </a></h6>
+          <a id="registerNav"
+           href="{{ url('/register') }}"> No account yet? Sign Up here! </a>
+        </h6>
+        <h6 class="text-center my-3">
+          <a
+           href="{{ route('password.request') }}">{{ __('Forgot Your Password?') }} </a>
+        </h6>
       </div>
     </div>
   </div>
