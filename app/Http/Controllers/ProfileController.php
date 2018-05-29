@@ -63,7 +63,7 @@ class ProfileController extends Controller
     {
         $user = User::get()->where('username', '=', $username)->first();
 
-        $pending = $user->pending->get();
+        $pending = $user->pending()->get();
         $moderating = $user->auctionsModerating()->get();
 
         return view('pages.user.manageAuctions', ['user' => $user, 'pending' => $pending, 'moderating' => $moderating]);
@@ -81,9 +81,8 @@ class ProfileController extends Controller
         $request->session()->flash('form', 'edit');
         $user = User::get()->where('username', '=', $request['username'])->first();
 
-        if ($user->type == 'Normal' || $user->type == 'Administrator') {
-
-          $validator = $request->validate([
+        if ('Normal' == $user->type || 'Administrator' == $user->type) {
+            $validator = $request->validate([
             'username' => 'required|string|max:255|unique:user,username,'.$user->id,
             'completeName' => 'required|string|max:255',
             'phoneNumber' => 'nullable|numeric|max:25',
@@ -93,20 +92,20 @@ class ProfileController extends Controller
             'password' => 'nullable|string|min:6|confirmed',
           ]);
 
-          $country = Country::find($request['country']);
+            $country = Country::find($request['country']);
 
-          $city;
-          //echo City::where('name', $data['city'])->get();
-          if (0 == City::where('name', $request['city'])->count()) {
-            $city = new City();
-            $city->name = $request['city'];
-            $city->country = $country->id;
-            $city->save();
-          } else {
-            $city = City::where('name', $request['city'])->firstOrFail();
-          }
+            $city;
+            //echo City::where('name', $data['city'])->get();
+            if (0 == City::where('name', $request['city'])->count()) {
+                $city = new City();
+                $city->name = $request['city'];
+                $city->country = $country->id;
+                $city->save();
+            } else {
+                $city = City::where('name', $request['city'])->firstOrFail();
+            }
 
-          User::find($request['id'])
+            User::find($request['id'])
           ->update([
             'username' => $request['username'],
             'completename' => $request['completeName'],
@@ -116,36 +115,33 @@ class ProfileController extends Controller
             'email' => $request['email'],
           ]);
 
-          if ($request['password'] != null) {
-            User::find($request['id'])
+            if (null != $request['password']) {
+                User::find($request['id'])
             ->update([
               'password' => $request['password'],
             ]);
-          }
-
+            }
         } else {
-
-          $validator = $request->validate([
+            $validator = $request->validate([
             'username' => 'required|string|max:255|unique:user,username,'.$user->id,
             'completeName' => 'required|string|max:255',
             'phoneNumber' => 'nullable|numeric|max:25',
             'password' => 'nullable|string|min:6|confirmed',
           ]);
 
-          if ($request['password'] != null) {
-            User::find($request['id'])
+            if (null != $request['password']) {
+                User::find($request['id'])
             ->update([
               'password' => $request['password'],
             ]);
-          }
+            }
 
-          User::find($request['id'])
+            User::find($request['id'])
           ->update([
             'username' => $request['username'],
             'completename' => $request['completeName'],
             'phonenumber' => $request['phoneNumber'],
           ]);
-
         }
 
         return redirect('/users/'.$request['username']);

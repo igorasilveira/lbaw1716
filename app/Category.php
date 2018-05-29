@@ -34,7 +34,10 @@ class Category extends Model
 
     public function active_auctions_m6()
     {
-        return $this->auctions()->where('state', 'Active')->orderby('numberofbids', 'DESC')->offset(6)->paginate(5);
+        $active_auctions = $this->active_auctions()->skip(5)->take(1)->get()->first();
+        $numberofbids_6 = $active_auctions->numberofbids;
+
+        return $this->active_auctions()->where('numberofbids', '<=', $numberofbids_6)->paginate(5);
     }
 
     public function hasChilds()
