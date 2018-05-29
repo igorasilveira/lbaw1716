@@ -260,6 +260,12 @@ CREATE SEQUENCE auto_increment_auction
     CACHE 1;
 
 
+CREATE TABLE password_resets (
+  email VARCHAR(255) unique,
+  token VARCHAR(255) not null,
+  created_at timestamp
+);
+
 --
 -- Name: auction; Type: TABLE; Schema: public; Owner: lbaw1716; Tablespace:
 --
