@@ -1,20 +1,22 @@
-<script>
+@if ($user->typeofuser == 'Normal')
+  <script>
   $( document ).ready(function() {
     @if (count($errors) != 0)
-      @if (session()->get('form') == 'edit')
-        $('#editModal').modal('show');
-      @endif
+    @if (session()->get('form') == 'edit')
+    $('#editModal').modal('show');
+    @endif
     @endif
     @if (session()->has('paypal'))
-      @if (session()->get('paypal') == "approved")
-        $("#approvedPaymentModal").modal('show');
-      @elseif (session()->get('paypal') == "rejected")
-        $("#rejectedPaymentModal").modal('show');
-      @endif
-      {{ session()->forget('paypal') }}
+    @if (session()->get('paypal') == "approved")
+    $("#approvedPaymentModal").modal('show');
+    @elseif (session()->get('paypal') == "rejected")
+    $("#rejectedPaymentModal").modal('show');
+    @endif
+    {{ session()->forget('paypal') }}
     @endif
   });
 </script>
+@endif
 <hr class="my-md-4 my-sm-2 my-xs-1">
 @if (Auth::check())
   @if (Auth::user()->id == $user->id)
@@ -41,12 +43,19 @@ class="jumbotron">
     class="col-md-6 col-sm-12 col-xs-12 vcen container-fluid ">
       <section class="pb-2">
         <h5 class="text-muted">#{{ $user->id }}</h5>
-        <h3>{{ $user->username}}<span class=" mx-4 badge badge-pill badge-info">
-          @if ($user->rating != NULL)
-          {{ $user->rating }}/5
-          @else
-          Not Rated
-          @endif</span></h3>
+        <h3>{{ $user->username}}
+          <span class=" mx-4 badge badge-pill badge-info">
+            @if ($user->typeofuser == 'Normal')
+              @if ($user->rating != NULL)
+                {{ $user->rating }}/5
+              @else
+                Not Rated
+              @endif
+            @else
+              {{ $user->typeofuser }}
+            @endif
+          </span>
+        </h3>
         </section>
         <section class="pb-2">
           <p>
@@ -94,194 +103,176 @@ class="jumbotron">
 </div>
 
 @if (Auth::check())
-@if (Auth::user()->id == $user->id)
-<hr class="mb-5">
-<div class="row">
-  <span class="col-md-2 col-sm-0 col-xs-0"></span>
-  @if($user->typeofuser=='Normal')
-  <a href="{{ $user->username }}/auctions"
-    class="col-md-8 col-sm-12 col-xs-12">
-    <button class="btn btn-info w-100 box-shadow btn-round">My Live Auctions
-    </button>
-  </a>
-  @else
-  <a href="{{ $user->username }}/manageAuctions"
-    class="col-md-8 col-sm-12 col-xs-12">
-    <button class="btn btn-info w-100 box-shadow btn-round">My Live Auctions
-    </button>
-  </a>
-  @endif
-
-  <span class="col-md-2 col-sm-0 col-xs-0"></span>
-</div>
-
-@if ($user->typeofuser=='Normal')
-<hr class="my-5">
-<div id="statistics"
-class="container">
-  <h3 class="pb-2">Auction History</h3>
-  <ul class="nav nav-tabs">
-    <li class="nav-item">
-      <a class="nav-link active show"
-        data-toggle="tab"
-        href="#pending">Pending Action
-      </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link"
-        data-toggle="tab"
-        href="#bought">Bought
-      </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link"
-        data-toggle="tab"
-        href="#sold">Sold
-      </a>
-    </li>
-  </ul>
-  <div class=" table-responsive tab-content ">
-    <div class="tab-pane fade"
-    id="sold"
-    role="tabpanel"
-    aria-labelledby="sold-tab">
-
-      @if (count($sold) > 0)
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th scope="col">Auction</th>
-            <th scope="col">Item</th>
-            <th scope="col">Date</th>
-          </tr>
-        </thead>
-        <tbody>
-          @for ($i = 0; $i < min(6, count($sold)); $i++)
-          <tr class="table">
-            <th scope="row">#{{ $sold->slice($i, 1)->first()->id }}</th>
-            <td>{{ $sold->slice($i, 1)->first()->title }}</td>
-            <td>{{ substr($sold->slice($i, 1)->first()->finaldate, 0, 10) }}</td>
-          </tr>
-          @endfor
-        </tbody>
-      </table>
-        @if (count($sold) > 6)
-        <a href="myhistory_user.html"><button class="btn btn-outline-primary w-100">See More</button></a>
-        @endif
+  @if (Auth::user()->id == $user->id)
+    <hr class="mb-5">
+    <div class="row">
+      <span class="col-md-2 col-sm-0 col-xs-0"></span>
+      @if($user->typeofuser=='Normal')
+        <a href="{{ $user->username }}/auctions"
+          class="col-md-8 col-sm-12 col-xs-12">
+          <button class="btn btn-info w-100 box-shadow btn-round">My Live Auctions
+          </button>
+        </a>
       @else
-      <div id="warningNoAuctions" class="alert alert-info my-5 w-75 mx-auto ">
-        <strong class="alert-link">Ups!</strong> You have not <strong>sold</strong> any items yet.
-      </div>
+        <a href="{{ $user->username }}/manageAuctions"
+          class="col-md-8 col-sm-12 col-xs-12">
+          <button class="btn btn-info w-100 box-shadow btn-round">My Live Auctions
+          </button>
+        </a>
       @endif
-    </div>
-    <div class="tab-pane fade"
-      id="bought"
-      role="tabpanel"
-      aria-labelledby="bought-tab">
-      @if (count($bought) > 0)
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th scope="col">Auction</th>
-            <th scope="col">Item</th>
-            <th scope="col">Date</th>
-          </tr>
-        </thead>
-        <tbody>
-          @for ($i = 0; $i < min(6, count($bought)); $i++)
-          <tr class="table">
-            <th scope="row">#{{ $bought->slice($i, 1)->first()->id }}</th>
-            <td>{{ $bought->slice($i, 1)->first()->title }}</td>
-            <td>{{ substr($bought->slice($i, 1)->first()->finaldate, 0, 10) }}</td>
-          </tr>
-          @endfor
-        </tbody>
-      </table>
-      @if (count($bought) > 6)
-      <a href="myhistory_user.html">
-        <button class="btn btn-outline-primary w-100">See More
-        </button>
-      </a>
-      @endif
-      @else
-      <div id="warningNoAuctions" class="alert alert-info my-5 w-75 mx-auto">
-        <strong class="alert-link">Ups!</strong> You have not <strong>bought</strong> any items yet.
-      </div>
-      @endif
-    </div>
-    @else
-    <hr class="my-5">
-    <div id="statistics"
-    class="container">
-      <h3 class="pb-2">Auction History</h3>
-      <ul class="nav nav-tabs">
-        <li class="nav-item">
-          <a class="nav-link active show"
-            data-toggle="tab"
-            href="#pending">Former Responsible Auctions
-          </a>
-      </ul>
-      <div class=" table-responsive tab-content ">
-        <div class="tab-pane fade"
-        id="responAuct"
-        role="tabpanel"
-        aria-labelledby="sold-tab">
 
-          @if (count($responAuct) > 0)
-          <table class="table table-hover">
-            <thead>
-              <tr>
-                <th scope="col">Auction</th>
-                <th scope="col">Item</th>
-                <th scope="col">Date</th>
-              </tr>
-            </thead>
-            <tbody>
-              @for ($i = 0; $i < min(6, count($responAuct)); $i++)
-              <tr class="table">
-                <th scope="row">#{{ $responAuct->slice($i, 1)->first()->id }}</th>
-                <td>{{ $responAuct->slice($i, 1)->first()->title }}</td>
-                <td>{{ substr($responAuct->slice($i, 1)->first()->finaldate, 0, 10) }}</td>
-              </tr>
-              @endfor
-            </tbody>
-          </table>
-            @if (count($responAuct) > 6)
-            <a href="myhistory_user.html"><button class="btn btn-outline-primary w-100">See More</button></a>
+      <span class="col-md-2 col-sm-0 col-xs-0"></span>
+    </div>
+
+      <hr class="my-5">
+      <div id="statistics"
+      class="container">
+        <h3 class="pb-2">Auction History</h3>
+        @if ($user->typeofuser=='Normal')
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a class="nav-link active show"
+              data-toggle="tab"
+              href="#pending">Pending Action
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"
+              data-toggle="tab"
+              href="#bought">Bought
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"
+              data-toggle="tab"
+              href="#sold">Sold
+            </a>
+          </li>
+        </ul>
+        <div class=" table-responsive tab-content ">
+          <div class="tab-pane fade"
+          id="sold"
+          role="tabpanel"
+          aria-labelledby="sold-tab">
+
+            @if (count($sold) > 0)
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">Auction</th>
+                  <th scope="col">Item</th>
+                  <th scope="col">Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                @for ($i = 0; $i < min(6, count($sold)); $i++)
+                <tr class="table">
+                  <th scope="row">#{{ $sold->slice($i, 1)->first()->id }}</th>
+                  <td>{{ $sold->slice($i, 1)->first()->title }}</td>
+                  <td>{{ substr($sold->slice($i, 1)->first()->finaldate, 0, 10) }}</td>
+                </tr>
+                @endfor
+              </tbody>
+            </table>
+              @if (count($sold) > 6)
+              <a href="myhistory_user.html"><button class="btn btn-outline-primary w-100">See More</button></a>
+              @endif
+            @else
+            <div id="warningNoAuctions" class="alert alert-info my-5 w-75 mx-auto ">
+              <strong class="alert-link">Ups!</strong> You have not <strong>sold</strong> any items yet.
+            </div>
             @endif
-          @else
-          <div id="warningNoAuctions" class="alert alert-info my-5 w-75 mx-auto">
-            <strong class="alert-link">Ups!</strong> You have not any items yet.
           </div>
-          @endif
-        </div>
-        @endif
-    <div class="tab-pane fade active show"
-      id="pending"
-      role="tabpanel"
-      aria-labelledby="pending-tab">
-    <!--
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th scope="col">Auction</th>
-            <th scope="col">Item</th>
-            <th scope="col">Date</th>
-            <th scope="col">Action Required</th>
-          </tr>
-        </thead>
-        <tbody>
+          <div class="tab-pane fade"
+            id="bought"
+            role="tabpanel"
+            aria-labelledby="bought-tab">
+            @if (count($bought) > 0)
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">Auction</th>
+                  <th scope="col">Item</th>
+                  <th scope="col">Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                @for ($i = 0; $i < min(6, count($bought)); $i++)
+                <tr class="table">
+                  <th scope="row">#{{ $bought->slice($i, 1)->first()->id }}</th>
+                  <td>{{ $bought->slice($i, 1)->first()->title }}</td>
+                  <td>{{ substr($bought->slice($i, 1)->first()->finaldate, 0, 10) }}</td>
+                </tr>
+                @endfor
+              </tbody>
+            </table>
+              @if (count($bought) > 6)
+              <a href="myhistory_user.html">
+                <button class="btn btn-outline-primary w-100">See More
+                </button>
+              </a>
+              @endif
+            @else
+            <div id="warningNoAuctions" class="alert alert-info my-5 w-75 mx-auto">
+              <strong class="alert-link">Ups!</strong> You have not <strong>bought</strong> any items yet.
+            </div>
+            @endif
+          </div>
 
-        </tbody>
-      </table>
-    -->
-    @if($user->typeofuser=='Normal')
-      <div id="warningNoAuctions" class="alert alert-info my-5 w-75 mx-auto">
-        <strong class="alert-link">Good!</strong> You have no <strong>pending</strong> businesses.
-      </div>
-    @endif
-    </div>
-  </div>
-</div>
-@endif
+            <div class="tab-pane fade active show"
+              id="pending"
+              role="tabpanel"
+              aria-labelledby="pending-tab">
+
+              <div id="warningNoAuctions" class="alert alert-info my-5 w-75 mx-auto">
+                <strong class="alert-link">Good!</strong> You have no <strong>pending</strong> businesses.
+              </div>
+            </div>
+          </div>
+      @else
+          <ul class="nav nav-tabs">
+            <li class="nav-item">
+              <a class="nav-link active show"
+                data-toggle="tab"
+                href="#responsible">Former Responsible Auctions
+              </a>
+            </li>
+          </ul>
+          <div class=" table-responsive tab-content ">
+            <div class="tab-pane fade active show"
+            id="responsible"
+            role="tabpanel"
+            aria-labelledby="responsible-tab">
+              @if (count($responAuct) > 0)
+                <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">Auction</th>
+                    <th scope="col">Item</th>
+                    <th scope="col">Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @for ($i = 0; $i < min(6, count($responAuct)); $i++)
+                  <tr class="table">
+                    <th scope="row">#{{ $responAuct->slice($i, 1)->first()->id }}</th>
+                    <td>{{ $responAuct->slice($i, 1)->first()->title }}</td>
+                    <td>{{ substr($responAuct->slice($i, 1)->first()->finaldate, 0, 10) }}</td>
+                  </tr>
+                  @endfor
+                </tbody>
+              </table>
+                @if (count($responAuct) > 6)
+                  <a href="myhistory_user.html"><button class="btn btn-outline-primary w-100">See More</button></a>
+                @endif
+              @else
+                <div id="warningNoAuctions" class="alert alert-info my-5 w-75 mx-auto">
+                  <strong class="alert-link">Ups!</strong> You have managed any auctions yet.
+                </div>
+              @endif
+            </div>
+          </div>
+        </div>
+      @endif
+  @endif
 @endif
