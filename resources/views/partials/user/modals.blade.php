@@ -201,8 +201,8 @@
           </fieldset>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-secondary btn-round" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary btn-round box-shadow">Save changes</button>
         </div>
       </form>
     </div>
@@ -238,8 +238,8 @@
           </select>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary" onclick="$('#loadingModal').modal('show');">Pay with PayPal</button>
+          <button type="button" class="btn btn-secondary btn-round" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary btn-round box-shadow" onclick="$('#loadingModal').modal('show');">Pay with PayPal</button>
         </div>
       </form>
     </div>

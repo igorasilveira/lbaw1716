@@ -1,5 +1,21 @@
 /* common */
 
+input, select, textarea {
+  border-radius: 10px !important;
+}
+
+div.input-group-append > span {
+  border-radius: 0 10px 10px 0;
+}
+
+div.input-group-prepend > span {
+  border-radius: 10px 0 0 10px;
+}
+
+.no-radius {
+  border-radius: 0 !important;
+}
+
 .error {
   display: block;
   color: red;

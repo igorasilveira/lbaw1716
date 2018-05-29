@@ -85,11 +85,11 @@
                     <span class="input-group-text">€</span>
                   </div>
                   <input type="number"
-                         class="form-control"
+                         class="form-control no-radius"
                          aria-label="Amount (to the nearest euro)"
                          name="startingprice"
                          required
-                         min=1
+                         min=0
                          value=0>
                   <div class="input-group-append">
                     <span class="input-group-text">.00</span>
@@ -106,9 +106,10 @@
                     <span class="input-group-text">€</span>
                   </div>
                   <input type="number"
-                         class="form-control"
+                         class="form-control no-radius"
                          aria-label="Amount (to the nearest euro)"
                          name="minimumsellingprice"
+                         min=0
                          value=0>
                   <div class="input-group-append">
                     <span class="input-group-text">.00</span>
@@ -125,9 +126,10 @@
                     <span class="input-group-text">€</span>
                   </div>
                   <input type="number"
-                         class="form-control"
+                         class="form-control no-radius"
                          aria-label="Amount (to the nearest euro)"
                          name="buynow"
+                         min=0
                          value=0>
                   <div class="input-group-append">
                     <span class="input-group-text">.00</span>
