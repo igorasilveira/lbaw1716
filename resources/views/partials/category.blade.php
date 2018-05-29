@@ -75,7 +75,7 @@
               <th scope="col">Photo of Item</th>
               <th scope="col">Name of Auction</th>
               <th scope="col">Value of last Bid</th>
-              <th scope="col">Open Untill</th>
+              <th scope="col">Lifetime of Auction</th>
             </tr>
           </thead>
           <tbody>
