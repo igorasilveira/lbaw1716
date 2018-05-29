@@ -163,6 +163,3 @@ class AdminController extends Controller
     }
 
 }
-rn view('pages.auction', ['auction' => $auction]);
-    }
-}
