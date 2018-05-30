@@ -5,7 +5,6 @@
   </div>
   <hr class="my-md-4 my-sm-2 my-xs-1">
 </div>
-
 <div class="jumbotron">
   <div id="profile-container"
        class="w-75 mx-auto">
@@ -79,7 +78,7 @@
             <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 my-auto">
               <p>
                 @if($auction->bids->count() > 0)
-                {{ $auction->bids->sortByDesc('date')->first()->value }} €
+                  {{ $auction->bids->sortByDesc('date')->first()->value }} €
                 @else
                 0 €
                 @endif
