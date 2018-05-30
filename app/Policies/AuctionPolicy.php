@@ -27,9 +27,12 @@ class AuctionPolicy
          else
           if($auction->state == 'Over' && ($user->id == $auction->auctioncreator || $user->id == $auction->auctionwinner) )
           return true;
-          else {
+          else
+           if($auction->state == 'Pending' && ($user->id == $auction->auctioncreator) )
+           return true;
+          else
             return false;
-          }
+
 
          //return $this->auth->guest();
 

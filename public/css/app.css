@@ -1,5 +1,9 @@
 /* common */
 
+th {
+  color: black;
+}
+
 .min-height {
   min-height: 100vh !important;
   height: auto;

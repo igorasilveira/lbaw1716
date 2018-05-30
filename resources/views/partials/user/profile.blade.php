@@ -21,7 +21,7 @@
 @if (Auth::check())
   @if (Auth::user()->id == $user->id)
 
-    @if($user->typeofuser=='Normal' && $user->blocked==false)
+    @if($user->typeofuser=='Normal' && $user->blocked==false && count($pending) > 0)
     <div id="warningPendingTop" class="alert alert-dismissible alert-danger my-4 w-75 mx-auto">
       <strong class="alert-link">Attention!</strong> You have pending actions required on finished auctions.
     </div>
@@ -49,7 +49,7 @@ class="jumbotron">
       <section class="pb-2">
         <h5 class="text-muted">#{{ $user->id }}</h5>
         <h3>{{ $user->username}}
-          <span class=" mx-4 badge badge-pill badge-info">
+          <span class=" mx-4 badge badge-pill badge-info box-shadow">
             @if ($user->typeofuser == 'Normal')
               @if ($user->rating != NULL)
                 {{ $user->rating }}/5
@@ -79,7 +79,7 @@ class="jumbotron">
         @if (Auth::check() && (Auth::user()->id == $user->id))
         @if ($user->typeofuser=='Normal' && $user->blocked==false)
       <div id="balance"
-      class="text-center w-50 border border-dark">
+      class="text-center w-50 border border-dark btn-round box-shadow">
         <h4 class="pb-2">Balance</h4>
         <hr class="py-0" />
         <div class="row">
@@ -110,19 +110,19 @@ class="jumbotron">
       @if ($user->typeofuser=='Normal')
       <div id="report"
                      class="text-center w-50">
-                  <div class="col">
-                    @if ($user->blocked)
-                    <a href="/admin/users/{{$user->id}}/unblock">
-                      <button type="button"
-                              class="btn btn-danger w-100 box-shadow mt-4">UnBlock User</button>
-                    </a>
-                    @else
-                    <a href="/admin/users/{{$user->id}}/block">
-                      <button type="button"
-                              class="btn btn-danger w-100 box-shadow mt-4">Block User</button>
-                    </a>
-                    @endif
-                  </div>
+        <div class="col">
+          @if ($user->blocked)
+          <a href="/admin/users/{{$user->id}}/unblock">
+            <button type="button"
+                    class="btn btn-danger w-100 box-shadow mt-4">UnBlock User</button>
+          </a>
+          @else
+          <a href="/admin/users/{{$user->id}}/block">
+            <button type="button"
+                    class="btn btn-danger w-100 box-shadow mt-4">Block User</button>
+          </a>
+          @endif
+        </div>
 
       </div>
       @endif
@@ -137,19 +137,15 @@ class="jumbotron">
     <hr class="mb-5">
     <div class="row">
       <span class="col-md-2 col-sm-0 col-xs-0"></span>
-      @if($user->typeofuser=='Normal')
-        <a href="{{ $user->username }}/auctions"
+        <a @if($user->typeofuser=='Normal')
+          href="{{ $user->username }}/auctions"
+          @else
+            href="{{ $user->username }}/manageAuctions"
+          @endif
           class="col-md-8 col-sm-12 col-xs-12">
           <button class="btn btn-info w-100 box-shadow btn-round">My Live Auctions
           </button>
         </a>
-      @else
-        <a href="{{ $user->username }}/manageAuctions"
-          class="col-md-8 col-sm-12 col-xs-12">
-          <button class="btn btn-info w-100 box-shadow btn-round">My Live Auctions
-          </button>
-        </a>
-      @endif
 
       <span class="col-md-2 col-sm-0 col-xs-0"></span>
     </div>
@@ -248,15 +244,37 @@ class="jumbotron">
             </div>
             @endif
           </div>
-
             <div class="tab-pane fade active show"
               id="pending"
               role="tabpanel"
               aria-labelledby="pending-tab">
-
+              @if (count($pending) > 0)
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">Auction</th>
+                    <th scope="col">Item</th>
+                    <th scope="col">Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @for ($i = 0; $i < min(6, count($pending)); $i++)
+                  <tr class="table">
+                    <th scope="row">#{{ $pending->slice($i, 1)->first()->id }}</th>
+                    <td>{{ $pending->slice($i, 1)->first()->title }}</td>
+                    <td>{{ substr($pending->slice($i, 1)->first()->finaldate, 0, 10) }}</td>
+                  </tr>
+                  @endfor
+                </tbody>
+              </table>
+                @if (count($pending) > 6)
+                <a href="myhistory_user.html"><button class="btn btn-outline-primary w-100">See More</button></a>
+                @endif
+              @else
               <div id="warningNoAuctions" class="alert alert-info my-5 w-75 mx-auto">
                 <strong class="alert-link">Good!</strong> You have no <strong>pending</strong> businesses.
               </div>
+              @endif
             </div>
           </div>
       @else

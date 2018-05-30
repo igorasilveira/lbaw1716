@@ -43,27 +43,27 @@
         placeholder="Search"
         type="text">
         <span class="col-1"></span>
-        <button class="btn btn-primary my-2 col-4"
+        <button class="btn btn-primary my-2 col-4 btn-round box-shadow"
         type="submit">Search</button>
       </form>
       <hr class="my-3">
     </div>
-    <div class="table-responsive">
+
+    <div class="table-responsive tab-content btn-round">
       @if(count($buying_m6) == 0)
       <div id="warningNoAuctions" class="alert alert-info my-5 w-75 mx-auto box-shadow">
         <strong class="alert-link">Ups!</strong> You are not <strong>bidding</strong> on any auctions with {{ $search }} in title or description.
       </div>
       @else
-      <table class="bidsListViewMore table-responsive table-hover">
+      <table class="bidsListViewMore table table-hover">
         <thead>
-          <tr class="table-info">
-            <th scope="col">Photo of Item</th>
-            <th scope="col">Name of Auction</th>
-            <th scope="col">Name of Seller</th>
-            <th scope="col">Value of my Bid</th>
-            <th scope="col">Date of my Bid</th>
-            <th scope="col">Value of last Bid</th>
-            <th scope="col">Lifetime of Auction</th>
+          <tr class="table-warning">
+            <th scope="col">Photo</th>
+            <th scope="col">Name</th>
+            <th scope="col">Seller</th>
+            <th scope="col">My Bid</th>
+            <th scope="col">Last Bid</th>
+            <th scope="col">Ending Date</th>
           </tr>
         </thead>
         <tbody>
@@ -76,7 +76,6 @@
               <td width="30%"> <a href="/auction/{{ $auction->id }}"> {{ $auction->title }} </a> </td>
               <td> {{ App\User::find($auction->auctioncreator)->username }} </td>
               <td> {{ Auth::user()->lastBidUserAuction($auction)->value }} € </td>
-              <td> {{ Auth::user()->lastBidUserAuction($auction)->date }} </td>
               <td> {{ $auction->bids->sortByDesc('date')->first()->value }} € </td>
               <td> {{ $auction->timeleft() }} </td>
             </tr>
@@ -128,25 +127,25 @@
         placeholder="Search"
         type="text">
         <span class="col-1"></span>
-        <button class="btn btn-primary my-2 col-4"
+        <button class="btn btn-primary my-2 col-4 btn-round box-shadow"
         type="submit">Search</button>
       </form>
       <hr class="my-3">
     </div>
-    <div class="table-responsive">
+    <div class="table-responsive tab-content btn-round">
       @if(count($selling_m6) == 0)
       <div id="warningNoAuctions" class="alert alert-info my-5 w-75 mx-auto box-shadow">
         <strong class="alert-link">Ups!</strong> You have no <strong>selling</strong> auctions with {{ $search }} in title or description.
       </div>
       @else
-      <table class="sellsListViewMore table-responsive table-hover">
+      <table class="sellsListViewMore table table-hover">
         <thead>
-          <tr class="table-info">
+          <tr class="table-warning">
             <th scope="col">Photo of Item</th>
             <th scope="col">Name of Auction</th>
-            <th scope="col">Minimum Value</th>
-            <th scope="col">Value of last Bid</th>
-            <th scope="col">Lifetime of Auction</th>
+            <th scope="col">Min Value</th>
+            <th scope="col">Last Bid</th>
+            <th scope="col">Ending Date</th>
           </tr>
         </thead>
         <tbody>
@@ -170,7 +169,7 @@
             @endforeach
           </tbody>
         </table>
-        <br />
+
         <div class="container-fluid my-4">
           {{ $selling_m6->fragment('_selling')->links() }}
         </div>

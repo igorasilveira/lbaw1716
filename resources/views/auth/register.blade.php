@@ -23,7 +23,7 @@
           </h3>
         </legend>
         <hr class="my-0" />
-        <label class="col-form-label required">Username</label> <input class="form-control"
+        <label for="username" class="col-form-label required">Username</label> <input class="form-control"
                type="text"
                name="username" value='{{{ old('username') }}}'>
                @if ($errors->has('username'))
@@ -31,7 +31,7 @@
                  <strong>{{ $errors->first('username') }}</strong>
                </span>
                @endif
-        <label class="col-form-label required">Password</label> <input class="form-control"
+        <label for="password" class="col-form-label required">Password</label> <input class="form-control"
                type="password"
                name="password">
                @if ($errors->has('password'))
@@ -39,7 +39,7 @@
                  <strong>{{ $errors->first('password') }}</strong>
                </span>
                @endif
-        <label class="col-form-label required">Password Confirmation</label> <input class="form-control"
+        <label for="password_confirmation" class="col-form-label required">Password Confirmation</label> <input class="form-control"
                type="password"
                name="password_confirmation">
                @if ($errors->has('password_confirmation'))
@@ -56,7 +56,7 @@
           </h3>
         </legend>
         <hr class="my-0" />
-        <label class="col-form-label required">Complete Name</label> <input class="form-control"
+        <label for="completeName" class="col-form-label required">Complete Name</label> <input class="form-control"
                type="text"
                name="completeName" value='{{{ old('completeName') }}}'>
                @if ($errors->has('completeName'))
@@ -64,7 +64,7 @@
                  <strong>{{ $errors->first('completeName') }}</strong>
                </span>
                @endif
-        <label class="col-form-label required">Email</label><input class="form-control"
+        <label  for="email" class="col-form-label required">Email</label><input class="form-control"
                type="e-mail"
                name="email" value='{{{ old('email') }}}'>
                @if ($errors->has('email'))
@@ -72,7 +72,7 @@
                  <strong>{{ $errors->first('email') }}</strong>
                </span>
                @endif
-        <label class="col-form-label">Phone Number</label><input class="form-control"
+        <label  for="phoneNumber" class="col-form-label">Phone Number</label><input class="form-control"
                type="phone"
                name="phoneNumber" value='{{{ old('phoneNumber') }}}'>
                @if ($errors->has('phoneNumber'))
@@ -80,7 +80,7 @@
                  <strong>{{ $errors->first('phoneNumber') }}</strong>
                </span>
                @endif
-        <label class="col-form-label required">Birthdate</label> <input class="form-control"
+        <label  for="birthDate" class="col-form-label required">Birthdate</label> <input class="form-control"
                type="date"
                name="birthDate" value='{{{ old('birthDate') }}}'>
                @if ($errors->has('birthDate'))
@@ -113,18 +113,18 @@
           </h3>
         </legend>
         <hr class="my-0" />
-        <label class="col-form-label required">Country</label>
+        <label  for="country" class="col-form-label required">Country</label>
         <select class="form-control"
                 name="country">
             @foreach(App\Country::all() as $country)
                 <option value="{{ $country->id }}">{{ $country->name }}</option>
             @endforeach
     </select>
-        <label class="col-form-label required">City</label>
+        <label  for="city" class="col-form-label required">City</label>
         <input class="form-control"
                type="text"
                name="city" value='{{{ old('city') }}}'>
-        <label class="col-form-label required">Address</label>
+        <label  for="address" class="col-form-label required">Address</label>
         <input class="form-control"
                type="text"
                name="address" value='{{{ old('address') }}}'>
