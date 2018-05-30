@@ -89,14 +89,8 @@ class AuctionController extends Controller
   public function rate(Request $request)
   {
     $auction = Auction::find($request->input('id'));
-
     $auction->update(['rate' => $request->input('rate')]);
-
-    return redirect()->action(
-    'ProfileController@show', ['username' => Auth::user()->username]
-  );
-
-
+    return null;
   }
 
 }

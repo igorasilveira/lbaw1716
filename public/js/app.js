@@ -465,19 +465,19 @@ function checkRating() {
 
 	if (document.getElementById('star1')
 		.checked) {
-		rating=1;
+		rating = 1;
 	} else
 	if (document.getElementById('star2')
 		.checked) {
-			rating=2;
+		rating = 2;
 	} else
 	if (document.getElementById('star3')
 		.checked) {
-			rating=3;
+		rating = 3;
 	} else
 	if (document.getElementById('star4')
 		.checked) {
-			rating=4;
+		rating = 4;
 	} else {
 		rating = 5;
 	}
@@ -487,9 +487,9 @@ function checkRating() {
 	var i = (this.pendingRow)
 		.parentNode.parentNode.rowIndex;
 
-var wantedRow = pendTable.rows[i];
+	var wantedRow = pendTable.rows[i];
 	var auctId = pendTable.rows[i].cells[0].innerHTML;
-	auctId = auctId.replace("#","");
+	auctId = auctId.replace("#", "");
 
 
 	var url = window.location.href + '/auction/' + auctId + '/rate';
@@ -512,28 +512,12 @@ var wantedRow = pendTable.rows[i];
 		data: JSON.stringify(json),
 		cache: false,
 		success: function () {
+			if (!json.error) location.reload(true);
 		},
 		error: function () {
 			alert('Could not rate auction');
 		}
 	});
-
-
-	/*if (document.getElementById('star1')
-		.checked) {
-		document.getElementById('complain')
-			.style.display = "block";
-	} else
-	if (document.getElementById('star2')
-		.checked) {
-		document.getElementById('complain')
-			.style.display = "block";
-	} else {
-		document.getElementById('complain')
-			.style.display = "none";
-		eliminatePending();
-	}
-*/
 }
 
 function eliminatePending() {
