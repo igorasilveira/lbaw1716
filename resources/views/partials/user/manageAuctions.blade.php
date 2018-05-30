@@ -1,7 +1,7 @@
 <div class="hidden-xs">
   <hr class="my-md-4 my-sm-2 my-xs-1">
   <div class="title jumbotron my-0 p-3">
-    <h1 class="display-6">My Auctions</h1>
+    <h1 class="display-6 text-center">My Auctions</h1>
   </div>
   <hr class="my-md-4 my-sm-2 my-xs-1">
 </div>
