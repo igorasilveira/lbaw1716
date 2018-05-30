@@ -67,7 +67,7 @@ class User extends Authenticatable
       $auctionsSelling = $this->auctionsSelling()->skip(5)->take(1)->get()->first();
       $limitdate_6 = $auctionsSelling->limitdate;
 
-      return $this->auctionsSelling()->where('limitdate', '>', $limitdate_6)->paginate(5);
+      return $this->auctionsSelling()->where('limitdate', '>', $limitdate_6)->paginate(5,['*'], '_selling');
     }
 
     public function auctionsBidding()
@@ -82,7 +82,7 @@ class User extends Authenticatable
       $auctionsBidding = $this->auctionsBidding()->skip(5)->take(1)->get()->first();
       $limitdate_6 = $auctionsBidding->limitdate;
 
-      return $this->auctionsBidding()->where('limitdate', '>', $limitdate_6)->paginate(5);
+      return $this->auctionsBidding()->where('limitdate', '>', $limitdate_6)->paginate(5,['*'], '_bidding');
     }
 
     public function lastBidUserAuction(Auction $auction)
@@ -100,7 +100,7 @@ class User extends Authenticatable
         $moderating = $this->auctionsModerating()->skip(5)->take(1)->get()->first();
         $limitdate_6 = $moderating->limitdate;
 
-        return $this->auctionsModerating()->where('limitdate', '>', $limitdate_6)->paginate(5);
+        return $this->auctionsModerating()->where('limitdate', '>', $limitdate_6)->paginate(5,['*'], '_moderating');
     }
 
     public function pending()
@@ -113,6 +113,6 @@ class User extends Authenticatable
         $pending = $this->pending()->skip(5)->take(1)->get()->first();
         $limitdate_6 = $pending->limitdate;
 
-        return $this->pending()->where('limitdate', '>', $limitdate_6)->paginate(5);
+        return $this->pending()->where('limitdate', '>', $limitdate_6)->paginate(5,['*'], '_pending');
     }
 }

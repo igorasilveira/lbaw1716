@@ -85,7 +85,7 @@
         </table>
         <br />
         <div class="container-fluid my-4">
-          {{ $buying_m6->links() }}
+          {{ $buying_m6->fragment('_bidding')->links() }}
         </div>
         @endif
       </div>
@@ -172,7 +172,7 @@
         </table>
         <br />
         <div class="container-fluid my-4">
-          {{ $selling_m6->links() }}
+          {{ $selling_m6->fragment('_selling')->links() }}
         </div>
         @endif
       </div>
