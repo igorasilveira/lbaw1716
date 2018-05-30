@@ -113,3 +113,4 @@ class AuctionPolicy
       return false;
     }
   }
+}
