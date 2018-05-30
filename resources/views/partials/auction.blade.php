@@ -40,15 +40,15 @@
           @if ($auction->state == 'Active')
             <h3 id="countdown_{{$auction->id}}"class="text-info pb-2">{{ $auction->timeleft() }}</h3>
           @elseif ($auction->state == 'Pending')
-            <span class="badge badge-pill badge-warning box-shadow">
+            <span class="badge badge-pill badge-warning box-shadow my-2">
               <h3 class="my-auto">Pending</h3>
             </span>
           @elseif ($auction->state == 'Rejected')
-            <span class="badge badge-pill badge-danger">
+            <span class="badge badge-pill badge-danger my-2">
               <h3 class="my-auto">Rejected</h3>
             </span>
           @elseif ($auction->state == 'Over')
-            <span class="badge badge-pill badge-danger">
+            <span class="badge badge-pill badge-danger my-2">
               <h3 class="my-auto">Over</h3>
             </span>
           @endif
@@ -98,7 +98,7 @@
                         name="placeBidBtn"
                         formaction="/auction/bid/{{ $auction->id }}"
                         formmethod="post"
-                        class="btn btn-success w-100">
+                        class="btn btn-success w-100 btn-round box-shadow">
                         Bid
                         <span id="auctionBid">
                         @if($auction->bids->count() > 0)
@@ -114,17 +114,17 @@
           <hr class="my-2">
           @if($auction->bids->count() == 0 || ($auction->bids->count() > 0 && $auction->bids->sortByDesc('date')->first()->value + 0.10*($auction->bids->sortByDesc('date')->first()->value) <= $auction->buynow))
           <!-- BUY NOW BUTTON AREA -->
-          <form class="w-100">
-            {{ csrf_field() }}
-            <input name="value" type="hidden" value="{{ $auction->buynow }}"/>
-            <button type="submit"
-                    name="placeBidBtn"
-                    formaction="/auction/buy-now/{{ $auction->id }}"
-                    formmethod="post"
-                    class="btn btn-info mw-75 text-center">
-                    Buy Now {{ $auction->buynow }} €
-            </button>
-          </form>
+            <form class="w-100">
+              {{ csrf_field() }}
+              <input name="value" type="hidden" value="{{ $auction->buynow }}"/>
+              <button type="submit"
+                      name="placeBidBtn"
+                      formaction="/auction/buy-now/{{ $auction->id }}"
+                      formmethod="post"
+                      class="btn btn-info w-100 text-center btn-round box-shadow my-md-4 my-sm-2">
+                      Buy Now {{ $auction->buynow }} €
+              </button>
+            </form>
           @endif
           @endif
           @else
@@ -133,39 +133,54 @@
         <div id="pendingActions"
         class="container mt-md-5 mt-sm-3 mt-3">
           <div class="row">
-                    <button id="rejectbtt" class="btn btn-danger mw-75 text-center">Reject</button>
 
-                  <a href="/admin/auction/{{$auction->id}}/approve">
-                    <button class="btn btn-success mw-75 text-center">Accept</button>
-                  </a>
-          </div>
-          <div id="reasonModal" class="modal">
+            <div class="col-md-6 col-sm-12 col-xs-12">
 
-            <!-- Modal content -->
-            <div class="modal-content">
-              <span class="close">&times;</span>
-              <div class="modal-body py-5 mx-md-5 mx-sm-1 mx-xs-1">
-                <form method="POST"
-                      action="/admin/auction/{{$auction->id}}/reject"
-                      enctype="multipart/form-data"
-                      class="form-group navbar-form">
-                  <input type="textarea"
-                         class="form-control p-2 my-2"
-                         placeholder="Reason of Rejection Here"
-                         id="reasonOfRefusal"
-                         name="reasonOfRefusal"
-                         required>
-                  <button type="submit"
-                          id="btnRefusal"
-                          class="btn btn-success w-100 btn-round mx-auto my-3 box-shadow"
-                          >Send Reason</button>
-                          {{ csrf_field() }}
-                </form>
-
-              </div>
+              <button id="rejectbtt" class="btn btn-danger text-center w-100 btn-round box-shadow mb-3" data-toggle="modal" data-target="#reasonModal">Reject</button>
             </div>
 
+            <div class="col-md-6 col-sm-12 col-xs-12">
+              <a href="/admin/auction/{{$auction->id}}/approve" class="btn btn-success w-100 text-center mb-3 btn-round box-shadow">Accept
+              </a>
+            </div>
           </div>
+
+          <!-- Reject Auction Modal -->
+          <div class="modal fade" id="reasonModal" tabindex="-1" role="dialog" aria-labelledby="reasonModal" aria-hidden="true" data-backdrop="false">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content"  style="border-radius: 5px">
+                <form method="post"
+                action="/admin/auction/{{$auction->id}}/reject"
+                enctype="multipart/form-data">
+                {{ csrf_field() }}
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="reasonModalLabel">Reject Auction </h5>
+                    <button type="button" class="close text-info" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body my-4 mx-md-4 mx-sm-1">
+                    <fieldset>
+                      <h4 class="text-left">
+                        <label class="col-form-label required"
+                        for="reasonOfRefusal">Reason of Refusal</label>
+                      </h4>
+                      <input type="textarea"
+                             class="form-control p-2 my-2"
+                             id="reasonOfRefusal"
+                             name="reasonOfRefusal"
+                             required>
+                    </fieldset>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-round" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-success btn-round box-shadow">Send Reason</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
         </div>
         @endif
         @if($auction->state == 'Over')
@@ -277,27 +292,3 @@
     </div>
   </div>
 </div>
-
-<script>
-// Get the modal
-var modal = document.getElementById('reasonModal');
-
-// Get the button that opens the modal
-var btn = document.getElementById("rejectbtt");
-var span = document.getElementsByClassName("close")[0];
-// When the user clicks the button, open the modal
-btn.onclick = function() {
-    modal.style.display = "block";
-}
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-    modal.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
-</script>

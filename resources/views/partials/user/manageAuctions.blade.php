@@ -48,10 +48,10 @@
       </form>
       <hr class="my-3">
     </div>
-    <div class="table-responsive">
-      <table class="bidsListViewMore table-responsive table-hover">
+    <div class="table-responsive tab-content btn-round">
+      <table class="bidsListViewMore table table-hover">
         <thead>
-          <tr class="table-info">
+          <tr class="table-warning">
             <th scope="col">Photo of Item</th>
             <th scope="col">Name of Auction</th>
             <th scope="col">Name of Seller</th>
@@ -124,7 +124,7 @@
     <div class="table-responsive">
       <table class="sellsListViewMore table-responsive table-hover">
         <thead>
-          <tr class="table-info">
+          <tr class="table-warning">
             <th scope="col">Photo of Item</th>
             <th scope="col">Name of Auction</th>
             <th scope="col">Minimum Value</th>
