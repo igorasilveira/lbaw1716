@@ -66,7 +66,15 @@ class ProfileController extends Controller
         $pending = $user->pending()->get();
         $moderating = $user->auctionsModerating()->get();
 
-        return view('pages.user.manageAuctions', ['user' => $user, 'pending' => $pending, 'moderating' => $moderating]);
+        $pending_m6 = null;
+        $moderating_m6 = null;
+
+        if(count($pending) > 6)
+          $pending_m6 = $user->pending_m6();
+        if(count($moderating) > 6)
+          $moderating_m6 = $user->auctionsModerating_m6();
+
+        return view('pages.user.manageAuctions', ['user' => $user, 'pending' => $pending, 'moderating' => $moderating, 'pending_m6' => $pending_m6, 'moderating_m6' => $moderating_m6]);
     }
 
     /**
@@ -80,7 +88,7 @@ class ProfileController extends Controller
     {
         $request->session()->flash('form', 'edit');
         $user = User::get()->where('username', '=', $request['username'])->first();
-        
+
         if ('Normal' == $user->type || 'Administrator' == $user->type) {
             $validator = $request->validate([
             'username' => 'required|string|max:255|unique:user,username,'.$user->id,

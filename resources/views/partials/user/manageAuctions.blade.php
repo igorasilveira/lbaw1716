@@ -38,9 +38,11 @@
   <div class="pendingListViewMore container-fluid collapse">
     <div class="container-fluid">
       <hr class="my-3">
-      <form class="form-inline my-2 my-lg-0">
+      <form class="form-inline my-2 my-lg-0"
+      action="manageAuctions/pending/search" method="GET">
         <input class="form-control col-7"
         placeholder="Search"
+        name="search"
         type="text">
         <span class="col-1"></span>
         <button class="btn btn-primary my-2 col-4"
@@ -49,6 +51,11 @@
       <hr class="my-3">
     </div>
     <div class="table-responsive">
+      @if(count($pending_m6) == 0)
+      <div id="warningNoAuctions" class="alert alert-info my-5 w-75 mx-auto box-shadow">
+        <strong class="alert-link">Ups!</strong> There are no <strong>pending</strong> auctions with that word in title or description.
+      </div>
+      @else
       <table class="bidsListViewMore table-responsive table-hover">
         <thead>
           <tr class="table-info">
@@ -59,23 +66,24 @@
           </tr>
         </thead>
         <tbody>
-          @foreach(Auth::user()->pending_m6() as $auction)
+          @foreach($pending_m6 as $auction)
           <tr>
             <td scope="row"><img src="{{ $auction->pathtophoto }}"
               alt="Auction Item Image"
               width="80"
               height="80"></td>
               <td width="50%"> <a href="/auction/{{ $auction->id }}"> {{ $auction->title }} </a> </td>
-              <td> {{ App\User::find($auction->auctioncreator)->username }} </td>
-              <td> {{ $auction->timeleft() }} </td>
+              <td width="15%"> {{ App\User::find($auction->auctioncreator)->username }} </td>
+              <td width="15%"> {{ $auction->timeleft() }} </td>
             </tr>
             @endforeach
           </tbody>
         </table>
         <br />
         <div class="container-fluid my-4">
-          {{ Auth::user()->pending_m6()->links() }}
+          {{ $pending_m6->links() }}
         </div>
+        @endif
       </div>
       @endif
     </div>
@@ -111,7 +119,8 @@
   <div class="moderatingListViewMore container-fluid collapse">
     <div class="container-fluid">
       <hr class="my-3">
-      <form class="form-inline my-2 my-lg-0">
+      <form class="form-inline my-2 my-lg-0"
+      action="manageAuctions/moderating/search" method="GET">
         <input class="form-control col-7"
         placeholder="Search"
         type="text">
@@ -122,6 +131,11 @@
       <hr class="my-3">
     </div>
     <div class="table-responsive">
+      @if(count($moderating_m6) == 0)
+      <div id="warningNoAuctions" class="alert alert-info my-5 w-75 mx-auto box-shadow">
+        <strong class="alert-link">Ups!</strong> You have no <strong>moderating</strong> auctions with that word in title or description.
+      </div>
+      @else
       <table class="sellsListViewMore table-responsive table-hover">
         <thead>
           <tr class="table-info">
@@ -133,7 +147,7 @@
           </tr>
         </thead>
         <tbody>
-          @foreach(Auth::user()->auctionsModerating_m6() as $auction)
+          @foreach($moderating_m6 as $auction)
           <tr>
             <td scope="row"><img src="{{ $auction->pathtophoto }}"
               alt="Auction Item Image"
@@ -155,8 +169,9 @@
         </table>
         <br />
         <div class="container-fluid my-4">
-          {{ Auth::user()->auctionsModerating_m6()->links() }}
+          {{ $moderating_m6->links() }}
         </div>
+        @endif
       </div>
     </div>
     @endif
