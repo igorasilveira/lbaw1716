@@ -49,7 +49,7 @@ class="jumbotron">
       <section class="pb-2">
         <h5 class="text-muted">#{{ $user->id }}</h5>
         <h3>{{ $user->username}}
-          <span class=" mx-4 badge badge-pill badge-info">
+          <span class=" mx-4 badge badge-pill badge-info box-shadow">
             @if ($user->typeofuser == 'Normal')
               @if ($user->rating != NULL)
                 {{ $user->rating }}/5
@@ -79,7 +79,7 @@ class="jumbotron">
         @if (Auth::check() && (Auth::user()->id == $user->id))
         @if ($user->typeofuser=='Normal' && $user->blocked==false)
       <div id="balance"
-      class="text-center w-50 border border-dark">
+      class="text-center w-50 border border-dark btn-round box-shadow">
         <h4 class="pb-2">Balance</h4>
         <hr class="py-0" />
         <div class="row">
@@ -110,19 +110,19 @@ class="jumbotron">
       @if ($user->typeofuser=='Normal')
       <div id="report"
                      class="text-center w-50">
-                  <div class="col">
-                    @if ($user->blocked)
-                    <a href="/admin/users/{{$user->id}}/unblock">
-                      <button type="button"
-                              class="btn btn-danger w-100 box-shadow mt-4">UnBlock User</button>
-                    </a>
-                    @else
-                    <a href="/admin/users/{{$user->id}}/block">
-                      <button type="button"
-                              class="btn btn-danger w-100 box-shadow mt-4">Block User</button>
-                    </a>
-                    @endif
-                  </div>
+        <div class="col">
+          @if ($user->blocked)
+          <a href="/admin/users/{{$user->id}}/unblock">
+            <button type="button"
+                    class="btn btn-danger w-100 box-shadow mt-4">UnBlock User</button>
+          </a>
+          @else
+          <a href="/admin/users/{{$user->id}}/block">
+            <button type="button"
+                    class="btn btn-danger w-100 box-shadow mt-4">Block User</button>
+          </a>
+          @endif
+        </div>
 
       </div>
       @endif
@@ -137,19 +137,15 @@ class="jumbotron">
     <hr class="mb-5">
     <div class="row">
       <span class="col-md-2 col-sm-0 col-xs-0"></span>
-      @if($user->typeofuser=='Normal')
-        <a href="{{ $user->username }}/auctions"
+        <a @if($user->typeofuser=='Normal')
+          href="{{ $user->username }}/auctions"
+          @else
+            href="{{ $user->username }}/manageAuctions"
+          @endif
           class="col-md-8 col-sm-12 col-xs-12">
           <button class="btn btn-info w-100 box-shadow btn-round">My Live Auctions
           </button>
         </a>
-      @else
-        <a href="{{ $user->username }}/manageAuctions"
-          class="col-md-8 col-sm-12 col-xs-12">
-          <button class="btn btn-info w-100 box-shadow btn-round">My Live Auctions
-          </button>
-        </a>
-      @endif
 
       <span class="col-md-2 col-sm-0 col-xs-0"></span>
     </div>
