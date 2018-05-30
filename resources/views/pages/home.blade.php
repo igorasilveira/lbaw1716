@@ -13,28 +13,19 @@
           <navbar>
             <ul class="list-group box-shadow">
               <li class="list-group-item d-flex justify-content-between align-items-center">
-                <a href="/quickwins">Quick Wins</a>
-                <span class="badge badge-primary badge-pill">14</span>
-              </li>
-              <li class="list-group-item d-flex justify-content-between align-items-center">
                 <a href="/endingsoonest">Ending Soonest</a>
-                <span class="badge badge-primary badge-pill">2</span>
               </li>
               <li class="list-group-item d-flex justify-content-between align-items-center">
                 <a href="/newlylisted">Newly Listed</a>
-                <span class="badge badge-primary badge-pill">1</span>
               </li>
               <li class="list-group-item d-flex justify-content-between align-items-center">
                 <a href="/mostbids">Most Bids</a>
-                <span class="badge badge-primary badge-pill">14</span>
               </li>
               <li class="list-group-item d-flex justify-content-between align-items-center">
                 <a href="/lowestprice">Lowest Price</a>
-                <span class="badge badge-primary badge-pill">2</span>
               </li>
               <li class="list-group-item d-flex justify-content-between align-items-center">
                 <a href="/highestprice">Highest Price</a>
-                <span class="badge badge-primary badge-pill">1</span>
               </li>
             </ul>
             <br />

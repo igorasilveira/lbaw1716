@@ -6,6 +6,8 @@ use Illuminate\Notifications\Notifiable;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+
+
 class User extends Authenticatable
 {
     use Notifiable;
@@ -115,4 +117,6 @@ class User extends Authenticatable
 
         return $this->pending()->where('limitdate', '>', $limitdate_6)->paginate(5,['*'], '_pending');
     }
+
+
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Auction;
@@ -17,34 +18,51 @@ class SearchController extends Controller
         return view('pages.searchResults', ['search' => $search, 'results' => $this->search($search)]);
     }
 
-    public function quickwins()
-    {
-    }
-
     public function endingsoonest()
     {
         $now = new Carbon('Europe/Lisbon');
-        $dateFinished = $now->addHours(2);
+        $results_auctions = Auction::where('state', 'Active')->where('limitdate', '>=', $now)->orderBy('limitdate', 'ASC')->take(10)->get();
 
-        $results_auctions = Auction::where('state', 'Active')->whereIn('limitdate', [$now, $dateFinished])->orderBy('limitdate','ASC')->paginate(5, ['*'], '_auctions');
-
-        return view('pages.lateralSearch', ['search' => 'Ending Soonest', 'results' => $results_auctions]);
+        return view('pages.lateralSearch', ['search' => 'Ending Soonest', 'results' => $results_auctions->all()]);
     }
 
     public function newlylisted()
     {
+        $now = new Carbon('Europe/Lisbon');
+        $results_auctions = Auction::where('state', 'Active')->where('startdate', '<=', $now)->orderBy('startdate', 'DESC')->take(10)->get();
+
+        return view('pages.lateralSearch', ['search' => 'Newly Listed', 'results' => $results_auctions->all()]);
     }
 
     public function mostbids()
     {
+        $results_auctions = Auction::where('state', 'Active')->orderBy('numberofbids', 'DESC')->take(10)->get();
+
+        return view('pages.lateralSearch', ['search' => 'Most Bids', 'results' => $results_auctions->all()]);
     }
 
     public function lowestprice()
     {
+        $results_auctions = Auction::where('state', 'Active')->where('numberofbids', '>', 0)->get()->all();
+        $result = new Collection();
+        foreach ($results_auctions as $res) {
+            $result->push(['auction' => $res, 'greatestvalue' => $res->bids->sortByDesc('date')->first()->value]);
+        }
+        $results = $result->sortBy('greatestvalue')->take(10);
+
+        return view('pages.lateralSearch', ['search' => 'Lowest Price', 'results' => $results->pluck('auction')]);
     }
 
     public function highestprice()
     {
+        $results_auctions = Auction::where('state', 'Active')->where('numberofbids', '>', 0)->get()->all();
+        $result = new Collection();
+        foreach ($results_auctions as $res) {
+            $result->push(['auction' => $res, 'greatestvalue' => $res->bids->sortByDesc('date')->first()->value]);
+        }
+        $results = $result->sortByDesc('greatestvalue')->take(10);
+
+        return view('pages.lateralSearch', ['search' => 'Lowest Price', 'results' => $results->pluck('auction')]);
     }
 
     public function search($search)

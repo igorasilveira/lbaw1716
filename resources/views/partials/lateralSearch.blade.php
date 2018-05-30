@@ -49,7 +49,4 @@
       </tbody>
     </table>
   @endif
-  <div class="container-fluid my-4">
-    {{ $results->fragment('_auctions')->links() }}
-  </div>
 </div>
