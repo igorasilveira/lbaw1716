@@ -53,6 +53,7 @@ Route::post('/auction/buy-now/{id}', 'BidController@buynow');
 Route::post('/auction/bid/{id}', 'BidController@bid');
 Route::post('/auction/{id}/comments/add', 'CommentController@create');
 Route::delete('/auction/{id}/comments/{comID}/remove/', 'CommentController@delete');
+Route::post('/auction/{id}/rate', 'AuctionController@rate');
 
 //Route::post('/auction/report/{id}', '');
 

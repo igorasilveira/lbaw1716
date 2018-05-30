@@ -150,6 +150,61 @@ class="jumbotron">
       <span class="col-md-2 col-sm-0 col-xs-0"></span>
     </div>
 
+    <div id="myModal" class="modal">
+
+      <!-- Modal content -->
+      <div class="modal-content w-50">
+        <div class="modal-header">
+          <h2 class="text-center">Please rate the Seller</h2>
+          <span class="close text-success">&times;</span>
+        </div>
+        <div class="modal-body mx-auto my-3">
+          <div class="rating mr-3">
+          <input type="radio"
+                     id="star5"
+                     name="rating"
+                     value="5" /><label for="star5"
+                     title="Excellent!">5 stars</label>
+              <input type="radio"
+                     id="star4"
+                     name="rating"
+                     value="4" /><label for="star4"
+                     title="Pretty good">4 stars</label>
+              <input type="radio"
+                     id="star3"
+                     name="rating"
+                     value="3" /><label for="star3"
+                     title="Meh">3 stars</label>
+              <input type="radio"
+                     id="star2"
+                     name="rating"
+                     value="2" /><label for="star2"
+                     title="Bad">2 stars</label>
+              <input type="radio"
+                     id="star1"
+                     name="rating"
+                     value="1" /><label for="star1"
+                     title="Really bad">1 star</label>
+        </div>
+        <button class="btn btn-primary my-4 mx-auto"
+                   onclick="checkRating()">
+                   Submit Rating
+                   </button>
+        </div>
+
+        <div class="modal-footer row" id="complain">
+          <h3 class="col col-sm-12 col-xs-12">Complain:</h3>
+
+          <textarea class="form-control col col-sm-12 col-xs-12" id="complainID" rows="3" cols="40"> </textarea>
+          <button class="btn btn-primary my-4 col col-sm-12 col-xs-12"
+                   onclick="eliminatePending()">
+                   Send Complain
+                   </button>
+        </div>
+      </div>
+
+    </div>
+
       <hr class="my-5">
       <div id="statistics"
       class="container">
@@ -255,6 +310,7 @@ class="jumbotron">
                     <th scope="col">Auction</th>
                     <th scope="col">Item</th>
                     <th scope="col">Date</th>
+                    <th scope="col">Action Required</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -263,6 +319,7 @@ class="jumbotron">
                     <th scope="row">#{{ $pending->slice($i, 1)->first()->id }}</th>
                     <td>{{ $pending->slice($i, 1)->first()->title }}</td>
                     <td>{{ substr($pending->slice($i, 1)->first()->finaldate, 0, 10) }}</td>
+                    <td style="cursor: pointer"><a onclick="getModal(this)"><img src="{{ asset('images/confirm_edit.png') }}" height="20px" /><span class="px-4 text-success align-bottom">Rate Seller</span></a></td>
                   </tr>
                   @endfor
                 </tbody>

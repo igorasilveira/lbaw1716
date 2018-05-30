@@ -90,7 +90,7 @@ function confirmModerator() {
 	if (nameCell.children[0].value == null || nameCell.children[0].value == "") {
 		alert("You need to give a name to the moderator");
 	} else if (nameCell.children[2].value == null || nameCell.children[2].value == "") {
-		alert("Tthe moderator has to have an email");
+		alert("The moderator has to have an email");
 	} else {
 		var username = nameCell.children[0].value;
 
@@ -462,7 +462,64 @@ function getModal(row) {
 function checkRating() {
 
 	var rating;
+
 	if (document.getElementById('star1')
+		.checked) {
+		rating=1;
+	} else
+	if (document.getElementById('star2')
+		.checked) {
+			rating=2;
+	} else
+	if (document.getElementById('star3')
+		.checked) {
+			rating=3;
+	} else
+	if (document.getElementById('star4')
+		.checked) {
+			rating=4;
+	} else {
+		rating = 5;
+	}
+
+	var pendTable = document.querySelector('#pending table');
+
+	var i = (this.pendingRow)
+		.parentNode.parentNode.rowIndex;
+
+var wantedRow = pendTable.rows[i];
+	var auctId = pendTable.rows[i].cells[0].innerHTML;
+	auctId = auctId.replace("#","");
+
+
+	var url = window.location.href + '/auction/' + auctId + '/rate';
+	var json = {};
+	json.id = auctId;
+	json.rate = rating;
+
+	$.ajaxSetup({
+		headers: {
+			'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')
+				.content
+		},
+		contentType: 'application/x-www-form-urlencoded'
+	});
+
+	$.ajax({
+		type: 'POST',
+		url: url,
+		contentType: "application/json; charset=utf-8",
+		data: JSON.stringify(json),
+		cache: false,
+		success: function () {
+		},
+		error: function () {
+			alert('Could not rate auction');
+		}
+	});
+
+
+	/*if (document.getElementById('star1')
 		.checked) {
 		document.getElementById('complain')
 			.style.display = "block";
@@ -476,7 +533,7 @@ function checkRating() {
 			.style.display = "none";
 		eliminatePending();
 	}
-
+*/
 }
 
 function eliminatePending() {
