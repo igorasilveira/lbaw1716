@@ -27,14 +27,19 @@ class Notification extends Model
       $this->description = "Your Auction <a href='/auction/" . $this->auctionassociated . "'> #" . $this->auctionassociated . "</a> was accepted!";
       break;
       case 'Auction Rejected':
+      $this->description = "Your Auction <a href='/auction/" . $this->auctionassociated . "'> #" . $this->auctionassociated . "</a> was rejected because ". Auction::find($this->auctionassociated)->reasonofrefusal ."!";
       break;
       case 'Auction Created':
+      $this->description = "Your Auction <a href='/auction/" . $this->auctionassociated . "'> #" . $this->auctionassociated . "</a> was created and is now pending approval!";
       break;
       case 'Auction Over':
+      $this->description = "Your Auction <a href='/auction/" . $this->auctionassociated . "'> #" . $this->auctionassociated . "</a> is now finished! The Winner is ". User::find(Auction::find($this->auctionassociated)->auctionwinner) ."!";
       break;
       case 'Bid Exceeded':
+      $this->description = "Your Bid on <a href='/auction/" . $this->auctionassociated . "'> #" . $this->auctionassociated . "</a> was surpassed. Try again!";
       break;
       case 'Won Auction':
+      $this->description = "You win the auction <a href='/auction/" . $this->auctionassociated . "'> #" . $this->auctionassociated . "</a>. Don't forget to rate it!";
       break;
       default:
       break;

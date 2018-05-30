@@ -16,11 +16,12 @@
       </tr>
     </thead>
     <tbody>
-      @foreach(App\Notification::where('authenticated_userid', Auth::id())->get() as $notification)
+      @foreach(App\Notification::where('authenticated_userid', Auth::id())->paginate(5) as $notification)
         @include('partials.notificationTable', ['notification' => $notification])
       @endforeach
     </tbody>
   </table>
+  {{ App\Notification::where('authenticated_userid', Auth::id())->paginate(5)->links() }}
   @else
   <div id="warningNoAuctions" class="alert alert-info my-5 w-75 mx-auto box-shadow">
     <strong class="alert-link"></strong> You have no <strong>Notifications</strong>.

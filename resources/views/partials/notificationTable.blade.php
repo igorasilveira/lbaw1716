@@ -5,7 +5,7 @@
       @else
         <span class="text-muted">
       @endif
-      {{ $notification->description }}
+      <?php  echo $notification->description ?>
       </span>
   </th>
   <td class="form-check-inline">

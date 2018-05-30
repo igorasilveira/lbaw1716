@@ -28,7 +28,7 @@ class NotificationController extends Controller
         $user = User::get()->where('username', '=', $username)->first();
         $this->authorize('view', $user);
 
-        foreach(Notification::where('authenticated_userid', $user->id())->get() as $not){
+        foreach(Notification::where('authenticated_userid', $user->id)->get() as $not){
           $not->descriptionCont();
         }
 

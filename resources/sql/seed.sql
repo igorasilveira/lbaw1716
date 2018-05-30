@@ -470,7 +470,7 @@ CREATE TABLE edit_moderator (
 CREATE TABLE notification (
     id integer DEFAULT nextval('auto_increment_notification'::regclass) NOT NULL,
     date timestamp with time zone DEFAULT transaction_timestamp() NOT NULL,
-    description character varying(50) NOT NULL,
+    description character varying NOT NULL,
     type character varying(50) NOT NULL,
     auctionassociated integer,
     authenticated_userid integer NOT NULL,
