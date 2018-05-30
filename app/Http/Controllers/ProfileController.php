@@ -48,10 +48,17 @@ class ProfileController extends Controller
         $this->authorize('view', $user);
 
         $selling = $user->auctionsSelling()->get();
-
         $buying = $user->auctionsBidding()->get();
 
-        return view('pages.user.auctions', ['user' => $user, 'selling' => $selling, 'buying' => $buying]);
+        $buying_m6 = null;
+        $selling_m6 = null;
+
+        if(count($buying) > 6)
+        $buying_m6 = $user->auctionsBidding_m6();
+        if(count($selling) > 6)
+        $selling_m6 = $user->auctionsSelling_m6();
+
+        return view('pages.user.auctions', ['user' => $user, 'selling' => $selling, 'buying' => $buying, 'selling_m6' => $selling_m6, 'buying_m6' => $buying_m6]);
     }
 
     /**

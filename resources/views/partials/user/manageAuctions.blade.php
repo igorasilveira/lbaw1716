@@ -53,7 +53,7 @@
     <div class="table-responsive">
       @if(count($pending_m6) == 0)
       <div id="warningNoAuctions" class="alert alert-info my-5 w-75 mx-auto box-shadow">
-        <strong class="alert-link">Ups!</strong> There are no <strong>pending</strong> auctions with that word in title or description.
+        <strong class="alert-link">Ups!</strong> There are no <strong>pending</strong> auctions with {{ $search }} in title or description.
       </div>
       @else
       <table class="bidsListViewMore table-responsive table-hover">
@@ -133,7 +133,7 @@
     <div class="table-responsive">
       @if(count($moderating_m6) == 0)
       <div id="warningNoAuctions" class="alert alert-info my-5 w-75 mx-auto box-shadow">
-        <strong class="alert-link">Ups!</strong> You have no <strong>moderating</strong> auctions with that word in title or description.
+        <strong class="alert-link">Ups!</strong> You have no <strong>moderating</strong> auctions with {{ $search }} in title or description.
       </div>
       @else
       <table class="sellsListViewMore table-responsive table-hover">

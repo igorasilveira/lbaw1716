@@ -49,6 +49,11 @@
       <hr class="my-3">
     </div>
     <div class="table-responsive">
+      @if(count($buying_m6) == 0)
+      <div id="warningNoAuctions" class="alert alert-info my-5 w-75 mx-auto box-shadow">
+        <strong class="alert-link">Ups!</strong> You are not <strong>bidding</strong> on any auctions with {{ $search }} in title or description.
+      </div>
+      @else
       <table class="bidsListViewMore table-responsive table-hover">
         <thead>
           <tr class="table-info">
@@ -62,7 +67,7 @@
           </tr>
         </thead>
         <tbody>
-          @foreach(Auth::user()->auctionsBidding_m6() as $auction)
+          @foreach($buying_m6 as $auction)
           <tr>
             <td scope="row"><img src="{{ $auction->pathtophoto }}"
               alt="Auction Item Image"
@@ -80,8 +85,9 @@
         </table>
         <br />
         <div class="container-fluid my-4">
-          {{ Auth::user()->auctionsBidding_m6()->links() }}
+          {{ $buying_m6->links() }}
         </div>
+        @endif
       </div>
       @endif
     </div>
@@ -128,6 +134,11 @@
       <hr class="my-3">
     </div>
     <div class="table-responsive">
+      @if(count($selling_m6) == 0)
+      <div id="warningNoAuctions" class="alert alert-info my-5 w-75 mx-auto box-shadow">
+        <strong class="alert-link">Ups!</strong> You have no <strong>selling</strong> auctions with {{ $search }} in title or description.
+      </div>
+      @else
       <table class="sellsListViewMore table-responsive table-hover">
         <thead>
           <tr class="table-info">
@@ -139,7 +150,7 @@
           </tr>
         </thead>
         <tbody>
-          @foreach(Auth::user()->auctionsSelling_m6() as $auction)
+          @foreach($selling_m6 as $auction)
           <tr>
             <td scope="row"><img src="{{ $auction->pathtophoto }}"
               alt="Auction Item Image"
@@ -161,8 +172,9 @@
         </table>
         <br />
         <div class="container-fluid my-4">
-          {{ Auth::user()->auctionsSelling_m6()->links() }}
+          {{ $selling_m6->links() }}
         </div>
+        @endif
       </div>
     </div>
     @endif
