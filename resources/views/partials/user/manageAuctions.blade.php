@@ -59,7 +59,7 @@
           </tr>
         </thead>
         <tbody>
-          @foreach(Auth::user()->auctionsBidding_m6() as $auction)
+          @foreach(Auth::user()->pending_m6() as $auction)
           <tr>
             <td scope="row"><img src="{{ $auction->pathtophoto }}"
               alt="Auction Item Image"
@@ -74,7 +74,7 @@
         </table>
         <br />
         <div class="container-fluid my-4">
-          {{ Auth::user()->auctionsBidding_m6()->links() }}
+          {{ Auth::user()->pending_m6()->links() }}
         </div>
       </div>
       @endif
