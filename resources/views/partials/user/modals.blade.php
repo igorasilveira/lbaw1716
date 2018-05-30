@@ -1,57 +1,3 @@
-<!-- The Modal -->
-<div id="myModal" class="modal" data-backdrop="false">
-
-  <!-- Modal content -->
-  <div class="modal-content w-50">
-    <div class="modal-header">
-      <h2 class="text-center">Please rate the Seller</h2>
-      <span class="close text-info">&times;</span>
-    </div>
-    <div class="modal-body mx-auto my-3">
-      <div class="rating mr-3">
-        <input type="radio"
-        id="star5"
-        name="rating"
-        value="5" /><label for="star5"
-        title="Excellent!">5 stars</label>
-        <input type="radio"
-        id="star4"
-        name="rating"
-        value="4" /><label for="star4"
-        title="Pretty good">4 stars</label>
-        <input type="radio"
-        id="star3"
-        name="rating"
-        value="3" /><label for="star3"
-        title="Meh">3 stars</label>
-        <input type="radio"
-        id="star2"
-        name="rating"
-        value="2" /><label for="star2"
-        title="Bad">2 stars</label>
-        <input type="radio"
-        id="star1"
-        name="rating"
-        value="1" /><label for="star1"
-        title="Really bad">1 star</label>
-      </div>
-      <button class="btn btn-primary my-4 mx-auto"
-        onclick="checkRating()">
-        Submit Rating
-      </button>
-    </div>
-
-    <div class="modal-footer row" id="complain">
-      <h3 class="col col-sm-12 col-xs-12">Complain:</h3>
-
-      <textarea class="form-control col col-sm-12 col-xs-12" id="complainID" rows="3" cols="40"> </textarea>
-      <button class="btn btn-primary my-4 col col-sm-12 col-xs-12"
-      onclick="eliminatePending()">
-      Send Complain
-      </button>
-    </div>
-  </div>
-</div>
 
 <!-- Profile Editor Modal -->
 <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModal" aria-hidden="true" data-backdrop="false">
@@ -107,7 +53,7 @@
                    @endif
             @if ($user->typeofuser == 'Normal')
               <label class="col-form-label required">Email</label><input class="form-control"
-              type="e-mail"
+              type="email"
               name="email" value='{{ old('email', $user->email) }}'>
               @if ($errors->has('email'))
                 <span class="error">
@@ -116,7 +62,7 @@
               @endif
             @endif
             <label class="col-form-label">Phone Number</label><input class="form-control"
-                   type="phone"
+                   type="tel"
                    name="phoneNumber" value='{{ old('phoneNumber', $user->phonenumber) }}'>
                    @if ($errors->has('phoneNumber'))
                    <span class="error">
@@ -136,9 +82,7 @@
                         {{ $userCountryID = App\Country::find(App\City::find($user->city)->country)->id }}
                     @foreach(App\Country::all() as $country)
                         <option value="{{ $country->id }}"
-                          {{ ($userCountryID == $country->id) ? 'selected' : ''}}
-                          >{{ $country->name }}
-                        </option>
+                          {{ ($userCountryID == $country->id) ? 'selected' : ''}}>{{ $country->name }}  </option>
                     @endforeach
               </select>
               <label class="col-form-label required">City</label>
@@ -233,9 +177,7 @@
                   name="amount">
               @for($i = 1 ; $i < 16; $i++)
                   <option value="{{ $i * 100}}"
-                    {{ ($i == 1) ? 'selected' : ''}}
-                    >{{ $i * 100 }}€
-                  </option>
+                    {{ ($i == 1) ? 'selected' : ''}}  >{{ $i * 100 }}€  </option>
               @endfor
           </select>
         </div>
@@ -284,7 +226,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <div id="approvedPaymentAlert" class="alert alert-dismissible alert-danger my-4 w-75 mx-auto box-shadow">
+          <div id="rejectedPaymentAlert" class="alert alert-dismissible alert-danger my-4 w-75 mx-auto box-shadow">
             <strong class="alert-link">Error!</strong> The transaction of {{session()->get('paypal_amount')}}€ was not processed successfully.
           </div>
         </div>

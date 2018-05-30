@@ -235,7 +235,7 @@ class="jumbotron">
           <div class="tab-pane fade"
           id="sold"
           role="tabpanel"
-          aria-labelledby="sold-tab">
+          aria-labelledby="sold">
 
             @if (count($sold) > 0)
             <table class="table table-hover">
@@ -260,7 +260,7 @@ class="jumbotron">
               <a href="myhistory_user.html"><button class="btn btn-outline-primary w-100">See More</button></a>
               @endif
             @else
-            <div id="warningNoAuctions" class="alert alert-info my-5 w-75 mx-auto ">
+            <div id="warningNoSold" class="alert alert-info my-5 w-75 mx-auto ">
               <strong class="alert-link">Ups!</strong> You have not <strong>sold</strong> any items yet.
             </div>
             @endif
@@ -268,7 +268,7 @@ class="jumbotron">
           <div class="tab-pane fade"
             id="bought"
             role="tabpanel"
-            aria-labelledby="bought-tab">
+            aria-labelledby="bought">
             @if (count($bought) > 0)
             <table class="table table-hover">
               <thead>
@@ -295,7 +295,7 @@ class="jumbotron">
               </a>
               @endif
             @else
-            <div id="warningNoAuctions" class="alert alert-info my-5 w-75 mx-auto">
+            <div id="warningNoBought" class="alert alert-info my-5 w-75 mx-auto">
               <strong class="alert-link">Ups!</strong> You have not <strong>bought</strong> any items yet.
             </div>
             @endif
@@ -303,7 +303,7 @@ class="jumbotron">
             <div class="tab-pane fade active show"
               id="pending"
               role="tabpanel"
-              aria-labelledby="pending-tab">
+              aria-labelledby="pending">
               @if (count($pending) > 0)
               <table class="table table-hover">
                 <thead>
@@ -329,7 +329,7 @@ class="jumbotron">
               <a href="myhistory_user.html"><button class="btn btn-outline-primary w-100">See More</button></a>
               @endif
               @else
-              <div id="warningNoAuctions" class="alert alert-info my-5 w-75 mx-auto">
+              <div id="warningNoPending" class="alert alert-info my-5 w-75 mx-auto">
                 <strong class="alert-link">Good!</strong> You have no <strong>pending</strong> businesses.
               </div>
               @endif
@@ -348,7 +348,7 @@ class="jumbotron">
             <div class="tab-pane fade active show"
             id="responsible"
             role="tabpanel"
-            aria-labelledby="responsible-tab">
+            aria-labelledby="responsible">
               @if (count($responAuct) > 0)
                 <table class="table table-hover">
                 <thead>
@@ -372,7 +372,7 @@ class="jumbotron">
                   <a href="myhistory_user.html"><button class="btn btn-outline-primary w-100">See More</button></a>
                 @endif
               @else
-                <div id="warningNoAuctions" class="alert alert-info my-5 w-75 mx-auto">
+                <div id="warningNoManage" class="alert alert-info my-5 w-75 mx-auto">
                   <strong class="alert-link">Ups!</strong> You have managed any auctions yet.
                 </div>
               @endif

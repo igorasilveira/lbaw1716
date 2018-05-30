@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-En">
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible"
@@ -27,18 +27,18 @@
   <script src="https://apis.google.com/js/platform.js"
   async
   defer></script>
-  <script type="text/javascript"
-  src="{{ asset('js/app.js') }}"
+  <script
+  src="{{ asset('js/app.min.js') }}"
   defer>
   </script>
-  <script type="text/javascript"
+  <script
   src="{{ asset('js/bootstrap.min.js') }}">
   </script>
-  <script type="text/javascript">
+  <script>
   // Fix for Firefox autofocus CSS bug
   // See: http://stackoverflow.com/questions/18943276/html-5-autofocus-messes-up-css-loading/18945951#18945951
   </script>
-  <script type="text/javascript" src="{{ asset('js/timecounter.js') }}"></script>
+  <script src="{{ asset('js/timecounter.js') }}"></script>
 </head>
 <body>
   <header>
