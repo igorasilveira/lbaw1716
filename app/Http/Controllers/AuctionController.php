@@ -23,7 +23,7 @@ class AuctionController extends Controller
   {
     $auction = Auction::find($id);
 
-    $this->authorize('view', $auction);
+    //$this->authorize('view', $auction);
 
     return view('pages.auction', ['auction' => $auction]);
   }
