@@ -13,11 +13,11 @@ input, select, textarea {
   border-radius: 10px !important;
 }
 
-div.input-group-append > span {
+div.input-group-append>span {
   border-radius: 0 10px 10px 0;
 }
 
-div.input-group-prepend > span {
+div.input-group-prepend>span {
   border-radius: 10px 0 0 10px;
 }
 
@@ -614,6 +614,23 @@ nav.navbar:nth-child(2) {
 @media screen and (max-width: 574px) {
   #lateralNavBar {
     display: none;
+  }
+}
+
+@media screen and (max-width: 386px) {
+  .navbar-brand {
+    margin-right: 0.5px;
+  }
+  ul.nav>a:nth-child(1) {
+    max-width: 30%;
+  }
+  #menuLogin {
+    margin-left: 2.3em;
+    max-width: 63%;
+  }
+  #navLogin {
+    max-width: 45%;
+    /*  margin-left: 2em;*/
   }
 }
 

@@ -325,9 +325,9 @@ class="jumbotron">
                   @endfor
                 </tbody>
               </table>
-                @if (count($pending) > 6)
-                <a href="myhistory_user.html"><button class="btn btn-outline-primary w-100">See More</button></a>
-                @endif
+              @if (count($pending) > 6)
+              <a href="myhistory_user.html"><button class="btn btn-outline-primary w-100">See More</button></a>
+              @endif
               @else
               <div id="warningNoAuctions" class="alert alert-info my-5 w-75 mx-auto">
                 <strong class="alert-link">Good!</strong> You have no <strong>pending</strong> businesses.
