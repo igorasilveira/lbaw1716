@@ -153,8 +153,8 @@ class AdminController extends Controller
 
     public function approveAuction($auctionid)
     {
-        $this->authorize('approveOrReject', $auction);
         $auction = Auction::find($auctionid);
+        $this->authorize('approveOrReject', $auction);
         $mod = Auth::user()->id;
         $auction->update(['state' => 'Active']);
         $auction->update(['responsiblemoderator' => $mod]);
@@ -166,9 +166,9 @@ class AdminController extends Controller
 
     public function rejectAuction(Request $request, $auctionid)
     {
-        $this->authorize('approveOrReject', $auction);
         $auction = Auction::find($auctionid);
-        $auctionCreator = $auctauctioncreator;
+        $this->authorize('approveOrReject', $auction);
+        
         $mod = Auth::user()->id;
         $reason = $request->input('reasonOfRefusal');
 

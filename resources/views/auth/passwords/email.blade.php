@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container mt-md-5 mt-sm-3">
+<div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card box-shadow btn-round">
@@ -10,38 +10,39 @@
                     {{ __('Reset Password') }}
                   </h4></div>
 
-                <div class="card-body">
+                <div class="card-body p-md-5 p-xs-2">
                     @if (session('status'))
                         <div class="alert alert-success">
                             {{ session('status') }}
                         </div>
                     @endif
 
-                    <form method="POST" action="{{ route('password.email') }}">
+                    <form method="POST" action="{{ route('password.email') }}"
+                    class="form-group navbar-form">
                         {{ csrf_field() }}
+                        <fieldset>
+                          <div class="form-group">
+                            <label for="email">
+                              <h5>{{__('Email Address')}}</h5>
+                            </label>
+                            <input id="email" type="email" class="form-control p-2{{ $errors->has('email') ? ' is-invalid' : '' }}"
+                            name="email" value="{{ old('email') }}"
+                            placeholder="your email here"
+                            required>
 
-                        <div class="form-group row my-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
-
-                                @if ($errors->has('email'))
-                                    <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+                            @if ($errors->has('email'))
+                              <span class="invalid-feedback">
+                                <strong>{{ $errors->first('email') }}</strong>
+                              </span>
+                            @endif
+                          </div>
+                        </fieldset>
 
                         <hr class="my-4">
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-success btn-round box-shadow w-100">
-                                    {{ __('Send Password Reset Link') }}
-                                </button>
-                            </div>
-                        </div>
+
+                        <button type="submit" class="btn btn-success btn-round box-shadow w-100 text-center">
+                            {{ __('Send Password Reset Link') }}
+                        </button>
                     </form>
 
                 </div>

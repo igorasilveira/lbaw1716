@@ -17,7 +17,7 @@
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content"  style="border-radius: 5px">
       <div class="modal-header">
-        <h5 class="modal-title" id="loginModalLabel">Welcome! </h5>
+        <h4 class="modal-title" id="loginModalLabel">Welcome! </h4>
         <button type="button" class="close text-success" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -29,31 +29,43 @@
               class="form-group navbar-form"
               id="signin">
               {{ csrf_field() }}
-          <input type="text"
-                 class="form-control p-2 my-2"
-                 placeholder="Username"
-                 id="username"
-                 name="username"
-                 required>
-                 @if ($errors->has('username'))
-                 <span class="error">
-                   <strong>{{ $errors->first('username') }}</strong>
-                 </span>
+              <fieldset>
+                <div class="form-group">
+                  <label for="username">
+                    <h5>Username</h5>
+                  </label>
+                  <input type="text"
+                  class="form-control p-2"
+                  placeholder="your username here"
+                  id="username"
+                  name="username"
+                  required>
+                  @if ($errors->has('username'))
+                    <span class="error">
+                      <strong>{{ $errors->first('username') }}</strong>
+                    </span>
                   @endif
-          <input type="password"
-                 class="form-control p-2 my-2"
-                 placeholder="Password"
-                 id="password"
-                 name="password"
-                 required>
-                 @if ($errors->has('password'))
-                 <span class="error">
-                   <strong>{{ $errors->first('password') }}</strong>
-                 </span>
-                 @endif
+                </div>
+                <div class="form-group">
+                  <label for="password">
+                    <h5>Password</h5>
+                  </label>
+                  <input type="password"
+                  class="form-control p-2"
+                  placeholder="your password here"
+                  id="password"
+                  name="password"
+                  required>
+                  @if ($errors->has('password'))
+                    <span class="error">
+                      <strong>{{ $errors->first('password') }}</strong>
+                    </span>
+                  @endif
+                </div>
+              </fieldset>
           <button type="submit"
                   id="btnLogin"
-                  class="btn btn-success w-100 btn-round mx-auto my-3 box-shadow"
+                  class="btn btn-success w-100 btn-round mx-auto my-3 box-shadow text-center"
                   >Sign In</button>
         </form>
         <h6 class="text-center my-3">

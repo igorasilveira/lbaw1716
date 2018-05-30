@@ -48,7 +48,6 @@ Route::get('/search', 'SearchController@searchSystem');
 Route::get('/category/{category}', 'CategoryController@showAuctionsFromCategory');
 Route::get('/auction/new', 'AuctionController@create');
 Route::post('/auction/new', 'AuctionController@save')->name('auction_create');
-Route::post('/auction/new/preview', 'AuctionController@preview')->name('auction_preview');
 Route::get('/auction/{id}', 'AuctionController@show');
 Route::post('/auction/buy-now/{id}', 'BidController@buynow');
 Route::post('/auction/bid/{id}', 'BidController@bid');

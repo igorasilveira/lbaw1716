@@ -33,7 +33,7 @@ class BidController extends Controller
 
     public function bid($id, Request $request)
     {
-      $this->authorize('bidOrBuy', $id);
+      $this->authorize('bidOrBuy', Auction::find($id));
       // echo $request['value'];
       //'value', 'auction_id, 'user_id', 'isBuyNow'
       Bid::create([
@@ -49,7 +49,7 @@ class BidController extends Controller
 
     public function buynow($id, Request $request)
     {
-      $this->authorize('bidOrBuy', $id);
+      $this->authorize('bidOrBuy', Auction::find($id));
       // echo $request['value'];
       //'value', 'auction_id, 'user_id', 'isBuyNow'
       Bid::create([
