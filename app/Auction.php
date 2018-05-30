@@ -21,7 +21,7 @@ class Auction extends Model
      */
     protected $fillable = [
     'state', 'title', 'sellingreason', 'description', 'pathtophoto', 'startingprice', 'minimumsellingprice', 'buynow', 'limitdate', 'auctioncreator', 'responsiblemoderator',
-    'reasonofrefusal','refusaldate'
+    'reasonofrefusal','refusaldate','auctionwinner','finalprice','finaldate'
   ];
 
     /**

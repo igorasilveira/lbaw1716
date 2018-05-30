@@ -23,7 +23,7 @@ class ProfileController extends Controller
         if ('Normal' == $us_type) {
             $bought = Auction::where('state', 'Over')->where('auctionwinner', $user->id)->get();
             $sold = Auction::where('state', 'Over')->where('auctioncreator', $user->id)->get();
-            $pending = [];
+            $pending = Auction::where('state', 'Over')->where('auctionwinner', $user->id)->where('rate', null)->get();
 
             return view('pages.user.profile', ['user' => $user,
           'bought' => $bought,

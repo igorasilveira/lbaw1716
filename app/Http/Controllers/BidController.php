@@ -52,12 +52,23 @@ class BidController extends Controller
       $this->authorize('bidOrBuy', Auction::find($id));
       // echo $request['value'];
       //'value', 'auction_id, 'user_id', 'isBuyNow'
+
+      $auction = Auction::find($id);
       Bid::create([
         'value' => intval($request['value']),
         'user_id' => Auth::id(),
-        'auction_id' => Auction::find($id)->id,
+        'auction_id' => $auction->id,
         'isBuyNow' => true,
       ]);
+
+
+      $auction->update(['auctionwinner' => Auth::id()]);
+      $auction->update(['finalprice' => intval($request['value'])]);
+
+      date_default_timezone_set('Europe/Lisbon');
+      $timestamp = date('Y-m-d H:i:s', time());
+      $auction->update(['finaldate' => $timestamp]);
+      $auction->update(['state' => 'Over']);
 
       return redirect()->action(
         'AuctionController@show', ['id' => $id]
