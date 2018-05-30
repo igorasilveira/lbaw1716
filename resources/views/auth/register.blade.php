@@ -17,7 +17,11 @@
           enctype="multipart/form-data">
       {{ csrf_field() }}
       <fieldset>
-        <legend>Log in Information</legend>
+        <legend>
+          <h3>
+            Log in Information
+          </h3>
+        </legend>
         <hr class="my-0" />
         <label class="col-form-label required">Username</label> <input class="form-control"
                type="text"
@@ -46,7 +50,11 @@
       </fieldset>
       <hr class="my-md-4 my-sm-1">
       <fieldset>
-        <legend>Personal Data</legend>
+        <legend>
+          <h3>
+            Personal Data
+          </h3>
+        </legend>
         <hr class="my-0" />
         <label class="col-form-label required">Complete Name</label> <input class="form-control"
                type="text"
@@ -99,7 +107,11 @@
 
       <hr class="my-md-4 my-sm-1">
       <fieldset>
-        <legend>Location information</legend>
+        <legend>
+          <h3>
+            Location information
+          </h3>
+        </legend>
         <hr class="my-0" />
         <label class="col-form-label required">Country</label>
         <select class="form-control"

@@ -8,21 +8,22 @@
           <button type="button" name="button" class="btn btn-secondary btn-md mt-1 mr-5 btn-round">+<span class="hidden-xs"> Admin Management</span></button>
         </a>
   @endif
-  <li class="dropdown"
+  <li class="dropdown row"
       id="menuLogin">
-@if(count(App\Notification::where('authenticated_userid', Auth::id())->where('_read',false)->get())>0)
-    <a class="dropdown-toggle text-white btn-danger"
-       href="#"
-       data-toggle="dropdown"
-       id="navLogin"
-       data-devgib="tagged">Go To</a>
-@else
-<a class="dropdown-toggle text-white"
+@php
+  $count = count(App\Notification::where('authenticated_userid', Auth::id())->where('_read',false)->get())
+@endphp
+<a class="dropdown-toggle text-white p-2
+  "
    href="#"
    data-toggle="dropdown"
    id="navLogin"
-   data-devgib="tagged">Go To</a>
-@endif
+   data-devgib="tagged">
+   @if( $count > 0)
+     <span class="badge badge-pill badge-danger btn">{{ $count }}</span>
+   @endif
+    Go To</a>
+
     <a class=""
        href="/users/{{ Auth::user()->username }}"
        data-devgib="tagged"><img src="{{ Auth::user()->pathtophoto }}" alt="User photo" height="50" class="profile-pic img-hover" style="display: inline"/></a>
@@ -39,13 +40,13 @@
       href="/users/{{ Auth::user()->username }}/manageAuctions">My Auctions </a>
       @endif
       <div class="dropdown-divider"></div>
-@if(count(App\Notification::where('authenticated_userid', Auth::id())->where('_read',false)->get())>0)
+
       <a class="dropdown-item"
-         href="/users/{{ Auth::user()->username }}/notifications"> Notifications ({{count(App\Notification::where('authenticated_userid', Auth::id())->where('_read',false)->get())}})</a>
-@else
-<a class="dropdown-item"
-   href="/users/{{ Auth::user()->username }}/notifications"> Notifications</a>
-@endif
+         href="/users/{{ Auth::user()->username }}/notifications"> Notifications
+         @if($count > 0)
+           ({{$count}})
+         @endif
+       </a>
       <div class="dropdown-divider"></div>
       <a class="dropdown-item"
          href="{{ url('logout') }}"> Log Out </a>

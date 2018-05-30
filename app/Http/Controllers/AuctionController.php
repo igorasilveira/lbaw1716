@@ -47,11 +47,18 @@ class AuctionController extends Controller
 
     $validator = $request->validate([
       'pathtophoto' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+      'title' => 'required|min:4|max:25',
+      'category' => 'required|exists:category,id',
+      'reason' => 'required|min:5|max:25',
+      'startingprice' => 'required|numeric|min:1',
+      'minimumsellingprice' => 'nullable|min:'.$request['startingprice'],
+      'buynow' => 'nullable|gte:startingprice|min:'.$request['minimumsellingprice']
     ]);
 
     $auction = Auction::create([
       'state' => 'Pending',
       'title' => $request->input('title'),
+      'category' => $request['category'],
       'description' => $request->input('description'),
       'sellingreason' => $request->input('reason'),
       'startingprice' => $request->input('startingprice'),
@@ -76,17 +83,11 @@ class AuctionController extends Controller
     $auction->pathtophoto = $file_name;
     $auction->save();
 
-    return self::show($auction->id);
+    return redirect('auction/' . $auction->id);
   }
 
   public function approve()
   {
   }
 
-  public function preview(Request $request)
-  {
-    $auction = $request;
-
-    return view('pages.auction', ['auction' => $auction]);
-  }
 }
