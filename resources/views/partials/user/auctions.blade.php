@@ -48,9 +48,9 @@
       </form>
       <hr class="my-3">
     </div>
+
     <div class="table-responsive tab-content">
-      <table class="bidsListViewMore table table-hover">
-        <thead>
+       <thead>
           <tr class="table-warning">
             <th scope="col">Photo</th>
             <th scope="col">Name</th>
@@ -61,7 +61,7 @@
           </tr>
         </thead>
         <tbody>
-          @foreach(Auth::user()->auctionsBidding_m6() as $auction)
+          @foreach($buying_m6 as $auction)
           <tr>
             <td scope="row"><img src="{{ $auction->pathtophoto }}"
               alt="Auction Item Image"
@@ -78,8 +78,9 @@
         </table>
         <br />
         <div class="container-fluid my-4">
-          {{ Auth::user()->auctionsBidding_m6()->links() }}
+          {{ $buying_m6->links() }}
         </div>
+        @endif
       </div>
       @endif
     </div>
@@ -126,7 +127,12 @@
       <hr class="my-3">
     </div>
     <div class="table-responsive tab-content btn-round">
-      <table class="sellsListViewMore table table-hover">
+      @if(count($selling_m6) == 0)
+      <div id="warningNoAuctions" class="alert alert-info my-5 w-75 mx-auto box-shadow">
+        <strong class="alert-link">Ups!</strong> You have no <strong>selling</strong> auctions with {{ $search }} in title or description.
+      </div>
+      @else
+      <table class="sellsListViewMore table-responsive table-hover">
         <thead>
           <tr class="table-warning">
             <th scope="col">Photo of Item</th>
@@ -137,7 +143,7 @@
           </tr>
         </thead>
         <tbody>
-          @foreach(Auth::user()->auctionsSelling_m6() as $auction)
+          @foreach($selling_m6 as $auction)
           <tr>
             <td scope="row"><img src="{{ $auction->pathtophoto }}"
               alt="Auction Item Image"
@@ -158,9 +164,10 @@
           </tbody>
         </table>
 
-        <div class="container-fluid my-4 ">
-          {{ Auth::user()->auctionsSelling_m6()->links() }}
+        <div class="container-fluid my-4">
+          {{ $selling_m6->links() }}
         </div>
+        @endif
       </div>
     </div>
     @endif

@@ -30,7 +30,11 @@ Route::post('register', 'Auth\RegisterController@register')->name('register');
 
 // Profile
 Route::get('users/{username}/auctions', 'ProfileController@auctions');
+Route::get('users/{username}/auctions/buying/search', 'SearchController@searchBuying');
+Route::get('users/{username}/auctions/selling/search', 'SearchController@searchSelling');
 Route::get('users/{username}/manageAuctions', 'ProfileController@manageAuctions');
+Route::get('users/{username}/manageAuctions/pending/search', 'SearchController@searchPending');
+Route::get('users/{username}/manageAuctions/moderating/search', 'SearchController@searchModerating');
 Route::get('/users/{username}', 'ProfileController@show')->name('/users/{username}');
 Route::post('/users/{username}/edit', 'ProfileController@edit');
 Route::post('/users/{username}/edit/photo', 'ProfileController@editPhoto');
@@ -50,7 +54,6 @@ Route::post('/auction/bid/{id}', 'BidController@bid');
 Route::post('/auction/{id}/comments/add', 'CommentController@create');
 Route::delete('/auction/{id}/comments/{comID}/remove/', 'CommentController@delete');
 
-
 //Route::post('/auction/report/{id}', '');
 
 // Module 3:
@@ -66,15 +69,6 @@ Route::post('/admin/manage/categories/add', 'AdminController@addCategory');
 Route::get('/admin/users/{id}/block', 'AdminController@blockUser');
 Route::get('/admin/users/{id}/unblock', 'AdminController@unblockUser');
 
-/*
-Route::get('/admin/auctions', '')->name('');
-Route::put('/admin/auction/{id}/approve', '');
-Route::put('/admin/auction/{id}/reject', '');
-Route::get('/admin/users/{id}', '')->name('');
-Route::put('/admin/users/{id}/block', '');
-Route::put('/admin/users/{id}/unblock', '');
-Route::get('/admin/manage', '')->name('');
-*/
 
 // Module 4:
 //
