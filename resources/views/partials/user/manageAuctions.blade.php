@@ -5,6 +5,7 @@
   </div>
   <hr class="my-md-4 my-sm-2 my-xs-1">
 </div>
+
 <div class="container">
   <div id="bidding" class="container-fluid">
     <h2> Pending </h2>
