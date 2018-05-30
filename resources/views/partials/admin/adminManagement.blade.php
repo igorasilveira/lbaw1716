@@ -1,14 +1,14 @@
   <div class="hidden-xs">
     <hr class="my-md-4 my-sm-2 my-xs-1">
     <div class="title jumbotron my-0 p-3">
-      <h1 class="display-6">Managing Area</h1>
+      <h1 class="display-6 text-center">Managing Area</h1>
     </div>
     <hr class="my-md-4 my-sm-2 my-xs-1">
   </div>
 
   <div class="container">
     <h3 class="py-2">Registered Moderators</h3>
-    <div class="table-responsive">
+    <div class="table-responsive btn-round box-shadow">
       @if (count($moderators) == 0)
       <div id="warningNoAuctions" class="alert alert-info my-5 w-75 mx-auto box-shadow">
         <strong class="alert-link">Ups!</strong> There are <strong>no moderators</strong>.
@@ -51,11 +51,11 @@
             @endfor
             </tbody>
             </table>
-                @endif
+          @endif
 
     </div>
 
-    <button class="btn btn-info"
+    <button class="btn btn-info btn-round box-shadow w-100 my-md-4 my-sm-2"
             id="createModBtt"
             onclick="addModerator()">Create Moderator</button>
   </div>
@@ -63,7 +63,7 @@
   <hr class="my-4">
   <div class="container">
   <h3 class="py-2">Categories</h3>
-  <div class="table-responsive">
+  <div class="table-responsive btn-round box-shadow">
   <table id="categoriesList"
   class="table  table-hover box-shadow">
   <thead>
@@ -75,7 +75,7 @@
         alt="Edit Image"
         width="20"
         height="20"
-        class="editCatBtt"
+        class="editCatBtt pointer"
         title='Edit Categories'
         onclick="editCategories()"> </th>
       </tr>
@@ -95,7 +95,7 @@
           alt="Remove Image"
           width="20"
           height="20"
-          class="removeBtt"
+          class="removeBtt pointer"
           title='Remove Category'
           onclick="delCategory(this,{{$categories->slice($j, 1)->first()->id}})"> </td>
         </tr>
@@ -103,7 +103,7 @@
       </tbody>
     </table>
   </div>
-  <button class="btn btn-info"
+  <button class="btn btn-info btn-round box-shadow w-100 my-md-4 my-sm-2"
         id="createCategoryBtt"
         onclick="addCategory()">Create Category</button>
   </div>

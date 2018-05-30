@@ -25,12 +25,13 @@
     <div id="warningPendingTop" class="alert alert-dismissible alert-danger my-4 w-75 mx-auto">
       <strong class="alert-link">Attention!</strong> You have pending actions required on finished auctions.
     </div>
+    <hr class="my-md-4 my-sm-2 my-xs-1">
     @elseif($user->typeofuser=='Normal' && $user->blocked==true)
     <div id="warningPendingTop" class="alert alert-dismissible alert-danger my-4 w-75 mx-auto">
       <strong class="alert-link">Attention!</strong> You are currently blocked!
     </div>
+    <hr class="my-md-4 my-sm-2 my-xs-1">
     @endif
-  <hr class="my-md-4 my-sm-2 my-xs-1">
   @endif
 @endif
 <div id="profile-container"
