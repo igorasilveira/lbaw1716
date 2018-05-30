@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 use App\User;
 use App\Category;
 use App\Auction;
 use App\Edit_Categories;
 use App\CategoryOfAuction;
+use App\Mail\EMail;
+
 
 class AdminController extends Controller
 {
@@ -104,13 +107,16 @@ class AdminController extends Controller
 
         $password = $this->randomPassword();
 
-        User::create([
+        $user = User::create([
         'typeofuser' => 'Moderator',
         'username' => $request->input('username'),
         'email' => $request->input('email'),
         'password' => bcrypt($password),
         'pathtophoto' => '/images/catalog/users/default.png',
       ]);
+
+        $email = $request->input('email');
+        Mail::to($email)->send(new EMail($user,$password));
 
         return null;
     }
@@ -162,7 +168,7 @@ class AdminController extends Controller
     {
         $this->authorize('approveOrReject', $auction);
         $auction = Auction::find($auctionid);
-        $auctionCreator = $auction->auctioncreator;
+        $auctionCreator = $auctauctioncreator;
         $mod = Auth::user()->id;
         $reason = $request->input('reasonOfRefusal');
 
