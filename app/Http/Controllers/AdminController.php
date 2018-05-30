@@ -24,6 +24,7 @@ class AdminController extends Controller
      */
     public function show()
     {
+        $this->authorize('adminPowers', User::class);
         $moderators = User::where('typeofuser', 'Moderator')->where('blocked', 'false')->get();
         $categories = Category::all();
 
@@ -45,6 +46,7 @@ class AdminController extends Controller
 
     public function blockUser($id)
     {
+        $this->authorize('checkIfCanBlock', User::find($id));
         User::where('id', $id)->update(['blocked' => true]);
 
         $username = User::find($id)->username;
@@ -56,6 +58,7 @@ class AdminController extends Controller
 
     public function unblockUser($id)
     {
+        $this->authorize('checkIfCanBlock', User::find($id));
         User::where('id', $id)->update(['blocked' => false]);
 
         $username = User::find($id)->username;
@@ -67,6 +70,8 @@ class AdminController extends Controller
 
     public function deleteModerator($username)
     {
+        $this->authorize('adminPowers', User::class);
+        $this->authorize('checkIfNotAdmin', User::where('username', $username)->get());
         User::where('username', $username)->update(['blocked' => true]);
 
         return null;
@@ -74,6 +79,7 @@ class AdminController extends Controller
 
     public function deleteCategory($id)
     {
+        $this->authorize('adminPowers', User::class);
         Edit_Categories::where('category', $id)->delete();
         CategoryOfAuction::where('category_id', $id)->delete();
 
@@ -90,6 +96,7 @@ class AdminController extends Controller
 
     public function addModerator(Request $request)
     {
+        $this->authorize('adminPowers', User::class);
         $validator = $request->validate([
         'username' => 'required|string|max:255|unique:user',
         'email' => 'required|string|email|max:255|unique:user',
@@ -123,6 +130,7 @@ class AdminController extends Controller
 
     public function addCategory(Request $request)
     {
+        $this->authorize('adminPowers', User::class);
         $category = new Category();
         $category->name = $request->input('categoryName');
         if ('N/A' != $request->input('parent')) {
@@ -139,6 +147,7 @@ class AdminController extends Controller
 
     public function approveAuction($auctionid)
     {
+        $this->authorize('approveOrReject', $auction);
         $auction = Auction::find($auctionid);
         $mod = Auth::user()->id;
         $auction->update(['state' => 'Active']);
@@ -151,6 +160,7 @@ class AdminController extends Controller
 
     public function rejectAuction(Request $request, $auctionid)
     {
+        $this->authorize('approveOrReject', $auction);
         $auction = Auction::find($auctionid);
         $auctionCreator = $auction->auctioncreator;
         $mod = Auth::user()->id;

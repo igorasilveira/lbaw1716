@@ -16,11 +16,13 @@ class UserPolicy
      * @param  \App\User  $user
      * @return mixed
      */
-    public function view(User $user)
+    public function view(User $user, User $user2)
     {
-      if (!Auth::check()) return false;
-      return Auth::user()->id == $user->id;
+      /*if (!Auth::check()) return false;
+      return Auth::user()->id == $user->id;*/
+      return $user->id == $user2->id;
     }
+
 
     /**
      * Determine whether the user can create auctions.
@@ -55,5 +57,34 @@ class UserPolicy
     public function delete(User $user, Auction $auction)
     {
         //
+    }
+
+    public function adminPowers(User $user)
+    {
+        if($user->typeofuser=='Administrator')
+        return true;
+        else
+        return false;
+    }
+
+    public function checkIfNotAdmin(User $user,User $user2)
+    {
+        if($user2->typeofuser=='Moderator')
+        return true;
+        else
+        return false;
+    }
+
+    public function checkIfCanBlock(User $user,User $user2)
+    {
+        if($user->typeofuser=='Moderator' || $user->typeofuser=='Administrator'){
+
+          if($user2->typeofuser=='Normal')
+            return true;
+            else {
+              return false;
+            }
+        }else
+          return false;
     }
 }
