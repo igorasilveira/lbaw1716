@@ -155,7 +155,7 @@
         <div class="col-lg-4 col-md-12 col-sm-12">
           <h4>
             <label class="col-form-label">Min Selling Price
-              <span class="badge badge-info" data-toggle="tooltip" data-placement="left" title="No transaction is processed if this amount is not met">?</span></label>
+              <span class="badge badge-info" data-toggle="tooltip" data-placement="left" title="No transaction is processed if this amount is not met.  Leave empty to disable this option.">?</span></label>
             </h4>
             <div class="form-group">
               <div class="input-group mb-3">
@@ -185,7 +185,7 @@
           <div class="col-lg-4 col-md-12 col-sm-12">
             <h4>
               <label class="col-form-label">Buy Now Price
-                <span class="badge badge-info" data-toggle="tooltip" data-placement="left" title="A user can end the auction automatically and buy at this value">?</span></label>
+                <span class="badge badge-info" data-toggle="tooltip" data-placement="left" title="A user can end the auction automatically and buy at this value. Leave empty to disable this option.">?</span></label>
               </h4>
               <div class="form-group">
                 <div class="input-group mb-3">
