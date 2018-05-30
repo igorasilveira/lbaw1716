@@ -27,7 +27,7 @@
         </div>
         <hr class="my-5">
         <div class="row">
-          @if($category->auctions->count() >= 6)
+          @if($category->active_auctions->count() >= 6)
           @foreach($category->active_auctions()->skip(3)->take(3)->get() as $auction)
           @if($category->auctions()->where('state','Active')->count()>=6)
           <li class="col-md-4 col-sm-6 col-xs-6">
@@ -44,7 +44,7 @@
       </ul>
       <br />
     </div>
-    @if(count($category->active_auctions()) > 6)
+    @if($category->active_auctions()->count() > 6)
     <button type="button"
     class="btn
     btn-block
