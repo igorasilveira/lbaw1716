@@ -87,6 +87,8 @@ class AuctionPolicy
       return false;
     }
 
+  }
+
 
     public function bidOrBuy(User $user, Auction $auction)
     {
@@ -107,4 +109,6 @@ class AuctionPolicy
     }else {
       return false;
     }
+}
+
 }
