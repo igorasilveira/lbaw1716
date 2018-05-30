@@ -75,14 +75,15 @@
             <hr class="my-md-4 my-sm-1">
             <fieldset>
               <legend>Location information</legend>
+              @php
+              $userCountryID = App\Country::find(App\City::find($user->city)->country)->id
+              @endphp
               <hr class="my-0" />
               <label class="col-form-label required">Country</label>
               <select class="form-control"
                       name="country">
-                        {{ $userCountryID = App\Country::find(App\City::find($user->city)->country)->id }}
                     @foreach(App\Country::all() as $country)
-                        <option value="{{ $country->id }}"
-                          {{ ($userCountryID == $country->id) ? 'selected' : ''}}>{{ $country->name }}  </option>
+                        <option value="{{ $country->id }}" {{ ($userCountryID == $country->id) ? 'selected' : ''}}>{{ $country->name }}</option>
                     @endforeach
               </select>
               <label class="col-form-label required">City</label>

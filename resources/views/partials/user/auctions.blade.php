@@ -5,13 +5,13 @@
   </div>
   <hr class="my-md-4 my-sm-2 my-xs-1">
 </div>
-<div class="container">
+<div class="container my-4">
   <div id="bidding" class="container-fluid">
     <h2> Bidding </h2>
-    <div id="bidViewer">
+    <div id="biddingg">
       @if (count($buying) > 0)
-      <ul id="auctionsMosaic"
-      class="container-fluid row col-sm-12 row">
+      <ul
+      class="container-fluid row col-sm-12 row auctionsMosaic">
       @foreach($buying->take(6) as $auction)
       <li class="col-sm-4">
         @include('partials.auctionMosaic', ['auction' => $auction])
@@ -51,7 +51,7 @@
 
     <div class="table-responsive tab-content btn-round">
       @if(count($buying_m6) == 0)
-      <div id="warningNoAuctions" class="alert alert-info my-5 w-75 mx-auto box-shadow">
+      <div id="warningNoAuctions1" class="alert alert-info my-5 w-75 mx-auto box-shadow">
         <strong class="alert-link">Ups!</strong> You are not <strong>bidding</strong> on any auctions with {{ $search }} in title or description.
       </div>
       @else
@@ -93,10 +93,10 @@
     <hr class="my-5">
     <div id="selling" class="container-fluid">
       <h2> Selling </h2>
-      <div id="bidViewer">
+      <div id="sellingg">
         @if (count($selling) > 0)
-        <ul id="auctionsMosaic"
-        class="container-fluid row col-sm-12 row">
+        <ul
+        class="container-fluid row col-sm-12 row auctionsMosaic">
         @foreach($selling->take(6) as $auction)
         <li class="col-sm-4">
           @include('partials.auctionMosaic', ['auction' => $auction])
@@ -104,7 +104,7 @@
         @endforeach
       </ul>
       @else
-      <div id="warningNoAuctions" class="alert alert-info my-5 w-75 mx-auto box-shadow">
+      <div id="warningNoAuctions2" class="alert alert-info my-5 w-75 mx-auto box-shadow">
         <strong class="alert-link">Ups!</strong> You are currently not <strong>selling</strong> any items.
       </div>
       @endif
@@ -178,4 +178,3 @@
     </div>
     @endif
   </div>
-</div>

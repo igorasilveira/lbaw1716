@@ -44,10 +44,11 @@ class="jumbotron">
       <img src="{{ $user->pathtophoto }}"
       alt="User photo"
       class="profile-pic mb-4 box-shadow mx-auto w-border" title="Profile Picture">
-    @endif</div>
+    @endif
+    </div>
     <div id="info-container"
     class="col-md-6 col-sm-12 col-xs-12 vcen container-fluid ">
-      <section class="pb-2">
+      <div class="pb-2">
         <h5 class="text-muted">#{{ $user->id }}</h5>
         <h3>{{ $user->username}}
           <span class=" mx-4 badge badge-pill badge-info box-shadow">
@@ -62,8 +63,9 @@ class="jumbotron">
             @endif
           </span>
         </h3>
-        </section>
-        <section class="pb-2">
+      </div>
+
+        <div class="pb-2">
           <p>
             {{ $user->completename}}
 
@@ -76,7 +78,7 @@ class="jumbotron">
           <p>
             {{ $user->email}}
           </p>
-        </section>
+        </div>
         @if (Auth::check() && (Auth::user()->id == $user->id))
         @if ($user->typeofuser=='Normal' && $user->blocked==false)
       <div id="balance"
@@ -96,9 +98,8 @@ class="jumbotron">
           <div class="col-md-6 col-sm-12 col-xs-12">
             @if (Auth::check())
               @if (Auth::user()->id == $user->id)
-              <a href="#" data-toggle="modal" data-target="#creditsModal">
-              <button type="button"
-              class="btn btn-success w-100 box-shadow btn-round">Add Credits</button></a>
+              <a href="#" data-toggle="modal" data-target="#creditsModal"
+              class="btn btn-success w-100 box-shadow btn-round">Add Credits</a>
               @endif
             @endif
           </div>
@@ -143,9 +144,8 @@ class="jumbotron">
           @else
             href="{{ $user->username }}/manageAuctions"
           @endif
-          class="col-md-8 col-sm-12 col-xs-12">
-          <button class="btn btn-info w-100 box-shadow btn-round">My Live Auctions
-          </button>
+          class="col-md-8 col-sm-12 col-xs-12 btn btn-info w-100 box-shadow btn-round">
+          My Live Auctions
         </a>
 
       <span class="col-md-2 col-sm-0 col-xs-0"></span>

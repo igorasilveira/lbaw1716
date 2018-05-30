@@ -1,4 +1,4 @@
-/* common */
+.auctionName/* common */
 
 th {
   color: black;
@@ -54,7 +54,7 @@ ul.navbar-nav li.dropdown:hover div.dropdown-menu {
   margin: auto;
 }
 
-#auctionsMosaic.row {
+.auctionsMosaic.row {
   display: flex;
   align-items: center;
 }
@@ -297,7 +297,7 @@ legend {
 }
 
 #menuCat {
-  padding: 3em auto;
+  padding: 0.5em 1em;
   border-top: 1px solid white;
   width: 100%;
 }
@@ -312,7 +312,7 @@ legend {
     margin: 0;
     &:extend(.btn-group-justified all);
   }
-  #auctionProfile {
+  .auctionProfile {
     margin-top: 2em;
   }
 }
@@ -360,7 +360,7 @@ legend {
 }
 
 @media screen and (max-width: 480px) {
-  #auctionProfile {
+  .auctionProfile {
     margin-left: 1em;
     margin-bottom: 1em;
   }
@@ -414,20 +414,20 @@ nav.navbar:nth-child(2) {
   padding-top: 1em;
 }
 
-#catNav ul, #time-bids ul {
+#catNav ul, .time-bids ul {
   list-style-type: none;
 }
 
-#auctionsMosaic {
+.auctionsMosaic {
   list-style-type: none;
   padding-left: 1em;
 }
 
-#auctionName {
+.auctionName {
   margin-top: 1em;
 }
 
-#timeLeft {
+.timeLeft {
   border-width: medium;
   border-right: 1px solid;
 }
@@ -436,7 +436,7 @@ nav.navbar:nth-child(2) {
   text-align: center;
 }
 
-#auctionProfile .img-fluid {
+div.auctionProfile > .img-fluid {
   width: 340px;
   height: 340px;
 }
@@ -472,8 +472,8 @@ nav.navbar:nth-child(2) {
   cursor: pointer;
   font-size: 200%;
   line-height: 1.2;
-  color: #ddd;
-  text-shadow: 1px 1px #bbb, 2px 2px #666, .1em .1em .2em rgba(0, 0, 0, .5);
+  color: #DDDDDD;
+  text-shadow: 1px 1px #BBBBBB, 2px 2px #666666, .1em .1em .2em rgba(0, 0, 0, .5);
 }
 
 .rating:not(:checked)>label:before {
@@ -642,11 +642,11 @@ nav.navbar:nth-child(2) {
   cursor: pointer;
 }
 
-p.countdown, #bidsDone {
+p.countdown, .bidsDone {
   font-size: 12px;
 }
 
-#auctionName {
+.auctionName {
   min-height: 65px;
 }
 
@@ -667,9 +667,9 @@ ul.pagination li span {
   color: black;
   padding: 8px 8px;
   text-decoration: none;
-  border: 1px solid #ddd;
+  border: 1px solid #DDDDDD;
   margin: 4px;
-  background-color: #ddd;
+  background-color: #DDDDDD;
 }
 
 ul.pagination li a {
@@ -678,7 +678,7 @@ ul.pagination li a {
   padding: 8px 8px;
   text-decoration: none;
   transition: background-color .3s;
-  border: 1px solid #ddd;
+  border: 1px solid #DDDDDD;
   margin: 4px;
 }
 
