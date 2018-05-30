@@ -49,8 +49,14 @@
       <hr class="my-3">
     </div>
 
-    <div class="table-responsive tab-content">
-       <thead>
+    <div class="table-responsive tab-content btn-round">
+      @if(count($buying_m6) == 0)
+      <div id="warningNoAuctions" class="alert alert-info my-5 w-75 mx-auto box-shadow">
+        <strong class="alert-link">Ups!</strong> You are not <strong>bidding</strong> on any auctions with {{ $search }} in title or description.
+      </div>
+      @else
+      <table class="bidsListViewMore table table-hover">
+        <thead>
           <tr class="table-warning">
             <th scope="col">Photo</th>
             <th scope="col">Name</th>
@@ -132,7 +138,7 @@
         <strong class="alert-link">Ups!</strong> You have no <strong>selling</strong> auctions with {{ $search }} in title or description.
       </div>
       @else
-      <table class="sellsListViewMore table-responsive table-hover">
+      <table class="sellsListViewMore table table-hover">
         <thead>
           <tr class="table-warning">
             <th scope="col">Photo of Item</th>
