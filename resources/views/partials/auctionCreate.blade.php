@@ -119,7 +119,7 @@
         @endif
         required>
         <small id="fileHelp"
-        class="form-text text-muted">This is the image that will be displayed has the main auction image.
+        class="form-text text-muted">The supported file formats are jpeg, png, jpg, gif and svg.
       </small>
       @if ($errors->has('pathtophoto'))
         <span class="error">
