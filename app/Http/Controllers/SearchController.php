@@ -40,8 +40,8 @@ class SearchController extends Controller
             $selling_m6 = $user->auctionsSelling_m6();
         }
 
-        $results_auctions = $user->auctionsBidding()->whereRaw('textsearchable_auction_col @@ plainto_tsquery(\'english\', ?)', [$search])->orderByRaw('ts_rank(textsearchable_auction_col, plainto_tsquery(\'english\', ?)) DESC', [$search])->paginate(5);
-        //$results_auctions->withPath('search?search='.$search);
+        $results_auctions = $user->auctionsBidding()->whereRaw('textsearchable_auction_col @@ plainto_tsquery(\'english\', ?)', [$search])->orderByRaw('ts_rank(textsearchable_auction_col, plainto_tsquery(\'english\', ?)) DESC', [$search])->paginate(5,['*'], '_bidding');
+        $results_auctions->withPath('search?search='.$search);
 
         return view('pages.user.auctions', ['user' => $user, 'buying' => $buying, 'selling' => $selling, 'search' => $search, 'buying_m6' => $results_auctions, 'selling_m6' => $selling_m6]);
     }
@@ -59,8 +59,8 @@ class SearchController extends Controller
             $buying_m6 = $user->auctionsBidding_m6();
         }
 
-        $results_auctions = $user->auctionsSelling()->whereRaw('textsearchable_auction_col @@ plainto_tsquery(\'english\', ?)', [$search])->orderByRaw('ts_rank(textsearchable_auction_col, plainto_tsquery(\'english\', ?)) DESC', [$search])->paginate(5, ['*'], '_moderating');
-        //$results_auctions->withPath('search?search='.$search);
+        $results_auctions = $user->auctionsSelling()->whereRaw('textsearchable_auction_col @@ plainto_tsquery(\'english\', ?)', [$search])->orderByRaw('ts_rank(textsearchable_auction_col, plainto_tsquery(\'english\', ?)) DESC', [$search])->paginate(5, ['*'], '_selling');
+        $results_auctions->withPath('search?search='.$search);
 
         return view('pages.user.auctions', ['user' => $user, 'buying' => $buying, 'selling' => $selling, 'search' => $search, 'buying_m6' => $buying_m6, 'selling_m6' => $results_auctions]);
     }
@@ -78,8 +78,8 @@ class SearchController extends Controller
             $moderating_m6 = $user->auctionsModerating_m6();
         }
 
-        $results_auctions = $user->pending()->whereRaw('textsearchable_auction_col @@ plainto_tsquery(\'english\', ?)', [$search])->orderByRaw('ts_rank(textsearchable_auction_col, plainto_tsquery(\'english\', ?)) DESC', [$search])->paginate(5);
-        //$results_auctions->withPath('search?search='.$search);
+        $results_auctions = $user->pending()->whereRaw('textsearchable_auction_col @@ plainto_tsquery(\'english\', ?)', [$search])->orderByRaw('ts_rank(textsearchable_auction_col, plainto_tsquery(\'english\', ?)) DESC', [$search])->paginate(5,['*'], '_pending');
+        $results_auctions->withPath('search?search='.$search);
 
         return view('pages.user.manageAuctions', ['user' => $user, 'pending' => $pending, 'moderating' => $moderating, 'search' => $search, 'pending_m6' => $results_auctions, 'moderating_m6' => $moderating_m6]);
     }
@@ -98,7 +98,7 @@ class SearchController extends Controller
         }
 
         $results_auctions = $user->auctionsModerating()->whereRaw('textsearchable_auction_col @@ plainto_tsquery(\'english\', ?)', [$search])->orderByRaw('ts_rank(textsearchable_auction_col, plainto_tsquery(\'english\', ?)) DESC', [$search])->paginate(5, ['*'], '_moderating');
-        //$results_auctions->withPath('search?search='.$search);
+        $results_auctions->withPath('search?search='.$search);
 
         return view('pages.user.manageAuctions', ['user' => $user, 'pending' => $pending, 'moderating' => $moderating, 'search' => $search, 'pending_m6' => $results_auctions, 'moderating_m6' => $moderating_m6]);
     }

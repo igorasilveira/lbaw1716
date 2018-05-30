@@ -82,7 +82,7 @@
         </table>
         <br />
         <div class="container-fluid my-4">
-          {{ $pending_m6->links() }}
+          {{ $pending_m6->fragment('_pending')->links() }}
         </div>
         @endif
       </div>
@@ -170,7 +170,7 @@
         </table>
         <br />
         <div class="container-fluid my-4">
-          {{ $moderating_m6->links() }}
+          {{ $moderating_m6->fragment('_moderating')->links() }}
         </div>
         @endif
       </div>
