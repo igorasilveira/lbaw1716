@@ -85,46 +85,53 @@
               </p>
             </div>
             @if($auction->state == 'Active')
-            @if(Auth::id() != $auction->auctionCreator && Auth::check() && Auth::user()->typeofuser=='Normal' && Auth::user()->blocked==false)
-            <form class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
-                {{ csrf_field() }}
+            @if(Auth::id() != $auction->auctionCreator && Auth::check() && Auth::user()->typeofuser=='Normal')
+              @if ( Auth::user()->blocked==false)
+
+                <form class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                  {{ csrf_field() }}
                   @if($auction->bids->count() > 0)
-                  <input name="value" type="hidden" value="{{ $auction->bids->sortByDesc('date')->first()->value + 0.10*($auction->bids->sortByDesc('date')->first()->value) }}" />
+                    <input name="value" type="hidden" value="{{ $auction->bids->sortByDesc('date')->first()->value + 0.10*($auction->bids->sortByDesc('date')->first()->value) }}" />
                   @else
-                  <input name="value" type="hidden" value="{{ $auction->startingprice }}" />
+                    <input name="value" type="hidden" value="{{ $auction->startingprice }}" />
                   @endif
-                <button type="submit"
-                        name="placeBidBtn"
-                        formaction="/auction/bid/{{ $auction->id }}"
-                        formmethod="post"
-                        class="btn btn-success w-100 btn-round box-shadow">
-                        Bid
-                        <span id="auctionBid">
-                        @if($auction->bids->count() > 0)
-                        {{ $auction->bids->sortByDesc('date')->first()->value + 0.10*($auction->bids->sortByDesc('date')->first()->value) }}
-                        @else
-                        {{ $auction->startingprice }}
-                        @endif
-                        </span>
-                        €
+                  <button type="submit"
+                  name="placeBidBtn"
+                  formaction="/auction/bid/{{ $auction->id }}"
+                  formmethod="post"
+                  class="btn btn-success w-100 btn-round box-shadow">
+                  Bid
+                  <span id="auctionBid">
+                    @if($auction->bids->count() > 0)
+                      {{ $auction->bids->sortByDesc('date')->first()->value + 0.10*($auction->bids->sortByDesc('date')->first()->value) }}
+                    @else
+                      {{ $auction->startingprice }}
+                    @endif
+                  </span>
+                  €
                 </button>
               </form>
-          </div>
-          <hr class="my-2">
-          @if($auction->bids->count() == 0 || ($auction->bids->count() > 0 && $auction->bids->sortByDesc('date')->first()->value + 0.10*($auction->bids->sortByDesc('date')->first()->value) <= $auction->buynow))
-          <!-- BUY NOW BUTTON AREA -->
-            <form class="w-100">
-              {{ csrf_field() }}
-              <input name="value" type="hidden" value="{{ $auction->buynow }}"/>
-              <button type="submit"
-                      name="placeBidBtn"
-                      formaction="/auction/buy-now/{{ $auction->id }}"
-                      formmethod="post"
-                      class="btn btn-info w-100 text-center btn-round box-shadow my-md-4 my-sm-2">
-                      Buy Now {{ $auction->buynow }} €
+            </div>
+            <hr class="my-2">
+            @if($auction->bids->count() == 0 || ($auction->bids->count() > 0 && $auction->bids->sortByDesc('date')->first()->value + 0.10*($auction->bids->sortByDesc('date')->first()->value) <= $auction->buynow))
+              <!-- BUY NOW BUTTON AREA -->
+              <form class="w-100">
+                {{ csrf_field() }}
+                <input name="value" type="hidden" value="{{ $auction->buynow }}"/>
+                <button type="submit"
+                name="placeBidBtn"
+                formaction="/auction/buy-now/{{ $auction->id }}"
+                formmethod="post"
+                class="btn btn-info w-100 text-center btn-round box-shadow my-md-4 my-sm-2">
+                Buy Now {{ $auction->buynow }} €
               </button>
             </form>
-          @endif
+            @endif
+          @else
+            <div class=" w-75 mx-auto alert alert-dismissible alert-danger my-3">
+                You are blocked.
+            </div>
+            @endif
           @endif
           @else
         </div>
@@ -262,7 +269,7 @@
         <button type="submit"
                 formaction="/auction/{{ $auction->id }}/comments/add"
                 formmethod="post"
-                class="btn btn-primary btn-sm">Comment</button>
+                class="btn btn-primary btn-round box-shadow">Comment</button>
       </form>
     </div>
     <div class="tab-pane fade"
