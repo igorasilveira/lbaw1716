@@ -20,7 +20,23 @@ class AuctionPolicy
      */
     public function view(User $user, Auction $auction)
     {
-        return $this->auth->guest();
+       if($user->typeofuser=='Normal'){
+
+         if($auction->state == 'Active')
+         return true;
+         else
+          if($auction->state == 'Over' && ($user->id == $auction->auctioncreator || $user->id == $auction->auctionwinner) )
+          return true;
+          else {
+            return false;
+          }
+
+         //return $this->auth->guest();
+
+       }else {
+         return true;
+       }
+
     }
 
     /**
@@ -57,4 +73,42 @@ class AuctionPolicy
     {
         //
     }
+
+    public function approveOrReject(User $user, Auction $auction)
+    {
+      if($user->typeofuser=='Moderator' || $user->typeofuser=='Administrator'){
+
+        if($auction->state == 'Pending')
+        return true;
+        else {
+          return false;
+        }
+    }else {
+      return false;
+    }
+
+  }
+
+
+    public function bidOrBuy(User $user, Auction $auction)
+    {
+      if($user->typeofuser=='Normal'){
+
+        if($auction->state == 'Active'){
+
+          if($user->id == $auction->auctioncreator){
+            return false;
+          }else {
+            return true;
+          }
+
+        }else {
+          return false;
+        }
+
+    }else {
+      return false;
+    }
+}
+
 }

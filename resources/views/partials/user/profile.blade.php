@@ -107,6 +107,7 @@ class="jumbotron">
       @endif
       @if (Auth::user()->id != $user->id)
       @if (Auth::user()->typeofuser == 'Moderator' || Auth::user()->typeofuser =='Administrator' )
+      @if ($user->typeofuser=='Normal')
       <div id="report"
                      class="text-center w-50">
                   <div class="col">
@@ -124,6 +125,7 @@ class="jumbotron">
                   </div>
 
       </div>
+      @endif
       @endif
       @endif
     </div>

@@ -45,7 +45,7 @@ class ProfileController extends Controller
     public function auctions($username)
     {
         $user = User::get()->where('username', '=', $username)->first();
-        //$this->authorize('view', $user);
+        $this->authorize('view', $user);
 
         $selling = $user->auctionsSelling()->get();
 
@@ -62,7 +62,7 @@ class ProfileController extends Controller
     public function manageAuctions($username)
     {
         $user = User::get()->where('username', '=', $username)->first();
-
+        $this->authorize('view', $user);
         $pending = $user->pending()->get();
         $moderating = $user->auctionsModerating()->get();
 
@@ -80,7 +80,7 @@ class ProfileController extends Controller
     {
         $request->session()->flash('form', 'edit');
         $user = User::get()->where('username', '=', $request['username'])->first();
-
+        
         if ('Normal' == $user->type || 'Administrator' == $user->type) {
             $validator = $request->validate([
             'username' => 'required|string|max:255|unique:user,username,'.$user->id,

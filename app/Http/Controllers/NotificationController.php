@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use App\Notification;
+use App\User;
 use Illuminate\Http\Request;
 
 class NotificationController extends Controller
@@ -22,8 +23,10 @@ class NotificationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function list()
+    public function list($username)
     {
+        $user = User::get()->where('username', '=', $username)->first();
+        $this->authorize('view', $user);
         return view('pages.notifications');
     }
 
@@ -36,7 +39,9 @@ class NotificationController extends Controller
      */
     public function show(Request $request)
     {
+
         $notification = Notification::find($request['id']);
+        $this->authorize('view', $notification);
         $notification->_read = true;
         $notification->save();
 
