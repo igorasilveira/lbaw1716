@@ -115,12 +115,12 @@ class="jumbotron">
           @if ($user->blocked)
           <a href="/admin/users/{{$user->id}}/unblock">
             <button type="button"
-                    class="btn btn-danger w-100 box-shadow mt-4">UnBlock User</button>
+                    class="btn btn-danger w-100 box-shadow mt-4  btn-round box-shadow">UnBlock User</button>
           </a>
           @else
           <a href="/admin/users/{{$user->id}}/block">
             <button type="button"
-                    class="btn btn-danger w-100 box-shadow mt-4">Block User</button>
+                    class="btn btn-danger w-100 box-shadow mt-4 btn-round box-shadow">Block User</button>
           </a>
           @endif
         </div>
