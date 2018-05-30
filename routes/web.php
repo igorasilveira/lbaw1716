@@ -55,6 +55,12 @@ Route::post('/auction/{id}/comments/add', 'CommentController@create');
 Route::delete('/auction/{id}/comments/{comID}/remove/', 'CommentController@delete');
 Route::post('/auction/{id}/rate', 'AuctionController@rate');
 
+Route::get('/quickwins','SearchController@quickwins');
+Route::get('/endingsoonest','SearchController@endingsoonest');
+Route::get('/newlylisted','SearchController@newlylisted');
+Route::get('/mostbids','SearchController@mostbids');
+Route::get('/lowestprice','SearchController@lowestprice');
+Route::get('/highestprice','SearchController@highestprice');
 //Route::post('/auction/report/{id}', '');
 
 // Module 3:

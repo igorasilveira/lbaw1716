@@ -9,47 +9,47 @@
 <div class="container w-75">
   <h4> In Auctions</h4>
   @if (count($results['auctions']) == 0)
-    <div class="alert alert-info my-5 w-75 mx-auto">
-      <strong class="alert-link">Ups!</strong> There are no results here for your search.
-    </div>
+  <div class="alert alert-info my-5 w-75 mx-auto">
+    <strong class="alert-link">Ups!</strong> There are no results here for your search.
+  </div>
   @else
-    <table class="table table-hover">
-      <thead>
-        <tr class="table">
-          <th>Item</th>
-          <th>Context</th>
-          <th>Go to Page</th>
-        </tr>
-      </thead>
-      <tbody>
-        @foreach($results['auctions'] as $result)
-        <tr>
-          <td>{{ $result->title }}</td>
-          <td>Auction</td>
-          <td>
-            <a href="/auction/{{ $result->id }}">
-              <img src="images/goto_link.png"
-              alt="Search Image"
-              width="20"
-              height="20" />
-            </a>
-          </td>
-        </tr>
-        @endforeach
-      </tbody>
-    </table>
+  <table class="table table-hover">
+    <thead>
+      <tr class="table">
+        <th>Item</th>
+        <th>Context</th>
+        <th>Go to Page</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach($results['auctions'] as $result)
+      <tr>
+        <td>{{ $result->title }}</td>
+        <td>Auction</td>
+        <td>
+          <a href="/auction/{{ $result->id }}">
+            <img src="images/goto_link.png"
+            alt="Search Image"
+            width="20"
+            height="20" />
+          </a>
+        </td>
+      </tr>
+      @endforeach
+    </tbody>
+  </table>
   @endif
   <div class="container-fluid my-4">
     {{ $results['auctions']->fragment('_auctions')->links() }}
   </div>
 </div>
 <div class="container w-75">
-<h4> In Users </h4>
-@if (count($results['users']) == 0)
+  <h4> In Users </h4>
+  @if (count($results['users']) == 0)
   <div class="alert alert-info my-5 w-75 mx-auto">
     <strong class="alert-link">Ups!</strong> There are no results here for your search.
   </div>
-@else
+  @else
   <table class="table table-hover">
     <thead>
       <tr class="table">
@@ -75,8 +75,8 @@
       @endforeach
     </tbody>
   </table>
-@endif
-<div class="container-fluid my-4">
-  {{ $results['users']->fragment('_users')->links() }}
-</div>
+  @endif
+  <div class="container-fluid my-4">
+    {{ $results['users']->fragment('_users')->links() }}
+  </div>
 </div>
