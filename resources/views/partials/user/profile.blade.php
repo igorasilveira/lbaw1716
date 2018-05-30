@@ -21,7 +21,7 @@
 @if (Auth::check())
   @if (Auth::user()->id == $user->id)
 
-    @if($user->typeofuser=='Normal' && $user->blocked==false)
+    @if($user->typeofuser=='Normal' && $user->blocked==false && count($pending) > 0)
     <div id="warningPendingTop" class="alert alert-dismissible alert-danger my-4 w-75 mx-auto">
       <strong class="alert-link">Attention!</strong> You have pending actions required on finished auctions.
     </div>
@@ -248,15 +248,37 @@ class="jumbotron">
             </div>
             @endif
           </div>
-
             <div class="tab-pane fade active show"
               id="pending"
               role="tabpanel"
               aria-labelledby="pending-tab">
-
+              @if (count($pending) > 0)
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">Auction</th>
+                    <th scope="col">Item</th>
+                    <th scope="col">Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @for ($i = 0; $i < min(6, count($pending)); $i++)
+                  <tr class="table">
+                    <th scope="row">#{{ $pending->slice($i, 1)->first()->id }}</th>
+                    <td>{{ $pending->slice($i, 1)->first()->title }}</td>
+                    <td>{{ substr($pending->slice($i, 1)->first()->finaldate, 0, 10) }}</td>
+                  </tr>
+                  @endfor
+                </tbody>
+              </table>
+                @if (count($pending) > 6)
+                <a href="myhistory_user.html"><button class="btn btn-outline-primary w-100">See More</button></a>
+                @endif
+              @else
               <div id="warningNoAuctions" class="alert alert-info my-5 w-75 mx-auto">
                 <strong class="alert-link">Good!</strong> You have no <strong>pending</strong> businesses.
               </div>
+              @endif
             </div>
           </div>
       @else
