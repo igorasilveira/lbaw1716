@@ -34,9 +34,8 @@
 								<h2>Igor Silveira</h2>
 								<hr class="my-2">
 								<p class="title">CEO &amp; Founder</p>
-								<p>Some text that describes me lorem ipsum ipsum lorem.</p>
-								<p>example@example.com</p>
-								<button class="btn btn-primary w-100 mx-auto my-4">Contact</button>
+								<p>LBAW Student at FEUP.</p>
+								<p>igorsilveira@pcauctions.com</p>
 							</div>
 						</div>
 					</div>
@@ -50,9 +49,8 @@
 								<h2>Nadia Carvalho</h2>
 								<hr class="my-2">
 								<p class="title">CEO &amp; Founder</p>
-								<p>Some text that describes me lorem ipsum ipsum lorem.</p>
-								<p>example@example.com</p>
-								<button class="btn btn-primary w-100 mx-auto my-4">Contact</button>
+                <p>LBAW Student at FEUP.</p>
+								<p>igorsilveira@pcauctions.com</p>
 							</div>
 						</div>
 					</div>
@@ -66,9 +64,8 @@
 								<h2>Pedro Silva</h2>
 								<hr class="my-2">
 								<p class="title">CEO &amp; Founder</p>
-								<p>Some text that describes me lorem ipsum ipsum lorem.</p>
-								<p>example@example.com</p>
-								<button class="btn btn-primary w-100 mx-auto my-4">Contact</button>
+                <p>LBAW Student at FEUP.</p>
+								<p>igorsilveira@pcauctions.com</p>
 							</div>
 						</div>
 					</div>
@@ -82,9 +79,8 @@
 								<h2>Diogo Pereira</h2>
 								<hr class="my-2">
 								<p class="title">CEO &amp; Founder</p>
-								<p>Some text that describes me lorem ipsum ipsum lorem.</p>
-								<p>example@example.com</p>
-								<button class="btn btn-primary w-100 mx-auto my-4">Contact</button>
+                <p>LBAW Student at FEUP.</p>
+                <p>igorsilveira@pcauctions.com</p>
 							</div>
 						</div>
 					</div>

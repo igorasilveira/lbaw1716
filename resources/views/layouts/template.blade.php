@@ -14,7 +14,7 @@
     <!--<link href="{{ asset('css/milligram.min.css') }}" rel="stylesheet">-->
     <link href="{{ asset('css/bootstrap.min.css') }}"
           rel="stylesheet">
-    <link href="{{ asset('css/app.css') }}"
+    <link href="{{ asset('css/app.min.css') }}"
           rel="stylesheet">
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
