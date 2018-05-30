@@ -37,10 +37,24 @@
               {{ substr($auction->description,0,100) }}
             </p>-->
           </section>
-          <h3 id="countdown_{{$auction->id}}"class="text-info pb-2">14H 23M 09S</h3>
+          @if ($auction->state == 'Active')
+            <h3 id="countdown_{{$auction->id}}"class="text-info pb-2">{{ $auction->timeleft() }}</h3>
+          @elseif ($auction->state == 'Pending')
+            <span class="badge badge-pill badge-warning box-shadow">
+              <h3 class="my-auto">Pending</h3>
+            </span>
+          @elseif ($auction->state == 'Rejected')
+            <span class="badge badge-pill badge-danger">
+              <h3 class="my-auto">Rejected</h3>
+            </span>
+          @elseif ($auction->state == 'Over')
+            <span class="badge badge-pill badge-danger">
+              <h3 class="my-auto">Over</h3>
+            </span>
+          @endif
         </div>
         <div id="buyPanel"
-             class="text-center w-100 border border-dark p-2 d-inline-block">
+             class="text-center w-100 border border-dark p-2 d-inline-block mt-md-5 mt-sm-2 mt-xs-2 btn-round box-shadow">
           <h4 class="pb-2">Bidding</h4>
           <hr class="py-0" />
           <!-- BID BUTTON AREA -->
@@ -157,9 +171,7 @@
         @if($auction->state == 'Over')
             <hr class="my-2">
             <div class="w-100 alert alert-dismissible alert-info">
-              <p>
                 Auction Over!!!
-              </p>
             </div>
           @endif
           @endif
@@ -245,9 +257,15 @@
          aria-labelledby="contacts-tab">
       <section class="my-4">
         <h4>Phone Number</h4>
-        <p>
-          {{ $auction->creator->phonenumber }}
-        </p>
+        @if ($auction->creator->phoneNumber != "")
+          <p>
+            {{ $auction->creator->phonenumber }}
+          </p>
+        @else
+          <div class="w-100 alert alert-dismissible alert-info">
+              The user has not provided a phone number.
+          </div>
+        @endif
       </section>
       <hr class="my-4">
       <section class="my-4">
