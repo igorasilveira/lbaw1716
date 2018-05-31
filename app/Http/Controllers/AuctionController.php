@@ -52,7 +52,7 @@ class AuctionController extends Controller
       'reason' => 'required|min:5|max:25',
       'startingprice' => 'required|numeric|min:1',
       'minimumsellingprice' => 'nullable|min:'.$request['startingprice'],
-      'buynow' => 'nullable|gte:startingprice|min:'.$request['minimumsellingprice']
+      'buynow' => 'nullable|min:'.$request['minimumsellingprice']
     ]);
 
     $auction = Auction::create([
