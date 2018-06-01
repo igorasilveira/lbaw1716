@@ -44,7 +44,7 @@
       </ul>
       <br />
     </div>
-    @if($category->active_auctions()->count() > 6)
+    @if($category->active_auctions->count() > 6)
     <button type="button"
     class="btn
     btn-block

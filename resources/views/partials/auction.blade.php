@@ -20,7 +20,7 @@
         <div class="text-md-right text-xs-center">
           <section class="pb-2">
             <h5 class="text-muted">#{{ $auction->id }}</h5>
-            <h4>By <a href="/users/{{ $auction->creator }}"> {{ $auction->creator->username }} </a>
+            <h4>By <a href="/users/{{ $auction->creator->username }}"> {{ $auction->creator->username }} </a>
               @if($auction->creator->rate != NULL)
               <span class=" mx-4 badge badge-pill badge-info">
                 {{ $auction->creator->rate }}/5
