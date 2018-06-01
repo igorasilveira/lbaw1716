@@ -32,9 +32,6 @@
             <p>
               {{ $auction->title }}
             </p>
-            <!--<p>
-              {{ substr($auction->description,0,100) }}
-            </p>-->
           </section>
           @if ($auction->state == 'Active')
             <h3 id="countdown_{{$auction->id}}"class="text-info pb-2">{{ $auction->timeleft() }}</h3>
